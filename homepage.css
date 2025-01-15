@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.7) 50%), url('hp.jpg') no-repeat center center/cover;
+    padding: 20px;
+}
+
+main {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+main h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+main p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+main section {
+    margin-bottom: 40px;
+}
+
+main section h3 {
+    font-size: 24px;
+    color: #444;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+}
+
+main section p {
+    color: #666;
+    line-height: 1.7;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+main section ul {
+    list-style-type: disc;
+    color: #666;
+    margin-left: 20px;
+}
+
+main section ul li {
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

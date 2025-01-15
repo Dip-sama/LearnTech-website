@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        .slid {
+            display: flex;
+            justify-content: left;
+            height: 700px;
+            background-size: cover;
+            animation-name: photo;
+            animation-duration: 20s;
+            animation-iteration-count: infinite;
+            animation-direction: normal;
+        }
+
+     
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.2rem;
+        }
+
+        .mission-section {
+            background-color: #ffffff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .mission-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #0b3d91;
+        }
+
+        .mission-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        h1 {
+            color: #fff;
+            text-align: center;
+            
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .founder {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .founder-card {
+            text-align: center;
+            width: 45%;
+        }
+
+        .founder-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #433d3d;
+            margin-bottom: 15px;
+        }
+
+        .founder-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .founder-title {
+            font-size: 1em;
+            color: #666666;
+        }
+
+        .founder-quote {
+            font-style: italic;
+            margin-top: 10px;
+            color: #000;
+            font-size: large;
+        }
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color:#0b3d91;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #99dcf7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to LearnTech</h1>
+        <p>Empowering Learners, Building Futures</p>
+    </header>
+    <div class="slide" style="max-width:1800px">
+        <img class="mySlides" src="image/free-education-website-slider-banner-psd-template.jpg" style="width:100%">
+        <img class="mySlides" src="image/homepagesliders.png" style="width:100%">
+        <img class="mySlides" src="image/Fundamentals-of-Web-Development.jpg" style="width:100%">
+        <img class="mySlides" src="image/AI-in-Software-Development.webp" style="width:100%">
+      </div>
+      
+      <script>
+      var myIndex = 0;
+      carousel();
+      
+      function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";  
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}    
+        x[myIndex-1].style.display = "block";  
+        setTimeout(carousel, 2000); // Change image every 2 seconds
+      }
+      </script>
+<section class="mission-section">
+    <h2>Our Mission</h2>
+    <p>
+        At LearnTech, we believe that quality education should be accessible to everyone. 
+        Our mission is to provide free, high-quality, and up-to-date learning resources that 
+        empower individuals to master technology and achieve their dreams. Whether you're 
+        a student, a working professional, or a curious learner, we're here to help you grow and succeed.
+    </p>
+</section>
+
+    <h1>Our Founder</h1>
+
+    <div class="container">
+        <div class="founder">
+            <div class="founder-card">
+                <img src="image/WhatsApp Image 2024-12-23 at 22.57.39_272b099e.jpg" alt="Founder 1" class="founder-img">
+                <h3 class="founder-name">Dip Bhattacharjee</h3>
+                <p class="founder-title">Founder and CEO</p>
+                <p class="founder-quote">"Passion drives innovation and creativity."</p>
+            </div>
+            <div class="founder-card">
+                <p class="founder-quote">
+                    ---<br>
+                    Hi, I’m Dip Bhattacharjee, the founder and CEO of LearnTech. I’m currently studying BCA at DAITM, and my passion for technology led me to create this website. While I’m still learning, I’m dedicated to providing useful content and making this platform easy for everyone to enjoy. My goal is to keep improving and sharing helpful resources with all of you. Thank you for being part of this journey, and I hope you find something valuable here!<br>
+                    ---
+                </p>
+            </div>
+        </div>
+
+        <button><a href="index.html">HOME Page</a></button>
+    </div>
+</body>
+</html>
