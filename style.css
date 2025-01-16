@@ -2,65 +2,7 @@
     margin: 0;
     padding: 0;
 }
-@media (max-width: 1200px) {
-    .navbar .menu ul {
-        gap: 10px;
-    }
 
-    .content h1 {
-        font-size: 36px;
-    }
-
-    .card-container {
-        gap: 15px;
-    }
-
-    .card {
-        width: 200px;
-    }
-}
-
-/* For mobile phones (screen width below 768px) */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .navbar .menu ul {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        padding: 0;
-    }
-
-    .navbar .Search {
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .content h1 {
-        font-size: 28px;
-        text-align: center;
-    }
-
-    .card-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 90%;
-    }
-
-    footer {
-        text-align: center;
-        padding: 20px;
-    }
-
-    footer .footer-section {
-        margin-bottom: 15px;
-    }
 .main {
     width: 100%;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.5)50%, rgba(0, 0, 0, 0.5)50%), url(image/deee.webp);
