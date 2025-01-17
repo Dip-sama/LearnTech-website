@@ -4,8 +4,217 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LearnTech</title>
-     <link rel="icon" type="image/png" href="image/WhatsApp Image 2025-01-15 at 20.30.13_fc792d08.jpg">
-    <link rel="stylesheet" href="desigh.css">
+    <link rel="icon" type="image/png" href="image/WhatsApp Image 2025-01-15 at 20.30.13_fc792d08.jpg">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Header Styling */
+        header {
+            background: #0b3d91;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('image/hero-image.jpg') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-btn {
+            background: #ff9900;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .cta-btn:hover {
+            background: #e68a00;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #0b3d91;
+        }
+
+        section p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Courses Section */
+        .courses .course-list {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .course-item {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(33.333% - 20px);
+            text-align: left;
+        }
+
+        .course-item h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .course-item p {
+            margin-bottom: 0;
+            color: #666;
+        }
+
+        /* Features Section */
+        .features ul {
+            list-style: none;
+            text-align: left;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .features ul li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #e0f7fa;
+            border-radius: 5px;
+            color: #0b3d91;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #0b3d91;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .courses .course-list {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .course-item {
+                flex: 1 1 100%;
+            }
+
+            .features ul {
+                padding: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            nav ul li a {
+                font-size: 0.9rem;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
