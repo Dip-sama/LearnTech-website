@@ -1,121 +1,138 @@
 /* General Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Header Styles */
-  header {
-    background: #333;
-    color: white;
-    padding: 15px 0;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Header Styles */
+header {
+  background: #333;
+  color: white;
+  padding: 15px 0;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header h1 {
+  font-size: 1.8rem;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  color: #ffdd57;
+}
+
+/* Form Container Styles */
+.form-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form Styles */
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #0056b3;
+  box-shadow: 0 0 4px rgba(0, 86, 179, 0.5);
+}
+
+form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #003d80;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  header h1 {
-    font-size: 1.8rem;
-  }
-  
-  header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-  }
-  
-  header nav ul li a:hover {
-    color: #ffdd57;
-  }
-  
-  /* Form Container Styles */
-  .form-container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-container h1 {
+    flex-direction: column;
     text-align: center;
-    margin-bottom: 20px;
-    color: #333;
   }
-  
-  /* Form Styles */
-  form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
+
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
   }
-  
-  form input,
-  form select,
-  form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
+
+  .form-container {
+    padding: 15px;
   }
-  
-  form input:focus,
-  form select:focus,
-  form textarea:focus {
-    outline: none;
-    border-color: #0056b3;
-    box-shadow: 0 0 4px rgba(0, 86, 179, 0.5);
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.5rem;
   }
-  
+
+  header nav ul li a {
+    font-size: 0.9rem;
+  }
+
+  .form-container {
+    margin: 20px;
+  }
+
   form button {
-    width: 100%;
-    padding: 12px;
-    background-color: #0056b3;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
   }
-  
-  form button:hover {
-    background-color: #003d80;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    header .container {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    header nav ul {
-      flex-direction: column;
-      gap: 10px;
-    }
-  
-    .form-container {
-      padding: 15px;
-    }
-  }
-  
+}
