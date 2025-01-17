@@ -3,22 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About us</title>
-        <link rel="icon" type="image/png" href="image/WhatsApp Image 2025-01-15 at 20.30.13_fc792d08.jpg">
+    <title>About Us</title>
+    <link rel="icon" type="image/png" href="image/WhatsApp Image 2025-01-15 at 20.30.13_fc792d08.jpg">
     <style>
-        .slid {
-            display: flex;
-            justify-content: left;
-            height: 700px;
-            background-size: cover;
-            animation-name: photo;
-            animation-duration: 20s;
-            animation-iteration-count: infinite;
-            animation-direction: normal;
-        }
-
-     
-
         body {
             font-family: sans-serif;
             margin: 0;
@@ -41,6 +28,17 @@
             font-size: 1.2rem;
         }
 
+        .slide {
+            max-width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mySlides {
+            display: none;
+            width: 100%;
+        }
+
         .mission-section {
             background-color: #ffffff;
             padding: 50px 20px;
@@ -59,15 +57,10 @@
             margin: 0 auto;
             max-width: 800px;
         }
-        h1 {
-            color: #fff;
-            text-align: center;
-            
-        }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 90%;
+            margin: 20px auto;
             padding: 20px;
             background-color: #ffffff;
             border-radius: 5px;
@@ -76,13 +69,15 @@
 
         .founder {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
-            margin-bottom: 30px;
+            gap: 20px;
         }
 
         .founder-card {
             text-align: center;
-            width: 45%;
+            flex: 1 1 calc(45% - 20px);
+            max-width: 300px;
         }
 
         .founder-img {
@@ -110,14 +105,16 @@
             color: #000;
             font-size: large;
         }
+
         button {
             display: inline-block;
             padding: 10px 20px;
-            background-color:#0b3d91;
+            background-color: #0b3d91;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 20px;
         }
 
         button a {
@@ -129,6 +126,33 @@
         button:hover {
             background-color: #99dcf7;
         }
+
+        @media (max-width: 768px) {
+            .founder {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .mission-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .mission-section p {
+                font-size: 1rem;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -136,41 +160,43 @@
         <h1>Welcome to LearnTech</h1>
         <p>Empowering Learners, Building Futures</p>
     </header>
-    <div class="slide" style="max-width:1800px">
+    <div class="slide">
         <img class="mySlides" src="image/free-education-website-slider-banner-psd-template.jpg" style="width:100%">
         <img class="mySlides" src="image/homepagesliders.png" style="width:100%">
         <img class="mySlides" src="image/Fundamentals-of-Web-Development.jpg" style="width:100%">
         <img class="mySlides" src="image/AI-in-Software-Development.webp" style="width:100%">
-      </div>
-      
-      <script>
-      var myIndex = 0;
-      carousel();
-      
-      function carousel() {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";  
+    </div>
+
+    <script>
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) {
+                myIndex = 1;
+            }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 2000); // Change image every 2 seconds
         }
-        myIndex++;
-        if (myIndex > x.length) {myIndex = 1}    
-        x[myIndex-1].style.display = "block";  
-        setTimeout(carousel, 2000); // Change image every 2 seconds
-      }
-      </script>
-<section class="mission-section">
-    <h2>Our Mission</h2>
-    <p>
-        At LearnTech, we believe that quality education should be accessible to everyone. 
-        Our mission is to provide free, high-quality, and up-to-date learning resources that 
-        empower individuals to master technology and achieve their dreams. Whether you're 
-        a student, a working professional, or a curious learner, we're here to help you grow and succeed.
-    </p>
-</section>
+    </script>
 
-    <h1>Our Founder</h1>
+    <section class="mission-section">
+        <h2>Our Mission</h2>
+        <p>
+            At LearnTech, we believe that quality education should be accessible to everyone. 
+            Our mission is to provide free, high-quality, and up-to-date learning resources that 
+            empower individuals to master technology and achieve their dreams. Whether you're 
+            a student, a working professional, or a curious learner, we're here to help you grow and succeed.
+        </p>
+    </section>
 
+    <h1 style="text-align: center;">Our Founder</h1>
     <div class="container">
         <div class="founder">
             <div class="founder-card">
@@ -187,7 +213,6 @@
                 </p>
             </div>
         </div>
-
         <button><a href="index.html">HOME Page</a></button>
     </div>
 </body>
