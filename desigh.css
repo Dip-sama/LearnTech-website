@@ -16,6 +16,7 @@ header .container {
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
 }
 
 header h1 {
@@ -28,6 +29,7 @@ header nav ul {
     margin: 0;
     padding: 0;
     display: flex;
+    flex-wrap: wrap; /* Ensures items adjust on smaller screens */
 }
 
 header nav ul li {
@@ -53,10 +55,12 @@ header nav ul li a:hover {
 
 .hero h2 {
     font-size: 36px;
+    margin: 0;
 }
 
 .hero p {
     font-size: 18px;
+    margin-top: 10px;
 }
 
 .cta-btn {
@@ -88,6 +92,7 @@ header nav ul li a:hover {
 
 .course-list {
     display: flex;
+    flex-wrap: wrap; /* Makes courses wrap on smaller screens */
     justify-content: space-around;
     margin-top: 20px;
 }
@@ -98,6 +103,8 @@ header nav ul li a:hover {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 30%;
+    margin: 10px 0; /* Adds spacing between items */
+    box-sizing: border-box;
 }
 
 .course-item h3 {
@@ -120,11 +127,54 @@ footer {
     background: #333;
     color: #fff;
     text-align: center;
-    padding: 20px 0 0 10px;
+    padding: 20px 0;
     margin-top: 20px;
 }
 
 footer p {
     margin: 0;
     font-size: 14px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column; /* Stack header items vertically */
+        text-align: center;
+    }
+
+    header nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero h2 {
+        font-size: 28px; /* Reduce font size */
+    }
+
+    .course-list {
+        flex-direction: column; /* Stack courses vertically */
+    }
+
+    .course-item {
+        width: 100%; /* Full width for courses */
+    }
+
+    .cta-btn {
+        font-size: 16px; /* Adjust button size */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 24px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
 }
