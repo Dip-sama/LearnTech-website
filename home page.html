@@ -1,228 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LearnTech - Free Tech Learning Platform</title>
-    <link rel="stylesheet" href="home page.html">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .navbar {
-            background: #333;
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-
-        .logo {
-            max-height: 50px;
-        }
-
-        .menu ul {
-            display: flex;
-            list-style: none;
-        }
-
-        .menu ul li {
-            margin: 0 10px;
-        }
-
-        .menu ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .menu ul li a:hover {
-            color: #00bcd4;
-        }
-
-        .auth-buttons .btn {
-            margin-left: 10px;
-            padding: 8px 15px;
-            border: 1px solid #00bcd4;
-            background: transparent;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .auth-buttons .btn.primary {
-            background: #00bcd4;
-        }
-
-        .auth-buttons .btn:hover {
-            background: #fff;
-            color: #00bcd4;
-        }
-
-        .hero {
-            background: #00bcd4;
-            color: #fff;
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        .hero h1 span {
-            color: #fff;
-            font-weight: bold;
-        }
-
-        .courses {
-            background: #f9f9f9;
-            padding: 50px 0;
-        }
-
-        .course-grid {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .course-card {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            padding: 15px;
-            width: 300px;
-        }
-
-        .course-card img {
-            max-width: 100%;
-            border-radius: 5px;
-        }
-
-        footer {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        footer .social-links img {
-            max-height: 30px;
-            margin: 0 10px;
-            transition: transform 0.3s ease;
-        }
-
-        footer .social-links img:hover {
-            transform: scale(1.2);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LearnTech - Empowering Tech Skills</title>
+  <link rel="stylesheet" href="homepage.css">
 </head>
-
 <body>
-    <header class="navbar">
-        <div class="container">
-            <div class="logo-container">
-                <a href="index.html">
-                    <img src="image/logot.jpg" alt="LearnTech Logo" class="logo">
-                </a>
-            </div>
-            <nav class="menu">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#courses">Courses</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="auth-buttons">
-                <a href="login.html" class="btn">Login</a>
-                <a href="signup.html" class="btn primary">Sign Up</a>
-            </div>
-        </div>
-    </header>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">LearnTech</h1>
+      <nav class="navbar">
+        <a href="Courses.html">Courses</a>
+        <a href="#insights">MNC Insights</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Welcome to <span>LearnTech</span></h1>
-                <p>Your ultimate platform to master programming, web development, and more. Learn at your pace, for free!</p>
-                <a href="#courses" class="btn primary">Explore Courses</a>
-            </div>
-        </div>
-    </section>
+  <section class="hero">
+    <div class="container">
+      <h2>Empowering Learners with Free Tech Skills</h2>
+      <p>Join our platform to learn web development, programming, and explore the inner workings of MNCs, all for free!</p>
+      <a href="Courses.html" class="btn">Explore Courses</a>
+    </div>
+  </section>
 
-    <section id="courses" class="courses">
-        <div class="container">
-            <h2 class="section-title">Our Popular Courses</h2>
-            <div class="course-grid">
-                <div class="course-card">
-                    <img src="images/html-course.jpg" alt="HTML Course">
-                    <h3>HTML for Beginners</h3>
-                    <p>Learn the basics of HTML and start building your first web page.</p>
-                </div>
-                <div class="course-card">
-                    <img src="images/css-course.jpg" alt="CSS Course">
-                    <h3>CSS Essentials</h3>
-                    <p>Style your websites beautifully with CSS fundamentals.</p>
-                </div>
-                <div class="course-card">
-                    <img src="images/javascript-course.jpg" alt="JavaScript Course">
-                    <h3>JavaScript Basics</h3>
-                    <p>Make your websites interactive with JavaScript.</p>
-                </div>
-            </div>
+  <section id="courses" class="section">
+    <div class="container">
+      <h2>Our Free Courses</h2>
+      <div class="courses">
+        <div class="course">
+          <h3>Web Development</h3>
+          <p>Learn HTML, CSS, and JavaScript to build stunning websites from scratch.</p>
         </div>
-    </section>
+        <div class="course">
+          <h3>Programming Basics</h3>
+          <p>Master Python, Java, and C++ with beginner-friendly tutorials.</p>
+        </div>
+        <div class="course">
+          <h3>Advanced Concepts</h3>
+          <p>Dive into frameworks, APIs, and backend development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Us</h2>
-            <p>At LearnTech, we believe everyone should have access to quality tech education for free. Our mission is to empower learners worldwide to achieve their dreams and excel in technology-related fields.</p>
-        </div>
-    </section>
+  <section id="insights" class="section">
+    <div class="container">
+      <h2>Insights into Modern MNCs</h2>
+      <p>Gain valuable knowledge about how today's multinational companies function, innovate, and thrive in the tech-driven world.</p>
+      <ul>
+        <li>Case studies on leading tech giants</li>
+        <li>Interviews with industry professionals</li>
+        <li>Latest trends in technology</li>
+      </ul>
+    </div>
+  </section>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <form action="#" method="post">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                <button type="submit" class="btn primary">Send Message</button>
-            </form>
-        </div>
-    </section>
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Have any questions or suggestions? Reach out to us!</p>
+      <form id="contact-form">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
 
-    <footer>
-        <div class="container footer-container">
-            <p>&copy; 2025 LearnTech. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#"><img src="images/facebook-icon.png" alt="Facebook"></a>
-                <a href="#"><img src="images/twitter-icon.png" alt="Twitter"></a>
-                <a href="#"><img src="images/linkedin-icon.png" alt="LinkedIn"></a>
-            </div>
-        </div>
-    </footer>
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 LearnTech. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
 </body>
-
 </html>
