@@ -1,83 +1,78 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    color: #fff;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.7) 50%), url('hp.jpg') no-repeat center center/cover;
-    padding: 20px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
 }
 
-main {
-    max-width: 800px;
-    margin: 50px auto;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-main h2 {
-    font-size: 32px;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
+.header {
+  background: #333;
+  color: #fff;
+  padding: 1rem 0;
 }
 
-main p {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.6;
-    text-align: center;
-    margin-bottom: 20px;
+.header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-main section {
-    margin-bottom: 40px;
+.navbar {
+  display: flex;
+  gap: 1rem;
 }
 
-main section h3 {
-    font-size: 24px;
-    color: #444;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 5px;
+.navbar a {
+  color: #fff;
+  text-decoration: none;
 }
 
-main section p {
-    color: #666;
-    line-height: 1.7;
-    text-align: left;
-    margin-bottom: 20px;
+.hero {
+  background: #f4f4f4;
+  text-align: center;
+  padding: 2rem 0;
 }
 
-main section ul {
-    list-style-type: disc;
-    color: #666;
-    margin-left: 20px;
+.hero .btn {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  margin-top: 1rem;
 }
 
-main section ul li {
-    margin-bottom: 10px;
+.section {
+  padding: 2rem 0;
+  text-align: center;
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    margin-top: 20px;
+.courses {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
 }
 
-footer a {
-    color: #007bff;
-    text-decoration: none;
-    font-size: 14px;
+.course {
+  background: #f9f9f9;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
-footer a:hover {
-    text-decoration: underline;
+.footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
 }
