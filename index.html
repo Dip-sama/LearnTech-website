@@ -1,44 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LearnTech - Free Tech Learning Platform</title>
-    <link rel="icon" type="image/png" href="image/WhatsApp Image 2025-01-15 at 20.30.13_fc792d08.jpg">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
-    <div class="main">
-        <div class="navbar">
-            <div class="icon">
-            </div>
-            <div class="menu">
-                <ul>
-                    <li><a href="about.html">ABOUT</a></li>
-                    <li><a href="Courses.html">COURSES</a></li>
-                    <li><a href="desigh.html">FEATURES</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="content">
-            <h1>Web Design & <br><span>Development</span> <br>Course</h1>
-            <p class="par"> Web Development is a speciatisation of the development stream.<br>
-                They also use HTML. CSS. JAVAScript.<br>
-                </p>
 
-            <button class="cn"><a href="Courses.html">JOIN US</a></button>
+  <button id="open-sidebar-button" onclick="openSidebar()" aria-label="open sidebar" aria-expanded="false" aria-controls="navbar">
+    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"/></svg>
+  </button>
 
-       
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    <div class="p-l">
-    <h1 class="title">Programming languages</h1>
+  <nav id="navbar">
+    <ul>
+      <li>
+        <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar">
+          <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="m480-444.62-209.69 209.7q-7.23 7.23-17.5 7.42-10.27.19-17.89-7.42-7.61-7.62-7.61-17.7 0-10.07 7.61-17.69L444.62-480l-209.7-209.69q-7.23-7.23-7.42-17.5-.19-10.27 7.42-17.89 7.62-7.61 17.7-7.61 10.07 0 17.69 7.61L480-515.38l209.69-209.7q7.23-7.23 17.5-7.42 10.27-.19 17.89 7.42 7.61 7.62 7.61 17.7 0 10.07-7.61 17.69L515.38-480l209.7 209.69q7.23 7.23 7.42 17.5.19 10.27-7.42 17.89-7.62 7.61-17.7 7.61-10.07 0-17.69-7.61L480-444.62Z"/></svg>
+        </button>
+      </li>
+      <li class="home-li"><a class="active-link" aria-current="page" href="index.html">Home</a></li>
+      <li><a href="about.html">About </a></li>
+      <li><a href="desigh.html">Features</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a class="accent-link" href="login.html">Login</a></li>
+    </ul>
+  </nav>
+  <div class="content">
+    <h1>Web Design & <br><span>Development</span> <br>Course</h1>
+    <p class="par"> Web Development is a speciatisation of the development stream.<br>
+        They also use HTML. CSS. JAVAScript.<br>
+        </p>
+        <button class="cn"><a href="Courses.html">JOIN US</a></button>
+  </div>
+  <script>
+    var myIndex = 0;
+    carousel();
+    
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+      }
+      myIndex++;
+      if (myIndex > x.length) {myIndex = 1}    
+      x[myIndex-1].style.display = "block";  
+      setTimeout(carousel, 2000); // Change image every 2 seconds
+    }
+    </script>
+  <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
+  <div class="p-l">
+    <h2 class="title">Programming languages</h2>
     <div class="topic-list">
         <div class="card-container">
             <div class="card">
@@ -90,25 +104,24 @@
                 </div>
             </div>
 
-                <div class="card">
-                        <img src="image/swift.png" alt="" class="card-img">
-                        <div class="card-body">
-                            <h2 class="name">Swift</h2>
-                            <h6 class="des">Swift is for building applications in Apple's ecosystem (iOS, macOS).</h6>
-    
-                        </div>
-                    </div>
             <div class="card">
-                <img src="image/R6Z7GWmk_2x.webp" alt="Kotlin" class="card-img">
+                <img src="image/swift.png" alt="" class="card-img">
                 <div class="card-body">
-                    <h2 class="name">Kotlin</h2>
-                    <h6 class="ds">Kotlin streamlines asynchronous programming..</h6>
+                    <h2 class="name">Swift</h2>
+                    <h6 class="des">Swift is for building applications in Apple's ecosystem (iOS, macOS).</h6>
+
                 </div>
             </div>
-
+    <div class="card">
+        <img src="image/R6Z7GWmk_2x.webp" alt="Kotlin" class="card-img">
+        <div class="card-body">
+            <h2 class="name">Kotlin</h2>
+            <h6 class="ds">Kotlin streamlines asynchronous programming..</h6>
         </div>
     </div>
-    <h1 class="title">Web Development languages</h1>
+        </div>
+    </div>
+    <h2 class="title">Web Development languages</h2>
     <div class="topic-list">
         <div class="card-container">
 
@@ -160,13 +173,13 @@
     
                         </div>
                     </div>
-                <div class="card">
-                <img src="image/ts.png" alt="" class="card-img">
-                <div class="card-body">
-                    <h2 class="name">TypeScript</h2>
-                    <h6 class="ds">TypeScript is a free and open-source high-level programming language developed by Microsoft.</h6>
-                </div>
-            </div>
+                    <div class="card">
+                        <img src="image/ts.png" alt="" class="card-img">
+                        <div class="card-body">
+                            <h2 class="name">TypeScript</h2>
+                            <h6 class="ds">TypeScript is a free and open-source high-level programming language developed by Microsoft.</h6>
+                        </div>
+                    </div>
                     <div class="card">
                         <img src="image/node js.png" alt="" class="card-img">
                         <div class="card-body">
@@ -192,13 +205,13 @@
                     <a href="#"><ion-icon name="logo-instagram"></ion-icon> Instagram</a>
                     <a href="#"><ion-icon name="logo-twitter"></ion-icon> Twitter</a>
                     <a href="#"><ion-icon name="logo-google"></ion-icon> Google</a> -->
-                    <a href="https://github.com/Diphack7"><ion-icon name="logo-github"></ion-icon> GitHub</a>
+                    <a href="https://github.com/Dip-sama"><ion-icon name="logo-github"></ion-icon> GitHub</a>
                 </div>
             </div>
             <div class="footer-section">
                 <h4>Account</h4>
                 <a href="signup.html">Create Account</a>
-                <a href="index.html">Login</a>
+                <a href="login.html">Login</a>
                 <a href="signup.html">Sign Up</a>
             </div>
             <div class="copyright">
@@ -211,6 +224,6 @@
     </script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        
+  
 </body>
 </html>
