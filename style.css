@@ -369,11 +369,4 @@ margin-right: 50px;
   nav .home-li{
     margin-right: unset;
   }
-body{
-  width: 100%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.5)50%, rgba(0, 0, 0, 0.5)50%), url(image/deee.webp);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 }
