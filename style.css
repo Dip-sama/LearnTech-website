@@ -1,79 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
-*{
+:root {
+  --primary-color: #11121a;
+  --hover-color: #272832;
+  --accent-color: #0071FF;
+  --text-color: #c9c9c9;
+}
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-html{
+
+html {
   font-family: Poppins, 'Segoe UI', sans-serif;
   color: var(--text-color);
-  scroll-behavior: smooth; /*For bookmark links*/
+  scroll-behavior: smooth; /* For bookmark links */
 }
-body{
+
+body {
   width: 100%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.5)50%, rgba(0, 0, 0, 0.5)50%), url(image/deee.webp);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url(image/deee.webp);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
-main{
+
+main {
   padding: min(5em, 7%);
 }
-main p{
-  margin-top: .35em;
+
+main p {
+  margin-top: 0.35em;
 }
-nav{
+
+nav {
   background-color: var(--primary-color);
   border-bottom: 1px solid var(--hover-color);
 }
-nav ul{
+
+nav ul {
   list-style: none;
   display: flex;
 }
-nav .home-li{
+
+nav .home-li {
   margin-right: auto;
 }
-nav li{
+
+nav li {
   display: flex;
 }
-nav a{
+
+nav a {
   display: flex;
   text-decoration: none;
   color: var(--text-color);
   padding: 1em 2em;
   transition: background-color 150ms ease;
 }
-nav a:hover{
+
+nav a:hover {
   background-color: var(--hover-color);
 }
-nav a.active-link{
+
+nav a.active-link {
   border-bottom: 2px solid var(--text-color);
 }
-nav a.accent-link{
+
+nav a.accent-link {
   background-color: var(--accent-color);
 }
-#open-sidebar-button{
-  display: none;
-  background: none;
-  border: none;
-  padding: 1em;
-  margin-left: auto;
-  cursor: pointer;
-}
-#close-sidebar-button{
+
+#open-sidebar-button,
+#close-sidebar-button {
   display: none;
   background: none;
   border: none;
   padding: 1em;
   cursor: pointer;
 }
-#overlay{
+
+#overlay {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   inset: 0;
   z-index: 9;
   display: none;
 }
+
 .skip-link {
   opacity: 0;
   pointer-events: none;
@@ -81,8 +98,8 @@ nav a.accent-link{
   top: 10px;
   left: 10px;
   z-index: 1000;
-  background-color: var(--accent-color); 
-  color: #ffffff; 
+  background-color: var(--accent-color);
+  color: #ffffff;
   padding: 12px 24px;
   border-radius: 5px;
   text-decoration: none;
@@ -92,11 +109,21 @@ nav a.accent-link{
 }
 
 .skip-link:focus {
-  opacity: 1; 
-  pointer-events: auto; 
-  outline: 3px solid #ffffff; 
+  opacity: 1;
+  pointer-events: auto;
+  outline: 3px solid #ffffff;
 }
 
+.slid {
+  display: flex;
+  justify-content: left;
+  height: 500vh;
+  background-size: cover;
+  animation-name: photo;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
 
 .content {
   width: auto;
@@ -116,7 +143,7 @@ nav a.accent-link{
 
 .content h1 {
   font-family: 'Times New Roman';
-  font-size: 50px;
+  font-size: 60px;
   padding-left: 40px;
   margin-top: 8%;
   letter-spacing: 2px;
@@ -128,33 +155,23 @@ nav a.accent-link{
   background: #6c6cff;
   border: none;
   margin-top: -5%;
-  margin-bottom: 170px;
-  margin-right: 20px;
-  margin-left: 3%;
   font-size: 18px;
   border-radius: 10px;
   cursor: pointer;
-  transition: .4s ease;
-
+  transition: 0.4s ease;
 }
 
 .content .cn a {
   text-decoration: none;
   color: #000;
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
 
 .cn:hover {
   background-color: #fff;
 }
 
-.content span {
-  color: #010101;
-  font-size: 65px;
-}
-
-
-.p-l{
+.p-l {
   background-color: #333;
 }
 
@@ -165,26 +182,15 @@ nav a.accent-link{
   text-transform: capitalize;
   font-size: 22px;
   font-weight: 500;
-
-}
-
-.topic-list {
-  width: 100%;
-  height: 220px;
-  position: relative;
-  margin: 10px 0 20px;
 }
 
 .card-container {
-  position: absolute;
+  position: relative;
   width: 100%;
   padding-left: 4%;
-  height: 220PX;
   display: flex;
-  margin: 0 auto;
   align-items: center;
   overflow-x: auto;
-  overflow-y: visible;
   scroll-behavior: smooth;
 }
 
@@ -195,26 +201,17 @@ nav a.accent-link{
 .card {
   position: relative;
   min-width: 150px;
-  width: 150px;
   height: 200px;
   border-radius: 5px;
   overflow: hidden;
   margin-left: 30px;
-  transition: .5s;
+  transition: 0.5s;
   background: #ffffff;
   font-size: 14px;
 }
+
 .card:hover {
   transform: scale(1.1);
-}
-.card:hover .card-body {
-  opacity: 1;
-}
-
-.card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
 .card-body {
@@ -238,57 +235,6 @@ nav a.accent-link{
   margin-top: 60%;
 }
 
-.des {
-  color: #fff;
-  opacity: 0.8;
-  margin: 5px 0;
-  font-weight: 500;
-  font-size: 13px;
-}
-
-.watchlist-btn {
-  position: relative;
-  width: 100%;
-  text-transform: capitalize;
-  background: none;
-  border: none;
-  font-weight: 500;
-  text-align: right;
-  color: rgba(255, 255, 255, 0.5);
-  margin: 5px 0;
-  cursor: pointer;
-  padding: 10px 5px;
-  border-radius: 5px;
-}
-
-.watchlist-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -5px;
-  height: 35px;
-  width: 35px;
-  background-image: url(images/add.png);
-  background-size: cover;
-  transform: scale(0.4);
-}
-
-.watchlist-btn:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-
-
-footer {
-  background-color: #000000;
-  color: #fff;
-  display: flex;
-  justify-content: space-around;
-  padding: 20px 0;
-  text-align: left;
-}
-
 .footer-section {
   flex: 1;
   margin: 0 20px;
@@ -308,38 +254,22 @@ footer {
   transition: color 0.3s ease;
 }
 
-.copyright{
-padding: 10px;
-margin-right: 50px;
-}
-
-.footer-section a:hover {
+footer {
+  background-color: #000000;
   color: #fff;
-}
-
-.icons a {
   display: flex;
-  align-items: center;
-  margin: 5px 0;
+  justify-content: space-around;
+  padding: 20px 0;
+  text-align: left;
 }
-
-.icons ion-icon {
-  margin-right: 8px;
-  color: #a0a0a0;
-  font-size: 20px;
-  transition: color 0.3s ease;
-}
-
-.icons ion-icon:hover {
-  color: #fff;
-}
-
 
 @media screen and (max-width: 700px) {
-  #open-sidebar-button, #close-sidebar-button{
+  #open-sidebar-button,
+  #close-sidebar-button {
     display: block;
   }
-  nav{
+
+  nav {
     position: fixed;
     top: 0;
     right: -100%;
@@ -349,24 +279,20 @@ margin-right: 50px;
     border-left: 1px solid var(--hover-color);
     transition: right 300ms ease-in-out;
   }
-  nav.show{
+
+  nav.show {
     right: 0;
   }
-  nav.show ~ #overlay{
+
+  nav.show ~ #overlay {
     display: block;
   }
-  nav ul{
-    width: 100%;
+
+  nav ul {
     flex-direction: column;
   }
-  nav a{
-    width: 100%;
+
+  nav a {
     padding-left: 2.5em;
-  }
-  nav a.active-link{
-    border-bottom: none;
-  }
-  nav .home-li{
-    margin-right: unset;
   }
 }
