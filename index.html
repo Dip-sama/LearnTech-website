@@ -3,227 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <title>LearnTech - Home</title>
+  <link rel="stylesheet" href="css/style2.css">
+  <script src="js/script.js" defer></script>
 </head>
 <body>
-
-  <button id="open-sidebar-button" onclick="openSidebar()" aria-label="open sidebar" aria-expanded="false" aria-controls="navbar">
-    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"/></svg>
+  <!-- Sidebar Toggle Button -->
+  <button id="open-sidebar-button" onclick="openSidebar()" aria-label="Open Sidebar" aria-expanded="false" aria-controls="navbar">
+    <svg xmlns="http://www.w3.org/2000/svg" height="40px" width="40px" fill="#c9c9c9" viewBox="0 -960 960 960">
+      <path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"/>
+    </svg>
   </button>
 
-  <nav id="navbar">
+  <!-- Sidebar Navigation -->
+  <nav id="navbar" class="sidebar">
     <ul>
       <li>
-        <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar">
-          <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="m480-444.62-209.69 209.7q-7.23 7.23-17.5 7.42-10.27.19-17.89-7.42-7.61-7.62-7.61-17.7 0-10.07 7.61-17.69L444.62-480l-209.7-209.69q-7.23-7.23-7.42-17.5-.19-10.27 7.42-17.89 7.62-7.61 17.7-7.61 10.07 0 17.69 7.61L480-515.38l209.69-209.7q7.23-7.23 17.5-7.42 10.27-.19 17.89 7.42 7.61 7.62 7.61 17.7 0 10.07-7.61 17.69L515.38-480l209.7 209.69q7.23 7.23 7.42 17.5.19 10.27-7.42 17.89-7.62 7.61-17.7 7.61-10.07 0-17.69-7.61L480-444.62Z"/></svg>
+        <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="Close Sidebar">
+          <svg xmlns="http://www.w3.org/2000/svg" height="40px" width="40px" fill="#c9c9c9" viewBox="0 -960 960 960">
+            <path d="m480-444.62-209.69 209.7q-7.23 7.23-17.5 7.42-10.27.19-17.89-7.42-7.61-7.62-7.61-17.7 0-10.07 7.61-17.69L444.62-480l-209.7-209.69q-7.23-7.23-7.42-17.5-.19-10.27 7.42-17.89 7.62-7.61 17.7-7.61 10.07 0 17.69 7.61L480-515.38l209.69-209.7q7.23-7.23 17.5-7.42 10.27-.19 17.89 7.42 7.61 7.62 7.61 17.7 0 10.07-7.61 17.69L515.38-480l209.7 209.69q7.23 7.23 7.42 17.5.19 10.27-7.42 17.89-7.62 7.61-17.7 7.61-10.07 0-17.69-7.61L480-444.62Z"/>
+          </svg>
         </button>
       </li>
-      <li class="home-li"><a class="active-link" aria-current="page" href="index.html">Home</a></li>
-      <li><a href="about.html">About </a></li>
-      <li><a href="desigh.html">Features</a></li>
+      <li><a class="active-link" href="index.html" aria-current="page">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="features.html">Features</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a class="accent-link" href="login.html">Login</a></li>
     </ul>
   </nav>
+
+  <!-- Main Content -->
   <div class="content">
     <h1>Web Design & <br><span>Development</span> <br>Course</h1>
-    <p class="par"> Web Development is a speciatisation of the development stream.<br>
-        They also use HTML. CSS. JAVAScript.<br>
-        </p>
-        <button class="cn"><a href="Courses.html">JOIN US</a></button>
+    <p>Web Development is a specialization in programming, using HTML, CSS, and JavaScript.</p>
+    <button class="cn"><a href="courses.html">JOIN US</a></button>
   </div>
-  <script>
-    var myIndex = 0;
-    carousel();
-    
-    function carousel() {
-      var i;
-      var x = document.getElementsByClassName("mySlides");
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";  
-      }
-      myIndex++;
-      if (myIndex > x.length) {myIndex = 1}    
-      x[myIndex-1].style.display = "block";  
-      setTimeout(carousel, 2000); // Change image every 2 seconds
-    }
-    </script>
+
+  <!-- Overlay -->
   <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
-  <div class="p-l">
-    <h2 class="title">Programming languages</h2>
-    <div class="topic-list">
-        <div class="card-container">
-            <div class="card">
-                <img src="image/c.png" alt=" c" class="card-img">
-                <div class="card-body">
-                    <h2 class="name">C</h2>
-                    <h6 class="des">C is a general-purpose programming language<br> created by Dennis Ritchie <br>at the Bell Laboratories in 1972.</h6>
-                </div>
-            </div>
 
-            <div class="card">
-                <img src="image/c++.png" alt="" class="card-img">
-                <div class="card-body">
-                    <h2 class="name">C++</h2>
-                    <h6 class="des">C++ was developed<br> by Bjarne Stroustrup, as an extension to the C language.</h6>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="image/c-1.png" alt="" class="card-img">
-                <div class="card-body">
-                    <h2 class="name">C#</h2>
-                    <h6 class="des">
-                        C# (C-Sharp): Microsoft's object-oriented language for .NET.</h6>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="image/Java_programming_language_logo.svg" alt="" class="card-img">
-                <div class="card-body">
-                    <h2 class="name">Java</h2>
-                    <h6 class="des">Java: a popular language used by 3 billion+ devices since 1995.</h6>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="image/main-qimg-28cadbd02699c25a88e5c78d73c7babc.webp" alt="" class="card-img">
-                <div class="card-body">
-                    <h2 class="name">Python</h2>
-                    <h6 class="des">Python is a popular programming language. It was created by Guido van Rossum, and released in 1991.</h6>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="image/ruby.png" alt="" class="card-img">
-                <div class="card-body">
-                    <h2 class="name">Ruby</h2>
-                    <h6 class="des">Ruby is a pure Object-Oriented language developed by Yukihiro Matsumoto in the mid 1990’s in Japan.</h6>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="image/swift.png" alt="" class="card-img">
-                <div class="card-body">
-                    <h2 class="name">Swift</h2>
-                    <h6 class="des">Swift is for building applications in Apple's ecosystem (iOS, macOS).</h6>
-
-                </div>
-            </div>
-    <div class="card">
-        <img src="image/R6Z7GWmk_2x.webp" alt="Kotlin" class="card-img">
-        <div class="card-body">
-            <h2 class="name">Kotlin</h2>
-            <h6 class="ds">Kotlin streamlines asynchronous programming..</h6>
-        </div>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <a href="about.html">About</a>
+      <a href="courses.html">Courses</a>
     </div>
-        </div>
+    <div class="footer-section">
+      <h4>Connect With Us</h4>
+      <a href="https://github.com/Dip-sama" target="_blank">GitHub</a>
     </div>
-    <h2 class="title">Web Development languages</h2>
-    <div class="topic-list">
-        <div class="card-container">
-
-            <div class="card">
-                <img src="image/HTML5.png" alt="" class="card-img">
-                <div class="card-body">
-                    <h2 class="name">HTML</h2>
-                    <h6 class="des">HTML stands for Hyper Text Markup Language
-                        HTML describes the structure of a Web page.</h6>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="image/css1.png" alt="" class="card-img">
-                <div class="card-body">
-                    <h2 class="name">CSS</h2>
-                    <h6 class="des">CSS (Cascading Style Sheets) is a language used to style HTML documents..</h6>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="image/png-javascript-badge-picture-8.png" alt="" class="card-img">
-                <div class="card-body">
-                    <h2 class="name">Javascript</h2>
-                    <h6 class="des">JavaScript is a high-level programming language that enables interactive web pages.</h6>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="image/php_logo_icon_214645.webp" alt="" class="card-img">
-                <div class="card-body">
-                    <h2 class="name">php</h2>
-                    <h6 class="des">PHP is a widely-used, open-source server-side scripting language designed for web development.</h6>
-                </div>
-            </div>
-                <div class="card">
-                    <img src="image/go.png" alt="" class="card-img">
-                    <div class="card-body">
-                        <h2 class="name">GO</h2>
-                        <h6 class="des">Go, also known as Golang, is an open-source, statically typed, compiled programming language developed by Google.</h6>
-
-                    </div>
-                    </div>
-                    <div class="card">
-                        <img src="image/mysql_PNG17.png" alt="" class="card-img">
-                        <div class="card-body">
-                            <h2 class="name">MySQL</h2>
-                            <h6 class="des">MySQL is an Structured Query Language for database operations and is widely used for managing and organizing data.</h6>
-    
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="image/ts.png" alt="" class="card-img">
-                        <div class="card-body">
-                            <h2 class="name">TypeScript</h2>
-                            <h6 class="ds">TypeScript is a free and open-source high-level programming language developed by Microsoft.</h6>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="image/node js.png" alt="" class="card-img">
-                        <div class="card-body">
-                            <h2 class="name">Node js</h2>
-                            <h6 class="des">Node.js is popular for building fast, scalable server-side applications, especially apps like chat applications and APIs.</h6>
-    
-                        </div>
-                    </div>
-            </div>
-        </div>
-        <hr>
-        <footer>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <a href="about.html">About</a>
-                <a href="Courses.html">Courses</a>
-                <!-- <a href="#">Our Blogs</a> -->
-            </div>
-            <div class="footer-section">
-                <h4>Connect With Us</h4>
-                <div class="icons">
-                    <!-- <a href="#"><ion-icon name="logo-facebook"></ion-icon> Facebook</a>
-                    <a href="#"><ion-icon name="logo-instagram"></ion-icon> Instagram</a>
-                    <a href="#"><ion-icon name="logo-twitter"></ion-icon> Twitter</a>
-                    <a href="#"><ion-icon name="logo-google"></ion-icon> Google</a> -->
-                    <a href="https://github.com/Dip-sama"><ion-icon name="logo-github"></ion-icon> GitHub</a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h4>Account</h4>
-                <a href="signup.html">Create Account</a>
-                <a href="login.html">Login</a>
-                <a href="signup.html">Sign Up</a>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 LearnTech. All Rights Reserved.</p>
-              </div>
-            
-        </footer>
-        
-    <script src="1.js">
-    </script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+    <div class="footer-section">
+      <h4>Account</h4>
+      <a href="signup.html">Create Account</a>
+      <a href="login.html">Login</a>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 LearnTech. All Rights Reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
