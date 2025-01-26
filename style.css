@@ -15,7 +15,6 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 109vh;
 }
 main{
   padding: min(5em, 7%);
@@ -98,16 +97,6 @@ nav a.accent-link{
   outline: 3px solid #ffffff; 
 }
 
-.slid {
-  display: flex;
-  justify-content: left;
-  height: 500vh;
-  background-size: cover;
-  animation-name: photo;
-  animation-duration: 20s;
-  animation-iteration-count: infinite;
-  animation-direction: normal;
-}
 
 .content {
   width: auto;
@@ -127,7 +116,7 @@ nav a.accent-link{
 
 .content h1 {
   font-family: 'Times New Roman';
-  font-size: 60px;
+  font-size: 50px;
   padding-left: 40px;
   margin-top: 8%;
   letter-spacing: 2px;
@@ -380,4 +369,11 @@ margin-right: 50px;
   nav .home-li{
     margin-right: unset;
   }
+body{
+  width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5)50%, rgba(0, 0, 0, 0.5)50%), url(image/deee.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 }
