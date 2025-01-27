@@ -8,7 +8,6 @@
 body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
-  background: #f5f5f5;
   scroll-behavior: smooth;
 }
 
@@ -166,7 +165,6 @@ align-items: center;
 
 .hero-content h1 span {
   color: #00c6ff;
-   align
 }
 
 .btn {
@@ -190,7 +188,7 @@ align-items: center;
 .features {
   padding: 50px 20px;
   text-align: center;
-  background: #fff;
+  background: #eef7ff;
 }
 
 .features h2 span {
@@ -252,7 +250,7 @@ align-items: center;
 .testimonials {
   padding: 50px 20px;
   text-align: center;
-  background: #f5f5f5;
+  background: #eef7ff;
 }
 
 .testimonials h2 {
