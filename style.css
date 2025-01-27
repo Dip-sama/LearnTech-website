@@ -299,7 +299,7 @@ align-items: center;
 }
 
 /* Footer */
-footer {
+.footer {
   background-color: #000000;
   color: #fff;
   display: flex;
