@@ -1,10 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const navLinks = document.querySelectorAll('.nav-links a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = document.querySelector(e.target.getAttribute('href'));
-      target.scrollIntoView({ behavior: 'smooth' });
-    });
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    hamburger.classList.toggle("active");
+  });
+
+  // Close nav on link click
+  navLinks.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+    hamburger.classList.remove("active");
   });
 });
