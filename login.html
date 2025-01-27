@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Login Page</title>
+  <title>Login Page</title>
 </head>
 <style>
 /* Reset */
@@ -109,6 +109,24 @@ h1 {
 .btn:hover {
   background: linear-gradient(135deg, #a777e3, #6e8efb);
 }
+.info {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
+.info a {
+  color: #6e8efb;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.info a:hover {
+  color: #4a6dcb;
+}
+
 
 </style>
 <body>
@@ -125,6 +143,7 @@ h1 {
           <label for="password">Password</label>
         </div>
         <button type="submit" class="btn">Login</button>
+        <p class="info">Don’t have an account? <a href="register.html">Register here</a></p>
       </form>
     </div>
   </div>
