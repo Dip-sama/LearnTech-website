@@ -75,8 +75,20 @@ body {
 
 /* Mobile View */
 @media screen and (max-width: 768px) {
-.body{
-justify-content:center;
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
 }
   .nav-links {
     display: none;
@@ -114,14 +126,35 @@ justify-content:center;
   .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translateY(-8px);
   }
-.feature-cards{
-    display: none;
-    flex-direction: column;
+
+/* General Padding for Sections */
+section {
+  padding: 20px;
 }
-.course-list{ 
-    display: none;
-    flex-direction: column;
+
+/* Text Alignment for Mobile */
+.features h2, .courses h2, .testimonials h2 {
+  text-align: center;
 }
+
+.testimonial-cards {
+  flex-direction: column;
+  align-items: center;
+}
+/* Cards for Mobile */
+.card {
+  width: 90%; /* Shrink card width for mobile */
+  margin: 10px auto; /* Add spacing between cards */
+  padding: 15px;
+}
+
+/* Responsive Grid for Features & Courses */
+.feature-cards, .course-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 }
 
 
