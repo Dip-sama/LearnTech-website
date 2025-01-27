@@ -298,7 +298,7 @@ align-items: center;
 
 /* Footer */
 .footer {
-  background-color:  #333;
+  background: #333;
   color: #fff;
   display: flex;
   justify-content: space-around;
@@ -307,7 +307,6 @@ align-items: center;
 }
 
 .footer-section {
-background-color:  #333;
   flex: 1;
   margin: 0 20px;
 }
