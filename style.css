@@ -75,6 +75,9 @@ body {
 
 /* Mobile View */
 @media screen and (max-width: 768px) {
+.body{
+justify-content:center;
+}
   .nav-links {
     display: none;
     flex-direction: column;
@@ -111,6 +114,14 @@ body {
   .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translateY(-8px);
   }
+.feature-cards{
+    display: none;
+    flex-direction: column;
+}
+.course-list{ 
+    display: none;
+    flex-direction: column;
+}
 }
 
 
