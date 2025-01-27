@@ -16,7 +16,7 @@ body {
 .hero {
   background: linear-gradient(135deg, #0072ff, #00c6ff);
   color: white;
-  padding: 100px 20px;
+  padding: 10px 20px;
   text-align: center;
   position: relative;
 }
@@ -160,10 +160,13 @@ section {
 
 .hero-content {
   margin-top: 10px;
+padding:5px 5px 5px 5px;
+align-items: center;
 }
 
 .hero-content h1 span {
   color: #00c6ff;
+   align
 }
 
 .btn {
