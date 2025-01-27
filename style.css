@@ -296,19 +296,22 @@ align-items: center;
   color: white;
 }
 
-/* Footer */
+/* Footer Container */
 .footer {
-  background: #333;
-  color: #fff;
+  background: #333; /* Dark background for the footer */
+  color: #fff; /* Text color */
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap; /* Ensure responsiveness */
+  justify-content: space-around; /* Distribute space evenly */
   padding: 20px 0;
   text-align: left;
 }
 
+/* Individual Footer Section */
 .footer-section {
   flex: 1;
   margin: 0 20px;
+  min-width: 200px; /* Ensures sections stay aligned on small screens */
 }
 
 .footer-section h4 {
@@ -316,24 +319,21 @@ align-items: center;
   margin-bottom: 10px;
 }
 
+/* Links in Footer */
 .footer-section a {
   display: block;
-  color: #a0a0a0;
+  color: #a0a0a0; /* Light grey for links */
   font-size: 18px;
   margin: 5px 0;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.copyright{
-padding: 10px;
-margin-right: 50px;
-}
-
 .footer-section a:hover {
-  color: #fff;
+  color: #fff; /* White on hover */
 }
 
+/* Social Media Icons */
 .icons a {
   display: flex;
   align-items: center;
@@ -342,12 +342,35 @@ margin-right: 50px;
 
 .icons ion-icon {
   margin-right: 8px;
-  color: #a0a0a0;
+  color: #a0a0a0; /* Light grey for icons */
   font-size: 20px;
   transition: color 0.3s ease;
 }
 
 .icons ion-icon:hover {
-  color: #fff;
+  color: #fff; /* White on hover */
 }
+
+/* Copyright Section */
+.copyright {
+  text-align: center; /* Center-align for mobile screens */
+  padding: 10px 20px;
+  margin: 10px 0;
+  flex: 1 100%; /* Makes it take up full width on smaller screens */
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column; /* Stack sections vertically */
+    text-align: center; /* Center-align for smaller screens */
+  }
+  .footer-section {
+    margin: 20px 0;
+  }
+  .icons a {
+    justify-content: center; /* Center icons on smaller screens */
+  }
+}
+
 
