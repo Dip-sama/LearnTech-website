@@ -9,6 +9,7 @@ body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
   scroll-behavior: smooth;
+background-color: #333;
 }
 
 /* Header Section */
@@ -363,7 +364,7 @@ align-items: center;
 @media (max-width: 768px) {
   .footer {
     flex-direction: column; /* Stack sections vertically */
-    text-align: center; /* Center-align for smaller screens */
+   /* text-align: center Center-align for smaller screens */
   }
   .footer-section {
     margin: 20px 0;
