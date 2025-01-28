@@ -369,9 +369,7 @@ align-items: center;
   .footer-section {
     margin: 20px 0;
   }
-  .icons a {
-    justify-content: center; /* Center icons on smaller screens */
-  }
+  
 }
 
 
