@@ -337,7 +337,7 @@ align-items: center;
 /* Social Media Icons */
 .icons a {
   display: flex;
-  align-items: center;
+  <!--align-items: center;-->
   margin: 5px 0;
 }
 
