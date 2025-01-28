@@ -26,10 +26,14 @@ background-color: #333;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
+  background: #333;
+  color: white;
   padding: 10px 20px;
-  position: relative;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 .navbar .logo {
   font-size: 24px;
@@ -44,6 +48,10 @@ background-color: #333;
   list-style: none;
   display: flex;
   gap: 20px;
+}
+
+.nav-links li {
+  list-style: none;
 }
 
 .nav-links a {
@@ -76,42 +84,23 @@ background-color: #333;
 /* Mobile View */
 @media screen and (max-width: 768px) {
 
+  .hamburger {
+    display: flex;
+  }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-}
-
-.hamburger {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  cursor: pointer;
-}
   .nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
     top: 60px;
     right: 20px;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     padding: 20px;
     border-radius: 10px;
-    text-align: right;
+    text-align: center;
+    width: 200px;
   }
-
-  .nav-links a {
-    color: white;
-    margin: 10px 0;
-  }
-
   .nav-links.active {
-    display: flex;
-  }
-
-  .hamburger {
     display: flex;
   }
 
@@ -126,6 +115,7 @@ background-color: #333;
   .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translateY(-8px);
   }
+
 
 /* General Padding for Sections */
 section {
