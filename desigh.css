@@ -266,6 +266,12 @@ text-decoration: none;
 }
 .features {
 text-align: center;
+margin:20px;
+}
+
+.courses {
+text-align: center;
+margin:20px;
 }
 
 .courses h2 {
