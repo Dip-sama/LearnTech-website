@@ -108,9 +108,9 @@
 /* CTA Button Styles */
 .cta-btn {
     display: inline-block;
-    background: #00bcd4; /* Primary Button Color */
+    background: #00bcd4;
     color: white;
-    padding: 20px 24px;
+    padding: 20px 20px 20px 20px;
     font-size: 18px;
     font-weight: bold;
     text-decoration: none;
@@ -251,20 +251,6 @@ text-align: center;
         font-size: 20px;
     }
 }
-
-.footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 20px;
-}
-
-.footer p {
-    margin: 0;
-    font-size: 14px;
-}
-
 /* Responsive Styles */
 @media (max-width: 768px) {
 
@@ -285,3 +271,18 @@ text-align: center;
     .hero p {
         font-size: 16px;
     }
+}
+
+.footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
