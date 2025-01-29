@@ -104,6 +104,44 @@
     }
 }
 
+/* CTA Button Styles */
+.cta-btn {
+    display: inline-block;
+    background: #00bcd4; /* Primary Button Color */
+    color: white;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-btn:hover {
+    background: #008c9e; /* Darker shade on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.cta-btn:active {
+    transform: scale(0.98); /* Slight shrink effect on click */
+}
+
+/* CTA Button - Responsive Design */
+@media (max-width: 768px) {
+    .cta-btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
 
 
 .hero {
