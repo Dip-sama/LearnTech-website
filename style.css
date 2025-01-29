@@ -233,6 +233,7 @@ section {
 
 /* Courses Section */
 .courses {
+  margin: 30px;
   padding: 50px 20px;
   text-align: center;
   background: #eef7ff;
@@ -283,7 +284,6 @@ section {
   background: white;
   padding: 20px;
   border-radius: 10px;
-  width: 100vw;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-style: italic;
 }
@@ -294,7 +294,6 @@ section {
   text-align: center;
   background: #0072ff;
   color: white;
-width: 100%;
 }
 
 .cta a {
@@ -432,7 +431,6 @@ align-items: center;
 
 /*
 .footer {
-  width: 100%;
   background: #333;
   color: #fff;
   display: flex;
