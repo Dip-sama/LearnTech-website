@@ -99,7 +99,7 @@ body {
   .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translateY(-8px);
   }
-
+}
 
 /* Courses Section */
 .courses-container {
