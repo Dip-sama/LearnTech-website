@@ -430,77 +430,21 @@ align-items: center;
 
 
 
-/* Footer */
 .footer {
-  background-color: #808080;
-  color: white;
-  padding: 40px 20px;
+  background: #333;
+  color: #fff;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
-  position: relative;
-  animation: fadeInUp 1s ease-in-out; /* Animation */
+  padding: 20px 0;
+  text-align: left;
+  animation: fadeIn 2s ease-in-out;
 }
 
-.footer-section {
-  flex: 1;
-  margin: 10px 20px;
-  min-width: 200px;
-}
-
-.footer-section h4 {
-  font-size: 22px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-.footer-section a {
-  display: block;
-  color: #aaa;
-  font-size: 16px;
-  margin: 8px 0;
-  text-decoration: none;
-  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-.footer-section a:hover {
-  color: #00c6ff;
-  transform: translateX(5px); /* Slide effect on hover */
-}
-
-/* Social Media Icons */
-.social-icons {
-  display: flex;
-  gap: 15px;
-}
-
-.social-icons a {
-  font-size: 22px;
-  color: white;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.social-icons a:hover {
-  color: #00c6ff;
-  transform: scale(1.2);
-}
-
-/* Copyright Section */
-.copyright {
-  text-align: center;
-  width: 100%;
-  padding-top: 15px;
-  font-size: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  margin-top: 20px;
-}
-
-/* Entrance Animation */
-@keyframes fadeInUp {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -508,17 +452,28 @@ align-items: center;
   }
 }
 
-/* Responsive Footer */
-@media (max-width: 768px) {
-  .footer {
-    background-color: #808080;
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .social-icons {
-    justify-content: center;
-    margin-top: 10px;
-  }
+.footer-section h4 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  position: relative;
 }
 
+.footer-section h4::after {
+  content: '';
+  width: 50px;
+  height: 2px;
+  background: #00c6ff;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  animation: slideIn 1s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+  }
+  to {
+    width: 50px;
+  }
+}
