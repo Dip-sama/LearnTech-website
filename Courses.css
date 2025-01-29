@@ -67,24 +67,28 @@ body {
     transition: all 0.3s ease;
 }
 
+.h1{
+text-align: center;
+font-size: 28px;
+}
+
 /* Mobile View */
 @media screen and (max-width: 768px) {
     .hamburger {
         display: flex;
     }
 
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background: rgba(0, 0, 0, 0.9);
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-        width: 200px;
-    }
+      .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+  }
 
     .nav-links.active {
         display: flex;
