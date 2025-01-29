@@ -1,9 +1,8 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    padding-top: 60px; /* Prevents content from getting hidden under the fixed navbar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
 
@@ -74,18 +73,17 @@ body {
         display: flex;
     }
 
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 10px;
-        background: rgba(0, 0, 0, 0.9);
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-        width: 200px;
-    }
+      .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+  }
 
     .nav-links.active {
         display: flex;
