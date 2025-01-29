@@ -7,11 +7,6 @@
 }
 
 /* Header Styles */
-header {
-  background: #333;
-  color: white;
-  padding: 15px 0;
-}
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -105,7 +100,7 @@ header {
   .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translateY(-8px);
   }
-
+}
 
 header .container {
   display: flex;
