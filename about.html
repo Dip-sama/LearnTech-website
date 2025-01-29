@@ -85,7 +85,7 @@
     flex-direction: column;
     position: absolute;
     top: 43px;
-    right: 0;
+    right: -5px;
     background: rgba(0, 0, 0, 0.9);
     width: 100%;
     padding: 10px 0;
@@ -109,7 +109,8 @@
     }
 }
 
-        .slide {
+        .slide { 
+            margin-top:20px;
             max-width: 100%;
             position: relative;
             overflow: hidden;
@@ -309,6 +310,25 @@
         </div>
 <!--         <button><a href="index.html">HOME Page</a></button> -->
     </div>
-<script src="script.js"></script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    // Toggle menu when clicking the hamburger
+    hamburger.addEventListener("click", function () {
+      navLinks.classList.toggle("active");
+      hamburger.classList.toggle("active");
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("active");
+        hamburger.classList.remove("active");
+      });
+    });
+  });
+</script>
 </body>
 </html>
