@@ -109,9 +109,8 @@
 .cta-btn {
     display: inline-block;
     background: #00bcd4; /* Primary Button Color */
-   margin:auto;
     color: white;
-    padding: 14px 24px;
+    padding: 20px 24px;
     font-size: 18px;
     font-weight: bold;
     text-decoration: none;
