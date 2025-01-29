@@ -373,6 +373,7 @@ text-align: center;
 }
 #contact {
   background: #222;
+color:#fff;
 }
 
 .footer container{
@@ -383,5 +384,6 @@ color: #fff;
 .footer p {
     margin: 0;
     font-size: 14px;
+color:#fff;
 }
 
