@@ -169,11 +169,15 @@
     padding: 20px;
 }
 
-.about,. courses,.features {
+.about,.features {
     padding: 40px 20px;
     text-align: center;
 }
 
+.courses h2 {
+  text-align: center; 
+  align-items: center;
+}
 
 .cards {
   display: flex;
