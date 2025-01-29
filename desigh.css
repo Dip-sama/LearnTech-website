@@ -108,8 +108,9 @@
 .cta-btn {
     display: inline-block;
     background: #00bcd4; /* Primary Button Color */
+   margin:auto;
     color: white;
-    padding: 12px 24px;
+    padding: 14px 24px;
     font-size: 18px;
     font-weight: bold;
     text-decoration: none;
@@ -168,17 +169,11 @@
     padding: 20px;
 }
 
-.about, .courses, .features {
+.about, .features {
     padding: 40px 20px;
     text-align: center;
 }
 
-.course-list {
-    display: flex;
-    flex-wrap: wrap; /* Makes courses wrap on smaller screens */
-    justify-content: space-around;
-    margin-top: 20px;
-}
 
 .cards {
   display: flex;
