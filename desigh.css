@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -5,242 +6,195 @@
   font-family: Arial, sans-serif;
 }
 
-
+/* Navbar */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #333;
-    color: white;
-    padding: 10px 20px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #333;
+  color: white;
+  padding: 10px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 .navbar .logo {
-    font-size: 24px;
-    font-weight: bold;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-
-
 .navbar .logo span {
-    color: #00c6ff;
+  color: #00c6ff;
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+  list-style: none;
+  display: flex;
+  gap: 20px;
 }
 
 .nav-links li {
-    list-style: none;
+  list-style: none;
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s ease;
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #00c6ff;
+  color: #00c6ff;
 }
 
 /* Hamburger Menu */
 .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
 }
 
 .hamburger span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: white;
-    border-radius: 2px;
-    transition: all 0.3s ease;
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
-/* Mobile View */
+/* Mobile Navbar */
 @media screen and (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
 
-    .hamburger {
-        display: flex;
-    }
-
-      .nav-links {
+  .nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 43px;
+    top: 60px;
     right: 0;
     background: rgba(0, 0, 0, 0.9);
     width: 100%;
-    padding: 10px 0;
     text-align: center;
+    padding: 10px 0;
   }
 
-    .nav-links.active {
-        display: flex;
-    }
+  .nav-links.active {
+    display: flex;
+  }
 
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translateY(8px);
-    }
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
 
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
 
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translateY(-8px);
-    }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
 }
 
-/* CTA Button Styles */
+/* CTA Button */
 .cta-btn {
-    display: inline-block;
-    background: #00bcd4; /* Primary Button Color */
-   margin:auto;
-    color: white;
-    padding: 14px 24px;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  background: #00bcd4;
+  color: white;
+  padding: 14px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .cta-btn:hover {
-    background: #008c9e; /* Darker shade on hover */
-    transform: translateY(-2px); /* Slight lift effect */
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  background: #008c9e;
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .cta-btn:active {
-    transform: scale(0.98); /* Slight shrink effect on click */
+  transform: scale(0.98);
 }
 
-/* CTA Button - Responsive Design */
-@media (max-width: 768px) {
-    .cta-btn {
-        font-size: 16px;
-        padding: 10px 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .cta-btn {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-}
-
-
-.hero {
-    background: #007bff;
-    color: #fff;
-    text-align: center;
-    padding: 50px 20px;
-}
-
-.hero h2 {
-    font-size: 36px;
-    margin: 0;
-}
-
-.hero p {
-    font-size: 18px;
-    margin-top: 10px;
-}
-
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.about,.features {
-    padding: 40px 20px;
-    text-align: center;
-}
-
-.courses h2 {
-  text-align: center; 
-  align-items: center;
-}
-
+/* Cards Section */
 .cards {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 20px;
+  padding: 20px;
 }
 
-.cards .red {
-  background-color: #f43f5e;
-}
-
-.cards .blue {
-  background-color: #3b82f6;
-}
-
-.cards .green {
-  background-color: #22c55e;
-}
-
+/* Individual Card */
 .cards .card {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  height: 100px;
-  width: 250px;
+  height: 120px;
+  width: 260px;
   border-radius: 10px;
   color: white;
   cursor: pointer;
-  transition: 400ms;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Card Colors */
+.cards .red { background-color: #f43f5e; }
+.cards .blue { background-color: #3b82f6; }
+.cards .green { background-color: #22c55e; }
+
+/* Card Text */
 .cards .card p.tip {
-  font-size: 1em;
-  font-weight: 700;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 5px 0;
 }
 
 .cards .card p.second-text {
-  font-size: .7em;
+  font-size: 0.9em;
 }
 
+/* Hover Effects */
 .cards .card:hover {
-  transform: scale(1.1, 1.1);
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .cards:hover > .card:not(:hover) {
-  filter: blur(10px);
-  transform: scale(0.9, 0.9);
+  filter: brightness(0.8);
+  transform: scale(0.95);
 }
 
-.features ul {
-    list-style: none;
-    padding: 0;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cards .card {
+    width: 80%;
+    height: 110px;
+  }
 }
 
-.features ul li {
-    background: #e7f7ff;
-    padding: 10px;
-    margin: 10px 0;
-    border-left: 4px solid #007bff;
+@media (max-width: 480px) {
+  .cards .card {
+    width: 90%;
+    height: 100px;
+  }
 }
 
 footer {
@@ -263,14 +217,6 @@ footer p {
         font-size: 28px; /* Reduce font size */
     }
 
-    .course-list {
-        flex-direction: column; /* Stack courses vertically */
-    }
-
-    .course-item {
-        width: 100%; /* Full width for courses */
-    }
-
     .cta-btn {
         font-size: 16px; /* Adjust button size */
     }
@@ -284,10 +230,3 @@ footer p {
     .hero p {
         font-size: 16px;
     }
-
-    header h1 {
-        font-size: 20px;
-    }
-}
-
-
