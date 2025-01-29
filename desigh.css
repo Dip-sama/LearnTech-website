@@ -123,21 +123,6 @@
     margin-top: 10px;
 }
 
-.cta-btn {
-    background: #00bcd4;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-size: 18px;
-    border-radius: 5px;
-    margin-top: 20px;
-    display: inline-block;
-    transition: background 0.3s;
-}
-
-.cta-btn:hover {
-    background: #005f73;
-}
 
 .container {
     max-width: 1200px;
