@@ -294,6 +294,7 @@ section {
   text-align: center;
   background: #0072ff;
   color: white;
+width: 100%;
 }
 
 .cta a {
@@ -431,7 +432,7 @@ align-items: center;
 
 
 .footer {
-  width: 100vw;
+  width: 100%;
   background: #333;
   color: #fff;
   display: flex;
