@@ -170,9 +170,12 @@
     padding: 20px;
 }
 
-.about,.features {
+.about {
     padding: 40px 20px;
-    text-align: center;
+    
+}
+.features {
+text-align: center;
 }
 
 .courses h2 {
@@ -245,12 +248,12 @@
 
 
 
-    header h1 {
+    .header h1 {
         font-size: 20px;
     }
 }
 
-footer {
+.footer {
     background: #333;
     color: #fff;
     text-align: center;
@@ -258,7 +261,7 @@ footer {
     margin-top: 20px;
 }
 
-footer p {
+.footer p {
     margin: 0;
     font-size: 14px;
 }
