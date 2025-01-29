@@ -311,6 +311,8 @@ section {
   display: flex;
   flex-direction: column;
   gap: 15px;
+align-items: center;
+
 }
 
 .cards .red {
@@ -359,7 +361,7 @@ section {
 
 /* Footer */
 .footer {
-  background: #808080;
+  background-color: #808080;
   color: white;
   padding: 40px 20px;
   display: flex;
@@ -438,6 +440,7 @@ section {
 /* Responsive Footer */
 @media (max-width: 768px) {
   .footer {
+    background-color: #808080;
     flex-direction: column;
     text-align: center;
   }
