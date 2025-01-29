@@ -143,6 +143,11 @@ section {
   flex-direction: column;
   align-items: center;
 }
+.main {
+  display: grid;
+  height: 50vmax;
+  place-items: center;
+}
 
 }
 
