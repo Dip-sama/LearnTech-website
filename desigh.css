@@ -365,14 +365,14 @@ text-align: center;
 }
 
 .footer {
-    background-color: #808080;
+      background: #222;
     color: #fff;
     text-align: center;
     padding: 20px 0;
     margin-top: 20px;
 }
 #contact {
-background-color: #808080;
+  background: #222;
 }
 
 .footer container{
