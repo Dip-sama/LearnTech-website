@@ -81,6 +81,24 @@
             <p>&copy; 2025 LearnTech. All Rights Reserved.</p>
         </div>
     </footer>
-  <script src="script.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    // Toggle Menu
+    hamburger.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+        hamburger.classList.toggle("active");
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", function () {
+            navLinks.classList.remove("active");
+            hamburger.classList.remove("active");
+        });
+    });
+});
+</script>
 </body>
 </html>
