@@ -174,11 +174,16 @@
     text-align: center;
 }
 
+.cds h2{
+text-align: center;
+}
 
 .cards {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  align-items: center;
+  justify-content: center;
 }
 
 .cards .red {
