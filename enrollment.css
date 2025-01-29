@@ -105,7 +105,7 @@
 /* Form Container Styles */
 .form-container {
   max-width: 600px;
-  margin: 100px auto 50px; /* Adjust margin to prevent navbar overlap */
+  margin: 150px auto 50px; /* Adjust margin to prevent navbar overlap */
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
