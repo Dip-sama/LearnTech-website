@@ -11,39 +11,99 @@ header {
     padding: 10px 0;
 }
 
-header .container {
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #333;
+  color: white;
+  padding: 10px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar .logo span {
+  color: #00c6ff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #00c6ff;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile View */
+@media screen and (max-width: 768px) {
+
+  .hamburger {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    flex-wrap: wrap; /* Allows wrapping for smaller screens */
-}
+  }
 
-header h1 {
-    font-size: 24px;
-    margin: 0;
-}
-
-header nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 200px;
+  }
+  .nav-links.active {
     display: flex;
-    flex-wrap: wrap; /* Ensures items adjust on smaller screens */
-}
+  }
 
-header nav ul li {
-    margin: 0 10px;
-}
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
 
-header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
 
-header nav ul li a:hover {
-    color: #00bcd4;
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
 }
 
 .hero {
@@ -138,16 +198,7 @@ footer p {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    header .container {
-        flex-direction: column; /* Stack header items vertically */
-        text-align: center;
-    }
-
-    header nav ul {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
+ 
     .hero h2 {
         font-size: 28px; /* Reduce font size */
     }
