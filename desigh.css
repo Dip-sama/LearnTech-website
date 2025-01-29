@@ -367,6 +367,14 @@ text-align: center;
     padding: 20px 0;
     margin-top: 20px;
 }
+#contact {
+background-color: #808080;
+}
+
+.footer container{
+color: #fff;
+    text-align: center;
+}
 
 .footer p {
     margin: 0;
