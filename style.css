@@ -283,7 +283,7 @@ section {
   background: white;
   padding: 20px;
   border-radius: 10px;
-  width: 300px;
+  width: 100vw;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-style: italic;
 }
@@ -431,6 +431,7 @@ align-items: center;
 
 
 .footer {
+  width: 100vw;
   background: #333;
   color: #fff;
   display: flex;
