@@ -108,7 +108,7 @@
 .btn {
   --fancy-button-gradient-0: #8d49fd;
   --fancy-button-gradient-50: #7f56f3;
-  --fancy-button-gradient-100: #5691f3;
+  --fancy-button-gradient-100: #00c6ff;
   --fancy-button-inner-shadow-top: rgba(233, 209, 255, 0.2);
   --fancy-button-inner-shadow-top-lg: rgba(9, 12, 60, 0.1);
   --fancy-button-inner-shadow-bottom: rgba(137, 222, 246, 0.3);
@@ -117,8 +117,9 @@
   font-weight: 500;
   font-size: 15px;
   line-height: 21px;
-  text-shadow: 0px 0.5px 0.5px rgba(0, 0, 0, 0.2);
-  padding: 0;
+  text-shadow: 0px 0.5px 0.5px rgba(0, 0, 0, 0.2); 
+text-decoration: none;
+  padding: 30px;
   margin: 0;
   appearance: none;
   border: none;
