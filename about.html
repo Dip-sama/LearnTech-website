@@ -11,22 +11,103 @@
             margin: 0;
         }
 
-        header {
-            background: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
+        .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    color: white;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
 
-        header p {
-            margin: 5px 0 0;
-            font-size: 1.2rem;
-        }
+
+
+.navbar .logo span {
+    color: #00c6ff;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #00c6ff;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile View */
+@media screen and (max-width: 768px) {
+
+    .hamburger {
+        display: flex;
+    }
+
+      .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 43px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translateY(8px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translateY(-8px);
+    }
+}
 
         .slide {
             max-width: 100%;
@@ -156,10 +237,23 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to LearnTech</h1>
-        <p>Empowering Learners, Building Futures</p>
-    </header>
+        <header>
+  <div class="navbar">
+       <div class="logo">Learn<span>Tech</span></div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dsigh.html">Features</a></li>
+      <li><a href="Courses.html">Courses</a></li>
+      <li><a href="contact.html">Contact</a></li>
+ <li><a href="login.html">Login</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
     <div class="slide">
         <img class="mySlides" src="image/free-education-website-slider-banner-psd-template.jpg" style="width:100%">
         <img class="mySlides" src="image/homepagesliders.png" style="width:100%">
@@ -215,5 +309,6 @@
         </div>
 <!--         <button><a href="index.html">HOME Page</a></button> -->
     </div>
+<script src="script.js"></script>
 </body>
 </html>
