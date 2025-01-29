@@ -8,23 +8,25 @@
 </head>
 <body>
     <header>
-           <nav class="navbar">
-      <div class="logo">Learn<span>Tech</span></div>
-      <div class="hamburger" id="hamburger">
-        <!-- Hamburger icon -->
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <ul class="nav-links" id="navLinks">
-  <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="Courses.html">Courses</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="login.html">Login</a></li>
-      </ul>
-    </nav>
-    </header>
+  <div class="navbar">
+    <div class="logo">
+      <a href="index.html">LearnTech</a>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="Courses.html">Courses</a></li>
+      <li><a href="contact.html">Contact</a></li>
+ <li><a href="login.html">Login</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
 
     <section class="hero">
         <div class="container">
@@ -82,25 +84,25 @@
         </div>
     </footer>
     <script>
-document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.getElementById("hamburger");
     const navLinks = document.getElementById("nav-links");
 
-    // Toggle Menu
+    // Toggle menu when clicking the hamburger
     hamburger.addEventListener("click", function () {
-        navLinks.classList.toggle("active");
-        hamburger.classList.toggle("active");
+      navLinks.classList.toggle("active");
+      hamburger.classList.toggle("active");
     });
 
-    // Close menu when a link is clicked
+    // Close menu when clicking a link
     document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", function () {
-            navLinks.classList.remove("active");
-            hamburger.classList.remove("active");
-        });
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("active");
+        hamburger.classList.remove("active");
+      });
     });
-});
-
+  });
 </script>
+
 </body>
 </html>
