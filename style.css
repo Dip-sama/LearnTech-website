@@ -312,6 +312,12 @@ body {
   color: white;
 }
 
+.footer-section a {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
 .social-icons {
   display: flex;
   justify-content: center;
@@ -319,9 +325,11 @@ body {
 }
 
 .social-icons a {
-  font-size: 20px;
-  color: white;
+  font-size: 16px;
   transition: transform 0.3s ease, color 0.3s ease;
+color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .social-icons a:hover {
