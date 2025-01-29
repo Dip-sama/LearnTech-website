@@ -9,7 +9,6 @@ body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
   scroll-behavior: smooth;
-background-color: #333;
 }
 
 /* Header Section */
@@ -360,7 +359,7 @@ section {
 
 /* Footer */
 .footer {
-  background: #222;
+  background: #808080;
   color: white;
   padding: 40px 20px;
   display: flex;
