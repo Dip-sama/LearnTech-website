@@ -8,6 +8,7 @@ body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
   scroll-behavior: smooth;
+background: #eef7ff
 }
 
 /* Navbar */
@@ -196,7 +197,8 @@ body {
   color: #00c6ff;
 }
 
-.main {
+.main { 
+  margin: 10px;
   display: grid;
   height: 50vmax;
   place-items: center;
