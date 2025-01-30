@@ -277,8 +277,9 @@ body {
 .footer-bottom {
   font-size: 14px;
   background: #111;
-  padding: 15px;
-  margin-top: 20px;
+  color: #fff;
+  
+  margin-top: 10px;
   text-align: center;
 }
 
