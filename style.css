@@ -201,6 +201,58 @@ body {
   color: #00c6ff;
 }
 
+
+.uiux-card {
+  width: 300px;
+  background: #fff;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.09);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Circular Badge */
+.uiux-badge {
+  width: 50px;
+  height: 50px;
+  background: #7c3aed; /* Violet */
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.uiux-icon {
+  width: 40px;
+  margin: 20px auto;
+}
+
+.uiux-icon svg {
+  width: 100%;
+  fill: #7c3aed; /* Violet */
+}
+
+
+.uiux-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+.uiux-text {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+
+
  .footer {
   color: #7CB9E8;
   padding: 40px 0;
