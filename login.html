@@ -128,6 +128,22 @@ h1 {
 }
 
 
+
+.forgot-pass {
+  text-align: left;
+  margin: 10px 0 10px 5px;
+}
+
+.forgot-pass a {
+  font-size: 16px;
+  color: #666666;
+  text-decoration: none;
+}
+
+.forgot-pass:hover a {
+  text-decoration: underline;
+}
+
 </style>
 <body>
   <div class="container">
@@ -143,6 +159,9 @@ h1 {
           <label for="password">Password</label>
         </div>
         <button type="submit" class="btn">Login</button>
+    <div class="forgot-pass">
+               <a href="#">Forgot Password?</a>
+            </div>
         <p class="info">Don’t have an account? <a href="register.html">Register here</a></p>
       </form>
     </div>
@@ -157,3 +176,4 @@ document.querySelector('form').addEventListener('submit', function (e) {
 </script>
 </body>
 </html>
+
