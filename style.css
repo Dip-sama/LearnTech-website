@@ -266,10 +266,9 @@ body {
 
 .social-icons a {
   font-size: 16px;
-  transition: transform 0.3s ease, color 0.3s ease;
   color: #bbb;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-icons a:hover {
@@ -280,20 +279,4 @@ body {
 .footer-bottom {
   font-size: 14px;
   background: #111;
-  padding: 10px 0;
-  text-align: center;
-  width: 100%;
-}
-
-/* Responsive Fix */
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-section {
-    width: 100%;
-  }
-}
+  pad
