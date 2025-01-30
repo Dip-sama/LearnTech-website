@@ -230,6 +230,12 @@ background: #eef7ff
   background-color: green;
 }
 
+.card1 img {
+width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .main:hover #c1 {
   transform: translateX(-100px) rotate(-40deg);
 }
