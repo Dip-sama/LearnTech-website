@@ -202,10 +202,9 @@ body {
 }
 
 .footer {
-  background: #222;
-  color: white;
+  background: #fff;
   padding: 40px 0;
-  text-align: center;
+  text-align: left;
   position: relative;
   width: 100%;
   bottom: 0;
@@ -231,11 +230,13 @@ body {
 .footer-section h3 {
   font-size: 24px;
   margin-bottom: 10px;
+  color: white;
 }
 
 .footer-section h4 {
   font-size: 20px;
   margin-bottom: 10px;
+  color:#000;
 }
 
 .footer-section ul {
@@ -248,7 +249,7 @@ body {
 }
 
 .footer-section ul li a {
-  color: #bbb;
+  color: ##7CB9E8;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -264,7 +265,7 @@ body {
 }
 
 .social-icons a {
-  color: #bbb;
+  color: #7CB9E8;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -275,7 +276,7 @@ body {
 
 .footer-bottom {
   font-size: 14px;
-  background: #111;
+  background: #fff;
   padding: 10px 0;
   text-align: center;
   width: 100%;
