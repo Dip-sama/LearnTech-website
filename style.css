@@ -197,7 +197,7 @@ background: #eef7ff
   color: #00c6ff;
 }
 
-.main { 
+/*.main { 
   margin: 10px;
   display: grid;
   height: 50vmax;
@@ -266,7 +266,7 @@ width: 100%;
 
 #c4:hover {
   transform: translateX(50px) rotate(0deg) !important;
-}
+}*/
 
 /* Footer Section */
 .footer {
