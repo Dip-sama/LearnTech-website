@@ -201,7 +201,7 @@ body {
   color: #00c6ff;
 }
 
-.footer {
+ .footer {
   color: #7CB9E8;
   padding: 40px 0;
   text-align: left;
@@ -232,8 +232,8 @@ body {
   margin-bottom: 10px;
   color: #F5F5F5;
 }
-.footer h3 span {
-  color: #7CB9E8;
+.footer h3  span {
+  color: #00c6ff;
 }
 
 .footer-section h4 {
@@ -263,7 +263,7 @@ body {
 
 .social-icons {
   display: flex;
-  gap: 10px;
+  gap: 15px;
 }
 
 .social-icons a {
