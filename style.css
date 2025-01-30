@@ -283,8 +283,14 @@ body {
 
 /* Responsive Footer */
 @media screen and (max-width: 768px) {
+   .footer {
+    width: 100%;
+
+}
+
   .footer-container {
     flex-direction: column;
     text-align: center;
+margin: 0;
   }
 }
