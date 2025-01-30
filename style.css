@@ -232,7 +232,7 @@ body {
   margin-bottom: 10px;
   color: white;
 }
-.footer  span h3 {
+.footer h3 span {
   color: #00c6ff;
 }
 
@@ -263,7 +263,7 @@ body {
 
 .social-icons {
   display: flex;
-  gap: 15px;
+  gap: 10px;
 }
 
 .social-icons a {
