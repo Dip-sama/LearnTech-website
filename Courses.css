@@ -184,7 +184,7 @@
 .footer-section h3 {
   font-size: 24px;
   margin-bottom: 10px;
-  color: white;
+  color: #F5F5F5;
 }
 .footer h3  span {
   color: #00c6ff;
@@ -206,18 +206,18 @@
 }
 
 .footer-section ul li a {
-  color: ##7CB9E8;
+  color: #7CB9E8;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-section ul li a:hover {
-  color: white;
+  color: #F5F5F5;
 }
 
 .social-icons {
   display: flex;
-  gap: 15px;
+  gap: 10px;
 }
 
 .social-icons a {
