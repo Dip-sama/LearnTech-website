@@ -231,7 +231,7 @@
 }
 
 .footer-bottom {
-  margin-bottom: 0px
+  margin-bottom: 0;
   font-size: 14px;
   padding: 0;
   text-align: center;
