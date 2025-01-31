@@ -174,53 +174,80 @@ margin:20px;
   align-items: center;
 }
 
-.why-choose-us {
+.why-choose {
   text-align: center;
-  padding: 50px 20px;
+  padding: 60px 20px;
   background: #eef7ff;
-  animation: fadeIn 1.5s ease-in-out;
 }
 
-.why-choose-us h2 {
-  font-size: 32px;
-  margin-bottom: 10px;
+.why-choose h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #333;
 }
 
-.why-choose-us h2 span {
-  color: #00c6ff;
+.why-choose h2 span {
+  color: #007bff;
 }
 
-.why-choose-us p {
-  font-size: 18px;
-  margin-bottom: 30px;
-}
-
-.why-cards {
+.cards {
   display: flex;
-  justify-content: center;
   gap: 20px;
+  justify-content: center;
   flex-wrap: wrap;
+  margin-top: 30px;
 }
 
-.why-cards .card {
-  background: white;
-  padding: 20px;
+.cards .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 180px; /* Increased height for better readability */
+  width: 280px;
   border-radius: 10px;
-  width: 300px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  color: white;
+  cursor: pointer;
+  transition: 0.4s;
+  padding: 15px;
+  font-size: 16px;
 }
 
-.why-cards .card:hover {
-  transform: scale(1.05);
+.cards .red {
+  background-color: #f43f5e;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+.cards .blue {
+  background-color: #3b82f6;
+}
+
+.cards .green {
+  background-color: #22c55e;
+}
+
+/* Animation Effects */
+.cards .card:hover {
+  transform: scale(1.1);
+}
+
+.cards:hover > .card:not(:hover) {
+  filter: blur(5px);
+  transform: scale(0.9);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
   }
-  to {
-    opacity: 1;
+  
+  .cards .card {
+    width: 90%;
+    height: auto;
+    padding: 20px;
   }
 }
 
