@@ -25,40 +25,35 @@
   </div>
 </header>
 
-  <main>
-    <div class="form-container">
-      <h1>Enrollment Form</h1>
-      <form action="#" method="POST">
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name" required>
-        
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email" required>
-        
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" placeholder="Enter your age" min="1" required>
-        
-        <label for="gender">Gender:</label>
-        <select id="gender" name="gender" required>
-          <option value="" disabled selected>Select your gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-        
-        <label for="education">Current Education Status:</label>
-        <input type="text" id="education" name="education" placeholder="e.g., High School, Graduate" required>
-        
-        <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" pattern="[0-9]{10}" title="Enter a valid 10-digit phone number" required>
-        
-        <label for="message">Additional Information:</label>
-        <textarea id="message" name="message" placeholder="Any additional information..." rows="4"></textarea>
-        
-        <button type="submit">Submit</button>
-      </form>
+  <div class="card">
+    <div class="header">
+        <span class="title">Beginner Plan</span>
+        <span class="price">Free</span>
     </div>
-  </main>
+    <p class="desc">Start your coding journey with free beginner-friendly courses.</p>
+    <ul class="lists">
+        <li class="list">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            <span>Access to beginner courses</span>
+        </li>
+        <li class="list">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            <span>Project-based learning</span>
+        </li>
+        <li class="list">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            <span>Community support</span>
+        </li>
+    </ul>
+    <button type="button" class="action">Get Started</button>
+</div>
+
   <script>
 document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.getElementById("hamburger");
