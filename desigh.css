@@ -174,6 +174,57 @@ margin:20px;
   align-items: center;
 }
 
+.why-choose-us {
+  text-align: center;
+  padding: 50px 20px;
+  background: #eef7ff;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.why-choose-us h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.why-choose-us h2 span {
+  color: #00c6ff;
+}
+
+.why-choose-us p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.why-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.why-cards .card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.why-cards .card:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
 .cards {
   display: flex;
   flex-wrap: wrap;
