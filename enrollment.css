@@ -5,7 +5,7 @@
   font-family: Arial, sans-serif;
 }
 
-/* Header Styles */
+/* Header Styles 
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -100,20 +100,22 @@
   .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translateY(-8px);
   }
+}*/
+
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
 }
 
 .card {
-    margin-left: -1rem;
-    margin-right: -1rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    margin-bottom: 2rem;
     width: 320px;
     flex-direction: column;
     border-radius: 0.25rem;
     background-color: rgba(17, 24, 39, 1);
     padding: 1.5rem;
+    text-align: center;
 }
 
 .header {
@@ -128,7 +130,7 @@
 }
 
 .price {
-    font-size: 3.75rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #fff;
 }
@@ -142,13 +144,13 @@
 
 .lists {
     margin-bottom: 1.5rem;
-    flex: 1 1 0%;
     color: rgba(156, 163, 175, 1);
 }
 
 .lists .list {
     margin-bottom: 0.5rem;
     display: flex;
+    align-items: center;
     margin-left: 0.5rem;
 }
 
@@ -173,4 +175,3 @@
     color: rgba(17, 24, 39, 1);
     cursor: pointer;
 }
-
