@@ -237,7 +237,7 @@ fill: #7c3aed;
 
 /* Logo Styling */
 .company-logos img {
-  width: 120px;
+  width: 140px;
   height: auto;
   object-fit: contain;
 filter: grayscale(0%);
