@@ -240,12 +240,12 @@ fill: #7c3aed;
   width: 120px;
   height: auto;
   object-fit: contain;
-filter: grayscale(100%);
+filter: grayscale(0%);
   transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .company-logos img:hover {
-  filter: grayscale(0%);
+  filter: grayscale(100%);
   transform: scale(1.1);
 }
 
