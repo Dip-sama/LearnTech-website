@@ -176,21 +176,10 @@ margin:20px;
 
 .cards {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-}
-
-.cards .red {
-  background-color: #f43f5e;
-}
-
-.cards .blue {
-  background-color: #3b82f6;
-}
-
-.cards .green {
-  background-color: #22c55e;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
 }
 
 .cards .card {
@@ -199,31 +188,38 @@ margin:20px;
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  height: 100px;
-  width: 250px;
+  height: 150px;
+  width: 280px;
   border-radius: 10px;
   color: white;
   cursor: pointer;
-  transition: 400ms;
-}
-
-.cards .card p.tip {
-  font-size: 1em;
-  font-weight: 700;
-}
-
-.cards .card p.second-text {
-  font-size: .7em;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  padding: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .cards .card:hover {
-  transform: scale(1.1, 1.1);
+  transform: scale(1.1);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-.cards:hover > .card:not(:hover) {
-  filter: blur(10px);
-  transform: scale(0.9, 0.9);
+.cards .card p.tip {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
 }
+
+.cards .card p.second-text {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Color Variations */
+.cards .red { background-color: #f43f5e; }  /* Red */
+.cards .blue { background-color: #3b82f6; } /* Blue */
+.cards .green { background-color: #22c55e; } /* Green */
+.cards .purple { background-color: #9333ea; } /* Purple */
+.cards .orange { background-color: #f97316; } /* Orange */
 
 .features ul {
     list-style: none;
