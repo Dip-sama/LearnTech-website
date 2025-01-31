@@ -8,7 +8,6 @@ body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
   scroll-behavior: smooth;
-  background: #eef7ff;
 }
 
 /* Navbar */
@@ -381,6 +380,7 @@ filter: grayscale(0%);
 
 
  .footer {
+background: #eef7ff;
   color: #7CB9E8;
   padding: 40px 0;
   text-align: left;
