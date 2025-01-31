@@ -361,8 +361,7 @@ filter: grayscale(0%);
   filter: blur(10px);
   transform: scale(0.9, 0.9);
 }
-
-/* Courses Section 
+ 
 .courses {
   margin: 30px;
   padding: 50px 20px;
@@ -374,7 +373,7 @@ filter: grayscale(0%);
 
 .courses h2 span {
   color: #00c6ff;
-}*/
+}
 
 
 
@@ -464,6 +463,16 @@ background: #eef7ff;
 }
 
 @media (max-width: 768px) {
+   .courses{
+text-align: center;
+
+}
+
+.courses h2 span {
+  color: #00c6ff;
+}
+
+
   .footer-container {
     flex-direction: column;
     text-align: left; 
