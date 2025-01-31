@@ -106,6 +106,24 @@
 </div>
 
 
+<script>
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Select all buttons inside the pricing cards
+    const buttons = document.querySelectorAll(".action");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", function () {
+            alert("Coming Soon!");
+        });
+    });
+});
+
+</script>
+
+
+
  <!-- <script>
 document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.getElementById("hamburger");
