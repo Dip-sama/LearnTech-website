@@ -4,6 +4,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
+background: #eef7ff;
 }
 
 
@@ -164,12 +165,12 @@ text-align: center;
 margin:20px;
 }
 
-.courses {
+.course{
 text-align: center;
 margin:20px;
 }
 
-.courses h2 {
+.course h2 {
   text-align: center; 
   align-items: center;
 }
