@@ -123,6 +123,69 @@ body {
   opacity: 0.7;
 }
 
+
+.course-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Course Card Styling */
+.course-card {
+  width: 260px;
+  background: #fff;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.09);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Badge Styling */
+.course-badge {
+  width: 45px;
+  height: 45px;
+  background: #7c3aed;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 45px;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Icon Styling */
+.course-icon img {
+  width: 50px;
+  margin: 15px auto;
+}
+
+/* Course Title */
+.course-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Course Description */
+.course-text {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+
+
+
 /* Features Section */
 .features {
   padding: 50px 20px;
@@ -187,7 +250,7 @@ body {
   transform: scale(0.9, 0.9);
 }
 
-/* Courses Section */
+/* Courses Section 
 .courses {
   margin: 30px;
   padding: 50px 20px;
@@ -199,58 +262,9 @@ body {
 
 .courses h2 span {
   color: #00c6ff;
-}
+}*/
 
 
-.uiux-card {
-  width: 300px;
-  background: #fff;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.09);
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Circular Badge */
-.uiux-badge {
-  width: 50px;
-  height: 50px;
-  background: #7c3aed; /* Violet */
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 50px;
-  border-radius: 50%;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-.uiux-icon {
-  width: 40px;
-  margin: 20px auto;
-}
-
-.uiux-icon svg {
-  width: 100%;
-  fill: #7c3aed; /* Violet */
-}
-
-
-.uiux-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-
-.uiux-text {
-  font-size: 14px;
-  color: #666;
-  line-height: 1.5;
-}
 
 
  .footer {
