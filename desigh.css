@@ -4,9 +4,13 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
-background: #eef7ff;
+
 }
 
+.body {
+text-decoration: none;
+background: #eef7ff;
+}
 
 .navbar {
     display: flex;
