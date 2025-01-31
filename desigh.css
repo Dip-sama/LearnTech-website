@@ -165,14 +165,18 @@ text-align: center;
 margin:20px;
 }
 
-.course{
+.course-learn {
 text-align: center;
 margin:20px;
 }
 
-.course h2 {
+.course-learn h2 {
   text-align: center; 
   align-items: center;
+}
+
+.course-learn h2 span {
+  color: #007bff;
 }
 
 .why-choose {
