@@ -184,6 +184,7 @@ body {
 .course-icon img {
   width: 50px;
   margin: 15px auto;
+fill: #7c3aed; 
 }
 
 /* Course Title */
