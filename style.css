@@ -164,6 +164,16 @@ body {
   right: 10px;
 }
 
+.uiux-icon {
+  width: 40px;
+  margin: 20px auto;
+}
+
+.uiux-icon svg {
+  width: 100%;
+  fill: #7c3aed; 
+}
+
 /* Icon Styling */
 .course-icon img {
   width: 50px;
