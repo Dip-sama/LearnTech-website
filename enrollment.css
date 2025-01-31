@@ -110,6 +110,8 @@
 }
 
 .card {
+     margin: 20px;
+    align-items: center;
     width: 320px;
     flex-direction: column;
     border-radius: 0.25rem;
