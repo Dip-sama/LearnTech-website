@@ -122,7 +122,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('website-banner.png.jpg') no-repeat center center/cover;
+    background: url('image/website-banner.png.jpg') no-repeat center center/cover;
 }
 
 .hero h1 {
