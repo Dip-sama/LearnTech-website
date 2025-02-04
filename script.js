@@ -1,15 +1,28 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const hamburger = document.getElementById("hamburger");
-  const navLinks = document.getElementById("navLinks");
+    document.addEventListener("DOMContentLoaded", function () {
+        const popup = document.getElementById("popup");
+        const closeBtn = document.querySelector(".close-btn");
+        const navLinks = document.getElementById("navLinks");
+        const hamburger = document.getElementById("hamburger");
 
-  hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-    hamburger.classList.toggle("active");
-  });
+        // Show popup after 1 second
+        setTimeout(() => {
+            popup.style.display = "flex";
+        }, 1000);
 
-  // Close nav on link click
-  navLinks.addEventListener("click", () => {
-    navLinks.classList.remove("active");
-    hamburger.classList.remove("active");
-  });
-});
+        // Close popup when clicking the "X" button
+        closeBtn.addEventListener("click", () => {
+            popup.style.display = "none";
+        });
+
+        // Close popup when clicking outside of it
+        window.addEventListener("click", (e) => {
+            if (e.target === popup) {
+                popup.style.display = "none";
+            }
+        });
+
+        // Toggle mobile menu
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+    });
