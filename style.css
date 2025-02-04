@@ -61,34 +61,23 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
     background: #111827;
-    position: fixed;
-    width: 100%;
+    color: white;
+    padding: 15px 50px;
+    position: fixed; /* Fix navbar at the top */
     top: 0;
-    left: 0;
+    width: 100%;
     z-index: 1000;
-   
-}
-
-.logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-}
-
-.logo span {
-    color: #4f46e5;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-gap: 20px;
-    transition: all 0.3s ease;
+    gap: 20px;
 }
 
 .nav-links li {
-    margin-left: 20px;
+    list-style: none;
 }
 
 .nav-links a {
@@ -99,23 +88,50 @@ gap: 20px;
 }
 
 .nav-links a:hover {
-    color: #4f46e5;
+    color: #00c6ff;
 }
 
-/* Hamburger Menu (Mobile) */
+/* Hamburger Menu */
 .hamburger {
     display: none;
     flex-direction: column;
+    gap: 5px;
     cursor: pointer;
 }
 
 .hamburger span {
-    background: white;
-    height: 3px;
+    display: block;
     width: 25px;
-    margin: 4px;
-    transition: 0.3s;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
 }
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Adjusted to avoid overlap */
+        right: 0;
+        background: #111827;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+
 
 /* Hero Section */
 .hero {
@@ -276,28 +292,6 @@ color: #7CB9E8;
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: fixed;
-        top: 50px;
-        right: 0;
-        background: #111827;
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .nav-links li {
-        margin: 15px 0;
-    }
-
-    .hamburger {
-        display: flex;
-    }
     .hero {
         background: url('image/website-bannerp.png.jpg') no-repeat center center/cover;
     }
