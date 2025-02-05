@@ -5,12 +5,17 @@
   font-family: Arial, sans-serif;
 }
 
+.body{
+    background-color: #0a0a0a;
+    color: white;
+}
+
 /* Navbar Styles */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #333;
+  background: #111827;
   color: white;
   padding: 10px 20px;
   position: fixed;
@@ -26,7 +31,7 @@
 }
 
 .navbar .logo span {
-  color: #00c6ff;
+     color: #4f46e5;
 }
 
 .nav-links {
