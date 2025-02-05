@@ -120,7 +120,7 @@
 }
 
 .course {
-    background-color: #fff;
+    background-color: #0a0a0a;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 280px;
@@ -160,8 +160,44 @@
     background-color: #0056b3;
 }
 
- .footer {
-  color: #7CB9E8;
+
+.footer {
+    text-decoration: none;
+    background: #111827;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-section {
+    width: 250px;
+}
+
+.footer-section h3 span {
+    color: #4f46e5;
+}
+
+.footer-bottom {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.footer-section ul{
+  list-style: none;
+}
+
+.footer-section ul a {
+  text-decoration: none;
+}
+
+ /*.footer {
+  color: #;
   padding: 40px 0;
   text-align: left;
   position: relative;
@@ -241,7 +277,7 @@
   padding: 0;
   text-align: center;
   width: 100%;
-}
+}*/
 
 @media (max-width: 768px) {
   .footer-container {
