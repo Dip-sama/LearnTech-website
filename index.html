@@ -95,7 +95,7 @@
   <p class="more">+ Many More</p>
 </section>
 
-
+  <button id="chatbotBtn" class="chatbot-btn">💬 AI Chatbot</button>
 
   <!--<div class="main">
       <div class="card1" id="c1">
@@ -142,27 +142,7 @@
       <p>&copy; 2024 LearnTech. All rights reserved.</p>
     </div>
   </footer>
-  <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("nav-links");
-
-    // Toggle menu when clicking the hamburger
-    hamburger.addEventListener("click", function () {
-        navLinks.classList.toggle("active");
-        hamburger.classList.toggle("active");
-    });
-
-    // Close menu when clicking a link
-    document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", function () {
-            navLinks.classList.remove("active");
-            hamburger.classList.remove("active");
-        });
-    });
-});
-</script>
-
+  <script src="1.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
