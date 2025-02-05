@@ -24,5 +24,9 @@
         // Toggle mobile menu
         hamburger.addEventListener("click", () => {
             navLinks.classList.toggle("active");
+document.getElementById("chatbotBtn").addEventListener("click", function () {
+        alert("AI Chatbot coming soon!");
+    });
+});
         });
     });
