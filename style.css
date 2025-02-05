@@ -35,6 +35,14 @@ body {
 .popup h2 {
     margin-bottom: 10px;
 }
+.popup button {
+     padding: 10px 20px;
+     background: #ff4500;
+     color: white;
+     border: none;
+     cursor: pointer;
+     border-radius: 5px;
+}
 
 .popup-btn {
     display: inline-block;
