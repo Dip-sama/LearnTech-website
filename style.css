@@ -71,8 +71,8 @@ body {
     align-items: center;
     background: #111827;
     color: white;
-    padding: 15px 50px;
-    position: fixed; /* Fix navbar at the top */
+    padding: 10px 20px;
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
@@ -303,14 +303,14 @@ fill: #7c3aed;
 .footer {
     text-decoration: none;
     background: #111827;
-    padding: 40px 20px;
-    text-align: center;
+    padding: 20px 20px;
+    text-align: left;
 }
 
 .footer-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
     gap: 20px;
 }
 
