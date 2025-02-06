@@ -341,4 +341,10 @@ color: #7CB9E8;
     .hero {
         background: url('image/website-bannerp.png.jpg') no-repeat center center/cover;
     }
+.footer {
+    text-decoration: none;
+    background: #111827;
+    padding: 20px 20px;
+    text-align: left;
+}
 }
