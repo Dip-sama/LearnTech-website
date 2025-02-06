@@ -172,7 +172,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('image/website-banner.png.jpg') no-repeat center center/cover;
+    background: url('image/website-banner2.jpg') no-repeat center center/cover;
 }
 
 .hero h1 {
@@ -319,6 +319,6 @@ body {
 /* Responsive Footer */
 @media (max-width: 768px) {
     .hero {
-        background: url('image/website-bannerp.png.jpg') no-repeat center center/cover;
+        background: url('image/website-bannerp2.jpg') no-repeat center center/cover;
     }
 }
