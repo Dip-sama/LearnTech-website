@@ -169,11 +169,13 @@ body {
 .hero {
     text-align: center;
     height: 100vh;
-    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('image/website-banner2.jpg') no-repeat center center/cover;
+    background: url('image/website-banner2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .hero h1 {
