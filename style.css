@@ -282,163 +282,132 @@ body {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.card1 {
-  background-color: #131c25;
-  border: 3px solid #659AD2;
+/* General Styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #121212;
+  color: white;
+  text-align: center;
+}
+
+/* Reusable Button Styles */
+.App-button {
+  padding: 10px 20px;
+  background-color: transparent;
+  font-size: 15px;
+  border-radius: 5em;
+  margin-top: 20px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+/* Card Base */
+.card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 26px;
   font-weight: 700;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 30px 20px;
-  color: #659AD2;
   border-radius: 45px;
+  transition: transform 0.3s ease-in-out;
 }
 
-.App-logo {
-  pointer-events: none;
-  width: 140px;
-  margin-bottom: 20px;
+.card:hover {
+  transform: scale(1.05);
 }
 
-.App-button {
-  padding: 10px 20px;
-  background-color: transparent;
-  color: #659AD2;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 15px;
+/* Card 1 (C++) */
+.card1 {
+  background-color: #131c25;
   border: 3px solid #659AD2;
-  border-radius: 5em;
-  margin-top: 20px;
-  transition: 0.2s;
+  color: #659AD2;
 }
 
-.App-button:hover {
+.card1 .App-button {
+  color: #659AD2;
+  border: 3px solid #659AD2;
+}
+
+.card1 .App-button:hover {
   color: #282c34;
   background-color: #659AD2;
 }
 
+/* Card 2 (JavaScript) */
 .card2 {
   background-color: #25241c;
   border: 3px solid #f7df1e;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-  font-weight: 700;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  padding: 30px 40px;
   color: #f7df1e;
-  border-radius: 45px;
 }
 
-.App-logo {
-  pointer-events: none;
-  width: 120px;
-  margin-bottom: 20px;
-}
-
-.App-button {
-  padding: 10px 20px;
-  background-color: transparent;
+.card2 .App-button {
   color: #f7df1e;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 15px;
   border: 3px solid #f7df1e;
-  border-radius: 5em;
-  margin-top: 20px;
-  transition: 0.2s;
 }
 
-.App-button:hover {
+.card2 .App-button:hover {
   color: #2e2d23;
   background-color: #f7df1e;
 }
+
+/* Card 3 (Python) */
 .card3 {
   background-color: #191e24;
   border: 3px solid #387EB8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-  font-weight: 700;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  padding: 25px 5px;
   color: white;
-  border-radius: 45px;
 }
 
-.App-logo {
-  pointer-events: none;
-  margin-top: -40px;
-  margin-bottom: -40px;
-  width: 250px;
-}
-
-.App-button {
-  padding: 10px 20px;
-  background-color: transparent;
+.card3 .App-button {
   color: #FFE052;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 15px;
   border: 3px solid #FFE052;
-  border-radius: 5em;
-  margin-top: 20px;
-  transition: 0.2s;
 }
 
-.App-button:hover {
+.card3 .App-button:hover {
   color: #191e24;
   background-color: #FFE052;
 }
 
-.welcometo {
-  color: #387EB8;
-}
-
-.python {
-  color: #FFE052;
-}
-
+/* Card 4 (React.js) */
 .card4 {
   background-color: #1e2127;
   border: 3px solid #61dafb;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-  font-weight: 700;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  padding: 30px 20px;
   color: #61dafb;
-  border-radius: 45px;
 }
 
-.App-logo {
-  pointer-events: none;
-  margin-top: -10px
-}
-
-.App-button {
-  padding: 10px 20px;
-  background-color: transparent;
+.card4 .App-button {
   color: #61dafb;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 15px;
   border: 3px solid #61dafb;
-  border-radius: 5em;
-  margin-top: 20px;
-  transition: 0.2s;
 }
 
-.App-button:hover {
+.card4 .App-button:hover {
   color: #1e2127;
   background-color: #61dafb;
+}
+
+/* Card 5 (General Programming) */
+.card5 {
+  background-color: #1f1e27;
+  border: 3px solid #cbe6ff;
+  color: #cbe6ff;
+}
+
+.card5 .App-button {
+  color: #cbe6ff;
+  border: 3px solid #cbe6ff;
+}
+
+.card5 .App-button:hover {
+  color: #1e2127;
+  background-color: #cbe6ff;
+}
+
+/* Logo Animation */
+.App-logo {
+  pointer-events: none;
+  width: 140px;
+  margin-bottom: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -451,118 +420,27 @@ body {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
 }
 
-
-.card5 {
-  background-color: #1f1e27;
-  border: 3px solid #cbe6ff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-  font-weight: 700;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  padding: 30px 20px;
-  color: #cbe6ff;
-  border-radius: 45px;
-}
-
-.App-logo {
-  pointer-events: none;
-  margin-top: -10px;
-}
-
-.App-button {
-  padding: 10px 20px;
-  background-color: transparent;
-  color: #cbe6ff;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 15px;
-  border: 3px solid #cbe6ff;
-  border-radius: 5em;
-  margin-top: 20px;
-  transition: 0.2s;
-  cursor: pointer;
-}
-
-.App-button:hover {
-  color: #1e2127;
-  background-color: #cbe6ff;
-}
-
+/* Hover Animation */
 @media (prefers-reduced-motion: no-preference) {
   .card:hover .App-logo {
-    -webkit-animation: wobble-hor-bottom 0.9s ease-in both;
     animation: wobble-hor-bottom 0.9s ease-in both;
   }
 }
 
-@-webkit-keyframes wobble-hor-bottom {
-  0%,
-  100% {
-    -webkit-transform: translateX(0%);
-    transform: translateX(0%);
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-  }
-  15% {
-    -webkit-transform: translateX(-30px) rotate(-6deg);
-    transform: translateX(-30px) rotate(-6deg);
-  }
-  30% {
-    -webkit-transform: translateX(15px) rotate(6deg);
-    transform: translateX(15px) rotate(6deg);
-  }
-  45% {
-    -webkit-transform: translateX(-15px) rotate(-3.6deg);
-    transform: translateX(-15px) rotate(-3.6deg);
-  }
-  60% {
-    -webkit-transform: translateX(9px) rotate(2.4deg);
-    transform: translateX(9px) rotate(2.4deg);
-  }
-  75% {
-    -webkit-transform: translateX(-6px) rotate(-1.2deg);
-    transform: translateX(-6px) rotate(-1.2deg);
-  }
-}
 @keyframes wobble-hor-bottom {
-  0%,
-  100% {
-    -webkit-transform: translateX(0%);
-    transform: translateX(0%);
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-  }
-  15% {
-    -webkit-transform: translateX(-30px) rotate(-6deg);
-    transform: translateX(-30px) rotate(-6deg);
-  }
-  30% {
-    -webkit-transform: translateX(15px) rotate(6deg);
-    transform: translateX(15px) rotate(6deg);
-  }
-  45% {
-    -webkit-transform: translateX(-15px) rotate(-3.6deg);
-    transform: translateX(-15px) rotate(-3.6deg);
-  }
-  60% {
-    -webkit-transform: translateX(9px) rotate(2.4deg);
-    transform: translateX(9px) rotate(2.4deg);
-  }
-  75% {
-    -webkit-transform: translateX(-6px) rotate(-1.2deg);
-    transform: translateX(-6px) rotate(-1.2deg);
-  }
+  0%, 100% { transform: translateX(0%); }
+  15% { transform: translateX(-30px) rotate(-6deg); }
+  30% { transform: translateX(15px) rotate(6deg); }
+  45% { transform: translateX(-15px) rotate(-3.6deg); }
+  60% { transform: translateX(9px) rotate(2.4deg); }
+  75% { transform: translateX(-6px) rotate(-1.2deg); }
 }
+
 
 /* Footer */
 .footer {
