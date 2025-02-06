@@ -293,7 +293,7 @@ body {
   cursor: pointer;
 }
 
-/* Card Base */
+/* Card Base
 .card {
     width:100vw ;
   display: flex;
@@ -311,7 +311,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Card 1 (C++) */
 .card1 {
   background-color: #131c25;
   border: 3px solid #659AD2;
@@ -328,7 +327,7 @@ body {
   background-color: #659AD2;
 }
 
-/* Card 2 (JavaScript) */
+
 .card2 {
   background-color: #25241c;
   border: 3px solid #f7df1e;
@@ -345,7 +344,6 @@ body {
   background-color: #f7df1e;
 }
 
-/* Card 3 (Python) */
 .card3 {
   background-color: #191e24;
   border: 3px solid #387EB8;
@@ -362,7 +360,7 @@ body {
   background-color: #FFE052;
 }
 
-/* Card 4 (React.js) */
+
 .card4 {
   background-color: #1e2127;
   border: 3px solid #61dafb;
@@ -379,7 +377,7 @@ body {
   background-color: #61dafb;
 }
 
-/* Card 5 (General Programming) */
+
 .card5 {
   background-color: #1f1e27;
   border: 3px solid #cbe6ff;
@@ -396,7 +394,7 @@ body {
   background-color: #cbe6ff;
 }
 
-/* Logo Animation */
+
 .App-logo {
   pointer-events: none;
   width: 140px;
@@ -418,7 +416,6 @@ body {
   }
 }
 
-/* Hover Animation */
 @media (prefers-reduced-motion: no-preference) {
   .card:hover .App-logo {
     animation: wobble-hor-bottom 0.9s ease-in both;
@@ -433,7 +430,7 @@ body {
   60% { transform: translateX(9px) rotate(2.4deg); }
   75% { transform: translateX(-6px) rotate(-1.2deg); }
 }
-
+ */
 
 /* Footer */
 .footer {
