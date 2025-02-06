@@ -84,6 +84,7 @@ form button:hover {
 }
 
 footer {
+   position: fixed;
     margin-top: 20px;
     text-align: center;
 }
