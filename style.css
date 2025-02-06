@@ -72,9 +72,10 @@ body {
     align-items: center;
     background: #111827;
     color: white;
-    padding: 10px 10px;
+    padding: 10px 20px;
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     z-index: 1000;
 }
