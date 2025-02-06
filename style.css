@@ -227,6 +227,8 @@ body {
     border-radius: 50%;
     font-weight: bold;
     display: inline-block;
+    align-items: right;
+    text-align: center;
 }
 
 /* Course Icons */
