@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnTech - Free Tech Learning Platform</title>
+    <link rel="stylesheet" href="desigh.css">
+</head>
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+
+}
+
+body {
+text-decoration: none;
+background-color: #0a0a0a;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+        background: #111827;
+    color: white;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+
+.navbar .logo span {
+    color: #4f46e5;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #00c6ff;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile View */
+@media screen and (max-width: 768px) {
+
+    .hamburger {
+        display: flex;
+    }
+
+      .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 43px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translateY(8px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translateY(-8px);
+    }
+}
+
+.button {
+  margin: 30px;
+  padding: 15px 20px;
+  border: none;
+  outline: none;
+  background-color: #151515;
+  color: #fff;
+  border-radius: 7px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+}
+
+.button-span {
+  color: #aaa;
+}
+
+.button a{
+text-decoration: none;
+}
+
+
+.hero {
+    background: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.about {
+    padding: 40px 20px;
+    text-align: center;
+}
+.features {
+text-align: center;
+margin:20px;
+}
+
+.course-learn {
+text-align: center;
+margin:20px;
+}
+
+.course-learn h2 {
+  text-align: center; 
+  align-items: center;
+}
+
+.course-learn h2 span {
+  color: #007bff;
+}
+
+.why-choose {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.why-choose h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.why-choose h2 span {
+  color: #007bff;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.cards .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 180px; /* Increased height for better readability */
+  width: 280px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 0.4s;
+  padding: 15px;
+  font-size: 16px;
+}
+
+.cards .red {
+  background-color: #f43f5e;
+}
+
+.cards .blue {
+  background-color: #3b82f6;
+}
+
+.cards .green {
+  background-color: #22c55e;
+}
+
+/* Animation Effects */
+.cards .card:hover {
+  transform: scale(1.1);
+}
+
+.cards:hover > .card:not(:hover) {
+  filter: blur(5px);
+  transform: scale(0.9);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cards .card {
+    width: 90%;
+    height: auto;
+    padding: 20px;
+  }
+}
+
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+.cards .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 150px;
+  width: 280px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  padding: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cards .card:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cards .card p.tip {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.cards .card p.second-text {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Color Variations */
+.cards .red { background-color: #f43f5e; }  /* Red */
+.cards .blue { background-color: #3b82f6; } /* Blue */
+.cards .green { background-color: #22c55e; } /* Green */
+.cards .purple { background-color: #9333ea; } /* Purple */
+.cards .orange { background-color: #f97316; } /* Orange */
+
+.features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.features ul li {
+    background: #e7f7ff;
+    padding: 10px;
+    margin: 10px 0;
+    border-left: 4px solid #007bff;
+}
+
+
+
+    .header h1 {
+        font-size: 20px;
+    }
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+
+    .hero h2 {
+        font-size: 28px; /* Reduce font size */
+    }
+
+    .cta-btn {
+        font-size: 16px; /* Adjust button size */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 24px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+}
+
+.footer {
+    background: #111827;
+    padding: 20px;
+    text-align: left;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-section {
+    width: 250px;
+}
+
+.footer-section h3 span {
+    color: #4f46e5;
+}
+
+.footer-bottom {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul a {
+    text-decoration: none;
+    color: #7CB9E8;
+}
+  </style>
+<body>
+    <header>
+  <div class="navbar">
+       <div class="logo">Learn<span>Tech</span></div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="Courses.html">Courses</a></li>
+      <li><a href="contact.html">Contact</a></li>
+ <li><a href="login.html">Login</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+
+    <section class="hero">
+        <div class="container">
+            <h2>Learn Tech Skills for Free</h2>
+            <p>Empowering you to build a successful career in technology.</p>
+
+<button class="button">
+<a href="Courses.html">
+  Get started
+  <span class="button-span"> ─ it's free</span>
+</a>
+</button>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>LearnTech is a free learning platform dedicated to providing high-quality resources for aspiring tech enthusiasts. Whether you're a beginner or an expert, we have something for you.</p>
+        </div>
+    </section>
+
+<section class="why-choose">
+  <h2>Why Choose <span>LearnTech?</span></h2>
+  <div class="cards">
+    <div class="card red">
+      <p class="tip">Expert-Led Courses</p>
+      <p class="second-text">Learn from industry experts with hands-on projects.</p>
+    </div>
+    <div class="card blue">
+      <p class="tip">Free Learning Resources</p>
+      <p class="second-text">Access high-quality courses without any cost.</p>
+    </div>
+    <div class="card green">
+      <p class="tip">MNC Insights</p>
+      <p class="second-text">Understand how top tech companies hire developers.</p>
+    </div>
+  </div>
+</section>
+
+<section class="course-learn">
+  <h2>Explore Our <span>Courses</span></h2>
+           <div class="cards">
+  <div class="card red">
+    <p class="tip">Web Development</p>
+    <p class="second-text">Learn HTML, CSS, and JavaScript to build stunning websites.</p>
+  </div>
+
+  <div class="card blue">
+    <p class="tip">Programming Languages</p>
+    <p class="second-text">Master Python, Java, and C++ with hands-on projects.</p>
+  </div>
+
+  <div class="card green">
+    <p class="tip">Data Science</p>
+    <p class="second-text">Dive into machine learning, AI, and data analytics.</p>
+  </div>
+
+  <div class="card purple">
+    <p class="tip">Cybersecurity</p>
+    <p class="second-text">Understand ethical hacking and network security.</p>
+  </div>
+
+  <div class="card orange">
+    <p class="tip">Cloud Computing</p>
+    <p class="second-text">Explore AWS, Azure, and Google Cloud for modern IT solutions.</p>
+  </div>
+</div>
+</section>
+
+    
+
+    <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>Learn<span>Tech</span></h3>
+      <p>Where education meets real-world needs.</p>
+    </div>
+    <div class="footer-section">
+      <h4>HELPFUL LINKS</h4>
+      <ul>
+        <li><a href="Courses.html">Courses</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Refund Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>GET IN TOUCH</h4>
+      <ul>
+        <li><a href="mailto:"></a></li>
+        <li><a href="mailto:"></a></li>
+        <li><a href="mailto:"></a></li>
+        <li>Support Team: 10am-6pm</li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>CONNECT WITH US</h4>
+      <div class="social-icons">
+        <a href="https://github.com/Dip-sama" class="social-icon">GitHub</a>
+        <a href="https://linkedin.com/in/dip-bhattacharjee-aa833430a" class="social-icon">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 LearnTech. All rights reserved.</p>
+  </div>
+</footer>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    // Toggle menu when clicking the hamburger
+    hamburger.addEventListener("click", function () {
+      navLinks.classList.toggle("active");
+      hamburger.classList.toggle("active");
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("active");
+        hamburger.classList.remove("active");
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
