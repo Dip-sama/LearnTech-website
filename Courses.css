@@ -12,7 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #111827;
+ /* background: #111827;*/
   color: white;
   padding: 10px 20px;
   position: fixed;
@@ -117,7 +117,7 @@
 }
 
 .course {
-    background: #111827;
+   /* background: #111827;*/
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 280px;
