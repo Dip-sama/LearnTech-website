@@ -207,8 +207,10 @@ body {
 .courses h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
+    color: white;
 }
 
+/* Course Container */
 .course-container {
     display: flex;
     flex-wrap: wrap;
@@ -216,44 +218,68 @@ body {
     gap: 20px;
 }
 
+/* Course Card */
 .course-card {
     background: #111827;
     padding: 20px;
-    width: 350px;
-    border-radius: 8px;
+    width: 320px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.course-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Course Badge */
 .course-badge {
     background: #4f46e5;
     color: white;
-    padding: 5px 20px;
-    border-radius: 80%;
+    padding: 5px 15px;
+    border-radius: 20px;
     font-weight: bold;
+    font-size: 14px;
     display: inline-block;
+    margin-bottom: 10px;
 }
 
-/* Course Icons */
+/* Course Icon */
+.course-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
 .course-icon svg {
-    width: 40px;
+    width: 50px;
+    height: 50px;
     fill: #7c3aed;
 }
 
 /* Course Title */
 .course-title {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
+    color: #7CB9E8;
     margin-bottom: 10px;
 }
 
 /* Course Description */
 .course-text {
-    font-size: 14px;
-    color: #999;
-    line-height: 1.5;
+    font-size: 15px;
+    color: #bbb;
+    line-height: 1.6;
 }
 
-/* Companies Section */
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .course-card {
+        width: 90%;
+    }
+}
 .companies {
     text-align: center;
     padding: 60px 20px;
@@ -270,7 +296,6 @@ body {
     height: 50px;
 }
 
-/* AI Chatbot Button */
 .chatbot-btn {
     position: fixed;
     bottom: 20px;
