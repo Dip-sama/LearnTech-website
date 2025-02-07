@@ -473,6 +473,6 @@ body {
 /* Responsive Footer */
 @media (max-width: 768px) {
     .hero {
-        background: url('image/website-bannerp3.jpg') no-repeat center center/cover;
+        background: url('image/website-bannerp2.jpg') no-repeat center center/cover;
     }
 }
