@@ -225,11 +225,10 @@ body {
 
 /* Course Badge */
 .course-badge {
-    aling-items:left ;
     background: #4f46e5;
     color: white;
-    padding: 5px 0;
-    border-radius: 50%;
+    padding: 5px 20px;
+    border-radius: 80%;
     font-weight: bold;
     display: inline-block;
 }
