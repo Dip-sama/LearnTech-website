@@ -209,7 +209,9 @@ body {
     margin-bottom: 20px;
     color: white;
 }
-
+.courses span {
+     color: #007bff;
+}
 /* Course Container */
 .course-container {
     display: flex;
@@ -284,7 +286,9 @@ body {
     text-align: center;
     padding: 60px 20px;
 }
-
+#companies span{
+  color: #007bff;
+}
 .company-logos {
     display: flex;
     justify-content: center;
