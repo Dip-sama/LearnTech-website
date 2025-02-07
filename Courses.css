@@ -230,6 +230,6 @@ background-color: #0a0a0a;
 @media screen and (max-width: 768px) {
     .footer-container {
         flex-direction: column;
-        text-align: center;
+        text-align: left;
     }
 }
