@@ -265,7 +265,9 @@ body {
   background-color: var(--bg-color);
   padding: 1rem 2rem;
   border-radius: 1.25rem;
+  margin: 20px;
 }
+
 .loader {
   color: rgb(124, 124, 124);
   font-family: "Poppins", sans-serif;
@@ -293,9 +295,8 @@ body {
     var(--bg-color) 10%,
     transparent 30%,
     transparent 70%,
-    var(--bg-color) 90%
-  );
-  z-index: 20;
+    var(--bg-color) 90%);
+    z-index: 20;
 }
 
 .word {
