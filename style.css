@@ -65,7 +65,7 @@ body {
     color: white;
 }
 
-/* Navbar */
+/* 
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -80,7 +80,7 @@ body {
     z-index: 1000;
 }
 
-/* Ensure nav-links and toggle switch align properly */
+
 .navbar .nav-links {
     display: flex;
     gap: 20px;
@@ -88,18 +88,17 @@ body {
 }
 
 .navbar .switch {
-    margin-left: 20px; /* Space from links */
+    margin-left: 20px;
 }
 
-/* Fix Toggle Switch Alignment */
+
 .switch {
     display: flex;
     align-items: center;
     cursor: pointer;
-    margin-left: auto; /* Push to the right */
+    margin-left: auto; 
 }
 
-/* Responsive Navbar */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -127,8 +126,8 @@ body {
         right: 20px;
     }
 }
-
-/* .navbar {
+ */
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -140,7 +139,7 @@ body {
     left: 0;
     width: 100%;
     z-index: 1000;
-} */
+}
 
 .logo {
     font-weight: bold;
