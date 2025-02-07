@@ -162,6 +162,7 @@ background-color: #0a0a0a;
 
 /* Footer Section */
 .footer {
+   margin:auto;
     background: #111827;
     padding: 40px 20px;
     text-align: left;
