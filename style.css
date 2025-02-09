@@ -688,9 +688,10 @@ body {
     color: #7CB9E8;
 }
 
-/* Responsive Footer */
+/* Responsive Footer 
 @media (max-width: 768px) {
     .hero {
         background: url('image/website-bannerp2.jpg') no-repeat center center/cover;
     }
 }
+*/
