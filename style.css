@@ -229,7 +229,7 @@ body {
 /* 🔹 Video Background Fix */
 #bg-video {
     margin: 0px 0px 20px 0px;
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 100vw;
@@ -260,7 +260,7 @@ overflow: hidden;
 
 /* 🔹 Ensure Other Sections are Positioned Well */
 .courses, .companies {
-    position: relative;
+    position: ;
     z-index: 2;
     padding: 60px 20px;
 }
