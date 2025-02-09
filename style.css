@@ -228,35 +228,18 @@ body {
 }
 /* 🔹 Video Background Fix */
 #bg-video {
+    margin: 0px 0px 20px 0px;
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: auto;
     object-fit: cover;
-    z-index: -1; /* Keep the video in the background */
+    z-index: -1;
+overflow: hidden;
+ /* Keep the video in the background */
 }
 
-/* 🔹 Hero Section Fix */
-.hero {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 100vh;
-    color: white;
-    z-index: 1;
-}
-
-/* 🔹 Hero Content */
-.hero-content {
-    position: relative;
-    max-width: 800px;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.6); /* Transparent dark background */
-    border-radius: 10px;
-}
 
 /* 🔹 Button Styling */
 .btn {
@@ -306,19 +289,15 @@ body {
     z-index: 3; /* Keep it above other content */
 }
 
-/* 
+ 
 .hero {
     text-align: center;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('image/website-banner2.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
-
+/*
 .video-section {
     width: 100%;
     max-width: 900px;
@@ -331,7 +310,7 @@ body {
     position: relative;
     width: 100%;
     padding-top: 56.25%; 
-    overflow: hidden;
+    
     border-radius: 10px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
