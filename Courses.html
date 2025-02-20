@@ -1,113 +1,165 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Courses</title>
-        <link rel="icon" type="image/png" href="image/WhatsApp Image 2025-01-15 at 20.30.13_fc792d08.jpg">
-    <link rel="stylesheet" href="Courses.css"> <!-- Linking the CSS file -->
-</head>
-<body>
-
-<header>
-  <nav class="navbar">
-    <div class="logo">Learn<span>Tech</span></div>
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+<html>
+ <head>
+  <title>
+   Course Details
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+  </style>
+ </head>
+ <body class="bg-gray-100">
+<!-- Navbar -->
+<nav class="bg-white shadow-md">
+    <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold text-blue-600">LearnTech</a>
+        <ul class="hidden md:flex space-x-6">
+            <li><a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a></li>
+            <li><a href="Courses.html" class="text-gray-700 hover:text-blue-600">Courses</a></li>
+            <li><a href="about.html" class="text-gray-700 hover:text-blue-600">About</a></li>
+            <li><a href="contact.html" class="text-gray-700 hover:text-blue-600">Contact</a></li>
+        </ul>
+        <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="index">Home</a></li>
-      <li><a href="features.html">Features</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-        <li><a href="login.html">Login</a></li>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+    <ul class="space-y-2 py-2">
+        <li><a href="index.html" class="block text-gray-700 hover:text-blue-600 px-4">Home</a></li>
+        <li><a href="Courses.html" class="block text-gray-700 hover:text-blue-600 px-4">Courses</a></li>
+        <li><a href="about.html" class="block text-gray-700 hover:text-blue-600 px-4">About</a></li>
+        <li><a href="contact.html" class="block text-gray-700 hover:text-blue-600 px-4">Contact</a></li>
     </ul>
-  </nav>
-</header>
-
-<div class="courses-container">
-    <div class="course">
-        <h2>C Programming</h2>
-        <p>Learn the fundamentals of C programming and become proficient in one of the most widely used languages.</p>
-        <a href="enrollment.html" class="btn">Enroll Now</a>
-    </div>
-
-    <div class="course">
-        <h2>HTML</h2>
-        <p>Understand the basics of web structure and design, and start building websites with HTML.</p>
-        <a href="enrollment.html" class="btn">Enroll Now</a>
-    </div>
-
-    <div class="course">
-        <h2>CSS</h2>
-        <p>Master the art of styling websites and enhance your HTML knowledge by learning CSS.</p>
-        <a href="enrollment.html" class="btn">Enroll Now</a>
-    </div>
-
-    <div class="course">
-        <h2>Python</h2>
-        <p>Python programming and unlock the potential to create versatile applications.</p>
-        <a href="enrollment.html" class="btn">Enroll Now</a>
-    </div>
 </div>
- <footer class="footer">
-  <div class="footer-container">
-    <div class="footer-section">
-      <h3>Learn<span>Tech</span></h3>
-      <p>Where education meets real-world needs.</p>
+  <main class="container mx-auto p-4">
+   <div class="bg-white shadow-md rounded-lg overflow-hidden">
+    <img alt="A detailed image representing the course topic" class="w-full h-64 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/IPHH7dGEHSIpS0XgeA7ueH7a221s51_Tbr29nmQp_5w.jpg" width="1200"/>
+    <div class="p-6">
+     <h2 class="text-3xl font-bold mb-4">
+      Course Title
+     </h2>
+     <p class="text-gray-700 mb-4">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+     </p>
+     <div class="flex items-center mb-4">
+      <i class="fas fa-calendar-alt text-blue-600 mr-2">
+      </i>
+      <span class="text-gray-700">
+       Start Date: January 1, 2023
+      </span>
+     </div>
+     <div class="flex items-center mb-4">
+      <i class="fas fa-clock text-blue-600 mr-2">
+      </i>
+      <span class="text-gray-700">
+       Duration: 10 weeks
+      </span>
+     </div>
+     <div class="flex items-center mb-4">
+      <i class="fas fa-user-graduate text-blue-600 mr-2">
+      </i>
+      <span class="text-gray-700">
+       Instructor: John Doe
+      </span>
+     </div>
+     <h3 class="text-2xl font-bold mb-2">
+      Course Overview
+     </h3>
+     <p class="text-gray-700 mb-4">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+     </p>
+     <h3 class="text-2xl font-bold mb-2">
+      What You'll Learn
+     </h3>
+     <ul class="list-disc list-inside text-gray-700 mb-4">
+      <li>
+       Key concept 1
+      </li>
+      <li>
+       Key concept 2
+      </li>
+      <li>
+       Key concept 3
+      </li>
+      <li>
+       Key concept 4
+      </li>
+     </ul>
+     <h3 class="text-2xl font-bold mb-2">
+      Requirements
+     </h3>
+     <ul class="list-disc list-inside text-gray-700 mb-4">
+      <li>
+       Requirement 1
+      </li>
+      <li>
+       Requirement 2
+      </li>
+      <li>
+       Requirement 3
+      </li>
+     </ul>
+     <h3 class="text-2xl font-bold mb-2">
+      Course Content
+     </h3>
+     <ul class="list-decimal list-inside text-gray-700 mb-4">
+      <li>
+       Module 1: Introduction
+      </li>
+      <li>
+       Module 2: Advanced Topics
+      </li>
+      <li>
+       Module 3: Practical Applications
+      </li>
+      <li>
+       Module 4: Final Project
+      </li>
+     </ul>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Enroll Now
+     </button>
     </div>
-    <div class="footer-section">
-      <h4>HELPFUL LINKS</h4>
-      <ul>
-        <li><a href="Courses.html">Courses</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Refund Policy</a></li>
-        <li><a href="#">Terms & Conditions</a></li>
-      </ul>
+   </div>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+   <div class="container mx-auto px-4 text-center">
+    <p>
+     © 2023 LearnTech. All rights reserved.
+    </p>
+    <div class="flex justify-center space-x-4 mt-4">
+     <a class="text-white hover:text-blue-600" href="#">
+      <i class="fab fa-facebook-f">
+      </i>
+     </a>
+     <a class="text-white hover:text-blue-600" href="#">
+      <i class="fab fa-twitter">
+      </i>
+     </a>
+     <a class="text-white hover:text-blue-600" href="#">
+      <i class="fab fa-linkedin-in">
+      </i>
+     </a>
+     <a class="text-white hover:text-blue-600" href="#">
+      <i class="fab fa-instagram">
+      </i>
+     </a>
     </div>
-    <div class="footer-section">
-      <h4>GET IN TOUCH</h4>
-      <ul>
-        <li><a href="mailto:"></a></li>
-        <li><a href="mailto:"></a></li>
-        <li><a href="mailto:"></a></li>
-        <li>Support Team: 10am-6pm</li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h4>CONNECT WITH US</h4>
-      <div class="social-icons">
-        <a href="https://github.com/Dip-sama" class="social-icon">GitHub</a>
-        <a href="https://linkedin.com/in/dip-bhattacharjee-aa833430a" class="social-icon">LinkedIn</a>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2024 LearnTech. All rights reserved.</p>
-  </div>
-</footer>
-  <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("nav-links");
-
-    // Toggle Menu
-    hamburger.addEventListener("click", function () {
-        navLinks.classList.toggle("active");
-        hamburger.classList.toggle("active");
-    });
-
-    // Close menu when a link is clicked
-    document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", function () {
-            navLinks.classList.remove("active");
-            hamburger.classList.remove("active");
-        });
-    });
+   </div>
+  </footer>
+    <script>
+document.getElementById('menu-btn').addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
 });
-
 </script>
-</body>
+ </body>
 </html>
