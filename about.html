@@ -1,398 +1,183 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="icon" type="image/png" href="image/WhatsApp Image 2025-01-15 at 20.30.13_fc792d08.jpg">
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            background-color: #0a0a0a;
-            color: white;
-        }
-
-        .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #111827;
-    color: white;
-    padding: 10px 1px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-.navbar .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.navbar .logo span {
-     color: #4f46e5;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links li {
-    list-style: none;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: #00c6ff;
-}
-
-/* Hamburger Menu */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-}
-
-.hamburger span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: white;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-}
-
-/* Mobile View */
-@media screen and (max-width: 768px) {
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 48px;
-        right: 0;
-        background: rgba(0, 0, 0, 0.9);
-            width: 100%;
-        padding: 10px;
-        text-align: center;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-    }
-}
-
-
-        .slide {
-            margin-top: 48px;
-            max-width: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mySlides {
-            display: none;
-            width: 100%;
-        }
-
-        .mission-section {
-           
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .mission-section h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #0b3d91;
-        }
-
-        .mission-section p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin: 0 auto;
-            max-width: 800px;
-        }
-
-        .container {
-            max-width: 90%;
-            margin: 20px auto;
-            padding: 20px;
-           
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .founder {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 20px;
-        }
-
-        .founder-card {
-            text-align: center;
-            flex: 1 1 calc(45% - 20px);
-            max-width: 300px;
-        }
-
-        .founder-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid #433d3d;
-            margin-bottom: 15px;
-        }
-
-        .founder-name {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #000;
-        }
-
-        .founder-title {
-            font-size: 1em;
-            color: #666666;
-        }
-
-        .founder-quote {
-            font-style: italic;
-            margin-top: 10px;
-            color: #fff;
-            font-size: large;
-        }
-
-        button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #0b3d91;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        button a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background-color: #99dcf7;
-        }
-
-        @media (max-width: 768px) {
-            .founder {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .mission-section h2 {
-                font-size: 1.5rem;
-            }
-
-            .mission-section p {
-                font-size: 1rem;
-            }
-
-            button {
-                width: 100%;
-            }
-        }
-
-.footer {
-    background: #111827;
-    padding: 5px;
-    text-align: left;
-}
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.footer-section {
-    width: 250px;
-}
-
-.footer-section h3 span {
-    color: #4f46e5;
-}
-
-.footer-bottom {
-    margin-top: 10px;
-    font-size: 0.9rem;
-}
-
-.footer-section ul {
-    list-style: none;
-}
-
-.footer-section ul a {
-    text-decoration: none;
-    color: #7CB9E8;
-}
-
-    </style>
-</head>
-<body>
-    <header>
-        <div class="navbar">
-            <div class="logo">Learn<span>Tech</span></div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="features.html">Features</a></li>
-                <li><a href="Courses.html">Courses</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="login.html">Login</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </header>
-
-    <div class="slide">
-        <img class="mySlides" src="image/free-education-website-slider-banner-psd-template.jpg" alt="Slide 1" style="width:100%">
-        <img class="mySlides" src="image/homepagesliders.png" alt="Slide 2" style="width:100%">
-        <img class="mySlides" src="image/Fundamentals-of-Web-Development.jpg" alt="Slide 3" style="width:100%">
-        <img class="mySlides" src="image/AI-in-Software-Development.webp" alt="Slide 4" style="width:100%">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   About Us - LearnTech
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+ </head>
+ <body class="font-roboto bg-gray-100">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md">
+   <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+    <a class="text-2xl font-bold text-blue-600" href="index.html">
+     LearnTech
+    </a>
+    <ul class="hidden md:flex space-x-6">
+     <li>
+      <a class="text-gray-700 hover:text-blue-600" href="index.html">
+       Home
+      </a>
+     </li>
+     <li>
+      <a class="text-gray-700 hover:text-blue-600" href="Courses.html">
+       Courses
+      </a>
+     </li>
+     <li>
+      <a class="text-gray-700 hover:text-blue-600" href="about.html">
+       About
+      </a>
+     </li>
+     <li>
+      <a class="text-gray-700 hover:text-blue-600" href="contact.html">
+       Contact
+      </a>
+     </li>
+    </ul>
+    <div class="md:hidden">
+     <button class="text-gray-700 focus:outline-none" id="menu-btn">
+      <i class="fas fa-bars">
+      </i>
+     </button>
     </div>
-
-    <script>
-        let slideIndex = 0;
-        showSlides();
-
-        function showSlides() {
-            let slides = document.getElementsByClassName("mySlides");
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {
-                slideIndex = 1;
-            }
-            slides[slideIndex - 1].style.display = "block";
-            setTimeout(showSlides, 3000); // Change image every 3 seconds
-        }
-    </script>
-
-    <section class="mission-section">
-        <h2>Our Mission</h2>
-        <p>
-            At LearnTech, we believe that quality education should be accessible to everyone.
-            Our mission is to provide free, high-quality, and up-to-date learning resources that
-            empower individuals to master technology and achieve their dreams. Whether you're
-            a student, a working professional, or a curious learner, we're here to help you grow and succeed.
-        </p>
-    </section>
-
-    <h1 style="text-align: center;">Our Founder</h1>
-    <div class="container">
-        <div class="founder">
-            <div class="founder-card">
-                <img src="image/WhatsApp Image 2024-12-23 at 22.57.39_272b099e.jpg" alt="Founder 1" class="founder-img">
-                <h3 class="founder-name">Dip Bhattacharjee</h3>
-                <p class="founder-title">Founder and CEO</p>
-                <p class="founder-quote">"Passion drives innovation and creativity."</p>
-            </div>
-            <div class="founder-card">
-                <p class="founder-quote">
-                    ---<br>
-                    Hi, I’m Dip Bhattacharjee, the founder and CEO of LearnTech. I’m currently studying BCA at DAITM, and my passion for technology led me to create this website. While I’m still learning, I’m dedicated to providing useful content and making this platform easy for everyone to enjoy. My goal is to keep improving and sharing helpful resources with all of you. Thank you for being part of this journey, and I hope you find something valuable here!<br>
-                    ---
-                </p>
-            </div>
-        </div>
+   </div>
+  </nav>
+  <!-- Mobile Menu -->
+  <div class="hidden md:hidden bg-white shadow-md" id="mobile-menu">
+   <ul class="space-y-2 py-2">
+    <li>
+     <a class="block text-gray-700 hover:text-blue-600 px-4" href="index.html">
+      Home
+     </a>
+    </li>
+    <li>
+     <a class="block text-gray-700 hover:text-blue-600 px-4" href="Courses.html">
+      Courses
+     </a>
+    </li>
+    <li>
+     <a class="block text-gray-700 hover:text-blue-600 px-4" href="about.html">
+      About
+     </a>
+    </li>
+    <li>
+     <a class="block text-gray-700 hover:text-blue-600 px-4" href="contact.html">
+      Contact
+     </a>
+    </li>
+   </ul>
+  </div>
+  <!-- About Section -->
+  <section class="bg-gray-100 py-20">
+   <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center">
+     <div class="md:w-1/2 mb-8 md:mb-0">
+      <img alt="About Us: A detailed image of a team of professionals collaborating in an office" class="w-full h-64 object-cover rounded-lg shadow-md" height="400" src="https://storage.googleapis.com/a1aa/image/RZ26mnnIx13g5kl6GYrGLI4SxhgnenJBwaxMhtpNFwQ.jpg" width="600"/>
+     </div>
+     <div class="md:w-1/2 md:pl-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+       About Us
+      </h2>
+      <p class="text-gray-700 mb-4">
+       LearnTech is dedicated to providing the best online learning experience. Our courses are designed by industry experts to help you achieve your career goals. We believe in the power of education to transform lives and are committed to making high-quality learning accessible to everyone.
+      </p>
+      <p class="text-gray-700 mb-4">
+       Our mission is to empower individuals with the skills and knowledge they need to succeed in their careers. Whether you're looking to learn a new skill, advance in your current job, or change careers entirely, LearnTech has the resources and support you need to achieve your goals.
+      </p>
+      <a class="text-blue-600 hover:underline" href="contact.html">
+       Get in Touch
+      </a>
+     </div>
     </div>
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-section">
-      <h3>Learn<span>Tech</span></h3>
-      <p>Where education meets real-world needs.</p>
-    </div>
-    <div class="footer-section">
-      <h4>HELPFUL LINKS</h4>
-      <ul>
-        <li><a href="Courses.html">Courses</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Refund Policy</a></li>
-        <li><a href="#">Terms & Conditions</a></li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h4>GET IN TOUCH</h4>
-      <ul>
-        <li><a href="mailto:"></a></li>
-        <li><a href="mailto:"></a></li>
-        <li><a href="mailto:"></a></li>
-        <li>Support Team: 10am-6pm</li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h4>CONNECT WITH US</h4>
-      <div class="social-icons">
-        <a href="https://github.com/Dip-sama" class="social-icon">GitHub</a>
-        <a href="https://linkedin.com/in/dip-bhattacharjee-aa833430a" class="social-icon">LinkedIn</a>
+   </div>
+  </section>
+  <!-- Team Section -->
+  <section class="py-20">
+   <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+     Meet Our Team
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+     <div class="bg-white shadow-md rounded-lg overflow-hidden">
+      <img alt="Team Member 1: A detailed image of a smiling professional in business attire" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/1.jpg" width="600"/>
+      <div class="p-6">
+       <h3 class="text-xl font-bold mb-2">
+        John Doe
+       </h3>
+       <p class="text-gray-700 mb-4">
+        CEO & Founder
+       </p>
+       <p class="text-gray-700 mb-4">
+        John is a visionary leader with over 20 years of experience in the tech industry. He founded LearnTech to make high-quality education accessible to everyone.
+       </p>
       </div>
+     </div>
+     <div class="bg-white shadow-md rounded-lg overflow-hidden">
+      <img alt="Team Member 2: A detailed image of a professional woman in business attire" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/2.jpg" width="600"/>
+      <div class="p-6">
+       <h3 class="text-xl font-bold mb-2">
+        Jane Smith
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Chief Operating Officer
+       </p>
+       <p class="text-gray-700 mb-4">
+        Jane oversees the day-to-day operations at LearnTech. She has a background in business management and a passion for education.
+       </p>
+      </div>
+     </div>
+     <div class="bg-white shadow-md rounded-lg overflow-hidden">
+      <img alt="Team Member 3: A detailed image of a professional man in business attire" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/3.jpg" width="600"/>
+      <div class="p-6">
+       <h3 class="text-xl font-bold mb-2">
+        Michael Brown
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Chief Technology Officer
+       </p>
+       <p class="text-gray-700 mb-4">
+        Michael is responsible for the technological direction of LearnTech. He has a deep understanding of the latest tech trends and innovations.
+       </p>
+      </div>
+     </div>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2024 LearnTech. All rights reserved.</p>
-  </div>
-</footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("nav-links");
-
-    hamburger.addEventListener("click", function () {
-        navLinks.classList.toggle("active");
-        hamburger.classList.toggle("active");
-    });
-
-    document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", function () {
-            navLinks.classList.remove("active");
-            hamburger.classList.remove("active");
+   </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+   <div class="container mx-auto px-4 text-center">
+    <p>
+     © 2023 LearnTech. All rights reserved.
+    </p>
+    <div class="flex justify-center space-x-4 mt-4">
+   <!--  <a class="text-white hover:text-blue-600" href="#">
+      <i class="fab fa-facebook-f">
+      </i>
+     </a>-->
+     <a class="text-white hover:text-blue-600" href="https://github.com/Dip-sama">
+      <i class="fab fa-github">
+      </i>
+     </a>
+     <a class="text-white hover:text-blue-600" href="https://www.linkedin.com/in/dip-bhattacharjee-aa833430a">
+      <i class="fab fa-linkedin-in">
+      </i>
+     </a>
+     <a class="text-white hover:text-blue-600" href="#">
+      <i class="fab fa-instagram">
+      </i>
+     </a>
+    </div>
+   </div>
+  </footer>
+  <script>
+   document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         });
-    });
-});
-
-    </script>
-</body>
+  </script>
+ </body>
 </html>
