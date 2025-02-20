@@ -40,7 +40,53 @@
         <li><a href="contact.html" class="block text-gray-700 hover:text-blue-600 px-4">Contact</a></li>
     </ul>
 </div>
-  <!-- Hero Section -->
+<!-- Slideshow Section -->
+<section class="relative w-full mx-auto mt-4 overflow-hidden">
+    <div class="relative w-full h-64 md:h-96">
+        <!-- Slide Items -->
+        <div class="absolute inset-0 flex transition-transform duration-1000 ease-in-out transform translate-x-0" id="slides">
+            <img src="image/Fundamentals-of-Web-Development.jpg" class="w-full h-full object-cover" alt="Slide 1">
+            <img src="image/free-education-website-slider-banner-psd-template.jpg" class="w-full h-full object-cover" alt="Slide 2">
+            <img src="image/AI-in-Software-Development.webp" class="w-full h-full object-cover" alt="Slide 3">
+        </div>
+
+        <!-- Navigation Buttons -->
+        <button id="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button id="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</section>
+
+<!-- JavaScript for Slideshow -->
+<script>
+    const slides = document.getElementById('slides');
+    const totalSlides = slides.children.length;
+    let currentIndex = 0;
+
+    function updateSlide() {
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlide();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateSlide();
+    }
+
+    document.getElementById('next').addEventListener('click', nextSlide);
+    document.getElementById('prev').addEventListener('click', prevSlide);
+
+    // Auto-play slides every 5 seconds
+    setInterval(nextSlide, 5000);
+</script>
+  <!-- Hero Section 
   <section class="bg-blue-600 text-white py-20">
    <div class="container mx-auto px-4 text-center">
     <h1 class="text-4xl md:text-6xl font-bold mb-4">
@@ -53,7 +99,7 @@
      Get Started
     </a>
    </div>
-  </section>
+  </section>-->
   <!-- Courses Section -->
   <section class="py-20">
    <div class="container mx-auto px-4">
