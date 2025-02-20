@@ -42,12 +42,17 @@
 </div>
 <!-- Slideshow Section -->
 <section class="relative w-full mx-auto mt-4 overflow-hidden">
-    <div class="relative w-full h-64 md:h-96">
-        <!-- Slide Items -->
-        <div class="absolute inset-0 flex transition-transform duration-1000 ease-in-out transform translate-x-0" id="slides">
-            <img src="image/Fundamentals-of-Web-Development.jpg" class="w-full h-full object-cover" alt="Slide 1">
-            <img src="image/free-education-website-slider-banner-psd-template.jpg" class="w-full h-full object-cover" alt="Slide 2">
-            <img src="image/AI-in-Software-Development.webp" class="w-full h-full object-cover" alt="Slide 3">
+    <div class="relative w-full h-64 md:h-96 overflow-hidden">
+        <div id="slides" class="flex w-full h-full transition-transform duration-1000 ease-in-out">
+            <div class="w-full flex-shrink-0">
+                <img src="image/Fundamentals-of-Web-Development.jpg" class="w-full h-full object-cover" alt="Slide 1">
+            </div>
+            <div class="w-full flex-shrink-0">
+                <img src="image/free-education-website-slider-banner-psd-template.jpg" class="w-full h-full object-cover" alt="Slide 2">
+            </div>
+            <div class="w-full flex-shrink-0">
+                <img src="image/AI-in-Software-Development.webp" class="w-full h-full object-cover" alt="Slide 3">
+            </div>
         </div>
 
         <!-- Navigation Buttons -->
@@ -59,32 +64,30 @@
         </button>
     </div>
 </section>
-
-<!-- JavaScript for Slideshow -->
 <script>
-    const slides = document.getElementById('slides');
-    const totalSlides = slides.children.length;
-    let currentIndex = 0;
+const slides = document.getElementById('slides');
+const slideCount = slides.children.length;
+let currentIndex = 0;
 
-    function updateSlide() {
-        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
+function updateSlide() {
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
 
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateSlide();
-    }
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % slideCount;
+    updateSlide();
+}
 
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        updateSlide();
-    }
+function prevSlide() {
+    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+    updateSlide();
+}
 
-    document.getElementById('next').addEventListener('click', nextSlide);
-    document.getElementById('prev').addEventListener('click', prevSlide);
+document.getElementById('next').addEventListener('click', nextSlide);
+document.getElementById('prev').addEventListener('click', prevSlide);
 
-    // Auto-play slides every 5 seconds
-    setInterval(nextSlide, 5000);
+// Auto-play slides every 5 seconds
+setInterval(nextSlide, 5000);
 </script>
   <!-- Hero Section 
   <section class="bg-blue-600 text-white py-20">
