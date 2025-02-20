@@ -12,66 +12,34 @@
  </head>
  <body class="font-roboto bg-gray-100">
   <!-- Navbar -->
-  <nav class="bg-white shadow-md">
-   <div class="container mx-auto px-4 py-2 flex justify-between items-center">
-    <a class="text-2xl font-bold text-blue-600" href="index.html">
-     LearnTech
-    </a>
-    <ul class="hidden md:flex space-x-6">
-     <li>
-      <a class="text-gray-700 hover:text-blue-600" href="index.html">
-       Home
-      </a>
-     </li>
-     <li>
-      <a class="text-gray-700 hover:text-blue-600" href="Courses.html">
-       Courses
-      </a>
-     </li>
-     <li>
-      <a class="text-gray-700 hover:text-blue-600" href="about.html">
-       About
-      </a>
-     </li>
-     <li>
-      <a class="text-gray-700 hover:text-blue-600" href="contact.html">
-       Contact
-      </a>
-     </li>
-    </ul>
-    <div class="md:hidden">
-     <button class="text-gray-700 focus:outline-none" id="menu-btn">
-      <i class="fas fa-bars">
-      </i>
-     </button>
+<nav class="bg-white shadow-md">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold text-blue-600">LearnTech</a>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex space-x-6">
+            <li><a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a></li>
+            <li><a href="Courses.html" class="text-gray-700 hover:text-blue-600">Courses</a></li>
+            <li><a href="about.html" class="text-gray-700 hover:text-blue-600">About</a></li>
+            <li><a href="contact.html" class="text-gray-700 hover:text-blue-600">Contact</a></li>
+        </ul>
+
+        <!-- Hamburger Button -->
+        <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
     </div>
-   </div>
-  </nav>
-  <!-- Mobile Menu -->
-  <div class="hidden md:hidden bg-white shadow-md" id="mobile-menu">
-   <ul class="space-y-2 py-2">
-    <li>
-     <a class="block text-gray-700 hover:text-blue-600 px-4" href="features.html">
-      Features
-     </a>
-    </li>
-    <li>
-     <a class="block text-gray-700 hover:text-blue-600 px-4" href="Courses.html">
-      Courses
-     </a>
-    </li>
-    <li>
-     <a class="block text-gray-700 hover:text-blue-600 px-4" href="about.html">
-      About
-     </a>
-    </li>
-    <li>
-     <a class="block text-gray-700 hover:text-blue-600 px-4" href="contact.html">
-      Contact
-     </a>
-    </li>
-   </ul>
-  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-white shadow-md absolute w-full top-16 left-0 transition-all duration-300 ease-in-out">
+    <ul class="space-y-2 py-4 text-center">
+        <li><a href="index.html" class="block text-gray-700 hover:text-blue-600 px-4">Home</a></li>
+        <li><a href="Courses.html" class="block text-gray-700 hover:text-blue-600 px-4">Courses</a></li>
+        <li><a href="about.html" class="block text-gray-700 hover:text-blue-600 px-4">About</a></li>
+        <li><a href="contact.html" class="block text-gray-700 hover:text-blue-600 px-4">Contact</a></li>
+    </ul>
+</div>
   <!-- Hero Section -->
   <section class="bg-blue-600 text-white py-20">
    <div class="container mx-auto px-4 text-center">
