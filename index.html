@@ -1,580 +1,227 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LearnTech - Free Learning Platform</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="popup" class="popup">
-      <div class="popup-content">
-          <span class="close-btn">&times;</span>
-    <!--<h2>🚧 Maintenance Alert 🚧</h2>
-    <p>Dear users, LearnTech is currently undergoing maintenance to enhance your experience. We’ll be back soon! Thank you for your patience and support.</p>
-    <button onclick="closePopup()">OK</button>-->
-         <h2>Welcome to LearnTech!</h2>
-          <p>Start your web development journey today for free.</p>
-          <a href="Courses.html" class="popup-btn">Explore Courses</a> 
-      </div>
-  </div>
-  <!-- Header Section -->
-  <header class="hero">
-<!--      <style>
-        .switch {
-          position: relative;
-          display: inline-block;
-          width: 60px;
-          height: 34px;
-        }
-        
-        .switch #input {
-          opacity: 0;
-          width: 0;
-          height: 0;
-        }
-        
-        .slider {
-          position: absolute;
-          cursor: pointer;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: #2196f3;
-          -webkit-transition: 0.4s;
-          transition: 0.4s;
-          z-index: 0;
-          overflow: hidden;
-        }
-        
-        .sun-moon {
-          position: absolute;
-          content: "";
-          height: 26px;
-          width: 26px;
-          left: 4px;
-          bottom: 4px;
-          background-color: yellow;
-          -webkit-transition: 0.4s;
-          transition: 0.4s;
-        }
-        
-        #input:checked + .slider {
-          background-color: black;
-        }
-        
-        #input:focus + .slider {
-          box-shadow: 0 0 1px #2196f3;
-        }
-        
-        #input:checked + .slider .sun-moon {
-          -webkit-transform: translateX(26px);
-          -ms-transform: translateX(26px);
-          transform: translateX(26px);
-          background-color: white;
-          -webkit-animation: rotate-center 0.6s ease-in-out both;
-          animation: rotate-center 0.6s ease-in-out both;
-        }
-        
-        .moon-dot {
-          opacity: 0;
-          transition: 0.4s;
-          fill: gray;
-        }
-        
-        #input:checked + .slider .sun-moon .moon-dot {
-          opacity: 1;
-        }
-        
-        .slider.round {
-          border-radius: 34px;
-        }
-        
-        .slider.round .sun-moon {
-          border-radius: 50%;
-        }
-        
-        #moon-dot-1 {
-          left: 10px;
-          top: 3px;
-          position: absolute;
-          width: 6px;
-          height: 6px;
-          z-index: 4;
-        }
-        
-        #moon-dot-2 {
-          left: 2px;
-          top: 10px;
-          position: absolute;
-          width: 10px;
-          height: 10px;
-          z-index: 4;
-        }
-        
-        #moon-dot-3 {
-          left: 16px;
-          top: 18px;
-          position: absolute;
-          width: 3px;
-          height: 3px;
-          z-index: 4;
-        }
-        
-        #light-ray-1 {
-          left: -8px;
-          top: -8px;
-          position: absolute;
-          width: 43px;
-          height: 43px;
-          z-index: -1;
-          fill: white;
-          opacity: 10%;
-        }
-        
-        #light-ray-2 {
-          left: -50%;
-          top: -50%;
-          position: absolute;
-          width: 55px;
-          height: 55px;
-          z-index: -1;
-          fill: white;
-          opacity: 10%;
-        }
-        
-        #light-ray-3 {
-          left: -18px;
-          top: -18px;
-          position: absolute;
-          width: 60px;
-          height: 60px;
-          z-index: -1;
-          fill: white;
-          opacity: 10%;
-        }
-        
-        .cloud-light {
-          position: absolute;
-          fill: #eee;
-          animation-name: cloud-move;
-          animation-duration: 6s;
-          animation-iteration-count: infinite;
-        }
-        
-        .cloud-dark {
-          position: absolute;
-          fill: #ccc;
-          animation-name: cloud-move;
-          animation-duration: 6s;
-          animation-iteration-count: infinite;
-          animation-delay: 1s;
-        }
-        
-        #cloud-1 {
-          left: 30px;
-          top: 15px;
-          width: 40px;
-        }
-        
-        #cloud-2 {
-          left: 44px;
-          top: 10px;
-          width: 20px;
-        }
-        
-        #cloud-3 {
-          left: 18px;
-          top: 24px;
-          width: 30px;
-        }
-        
-        #cloud-4 {
-          left: 36px;
-          top: 18px;
-          width: 40px;
-        }
-        
-        #cloud-5 {
-          left: 48px;
-          top: 14px;
-          width: 20px;
-        }
-        
-        #cloud-6 {
-          left: 22px;
-          top: 26px;
-          width: 30px;
-        }
-        
-        @keyframes cloud-move {
-          0% {
-            transform: translateX(0px);
-          }
-        
-          40% {
-            transform: translateX(4px);
-          }
-        
-          80% {
-            transform: translateX(-4px);
-          }
-        
-          100% {
-            transform: translateX(0px);
-          }
-        }
-        
-        .stars {
-          transform: translateY(-32px);
-          opacity: 0;
-          transition: 0.4s;
-        }
-        
-        .star {
-          fill: white;
-          position: absolute;
-          -webkit-transition: 0.4s;
-          transition: 0.4s;
-          animation-name: star-twinkle;
-          animation-duration: 2s;
-          animation-iteration-count: infinite;
-        }
-        
-        #input:checked + .slider .stars {
-          -webkit-transform: translateY(0);
-          -ms-transform: translateY(0);
-          transform: translateY(0);
-          opacity: 1;
-        }
-        
-        #star-1 {
-          width: 20px;
-          top: 2px;
-          left: 3px;
-          animation-delay: 0.3s;
-        }
-        
-        #star-2 {
-          width: 6px;
-          top: 16px;
-          left: 3px;
-        }
-        
-        #star-3 {
-          width: 12px;
-          top: 20px;
-          left: 10px;
-          animation-delay: 0.6s;
-        }
-        
-        #star-4 {
-          width: 18px;
-          top: 0px;
-          left: 18px;
-          animation-delay: 1.3s;
-        }
-        
-        @keyframes star-twinkle {
-          0% {
-            transform: scale(1);
-          }
-        
-          40% {
-            transform: scale(1.2);
-          }
-        
-          80% {
-            transform: scale(0.8);
-          }
-        
-          100% {
-            transform: scale(1);
-          }
-        }
-       @media screen and (max-width:770) {
-       .switch {
-      aling-items: center;
-         
-        }
-        </style> -->
-    <nav class="navbar">
-      <div class="logo">Learn<span>Tech</span></div>
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-<!--           <label class="switch">
-        <input id="input" type="checkbox" checked="darkTheme" />
-        <div class="slider round">
-          <div class="sun-moon">
-            <svg id="moon-dot-1" class="moon-dot" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="moon-dot-2" class="moon-dot" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="moon-dot-3" class="moon-dot" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="light-ray-1" class="light-ray" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="light-ray-2" class="light-ray" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="light-ray-3" class="light-ray" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-      
-            <svg id="cloud-1" class="cloud-dark" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="cloud-2" class="cloud-dark" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="cloud-3" class="cloud-dark" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="cloud-4" class="cloud-light" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="cloud-5" class="cloud-light" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-            <svg id="cloud-6" class="cloud-light" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
-          </div>
-          <div class="stars">
-            <svg id="star-1" class="star" viewBox="0 0 20 20">
-              <path
-                d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z"
-              ></path>
-            </svg>
-            <svg id="star-2" class="star" viewBox="0 0 20 20">
-              <path
-                d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z"
-              ></path>
-            </svg>
-            <svg id="star-3" class="star" viewBox="0 0 20 20">
-              <path
-                d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z"
-              ></path>
-            </svg>
-            <svg id="star-4" class="star" viewBox="0 0 20 20">
-              <path
-                d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z"
-              ></path>
-            </svg>
-          </div>
-        </div>
-      </label> -->
-      <ul class="nav-links" id="navLinks">
-        <li><a href="about.html">About</a></li>
-        <li><a href="features.html">Features</a></li>
-        <li><a href="Courses.html">Courses</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="login.html">Login</a></li>
-      </ul>
-    </nav>
-    <!-- Background Video -->
-    <video autoplay muted loop id="bg-video">
-        <source src="website-video.mp4" type="video/mp4">
-    </video>
-
-    <!-- Overlay Content 
-    <div class="hero-content">
-        <h1>Learn, Code & Build with LearnTech</h1>
-        <p>Interactive learning, live coding, and hands-on projects.</p>
-        <a href="Courses.html" class="btn">Explore Courses</a>
-    </div>-->
-</header>
-
-  </header>
-<div class="card">
-  <div class="Learn">
-    <p>loading</p>
-    <div class="words">
-      <span class="word">UI/UX Design</span>
-      <span class="word">Web Development</span>
-      <span class="word">Programming Basics</span>
-      <span class="word">Data Science</span>
-      <span class="word">cyber security</span>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   LearnTech
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+ </head>
+ <body class="font-roboto bg-gray-100">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md">
+   <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+    <a class="text-2xl font-bold text-blue-600" href="index.html">
+     LearnTech
+    </a>
+    <ul class="hidden md:flex space-x-6">
+     <li>
+      <a class="text-gray-700 hover:text-blue-600" href="index.html">
+       Home
+      </a>
+     </li>
+     <li>
+      <a class="text-gray-700 hover:text-blue-600" href="Courses.html">
+       Courses
+      </a>
+     </li>
+     <li>
+      <a class="text-gray-700 hover:text-blue-600" href="about.html">
+       About
+      </a>
+     </li>
+     <li>
+      <a class="text-gray-700 hover:text-blue-600" href="contact.html">
+       Contact
+      </a>
+     </li>
+    </ul>
+    <div class="md:hidden">
+     <button class="text-gray-700 focus:outline-none" id="menu-btn">
+      <i class="fas fa-bars">
+      </i>
+     </button>
     </div>
+   </div>
+  </nav>
+  <!-- Mobile Menu -->
+  <div class="hidden md:hidden bg-white shadow-md" id="mobile-menu">
+   <ul class="space-y-2 py-2">
+    <li>
+     <a class="block text-gray-700 hover:text-blue-600 px-4" href="index.html">
+      Home
+     </a>
+    </li>
+    <li>
+     <a class="block text-gray-700 hover:text-blue-600 px-4" href="Courses.html">
+      Courses
+     </a>
+    </li>
+    <li>
+     <a class="block text-gray-700 hover:text-blue-600 px-4" href="about.html">
+      About
+     </a>
+    </li>
+    <li>
+     <a class="block text-gray-700 hover:text-blue-600 px-4" href="contact.html">
+      Contact
+     </a>
+    </li>
+   </ul>
   </div>
-</div>
-
-  <section id="courses" class="courses">
-    <h2>Explore Our <span>Courses</span></h2>
-    <div class="course-container">
-
-      <!-- UI/UX Design -->
-      <div class="course-card">
-        <div class="course-badge">01</div>
-        <h3 class="course-title">UI/UX Design</h3>
-        <p class="course-text">Learn the fundamentals of UI/UX, wireframing, and prototyping.</p>
-      </div>
-
-      <!-- Web Development -->
-      <div class="course-card">
-        <div class="course-badge">02</div>
-        <h3 class="course-title"> Web Development</h3>
-        <p class="course-text">Master HTML, CSS, JavaScript, and build responsive websites.</p>
-      </div>
-
-      <!-- Programming Basics -->
-      <div class="course-card">
-        <div class="course-badge">03</div>
-        <h3 class="course-title"> Programming Basics</h3>
-        <p class="course-text">Learn C, C++, Java, and Python.</p>
-      </div>
-
-      <!-- Data Science -->
-      <div class="course-card">
-        <div class="course-badge">04</div>
-        <h3 class="course-title">Data Science</h3>
-        <p class="course-text">Understand Python, Machine Learning, and AI from scratch.</p>
-      </div>
-    </div>
+  <!-- Hero Section -->
+  <section class="bg-blue-600 text-white py-20">
+   <div class="container mx-auto px-4 text-center">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">
+     Welcome to LearnTech
+    </h1>
+    <p class="text-lg md:text-2xl mb-8">
+     Your gateway to the best online courses
+    </p>
+    <a class="bg-white text-blue-600 px-6 py-3 rounded-full text-lg font-semibold" href="Courses.html">
+     Get Started
+    </a>
+   </div>
   </section>
-<section id="companies" class="companies">
-  <h2>Our Students Work At</h2>
-  <p>Thousands of students achieved their <span>dream job</span> at top MNCs.</p>
-
-  <div class="company-logos">
-
-    <img src="image/ec5be16b046b62a2a860b67f9dc55b86.png" alt="Google">
-    <img src="image/ee17a1d06126f8bfc5444ad666e8ba21.png" alt="Microsoft">
-    <img src="image/e24ce5f542c45a73c05172d9c4f38e2e.png" alt="Tech Mahindra">
-    <img src="image/cfe53c7856b98c0bf010ebcfc8cbfa29.png" alt="TCS">
-    <img src="image/0f683ab474c5a018baa3bdd53330c9ae.png" alt="KPMG">
-    <img src="image/02fb63567e1b107d549d5d15e922424b.png" alt="Indian Bank">
-<img src="image/Tech_Mahindra-Logo.wine.png" alt="Samsung">
-    <img src="image/Tata_Consultancy_Services_Logo.svg.png" alt="Salesforce">
-    <img src="image/9a47085894be9870158c9ad4e23c1a24.png" alt="Mercedes-Benz">
-    <img src="image/91cb8fef8fe424a1ae2406aa58a380d8.png" alt="EY">
-    <img src="image/4d6e24add7d7c5d618aeef1795dba038.png" alt="Airtel">
-    <img src="image/f226d6ddcb4f38c2c23f02008bbdf737.png" alt="Amazon">
-  </div>
-
-  <p class="more">+ Many More</p>
-</section>
-
-  <button id="chatbotBtn" class="chatbot-btn">💬 AI Chatbot</button>
-
-  <!--<div class="main">
-      <div class="card1" id="c1">
-<img src="image/c png">
-</div>
-      <div class="card1" id="c2"><img src="image/HTML5.png"> </div>
-      <div class="card1" id="c3"><img src="image/css1.png">  </div>
-      <div class="card1" id="c4"><img src="image/png-javascript-badge-picture-8.png"> </div>
+  <!-- Courses Section -->
+  <section class="py-20">
+   <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+     Our Courses
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+     <div class="bg-white shadow-md rounded-lg overflow-hidden">
+      <img alt="Course 1: A detailed image of a person studying with a laptop and books" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/4O5Ru2OGnR357sPoxTjUFBhW1D8LVRzeJQqyN9DWhCQ.jpg" width="600"/>
+      <div class="p-6">
+       <h3 class="text-xl font-bold mb-2">
+        Course 1
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Learn the basics of web development with this comprehensive course.
+       </p>
+       <a class="text-blue-600 hover:underline" href="Courses.html">
+        Learn More
+       </a>
+      </div>
+     </div>
+     <div class="bg-white shadow-md rounded-lg overflow-hidden">
+      <img alt="Course 2: A detailed image of a person coding on a computer with multiple screens" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/fL_VpRPYC6Kl8J72v0Da0AE6ay15CocjPHIncyo8oUo.jpg" width="600"/>
+      <div class="p-6">
+       <h3 class="text-xl font-bold mb-2">
+        Course 2
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Advanced JavaScript techniques for modern web applications.
+       </p>
+       <a class="text-blue-600 hover:underline" href="Courses.html">
+        Learn More
+       </a>
+      </div>
+     </div>
+     <div class="bg-white shadow-md rounded-lg overflow-hidden">
+      <img alt="Course 3: A detailed image of a person designing a website layout on a tablet" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/oPlfwAaIdm7npZ0Zpk-WDRL8LUk1id5EbqQZH7zDt44.jpg" width="600"/>
+      <div class="p-6">
+       <h3 class="text-xl font-bold mb-2">
+        Course 3
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Master the art of UI/UX design with practical examples.
+       </p>
+       <a class="text-blue-600 hover:underline" href="Courses.html">
+        Learn More
+       </a>
+      </div>
+     </div>
     </div>
+   </div>
+  </section>
+  <!-- About Section -->
+  <section class="bg-gray-100 py-20">
+   <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center">
+     <div class="md:w-1/2 mb-8 md:mb-0">
+      <img alt="About Us: A detailed image of a team of professionals collaborating in an office" class="w-full h-64 object-cover rounded-lg shadow-md" height="400" src="https://storage.googleapis.com/a1aa/image/RZ26mnnIx13g5kl6GYrGLI4SxhgnenJBwaxMhtpNFwQ.jpg" width="600"/>
+     </div>
+     <div class="md:w-1/2 md:pl-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+       About Us
+      </h2>
+      <p class="text-gray-700 mb-4">
+       LearnTech is dedicated to providing the best online learning experience. Our courses are designed by industry experts to help you achieve your career goals.
+      </p>
+      <a class="text-blue-600 hover:underline" href="about.html">
+       Read More
+      </a>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Contact Section 
+  <section class="py-20">
+   <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+     Contact Us
+    </h2>
+    <div class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-8">
+     <form action="#">
+      <div class="mb-4">
+       <label class="block text-gray-700 font-bold mb-2" for="name">
+        Name
+       </label>
+       <input class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" id="name" placeholder="Your Name" type="text"/>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700 font-bold mb-2" for="email">
+        Email
+       </label>
+       <input class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" id="email" placeholder="Your Email" type="email"/>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700 font-bold mb-2" for="message">
+        Message
+       </label>
+       <textarea class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" id="message" placeholder="Your Message" rows="4"></textarea>
+      </div>
+      <button class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700" type="submit">
+       Send Message
+      </button>
+     </form>
+    </div>
+   </div>
   </section>-->
-<!-- C++ Card
-<div class="card card1">
-  <svg xml:space="preserve" viewBox="0 0 306 344.35" class="App-logo" xmlns="http://www.w3.org/2000/svg">
-    <path d="M302.107,258.262c2.401-4.159,3.893-8.845,3.893-13.053V99.14c0-4.208-1.49-8.893-3.892-13.052L153,172.175 L302.107,258.262z" fill="#00599C"></path>
-    <path d="M166.25,341.193l126.5-73.034c3.644-2.104,6.956-5.737,9.357-9.897L153,172.175L3.893,258.263 c2.401,4.159,5.714,7.793,9.357,9.896l126.5,73.034C147.037,345.401,158.963,345.401,166.25,341.193z" fill="#004482"></path>
-    <path d="M302.108,86.087c-2.402-4.16-5.715-7.793-9.358-9.897L166.25,3.156c-7.287-4.208-19.213-4.208-26.5,0 L13.25,76.19C5.962,80.397,0,90.725,0,99.14v146.069c0,4.208,1.491,8.894,3.893,13.053L153,172.175L302.108,86.087z" fill="#659AD2"></path>
-  </svg>
-  <div class="header">Welcome to C++</div>
-  <button class="App-button">Start Learning Now</button>
-</div>
-
-<div class="card card2">
-  <svg class="App-logo2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-    <path d="M31.885 16c-8.124 0-7.617 3.523-7.617 3.523l.01 3.65h7.752v1.095H21.197S16 23.678 16 31.876c0 8.196 4.537 7.906 4.537 7.906h2.708v-3.804s-.146-4.537 4.465-4.537h7.688s4.32.07 4.32-4.175v-7.019S40.374 16 31.885 16zm-4.275 2.454c.771 0 1.395.624 1.395 1.395s-.624 1.395-1.395 1.395a1.393 1.393 0 0 1-1.395-1.395c0-.771.624-1.395 1.395-1.395z" fill="#387EB8"></path>
-  </svg>
-  <div class="header">
-    <span class="welcometo">Welcome to</span><br>
-    <span class="python">Python</span>
-  </div>
-  <button class="App-button">Start Learning Now</button>
-</div>
-
-
-<div class="card card3">
-  <svg class="App-logo3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-    <path fill="url(#paint0_linear_87_8208)" d="M22.5941 19.8407L8.8916 27.9998L26.6338 26.7925L28.0003 8.85254L22.5941 19.8407Z"></path>
-  </svg>
-  <div class="header">Welcome to Ruby</div>
-  <button class="App-button">Start Learning Now</button>
-</div>
-
-<div class="card card4">
-  <svg class="App-logo" xmlns="http://www.w3.org/2000/svg" aria-label="JavaScript" role="img" viewBox="0 0 512 512">
-    <rect width="512" height="512" rx="15%" fill="#f7df1e"></rect>
-    <path fill="#25241c" d="M324 370c10 17 24 29 47 29c20 0 33-10 33 -24c0-16 -13 -22 -35 -32l-12-5c-35-15 -58-33 -58-72c0-36 27 -64 70 -64c31 0 53 11 68 39l-37 24c-8-15 -17-21 -31-21c-14 0-23 9 -23 21c0 14 9 20 30 29l12 5c41 18 64 35 64 76c0 43-34 67-80 67c-45 0-74 -21 -88 -49z"></path>
-  </svg>
-  <div class="header">
-    <center>Welcome to<br> JavaScript</center>
-  </div>
-  <button class="App-button">Start Learning Now</button>
-</div>
-
-<div class="card card5">
-  <svg class="App-logo" viewBox="0 0 841.9 595.3" xmlns="http://www.w3.org/2000/svg">
-    <g fill="#61DAFB">
-      <circle cx="420.9" cy="296.5" r="45.7"></circle>
-    </g>
-  </svg>
-  <div class="header">Welcome to React</div>
-  <button class="App-button">Start Learning Now</button>
-</div>
-
-
-<div class="card card6">
-  <svg class="App-logo" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="120">
-    <path stroke-width="1.5" stroke="#cbe6ff" d="M5 12V18C5 18 5 21 12 21C19 21 19 18 19 18V12"></path>
-    <path stroke-width="1.5" stroke="#cbe6ff" d="M5 6V12C5 12 5 15 12 15C19 15 19 12 19 12V6"></path>
-    <path stroke-width="1.5" stroke="#cbe6ff" d="M12 3C19 3 19 6 19 6C19 6 19 9 12 9C5 9 5 6 5 6C5 6 5 3 12 3Z"></path>
-  </svg>
-  <div class="header">Welcome to SQL</div>
-  <button class="App-button">Start Learning Now</button>
-</div>
- -->
-
-
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-section">
-        <h3>Learn<span>Tech</span></h3>
-        <p>Where education meets real-world needs.</p>
-      </div>
-      <div class="footer-section">
-        <h4>HELPFUL LINKS</h4>
-        <ul>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Refund Policy</a></li>
-          <li><a href="#">Terms & Conditions</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>GET IN TOUCH</h4>
-        <ul>
-          <li><a href="mailto:support@learntech.com">support@learntech.com</a></li>
-          <li><a href="mailto:info@learntech.com">info@learntech.com</a></li>
-          <li>Support Team: 10am-6pm</li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>CONNECT WITH US</h4>
-        <div class="social-icons">
-          <a href="https://github.com/Dip-sama">GitHub</a>
-          <a href="https://linkedin.com/in/dip-bhattacharjee-aa833430a">LinkedIn</a>
-        </div>
-      </div>
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+   <div class="container mx-auto px-4 text-center">
+    <p>
+     © 2023 LearnTech. All rights reserved.
+    </p>
+    <div class="flex justify-center space-x-4 mt-4">
+    <!-- <a class="text-white hover:text-blue-600" href="#">
+      <i class="fab fa-facebook-f">
+      </i>
+     </a>-->
+     <a class="text-white hover:text-blue-600" href="https://github.com/Dip-sama">
+      <i class="fab fa-github">
+      </i>
+     </a>
+     <a class="text-white hover:text-blue-600" href="https://www.linkedin.com/in/dip-bhattacharjee-aa833430a">
+      <i class="fab fa-linkedin-in">
+      </i>
+     </a>
+     <a class="text-white hover:text-blue-600" href="#">
+      <i class="fab fa-instagram">
+      </i>
+     </a>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2024 LearnTech. All rights reserved.</p>
-    </div>
+   </div>
   </footer>
-  <script src="1.js"></script>
-  <script src="script.js"></script>
-</body>
+  <script>
+   document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+  </script>
+ </body>
 </html>
