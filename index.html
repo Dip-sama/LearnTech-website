@@ -34,7 +34,7 @@
 <!-- Mobile Menu -->
 <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md absolute w-full top-16 left-0 transition-all duration-300 ease-in-out">
     <ul class="space-y-2 py-4 text-center">
-        <li><a href="index.html" class="block text-gray-700 hover:text-blue-600 px-4">Home</a></li>
+        <li><a href="features.html" class="block text-gray-700 hover:text-blue-600 px-4">Features</a></li>
         <li><a href="Courses.html" class="block text-gray-700 hover:text-blue-600 px-4">Courses</a></li>
         <li><a href="about.html" class="block text-gray-700 hover:text-blue-600 px-4">About</a></li>
         <li><a href="contact.html" class="block text-gray-700 hover:text-blue-600 px-4">Contact</a></li>
@@ -186,10 +186,24 @@
     </div>
    </div>
   </footer>
-  <script>
-   document.getElementById('menu-btn').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-  </script>
+ <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenu.classList.toggle('block');
+
+        // Change icon dynamically
+        const icon = menuBtn.querySelector('i');
+        if (mobileMenu.classList.contains('hidden')) {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        } else {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        }
+    });
+</script>
  </body>
 </html>
