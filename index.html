@@ -40,10 +40,15 @@
         <li><a href="contact.html" class="block text-gray-700 hover:text-blue-600 px-4">Contact</a></li>
     </ul>
 </div>
-<!-- Slideshow Section -->
 <section class="relative w-full mx-auto mt-4 overflow-hidden">
     <div class="relative w-full h-64 md:h-96 overflow-hidden">
-        <div id="slides" class="flex w-full h-full transition-transform duration-1000 ease-in-out">
+        <div id="slides" class="flex w-full h-full transition-transform duration-500 ease-in-out">
+            <!-- Duplicate Last Slide for Seamless Transition -->
+            <div class="w-full flex-shrink-0">
+                <img src="image/AI-in-Software-Development.webp" class="w-full h-full object-cover" alt="Slide 3">
+            </div>
+
+            <!-- Original Slides -->
             <div class="w-full flex-shrink-0">
                 <img src="image/Fundamentals-of-Web-Development.jpg" class="w-full h-full object-cover" alt="Slide 1">
             </div>
@@ -52,6 +57,11 @@
             </div>
             <div class="w-full flex-shrink-0">
                 <img src="image/AI-in-Software-Development.webp" class="w-full h-full object-cover" alt="Slide 3">
+            </div>
+
+            <!-- Duplicate First Slide for Seamless Transition -->
+            <div class="w-full flex-shrink-0">
+                <img src="image/Fundamentals-of-Web-Development.jpg" class="w-full h-full object-cover" alt="Slide 1">
             </div>
         </div>
 
@@ -66,27 +76,58 @@
 </section>
 <script>
 const slides = document.getElementById('slides');
-const slideCount = slides.children.length;
-let currentIndex = 0;
+const slideItems = slides.children;
+const totalSlides = slideItems.length;
+let currentIndex = 1; // Start from the real first slide
+
+// Set initial position
+slides.style.transform = `translateX(-${currentIndex * 100}%)`;
 
 function updateSlide() {
+    slides.style.transition = "transform 0.5s ease-in-out";
     slides.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
+// Move to the next slide
 function nextSlide() {
-    currentIndex = (currentIndex + 1) % slideCount;
+    if (currentIndex >= totalSlides - 1) {
+        return;
+    }
+    currentIndex++;
     updateSlide();
+
+    // If it's the last cloned slide, instantly reset to first real slide
+    if (currentIndex === totalSlides - 1) {
+        setTimeout(() => {
+            slides.style.transition = "none";
+            currentIndex = 1;
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }, 500);
+    }
 }
 
+// Move to the previous slide
 function prevSlide() {
-    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+    if (currentIndex <= 0) {
+        return;
+    }
+    currentIndex--;
     updateSlide();
+
+    // If it's the first cloned slide, instantly reset to last real slide
+    if (currentIndex === 0) {
+        setTimeout(() => {
+            slides.style.transition = "none";
+            currentIndex = totalSlides - 2;
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }, 500);
+    }
 }
 
 document.getElementById('next').addEventListener('click', nextSlide);
 document.getElementById('prev').addEventListener('click', prevSlide);
 
-// Auto-play slides every 5 seconds
+// Auto-slide every 5 seconds
 setInterval(nextSlide, 5000);
 </script>
   <!-- Hero Section 
