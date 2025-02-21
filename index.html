@@ -1,222 +1,249 @@
+<!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   LearnTech
-  </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
- </head>
- <body class="font-roboto bg-gray-100">
-  <!-- Navbar -->
-<nav class="bg-white shadow-md">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="#" class="text-2xl font-bold text-blue-600">LearnTech</a>
-
-        <!-- Desktop Menu -->
-        <ul class="hidden md:flex space-x-6">
-            <li><a href="features.html" class="text-gray-700 hover:text-blue-600">Features</a></li>
-            <li><a href="Courses.html" class="text-gray-700 hover:text-blue-600">Courses</a></li>
-            <li><a href="about.html" class="text-gray-700 hover:text-blue-600">About</a></li>
-            <li><a href="contact.html" class="text-gray-700 hover:text-blue-600">Contact</a></li>
-        </ul>
-
-        <!-- Hamburger Button -->
-        <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
-            <i class="fas fa-bars text-2xl"></i>
-        </button>
-    </div>
-</nav>
-
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="hidden md:hidden bg-white shadow-md absolute w-full top-16 left-0 transition-all duration-300 ease-in-out">
-    <ul class="space-y-2 py-4 text-center">
-        <li><a href="features.html" class="block text-gray-700 hover:text-blue-600 px-4">Features</a></li>
-        <li><a href="Courses.html" class="block text-gray-700 hover:text-blue-600 px-4">Courses</a></li>
-        <li><a href="about.html" class="block text-gray-700 hover:text-blue-600 px-4">About</a></li>
-        <li><a href="contact.html" class="block text-gray-700 hover:text-blue-600 px-4">Contact</a></li>
-    </ul>
-</div>
- <section class="bg-blue-600 text-white py-20">
-   <div class="container mx-auto px-4 text-center">
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">
-     Welcome to LearnTech
-    </h1>
-    <p class="text-lg md:text-2xl mb-8">
-     Your gateway to the best online courses
-    </p>
-    <a class="bg-white text-blue-600 px-6 py-3 rounded-full text-lg font-semibold" href="Courses.html">
-     Get Started
-    </a>
-   </div>
-  </section>
-  <!-- Courses Section -->
-  <section class="py-20">
-   <div class="container mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
-     Our Courses
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-     <div class="bg-white shadow-md rounded-lg overflow-hidden">
-      <img alt="Course 1: A detailed image of a person studying with a laptop and books" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/4O5Ru2OGnR357sPoxTjUFBhW1D8LVRzeJQqyN9DWhCQ.jpg" width="600"/>
-      <div class="p-6">
-       <h3 class="text-xl font-bold mb-2">
-        Course 1
-       </h3>
-       <p class="text-gray-700 mb-4">
-        Learn the basics of web development with this comprehensive course.
-       </p>
-       <a class="text-blue-600 hover:underline" href="Courses.html">
-        Learn More
-       </a>
-      </div>
-     </div>
-  <div class="bg-white shadow-md rounded-lg overflow-hidden">
-      <img alt="Course 2: A detailed image of a person coding on a computer with multiple screens" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/fL_VpRPYC6Kl8J72v0Da0AE6ay15CocjPHIncyo8oUo.jpg" width="600"/>
-      <div class="p-6">
-       <h3 class="text-xl font-bold mb-2">
-        Course 2
-       </h3>
-       <p class="text-gray-700 mb-4">
-        Advanced JavaScript techniques for modern web applications.
-       </p>
-       <a class="text-blue-600 hover:underline" href="Courses.html">
-        Learn More
-       </a>
-      </div>
-     </div>
-     <div class="bg-white shadow-md rounded-lg overflow-hidden">
-      <img alt="Course 3: A detailed image of a person designing a website layout on a tablet" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/oPlfwAaIdm7npZ0Zpk-WDRL8LUk1id5EbqQZH7zDt44.jpg" width="600"/>
-      <div class="p-6">
-       <h3 class="text-xl font-bold mb-2">
-        Course 3
-       </h3>
-       <p class="text-gray-700 mb-4">
-        Master the art of UI/UX design with practical examples.
-       </p>
-       <a class="text-blue-600 hover:underline" href="Courses.html">
-        Learn More
-       </a>
-      </div>
-     </div>
-<div class="bg-white shadow-md rounded-lg overflow-hidden">
-      <img alt="Course 1: A detailed image of a person studying with a laptop and books" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/4O5Ru2OGnR357sPoxTjUFBhW1D8LVRzeJQqyN9DWhCQ.jpg" width="600"/>
-      <div class="p-6">
-       <h3 class="text-xl font-bold mb-2">
-        Course 4
-       </h3>
-       <p class="text-gray-700 mb-4">
-        Learn the basics of Programming with this comprehensive course.
-       </p>
-       <a class="text-blue-600 hover:underline" href="Courses.html">
-        Learn More
-       </a>
-      </div>
-     </div>
-    </div>
-   </div>
-  </section>
-  <!-- About Section -->
-  <section class="bg-gray-100 py-20">
-   <div class="container mx-auto px-4">
-    <div class="flex flex-col md:flex-row items-center">
-     <div class="md:w-1/2 mb-8 md:mb-0">
-      <img alt="About Us: A detailed image of a team of professionals collaborating in an office" class="w-full h-64 object-cover rounded-lg shadow-md" height="400" src="https://storage.googleapis.com/a1aa/image/RZ26mnnIx13g5kl6GYrGLI4SxhgnenJBwaxMhtpNFwQ.jpg" width="600"/>
-     </div>
-     <div class="md:w-1/2 md:pl-12">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">
-       About Us
-      </h2>
-      <p class="text-gray-700 mb-4">
-       LearnTech is dedicated to providing the best online learning experience. Our courses are designed by industry experts to help you achieve your career goals.
-      </p>
-      <a class="text-blue-600 hover:underline" href="about.html">
-       Read More
-      </a>
-     </div>
-    </div>
-   </div>
-  </section>
-  <!-- Contact Section 
-  <section class="py-20">
-   <div class="container mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
-     Contact Us
-    </h2>
-    <div class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-8">
-     <form action="#">
-      <div class="mb-4">
-       <label class="block text-gray-700 font-bold mb-2" for="name">
-        Name
-       </label>
-       <input class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" id="name" placeholder="Your Name" type="text"/>
-      </div>
-      <div class="mb-4">
-       <label class="block text-gray-700 font-bold mb-2" for="email">
-        Email
-       </label>
-       <input class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" id="email" placeholder="Your Email" type="email"/>
-      </div>
-      <div class="mb-4">
-       <label class="block text-gray-700 font-bold mb-2" for="message">
-        Message
-       </label>
-       <textarea class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" id="message" placeholder="Your Message" rows="4"></textarea>
-      </div>
-      <button class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700" type="submit">
-       Send Message
-      </button>
-     </form>
-    </div>
-   </div>
-  </section>-->
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-8">
-   <div class="container mx-auto px-4 text-center">
-    <p>
-     © 2023 LearnTech. All rights reserved.
-    </p>
-    <div class="flex justify-center space-x-4 mt-4">
-    <!-- <a class="text-white hover:text-blue-600" href="#">
-      <i class="fab fa-facebook-f">
-      </i>
-     </a>-->
-     <a class="text-white hover:text-blue-600" href="https://github.com/Dip-sama">
-      <i class="fab fa-github">
-      </i>
-     </a>
-     <a class="text-white hover:text-blue-600" href="https://www.linkedin.com/in/dip-bhattacharjee-aa833430a">
-      <i class="fab fa-linkedin-in">
-      </i>
-     </a>
-     <a class="text-white hover:text-blue-600" href="#">
-      <i class="fab fa-instagram">
-      </i>
-     </a>
-    </div>
-   </div>
-  </footer>
- <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        mobileMenu.classList.toggle('block');
-
-        // Change icon dynamically
-        const icon = menuBtn.querySelector('i');
-        if (mobileMenu.classList.contains('hidden')) {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        } else {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>LearnTech - Modern Online Learning Platform</title>
+    <meta name="description" content="LearnTech - Your gateway to the best online courses in web development, programming, and design" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in',
+                        'slide-in': 'slideIn 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateY(-10px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
         }
-    });
-</script>
- </body>
-</html>
+    </script>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navbar with smooth scroll -->
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="flex items-center space-x-2">
+                    <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">LearnTech</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="features.html" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Features</a></li>
+                    <li><a href="Courses.html" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Courses</a></li>
+                    <li><a href="about.html" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">About</a></li>
+                    <li><a href="contact.html" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Contact</a></li>
+                </ul>
+
+                <div class="hidden md:flex space-x-4">
+                    <button class="px-6 py-2 text-blue-600 font-medium hover:bg-blue-50 rounded-full transition-colors">Log in</button>
+                    <button class="px-6 py-2 bg-blue-600 text-white font-medium hover:bg-blue-700 rounded-full transition-colors">Sign up</button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t animate-fade-in">
+            <div class="container mx-auto px-4 py-4">
+                <ul class="space-y-4">
+                    <li><a href="features.html" class="block text-gray-700 hover:text-blue-600 transition-colors">Features</a></li>
+                    <li><a href="Courses.html" class="block text-gray-700 hover:text-blue-600 transition-colors">Courses</a></li>
+                    <li><a href="about.html" class="block text-gray-700 hover:text-blue-600 transition-colors">About</a></li>
+                    <li><a href="contact.html" class="block text-gray-700 hover:text-blue-600 transition-colors">Contact</a></li>
+                </ul>
+                <div class="mt-4 space-y-2">
+                    <button class="w-full px-6 py-2 text-blue-600 font-medium hover:bg-blue-50 rounded-full transition-colors">Log in</button>
+                    <button class="w-full px-6 py-2 bg-blue-600 text-white font-medium hover:bg-blue-700 rounded-full transition-colors">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with animated background -->
+    <section class="relative min-h-screen flex items-center pt-16 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+        <div class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,transparent,black)] bg-top"></div>
+        <div class="container mx-auto px-4 relative">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent animate-slide-in">
+                    Learn. Grow. Succeed.
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-8 animate-slide-in" style="animation-delay: 0.2s">
+                    Your gateway to mastering modern technology through expert-led courses
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 animate-slide-in" style="animation-delay: 0.4s">
+                    <a href="Courses.html" class="px-8 py-4 bg-blue-600 text-white rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl">
+                        Explore Courses
+                    </a>
+                    <a href="about.html" class="px-8 py-4 bg-white text-blue-600 rounded-full text-lg font-semibold hover:bg-gray-50 transition-colors shadow-lg hover:shadow-xl">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Why Choose LearnTech?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-laptop-code text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Expert-Led Courses</h3>
+                    <p class="text-gray-600">Learn from industry professionals with years of real-world experience.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-clock text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Flexible Learning</h3>
+                    <p class="text-gray-600">Study at your own pace with lifetime access to course materials.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-certificate text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Certification</h3>
+                    <p class="text-gray-600">Earn recognized certificates upon course completion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Popular Courses</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="relative">
+                        <img src="/api/placeholder/600/400" alt="Web Development Course" class="w-full h-48 object-cover" />
+                        <div class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm">Bestseller</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-yellow-400"><i class="fas fa-star"></i> 4.9</span>
+                            <span class="text-gray-400 text-sm ml-2">(2.5k reviews)</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Web Development Fundamentals</h3>
+                        <p class="text-gray-600 mb-4">Master the basics of web development with HTML, CSS, and JavaScript.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">$49.99</span>
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="relative">
+                        <img src="/api/placeholder/600/400" alt="JavaScript Course" class="w-full h-48 object-cover" />
+                        <div class="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm">New</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-yellow-400"><i class="fas fa-star"></i> 4.8</span>
+                            <span class="text-gray-400 text-sm ml-2">(1.8k reviews)</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Advanced JavaScript</h3>
+                        <p class="text-gray-600 mb-4">Deep dive into modern JavaScript frameworks and advanced concepts.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">$69.99</span>
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="relative">
+                        <img src="/api/placeholder/600/400" alt="UI/UX Design Course" class="w-full h-48 object-cover" />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-yellow-400"><i class="fas fa-star"></i> 4.7</span>
+                            <span class="text-gray-400 text-sm ml-2">(1.2k reviews)</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">UI/UX Design Mastery</h3>
+                        <p class="text-gray-600 mb-4">Learn to create beautiful and user-friendly interfaces.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">$59.99</span>
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="/api/placeholder/600/400" alt="About LearnTech" class="rounded-2xl shadow-lg w-full" />
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">About LearnTech</h2>
+                    <p class="text-gray-600 mb-6 text-lg">
+                        LearnTech is dedicated to democratizing technology education. Our platform brings together expert instructors and cutting-edge curriculum to help you master the skills needed in today's digital world.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <div class="text-3xl font-bold text-blue-600 mb-2">50K+</div>
+                            <div class="text-gray-600">Active Students</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-blue-600 mb-2">100+</div>
+                            <div class="text-gray-600">Expert Instructors</div>
+                        </div>
+                        <div>
+                            
+                            <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 0) {
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
+        });
+    </script>
+    </body>
+    </html>
+    
