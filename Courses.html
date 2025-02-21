@@ -3,93 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LearnTech-Courses</title>
+    <title>LearnTech - Courses</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <style>
-        body { font-family: 'Roboto', sans-serif; }
+        .course-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #2563EB;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-50 font-['Inter']">
+    <!-- Navbar with blur effect -->
+    <nav class="bg-white/80 backdrop-blur-md fixed w-full z-50 top-0 left-0 border-b border-gray-200">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+                    LearnTech
+                </a>
 
-<!-- Navbar -->
-<nav class="bg-white shadow-md">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="index.html" class="text-2xl font-bold text-blue-600">LearnTech</a>
+                <!-- Desktop Menu -->
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="index.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Home</a></li>
+                    <li><a href="features.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Features</a></li>
+                    <li><a href="about.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">About</a></li>
+                    <li><a href="contact.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Contact</a></li>
+                </ul>
 
-        <!-- Desktop Menu -->
-        <ul class="hidden md:flex space-x-6">
-            <li><a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a></li>
-            <li><a href="features.html" class="text-gray-700 hover:text-blue-600">Features</a></li>
-            <li><a href="about.html" class="text-gray-700 hover:text-blue-600">About</a></li>
-            <li><a href="contact.html" class="text-gray-700 hover:text-blue-600">Contact</a></li>
+                <!-- Action Buttons -->
+                <div class="hidden md:flex space-x-4">
+                    <button class="px-6 py-2 text-blue-600 font-medium hover:bg-blue-50 rounded-full transition">Login</button>
+                    <button class="px-6 py-2 bg-blue-600 text-white font-medium hover:bg-blue-700 rounded-full transition">Sign Up</button>
+                </div>
+
+                <!-- Hamburger Button -->
+                <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md fixed w-full z-40 top-16 left-0 border-b border-gray-200">
+        <ul class="py-4 px-4 space-y-2">
+            <li><a href="index.html" class="block py-2 text-gray-700 hover:text-blue-600 px-4">Home</a></li>
+            <li><a href="features.html" class="block py-2 text-gray-700 hover:text-blue-600 px-4">Features</a></li>
+            <li><a href="about.html" class="block py-2 text-gray-700 hover:text-blue-600 px-4">About</a></li>
+            <li><a href="contact.html" class="block py-2 text-gray-700 hover:text-blue-600 px-4">Contact</a></li>
         </ul>
-
-        <!-- Hamburger Button -->
-        <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
-            <i class="fas fa-bars text-2xl"></i>
-        </button>
     </div>
-</nav>
 
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="hidden md:hidden bg-white shadow-md absolute w-full top-16 left-0 transition-all duration-300 ease-in-out">
-    <ul class="space-y-2 py-4 text-center">
-        <li><a href="index.html" class="block text-gray-700 hover:text-blue-600 px-4">Home</a></li>
-        <li><a href="Courses.html" class="block text-gray-700 hover:text-blue-600 px-4">Courses</a></li>
-        <li><a href="about.html" class="block text-gray-700 hover:text-blue-600 px-4">About</a></li>
-        <li><a href="contact.html" class="block text-gray-700 hover:text-blue-600 px-4">Contact</a></li>
-    </ul>
-</div>
-
-<!-- Main Content -->
-<main class="container mx-auto p-4">
-    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-        <img alt="A detailed image representing the course topic" class="w-full h-64 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/IPHH7dGEHSIpS0XgeA7ueH7a221s51_Tbr29nmQp_5w.jpg" width="1200"/>
-        <div class="p-6">
-            <h2 class="text-3xl font-bold mb-4">Course Title</h2>
-            <p class="text-gray-700 mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Enroll Now</button>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pt-24 pb-12">
+        <!-- Course Header -->
+        <div class="max-w-4xl mx-auto mb-12">
+            <h1 class="text-4xl font-bold mb-4">Popular Courses</h1>
+            <p class="text-gray-600">Explore our most popular courses and start your learning journey today.</p>
         </div>
-    </div>
-</main>
 
-<!-- Footer -->
-<footer class="bg-gray-800 text-white py-8">
-    <div class="container mx-auto px-4 text-center">
-        <p>© 2023 LearnTech. All rights reserved.</p>
-        <div class="flex justify-center space-x-4 mt-4">
-         
-            <a class="text-white hover:text-blue-600" href="https://github.com/Dip-sama"><i class="fab fa-github"></i></a>
-            <a class="text-white hover:text-blue-600" href="https://www.linkedin.com/in/dip-bhattacharjee-aa833430a"><i class="fab fa-linkedin-in"></i></a>
-            <a class="text-white hover:text-blue-600" href="#"><i class="fab fa-instagram"></i></a>
+        <!-- Course Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Course Card 1 -->
+            <div class="course-card bg-white rounded-xl overflow-hidden border border-gray-200">
+                <div class="relative">
+                    <img src="https://storage.googleapis.com/a1aa/image/IPHH7dGEHSIpS0XgeA7ueH7a221s51_Tbr29nmQp_5w.jpg" 
+                         alt="Web Development" 
+                         class="w-full h-48 object-cover"/>
+                    <div class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        Popular
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Web Development Fundamentals</h3>
+                    <p class="text-gray-600 mb-4">Master the basics of web development with HTML, CSS, and JavaScript.</p>
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2">
+                            <div class="text-sm text-gray-600">Course Progress</div>
+                            <div class="ml-auto text-sm font-medium text-blue-600">45%</div>
+                        </div>
+                        <div class="h-2 bg-gray-200 rounded-full">
+                            <div class="h-2 bg-blue-600 rounded-full progress-bar" style="width: 45%"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-clock text-gray-400"></i>
+                            <span class="text-sm text-gray-600">8 weeks</span>
+                        </div>
+                        <button class="px-6 py-2 bg-blue-600 text-white font-medium rounded-full hover:bg-blue-700 transition">
+                            Continue
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card 2 -->
+            <div class="course-card bg-white rounded-xl overflow-hidden border border-gray-200">
+                <div class="relative">
+                    <img src="https://storage.googleapis.com/a1aa/image/4O5Ru2OGnR357sPoxTjUFBhW1D8LVRzeJQqyN9DWhCQ.jpg" 
+                         alt="Python Programming" 
+                         class="w-full h-48 object-cover"/>
+                    <div class="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        New
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Python Programming</h3>
+                    <p class="text-gray-600 mb-4">Learn Python programming from scratch with hands-on projects.</p>
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2">
+                            <div class="text-sm text-gray-600">Course Progress</div>
+                            <div class="ml-auto text-sm font-medium text-green-600">0%</div>
+                        </div>
+                        <div class="h-2 bg-gray-200 rounded-full">
+                            <div class="h-2 bg-green-600 rounded-full progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-clock text-gray-400"></i>
+                            <span class="text-sm text-gray-600">10 weeks</span>
+                        </div>
+                        <button class="px-6 py-2 bg-green-600 text-white font-medium rounded-full hover:bg-green-700 transition">
+                            Enroll Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card 3 -->
+            <div class="course-card bg-white rounded-xl overflow-hidden border border-gray-200">
+                <div class="relative">
+                    <img src="https://storage.googleapis.com/a1aa/image/fL_VpRPYC6Kl8J72v0Da0AE6ay15CocjPHIncyo8oUo.jpg" 
+                         alt="UI/UX Design" 
+                         class="w-full h-48 object-cover"/>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">UI/UX Design Essentials</h3>
+                    <p class="text-gray-600 mb-4">Learn modern UI/UX design principles and tools.</p>
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2">
+                            <div class="text-sm text-gray-600">Course Progress</div>
+                            <div class="ml-auto text-sm font-medium text-purple-600">80%</div>
+                        </div>
+                        <div class="h-2 bg-gray-200 rounded-full">
+                            <div class="h-2 bg-purple-600 rounded-full progress-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-clock text-gray-400"></i>
+                            <span class="text-sm text-gray-600">6 weeks</span>
+                        </div>
+                        <button class="px-6 py-2 bg-purple-600 text-white font-medium rounded-full hover:bg-purple-700 transition">
+                            Continue
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</footer>
+    </main>
 
-<!-- JavaScript for Mobile Menu -->
-<script>
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">LearnTech</h3>
+                    <p class="text-gray-400">Empowering learners worldwide with cutting-edge technology education.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/Dip-sama" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/dip-bhattacharjee-aa833430a" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 LearnTech. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-    menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        mobileMenu.classList.toggle('block');
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-        // Change icon dynamically
-        const icon = menuBtn.querySelector('i');
-        if (mobileMenu.classList.contains('hidden')) {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        } else {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        }
-    });
-</script>
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
 
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 0) {
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
+        });
+    </script>
 </body>
 </html>
