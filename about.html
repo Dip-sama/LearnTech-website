@@ -3,45 +3,393 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LearnTech - About Us</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <title>LearnTech - Empowering Future</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Roboto', sans-serif; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1d4ed8;
+            --text-color: #1f2937;
+            --light-bg: #f3f4f6;
+        }
+
+        body {
+            background-color: var(--light-bg);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            background: var(--primary-color);
+            border-radius: 8px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 100px;
+            background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            color: #4b5563;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary-color);
+        }
+
+        .stats-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transform: rotate(-3deg);
+            transition: transform 0.3s;
+        }
+
+        .stats-card:hover {
+            transform: rotate(0);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            color: #4b5563;
+            margin-top: 0.5rem;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 4rem 1rem;
+        }
+
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 3rem;
+        }
+
+        .team-card {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .team-name {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: #4b5563;
+            font-size: 1.25rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: #111827;
+            color: white;
+            padding: 3rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-social {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.75rem;
+            transition: color 0.3s;
+        }
+
+        .footer-social a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-text {
+            color: #9ca3af;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            background: white;
+            padding: 1rem;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats-card {
+                transform: none;
+            }
+
+            .mobile-menu.active {
+                display: block;
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-100">
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+                <span class="logo-text">LearnTech</span>
+            </a>
 
-<!-- Navbar -->
-<nav class="bg-white shadow-md">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="index.html" class="text-2xl font-bold text-blue-600">LearnTech</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="features.html">Features</a>
+                <a href="contact.html">Contact</a>
+            </div>
 
-        <!-- Desktop Menu -->
-        <ul class="hidden md:flex space-x-6">
-            <li><a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a></li>
-            <li><a href="Courses.html" class="text-gray-700 hover:text-blue-600">Courses</a></li>
-            <li><a href="features.html" class="text-gray-700 hover:text-blue-600">Features</a></li>
-            <li><a href="contact.html" class="text-gray-700 hover:text-blue-600">Contact</a></li>
-        </ul>
+            <button class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
 
-        <!-- Hamburger Button -->
-        <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
-            <i class="fas fa-bars text-2xl"></i>
-        </button>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="features.html">Features</a>
+        <a href="contact.html">Contact</a>
     </div>
-</nav>
 
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="hidden md:hidden bg-white shadow-md absolute w-full top-16 left-0 transition-all duration-300 ease-in-out">
-    <ul class="space-y-2 py-4 text-center">
-        <li><a href="index.html" class="block text-gray-700 hover:text-blue-600 px-4">Home</a></li>
-        <li><a href="Courses.html" class="block text-gray-700 hover:text-blue-600 px-4">Courses</a></li>
-        <li><a href="features.html" class="block text-gray-700 hover:text-blue-600 px-4">Features</a></li>
-        <li><a href="contact.html" class="block text-gray-700 hover:text-blue-600 px-4">Contact</a></li>
-    </ul>
-</div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Empower Your Future with <span style="color: var(--primary-color)">LearnTech</span></h1>
+                <p>Master the latest technologies with our expert-led courses and advance your career in tech.</p>
+                <a href="#" class="cta-button">
+                    Get Started
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+
+            <div class="stats-card">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">Courses</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="1000">0</div>
+                        <div class="stat-label">Students</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="95">0</div>
+                        <div class="stat-label">Satisfaction %</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="20">0</div>
+                        <div class="stat-label">Expert Instructors</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <!-- About Section -->
 <section class="bg-gray-100 py-20">
@@ -67,62 +415,106 @@
     </div>
 </section>
 
-<!-- Team Section -->
-<section class="py-20">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Meet Our Team</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Team Member -->
-            <div class="bg-white shadow-md rounded-lg overflow-hidden text-center">
-                <img alt="Dip Bhattacharjee" class="w-full h-48 object-cover"
-                     src="image/WhatsApp Image 2024-12-23 at 22.57.39_272b099e.jpg"/>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2">Dip Bhattacharjee</h3>
-                    <p class="text-gray-700">CEO & Founder</p>
+    <!-- Team Section -->
+    <section class="team">
+        <div class="team-container">
+            <h2 class="section-title">Our Leadership</h2>
+            <div class="team-card">
+                <img src="image/WhatsApp Image 2024-12-23 at 22.57.39_272b099e.jpg" alt="Dip Bhattacharjee" class="team-image">
+                <div class="team-info">
+                    <h3 class="team-name">Dip Bhattacharjee</h3>
+                    <p class="team-role">CEO & Founder</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Dip-sama"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/dip-bhattacharjee-aa833430a"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Footer -->
-<footer class="bg-gray-800 text-white py-8">
-    <div class="container mx-auto px-4 text-center">
-        <p>© 2025 LearnTech. All rights reserved.</p>
-        <div class="flex justify-center space-x-4 mt-4">
-            <a class="text-white hover:text-blue-600" href="https://github.com/Dip-sama">
-                <i class="fab fa-github"></i>
-            </a>
-            <a class="text-white hover:text-blue-600" href="https://www.linkedin.com/in/dip-bhattacharjee-aa833430a">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a class="text-white hover:text-blue-600" href="#">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </div>
-    </div>
-</footer>
+        <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">LearnTech</h3>
+                    <p class="text-gray-400">Empowering learners worldwide with cutting-edge technology education.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#courses" class="text-gray-400 hover:text-white transition-colors">Courses</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/Dip-sama" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/dip-bhattacharjee-aa833430a" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
 
-<!-- JavaScript for Mobile Menu -->
-<script>
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const menuIcon = menuBtn.querySelector('i');
 
-    menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        mobileMenu.classList.toggle('block');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            menuIcon.classList.toggle('fa-bars');
+            menuIcon.classList.toggle('fa-times');
+        });
 
-        // Change icon dynamically
-        const icon = menuBtn.querySelector('i');
-        if (mobileMenu.classList.contains('hidden')) {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        } else {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        }
-    });
-</script>
+        // Animated Counter
+        const counters = document.querySelectorAll('.stat-number');
+        
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const increment = target / 100;
+            
+            function updateCount() {
+                const count = parseInt(counter.innerText);
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            }
+            
+            // Start the animation when the element is in view
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    updateCount();
+                }
+            });
+            
+            observer.observe(counter);
+        });
 
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
