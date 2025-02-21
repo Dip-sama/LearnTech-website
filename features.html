@@ -9,40 +9,86 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
     <style>
         body { font-family: 'Roboto', sans-serif; }
+
+        /* Features Section */
+        .features {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .features-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        .features-title h1 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .features-title p {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
     </style>
 </head>
 <body class="bg-gray-100">
 
-<!-- Navbar -->
-<nav class="bg-white shadow-md">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="#" class="text-2xl font-bold text-blue-600">LearnTech</a>
+    <!-- Navbar with smooth scroll -->
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="flex items-center space-x-2">
+                    <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">LearnTech</span>
+                </a>
 
-        <!-- Desktop Menu -->
-        <ul class="hidden md:flex space-x-6">
-            <li><a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a></li>
-            <li><a href="Courses.html" class="text-gray-700 hover:text-blue-600">Courses</a></li>
-            <li><a href="about.html" class="text-gray-700 hover:text-blue-600">About</a></li>
-            <li><a href="contact.html" class="text-gray-700 hover:text-blue-600">Contact</a></li>
-        </ul>
+                <!-- Desktop Menu -->
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="features.html" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Features</a></li>
+                    <li><a href="Courses.html" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Courses</a></li>
+                    <li><a href="about.html" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">About</a></li>
+                    <li><a href="contact.html" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Contact</a></li>
+                </ul>
 
-        <!-- Hamburger Button -->
-        <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
-            <i class="fas fa-bars text-2xl"></i>
-        </button>
-    </div>
-</nav>
+                <div class="hidden md:flex space-x-4">
+                    <button class="px-6 py-2 text-blue-600 font-medium hover:bg-blue-50 rounded-full transition-colors">Log in</button>
+                    <button class="px-6 py-2 bg-blue-600 text-white font-medium hover:bg-blue-700 rounded-full transition-colors">Sign up</button>
+                </div>
 
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="hidden md:hidden bg-white shadow-md absolute w-full top-16 left-0 transition-all duration-300 ease-in-out">
-    <ul class="space-y-2 py-4 text-center">
-        <li><a href="index.html" class="block text-gray-700 hover:text-blue-600 px-4">Home</a></li>
-        <li><a href="Courses.html" class="block text-gray-700 hover:text-blue-600 px-4">Courses</a></li>
-        <li><a href="about.html" class="block text-gray-700 hover:text-blue-600 px-4">About</a></li>
-        <li><a href="contact.html" class="block text-gray-700 hover:text-blue-600 px-4">Contact</a></li>
-    </ul>
-</div>
+                <!-- Mobile menu button -->
+                <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
 
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t animate-fade-in">
+            <div class="container mx-auto px-4 py-4">
+                <ul class="space-y-4">
+                    <li><a href="features.html" class="block text-gray-700 hover:text-blue-600 transition-colors">Features</a></li>
+                    <li><a href="Courses.html" class="block text-gray-700 hover:text-blue-600 transition-colors">Courses</a></li>
+                    <li><a href="about.html" class="block text-gray-700 hover:text-blue-600 transition-colors">About</a></li>
+                    <li><a href="contact.html" class="block text-gray-700 hover:text-blue-600 transition-colors">Contact</a></li>
+                </ul>
+                <div class="mt-4 space-y-2">
+                    <button class="w-full px-6 py-2 text-blue-600 font-medium hover:bg-blue-50 rounded-full transition-colors">Log in</button>
+                    <button class="w-full px-6 py-2 bg-blue-600 text-white font-medium hover:bg-blue-700 rounded-full transition-colors">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
 <main class="container mx-auto p-4">
    <!-- <h2 class="text-3xl font-bold text-center mb-8">Website Features</h2>-->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -102,39 +148,105 @@
     </div>
    </div>
   </main>
-<!-- Footer -->
-<footer class="bg-gray-800 text-white py-8 mt-8">
-    <div class="container mx-auto px-4 text-center">
-        <p>© 2025 LearnTech. All rights reserved.</p>
-        <div class="flex justify-center space-x-4 mt-4">
-           
-            <a class="text-white hover:text-blue-600" href="#"><i class="fab fa-github"></i></a>
-            <a class="text-white hover:text-blue-600" href="https://www.linkedin.com/in/dip-bhattacharjee-aa833430a"><i class="fab fa-linkedin-in"></i></a>
-            <a class="text-white hover:text-blue-600" href="#"><i class="fab fa-instagram"></i></a>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">LearnTech</h3>
+                    <p class="text-gray-400">Empowering learners worldwide with cutting-edge technology education.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#courses" class="text-gray-400 hover:text-white transition-colors">Courses</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/Dip-sama" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/dip-bhattacharjee-aa833430a" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Download App</h4>
+                    <div class="space-y-2">
+                        <button class="bg-white text-gray-900 px-4 py-2 rounded-lg w-full flex items-center justify-center">
+                            <i class="fab fa-apple mr-2"></i> App Store
+                        </button>
+                        <button class="bg-white text-gray-900 px-4 py-2 rounded-lg w-full flex items-center justify-center">
+                            <i class="fab fa-google-play mr-2"></i> Play Store
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2024 LearnTech. All rights reserved.</p>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
-<!-- JavaScript for Mobile Menu -->
-<script>
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top" class="fixed bottom-8 right-8 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-    menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        mobileMenu.classList.toggle('block');
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-        // Change icon dynamically
-        const icon = menuBtn.querySelector('i');
-        if (mobileMenu.classList.contains('hidden')) {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        } else {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        }
-    });
-</script>
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
 
+        // Scroll to top functionality
+        const scrollBtn = document.getElementById('scroll-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.remove('hidden');
+            } else {
+                scrollBtn.classList.add('hidden');
+            }
+        });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        const icon = menuBtn.querySelector('i');
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
