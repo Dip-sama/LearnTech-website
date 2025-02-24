@@ -297,7 +297,7 @@
             color: var(--primary-color);
         }
 
-        /* Footer Section */
+        /* Footer Section 
 .footer {
     background: #111827;
     color: white;
@@ -381,7 +381,7 @@
     margin-top: 2rem;
     color: #9ca3af;
     font-size: 0.9rem;
-}
+}*/
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -482,7 +482,7 @@
             <div class="hero-content">
                 <h1>Empower Your Future with <span style="color: var(--primary-color)">LearnTech</span></h1>
                 <p>Master the latest technologies with our expert-led courses and advance your career in tech.</p>
-                <a href="#" class="cta-button">
+                <a href="Courses.html" class="cta-button">
                     Get Started
                     <i class="fas fa-chevron-right"></i>
                 </a>
@@ -515,7 +515,7 @@
 <section class="about">
     <div class="about-container">
         <div class="about-image">
-            <img src="/api/placeholder/600/400" alt="Team Collaboration" />
+            <img src="image/about.jpg" alt="Team Collaboration" />
         </div>
         <div class="about-content">
             <h2>About Us</h2>
@@ -550,44 +550,38 @@
             </div>
         </div>
     </section>
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-content">
-            <h3>LearnTech</h3>
-            <p>Empowering learners worldwide with cutting-edge technology education.</p>
-        </div>
-        
-        <div class="footer-links">
-            <h4>Quick Links</h4>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer-social">
-            <h4>Connect</h4>
-            <div class="social-icons">
-                <a href="https://github.com/Dip-sama">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/dip-bhattacharjee-aa833430a">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="#">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    <div class="footer-bottom">
-        <p>&copy; 2024 LearnTech. All rights reserved.</p>
-    </div>
-</footer>
-
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">LearnTech</h3>
+                    <p class="text-gray-400">Empowering learners worldwide with cutting-edge technology education.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#courses" class="text-gray-400 hover:text-white transition-colors">Courses</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/Dip-sama" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/dip-bhattacharjee-aa833430a" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+               
     <script>
         // Mobile Menu Toggle
         const menuBtn = document.querySelector('.menu-btn');
