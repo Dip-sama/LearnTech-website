@@ -51,7 +51,6 @@
             text-decoration: none;
         }
 
-        
         .logo-text {
             font-size: 1.5rem;
             font-weight: 700;
@@ -164,69 +163,61 @@
             color: #4b5563;
             margin-top: 0.5rem;
         }
-        
+
         /* About Section */
-.about {
-    background-color: var(--light-bg);
-    padding: 4rem 1rem;
-}
+        .about {
+            background-color: var(--light-bg);
+            padding: 4rem 1rem;
+        }
 
-.about-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
 
-.about-image {
-    flex: 1;
-    min-width: 300px;
-}
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
 
-.about-image img {
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
 
-.about-content {
-    flex: 1;
-    min-width: 300px;
-}
+        .about-content {
+            flex: 1;
+            min-width: 300px;
+        }
 
-.about-content h2 {
-    font-size: 2rem;
-    color: var(--text-color);
-    margin-bottom: 1rem;
-}
+        .about-content h2 {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
 
-.about-content p {
-    color: #4b5563;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-}
+        .about-content p {
+            color: #4b5563;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
 
-.about-link {
-    display: inline-block;
-    text-decoration: none;
-    color: var(--primary-color);
-    font-weight: 600;
-    transition: color 0.3s;
-}
+        .about-link {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
 
-.about-link:hover {
-    color: var(--secondary-color);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .about-container {
-        flex-direction: column;
-        text-align: center;
-    }
-}
+        .about-link:hover {
+            color: var(--secondary-color);
+        }
 
         /* Team Section */
         .team {
@@ -245,9 +236,13 @@
             margin-bottom: 3rem;
         }
 
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
         .team-card {
-            max-width: 400px;
-            margin: 0 auto;
             background: white;
             border-radius: 12px;
             overflow: hidden;
@@ -297,100 +292,341 @@
             color: var(--primary-color);
         }
 
+        /* Courses Section */
+        .courses {
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        }
+
+        .courses-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .course-content {
+            padding: 1.5rem;
+        }
+
+        .course-tag {
+            display: inline-block;
+            background: #e0e7ff;
+            color: var(--primary-color);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            margin-bottom: 0.75rem;
+        }
+
+        .course-title {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .course-desc {
+            color: #4b5563;
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .course-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .course-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .course-rating i {
+            color: #f59e0b;
+        }
+
+        .course-price {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 4rem 1rem;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin: 2rem auto;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: """;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--primary-color);
+            opacity: 0.2;
+            font-family: sans-serif;
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .testimonial-info h4 {
+            color: var(--text-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-info p {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bfdbfe 100%);
+        }
+
+        .newsletter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            color: #4b5563;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid transparent;
+            border-radius: 8px 0 0 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .newsletter-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-button:hover {
+            background: var(--secondary-color);
+        }
+
         /* Footer Section */
-.footer {
-    background: #111827;
-    color: white;
-    padding: 3rem 1rem;
-    text-align: left;
-}
+        .footer {
+            background: #111827;
+            color: white;
+            padding: 3rem 1rem;
+        }
 
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 2rem;
-}
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
 
-.footer-content {
-    flex: 1;
-    min-width: 250px;
-}
+        .footer-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
 
-.footer-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
+        .footer-content p {
+            color: #9ca3af;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
 
-.footer-links {
-    flex: 1;
-    min-width: 200px;
-}
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
 
-.footer-links h4,
-.footer-social h4 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
+        .footer-links ul {
+            list-style: none;
+        }
 
-.footer-links ul {
-    list-style: none;
-    padding: 0;
-}
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
 
-.footer-links li {
-    margin-bottom: 0.5rem;
-}
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
 
-.footer-links a {
-    color: #9ca3af;
-    text-decoration: none;
-    transition: color 0.3s;
-}
+        .footer-links a:hover {
+            color: white;
+        }
 
-.footer-links a:hover {
-    color: var(--primary-color);
-}
+        .footer-social h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
 
-.footer-social {
-    flex: 1;
-    min-width: 200px;
-}
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
 
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-}
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
 
-.social-icons a {
-    color: #9ca3af;
-    font-size: 1.5rem;
-    transition: color 0.3s;
-}
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
 
-.social-icons a:hover {
-    color: var(--primary-color);
-}
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
 
-.footer-bottom {
-    width: 100%;
-    text-align: left;
-    margin-top: 2rem;
-    color: #9ca3af;
-    font-size: 0.9rem;
-}
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: left;
-        text-align: left;
-    }
-}
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* Mobile Menu */
         .mobile-menu {
@@ -402,6 +638,7 @@
             left: 0;
             width: 100%;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 999;
         }
 
         .mobile-menu a {
@@ -443,6 +680,19 @@
             .mobile-menu.active {
                 display: block;
             }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                border-radius: 8px;
+                margin-bottom: 1rem;
+            }
+
+            .newsletter-button {
+                border-radius: 8px;
+            }
         }
     </style>
 </head>
@@ -457,9 +707,10 @@
 
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="courses.html">Courses</a>
-                <a href="features.html">Features</a>
-                <a href="contact.html">Contact</a>
+                <a href="#courses">Courses</a>
+                <a href="#about">About</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
             </div>
 
             <button class="menu-btn">
@@ -471,24 +722,25 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu">
         <a href="index.html">Home</a>
-        <a href="courses.html">Courses</a>
-        <a href="features.html">Features</a>
-        <a href="contact.html">Contact</a>
+        <a href="#courses">Courses</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
     </div>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
-            <div class="hero-content">
+            <div class="hero-content fade-in">
                 <h1>Empower Your Future with <span style="color: var(--primary-color)">LearnTech</span></h1>
                 <p>Master the latest technologies with our expert-led courses and advance your career in tech.</p>
-                <a href="Courses.html" class="cta-button">
+                <a href="#courses" class="cta-button">
                     Get Started
                     <i class="fas fa-chevron-right"></i>
                 </a>
             </div>
 
-            <div class="stats-card">
+            <div class="stats-card fade-in">
                 <div class="stats-grid">
                     <div class="stat-item">
                         <div class="stat-number" data-target="50">0</div>
@@ -511,125 +763,20 @@
         </div>
     </section>
 
-<!-- About Section -->
-<section class="about">
-    <div class="about-container">
-        <div class="about-image">
-            <img src="image/about.jpg" alt="Team Collaboration" />
-        </div>
-        <div class="about-content">
-            <h2>About Us</h2>
-            <p>
-                LearnTech is dedicated to providing the best online learning experience. Our courses are 
-                designed by industry experts to help you achieve your career goals.
-            </p>
-            <p>
-                Our mission is to empower individuals with the skills and knowledge they need to succeed in their 
-                careers. Whether you're learning a new skill or advancing in your job, LearnTech is here to support you.
-            </p>
-            <a href="contact.html" class="about-link">Get in Touch</a>
-        </div>
-    </div>
-</section>
-
-    <!-- Team Section -->
-    <section class="team">
-        <div class="team-container">
-            <h2 class="section-title">Our Leadership</h2>
-            <div class="team-card">
-                <img src="image/WhatsApp Image 2024-12-23 at 22.57.39_272b099e.jpg" alt="Dip Bhattacharjee" class="team-image">
-                <div class="team-info">
-                    <h3 class="team-name">Dip Bhattacharjee</h3>
-                    <p class="team-role">CEO & Founder</p>
-                    <div class="social-links">
-                        <a href="https://github.com/Dip-sama"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/dip-bhattacharjee-aa833430a"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-image fade-in">
+                <img src="/api/placeholder/600/400" alt="Team Collaboration" />
             </div>
-        </div>
-    </section>
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-content">
-                <div>
-                    <h3 class="footer-content">LearnTech</h3>
-                    <p class="t">Empowering learners worldwide with cutting-edge technology education.</p>
-                </div>
-                <div>
-                    <h4 class="footer-links">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html" class="footer-links">Home</a></li>
-                        <li><a href="Courses.html" class="text-gray-400 hover:text-white transition-colors">Courses</a></li>
-                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
-                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Connect</h4>
-                    <div class="flex space-x-4">
-                        <a href="https://github.com/Dip-sama" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-github text-xl"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/dip-bhattacharjee-aa833430a" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-linkedin-in text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-               
-    <script>
-        // Mobile Menu Toggle
-        const menuBtn = document.querySelector('.menu-btn');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const menuIcon = menuBtn.querySelector('i');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            menuIcon.classList.toggle('fa-bars');
-            menuIcon.classList.toggle('fa-times');
-        });
-
-        // Animated Counter
-        const counters = document.querySelectorAll('.stat-number');
-        
-        counters.forEach(counter => {
-            const target = parseInt(counter.getAttribute('data-target'));
-            const increment = target / 100;
-            
-            function updateCount() {
-                const count = parseInt(counter.innerText);
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(updateCount, 20);
-                } else {
-                    counter.innerText = target;
-                }
-            }
-            
-            // Start the animation when the element is in view
-            const observer = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    updateCount();
-                }
-            });
-            
-            observer.observe(counter);
-        });
-
-        // Smooth Scroll for Navigation Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+            <div class="about-content fade-in">
+                <h2>About Us</h2>
+                <p>
+                    LearnTech is dedicated to providing the best online learning experience. Our courses are 
+                    designed by industry experts to help you achieve your career goals.
+                </p>
+                <p>
+                    Our mission is to empower individuals with the skills and knowledge they need to succeed in their 
+                    careers. Whether you're learning a new skill or advancing in your job, LearnTech is here to support you.
+                </p>
+                <a href="#contact" class
