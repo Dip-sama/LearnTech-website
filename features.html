@@ -10,7 +10,6 @@
     <style>
         body { font-family: 'Roboto', sans-serif; }
 
-        /* Features Section 
         .features {
             padding-top: 100px;
             min-height: 100vh;
@@ -29,18 +28,24 @@
             transform: translateY(20px);
             animation: fadeInUp 0.6s forwards;
         }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         .features-title h1 {
             font-size: 2.5rem;
-            color: var(--text-color);
+            color: #1f2937;
             margin-bottom: 1rem;
         }
 
         .features-title p {
             color: #6b7280;
             font-size: 1.1rem;
-        }*/
-
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -62,7 +67,8 @@
                 </ul>
 
                 <div class="hidden md:flex space-x-4">
-                   
+                    <!-- Login/Signup buttons could go here -->
+                </div>
 
                 <!-- Mobile menu button -->
                 <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
@@ -80,76 +86,56 @@
                     <li><a href="about.html" class="block text-gray-700 hover:text-blue-600 transition-colors">About</a></li>
                     <li><a href="contact.html" class="block text-gray-700 hover:text-blue-600 transition-colors">Contact</a></li>
                 </ul>
-               
             </div>
         </div>
     </nav>
-<main class="container mx-auto p-4">
-      <section class="features">
-        <div class="features-container">
-            <div class="features-title">
-                <h1>Why Choose LearnTech?</h1>
-                <p>Discover the features that make our platform unique</p>
-            </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <div class="bg-white shadow-md rounded-lg p-6">
-     <img alt="A detailed image representing interactive courses" class="w-full h-40 object-cover mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/SU1nPgOhfz6C-T-nisvptHdd50RT-44FG_IcAGJD9T8.jpg" width="600"/>
-     <h3 class="text-2xl font-bold mb-2">
-      Interactive Courses
-     </h3>
-     <p class="text-gray-700">
-      Engage with interactive content that makes learning fun and effective.
-     </p>
-    </div>
-    <div class="bg-white shadow-md rounded-lg p-6">
-     <img alt="A detailed image representing expert instructors" class="w-full h-40 object-cover mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/mlMm0tsQ1i_gm6hjQvXbZuCGCc0X9_YQdfc9ve-wBQU.jpg" width="600"/>
-     <h3 class="text-2xl font-bold mb-2">
-      Expert Instructors
-     </h3>
-     <p class="text-gray-700">
-      Learn from industry experts with years of experience.
-     </p>
-    </div>
-    <div class="bg-white shadow-md rounded-lg p-6">
-     <img alt="A detailed image representing flexible schedule" class="w-full h-40 object-cover mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/TgoTNaOgZDf6Y_g8rDpnzdjFfgx6OMizB5k1_76qJ1c.jpg" width="600"/>
-     <h3 class="text-2xl font-bold mb-2">
-      Flexible Schedule
-     </h3>
-     <p class="text-gray-700">
-      Study at your own pace with our flexible scheduling options.
-     </p>
-    </div>
-    <div class="bg-white shadow-md rounded-lg p-6">
-     <img alt="A detailed image representing certification" class="w-full h-40 object-cover mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/DL1VhYOIO1RE_khKQ8bCJhZZUQJ81VSb-WwauHxrjT4.jpg" width="600"/>
-     <h3 class="text-2xl font-bold mb-2">
-      Certification
-     </h3>
-     <p class="text-gray-700">
-      Earn certificates to showcase your skills and knowledge.
-     </p>
-    </div>
-    <div class="bg-white shadow-md rounded-lg p-6">
-     <img alt="A detailed image representing community support" class="w-full h-40 object-cover mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/NSL6S3YtHwyLaSyJuVPxJXGBT6Zr5ZUnDyW4_NkmUvU.jpg" width="600"/>
-     <h3 class="text-2xl font-bold mb-2">
-      Community Support
-     </h3>
-     <p class="text-gray-700">
-      Join a community of learners and get support from peers and instructors.
-     </p>
-    </div>
-    <div class="bg-white shadow-md rounded-lg p-6">
-     <img alt="A detailed image representing mobile access" class="w-full h-40 object-cover mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/CVOAu_-rGvRJIsbv2CAdXK-7v_0lphNrhzZWylyYq-Y.jpg" width="600"/>
-     <h3 class="text-2xl font-bold mb-2">
-      Mobile Access
-     </h3>
-     <p class="text-gray-700">
-      Access courses on the go with our mobile-friendly platform.
-     </p>
-    </div>
-   </div>
-  </main>
-        <!-- Footer -->
+    <!-- Main Content -->
+    <main>
+        <section class="features">
+            <div class="features-container">
+                <div class="features-title">
+                    <h1>Why Choose LearnTech?</h1>
+                    <p>Discover the features that make our platform unique</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white shadow-md rounded-lg p-6">
+                        <img src="/api/placeholder/600/400" alt="Interactive Courses" class="w-full h-40 object-cover mb-4 rounded"/>
+                        <h3 class="text-2xl font-bold mb-2">Interactive Courses</h3>
+                        <p class="text-gray-700">Engage with interactive content that makes learning fun and effective.</p>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-6">
+                        <img src="/api/placeholder/600/400" alt="Expert Instructors" class="w-full h-40 object-cover mb-4 rounded"/>
+                        <h3 class="text-2xl font-bold mb-2">Expert Instructors</h3>
+                        <p class="text-gray-700">Learn from industry experts with years of experience.</p>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-6">
+                        <img src="/api/placeholder/600/400" alt="Flexible Schedule" class="w-full h-40 object-cover mb-4 rounded"/>
+                        <h3 class="text-2xl font-bold mb-2">Flexible Schedule</h3>
+                        <p class="text-gray-700">Study at your own pace with our flexible scheduling options.</p>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-6">
+                        <img src="/api/placeholder/600/400" alt="Certification" class="w-full h-40 object-cover mb-4 rounded"/>
+                        <h3 class="text-2xl font-bold mb-2">Certification</h3>
+                        <p class="text-gray-700">Earn certificates to showcase your skills and knowledge.</p>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-6">
+                        <img src="/api/placeholder/600/400" alt="Community Support" class="w-full h-40 object-cover mb-4 rounded"/>
+                        <h3 class="text-2xl font-bold mb-2">Community Support</h3>
+                        <p class="text-gray-700">Join a community of learners and get support from peers and instructors.</p>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-6">
+                        <img src="/api/placeholder/600/400" alt="Mobile Access" class="w-full h-40 object-cover mb-4 rounded"/>
+                        <h3 class="text-2xl font-bold mb-2">Mobile Access</h3>
+                        <p class="text-gray-700">Access courses on the go with our mobile-friendly platform.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -180,7 +166,12 @@
                         </a>
                     </div>
                 </div>
-               
+                <div>
+                    <h4 class="font-bold mb-4">Newsletter</h4>
+                    <form class="flex flex-col space-y-2">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors">Subscribe</button>
+                    </form>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
@@ -189,10 +180,10 @@
         </div>
     </footer>
 
-    <!-- Scroll to Top Button 
+    <!-- Scroll to Top Button -->
     <button id="scroll-top" class="fixed bottom-8 right-8 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors hidden">
         <i class="fas fa-arrow-up"></i>
-    </button>-->
+    </button>
 
     <script>
         // Mobile menu toggle
