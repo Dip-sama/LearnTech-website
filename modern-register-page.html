@@ -748,7 +748,7 @@
               <span class="checkmark"></span>
             </label>
             <div class="checkbox-text">
-              I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+              I agree to the <a href="#">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>
             </div>
           </div>
           
@@ -855,4 +855,94 @@
           <i class="fas fa-check"></i>
         </div>
         <h2 class="success-title">Registration Successful!</h2>
-        <p
+<p class="success-message">Thank you for joining our community. You can now access all premium features and connect with other members.</p>
+<button class="btn btn-submit">Go to Dashboard</button>
+</div>
+</div>
+</div>
+</body>
+<script>
+     document.addEventListener('DOMContentLoaded', function () {
+       const form = document.getElementById('registerForm');
+       const emailInput = document.getElementById('email');
+       const usernameInput = document.getElementById('username');
+       const passwordInput = document.getElementById('password');
+       const confirmPasswordInput = document.getElementById('confirmPassword');
+       const passwordToggle = document.querySelectorAll('.password-toggle');
+       const agreeTerms = document.getElementById('agreeTerms');
+       const nextButton = document.querySelector('.btn-next');
+       
+       // Email validation
+       emailInput.addEventListener('input', function () {
+         const email = emailInput.value;
+         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+         if (emailPattern.test(email)) {
+           emailInput.classList.remove('error');
+         } else {
+           emailInput.classList.add('error');
+         }
+       });
+
+       // Username validation
+       usernameInput.addEventListener('input', function () {
+         const username = usernameInput.value;
+         if (username.length >= 3 && username.length <= 20) {
+           usernameInput.classList.remove('error');
+         } else {
+           usernameInput.classList.add('error');
+         }
+       });
+
+       // Password validation
+       passwordInput.addEventListener('input', function () {
+         const password = passwordInput.value;
+         const criteria = {
+           length: password.length >= 8,
+           uppercase: /[A-Z]/.test(password),
+           lowercase: /[a-z]/.test(password),
+           number: /[0-9]/.test(password),
+           special: /[!@#$%^&*]/.test(password),
+         };
+         const score = Object.values(criteria).filter(Boolean).length;
+         document.getElementById('password-score').textContent = `${(score / 5) * 100}%`;
+         document.getElementById('length').classList.toggle('valid', criteria.length);
+         document.getElementById('uppercase').classList.toggle('valid', criteria.uppercase);
+         document.getElementById('lowercase').classList.toggle('valid', criteria.lowercase);
+         document.getElementById('number').classList.toggle('valid', criteria.number);
+         document.getElementById('special').classList.toggle('valid', criteria.special);
+       });
+
+       // Password match validation
+       confirmPasswordInput.addEventListener('input', function () {
+         if (passwordInput.value === confirmPasswordInput.value) {
+           confirmPasswordInput.classList.remove('error');
+         } else {
+           confirmPasswordInput.classList.add('error');
+         }
+       });
+
+       // Show/hide password
+       passwordToggle.forEach(toggle => {
+         toggle.addEventListener('click', function () {
+           const input = this.previousElementSibling;
+           if (input.type === 'password') {
+             input.type = 'text';
+             this.classList.add('fa-eye-slash');
+           } else {
+             input.type = 'password';
+             this.classList.remove('fa-eye-slash');
+           }
+         });
+       });
+
+       // Form submission
+       nextButton.addEventListener('click', function () {
+         if (form.checkValidity()) {
+           form.submit();
+         } else {
+           form.reportValidity();
+         }
+       });
+     });
+   </script>
+</html>
