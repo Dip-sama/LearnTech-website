@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LearnTech - Courses</title>
     <style>
-        {
+        /* Reset */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         body {
             background-color: #f5f7fa;
             color: #333;
@@ -483,18 +483,17 @@
                 <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
-            </div>
+            </nav>
         </div>
-    </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md fixed w-full z-40 top-16 left-0 border-b border-gray-200">
-        <ul class="py-4 px-4 space-y-2">
-            <li><a href="index.html" class="block py-2 text-gray-700 hover:text-blue-600 px-4">Home</a></li>
-            <li><a href="features.html" class="block py-2 text-gray-700 hover:text-blue-600 px-4">Features</a></li>
-            <li><a href="about.html" class="block py-2 text-gray-700 hover:text-blue-600 px-4">About</a></li>
-            <li><a href="contact.html" class="block py-2 text-gray-700 hover:text-blue-600 px-4">Contact</a></li>
-        </ul>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md fixed w-full z-40 top-16 left-0 border-b border-gray-200">
+            <ul class="py-4 px-4 space-y-2">
+                <li><a href="index.html" class="block py-2 text-gray-700 hover:text-blue-600 px-4">Home</a></li>
+                <li><a href="features.html" class="block py-2 text-gray-700 hover:text-blue-600 px-4">Features</a></li>
+                <li><a href="about.html" class="block py-2 text-gray-700 hover:text-blue-600 px-4">About</a></li>
+                <li><a href="contact.html" class="block py-2 text-gray-700 hover:text-blue-600 px-4">Contact</a></li>
+            </ul>
         </div>
     </header>
 
@@ -529,7 +528,7 @@
                         <h3 class="course-title">Full-Stack Web Development</h3>
                         <p class="course-description">Master modern web development by building real-world projects with HTML, CSS, JavaScript, React, Node.js, and MongoDB.</p>
                         <div class="course-meta">
-                            <div class="course-price">₹89.99</div>
+                            <div class="course-price">$89.99</div>
                             <a href="#" class="enroll-btn">Enroll Now</a>
                         </div>
                     </div>
@@ -585,6 +584,8 @@
             </div>
         </div>
     </section>
+
+    
 
     <!-- Upcoming Courses -->
     <section class="upcoming-courses">
