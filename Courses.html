@@ -4,47 +4,467 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LearnTech - Courses</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <style>
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: #2563eb;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .logo span {
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #1e40af;
+        }
+
+        .active {
+            color: #1e40af;
+            border-bottom: 2px solid #1e40af;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            background-color: #1e40af;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #1e3a8a;
+        }
+
+        /* Course Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #1e3a8a;
+        }
+
+        .section-title p {
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
         .course-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
+
         .course-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
-        .progress-bar {
-            transition: width 0.3s ease;
+
+        .course-image {
+            height: 200px;
+            overflow: hidden;
         }
-        .nav-link {
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #2563EB;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
+
+        .course-image img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .course-card:hover .course-image img {
+            transform: scale(1.05);
+        }
+
+        .course-content {
+            padding: 25px;
+        }
+
+        .course-tag {
+            display: inline-block;
+            background-color: #e0e7ff;
+            color: #4338ca;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+
+        .course-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #1e3a8a;
+        }
+
+        .course-description {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+        }
+
+        .course-price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #1e3a8a;
+        }
+
+        .enroll-btn {
+            background-color: #2563eb;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .enroll-btn:hover {
+            background-color: #1e40af;
+        }
+
+        /* Upcoming Courses */
+        .upcoming-courses {
+            background-color: #e0e7ff;
+            padding: 60px 0;
+        }
+
+        .upcoming-course-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 30px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .upcoming-badge {
+            background-color: #fecaca;
+            color: #b91c1c;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .notify-btn {
+            background-color: #1e40af;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .notify-btn:hover {
+            background-color: #1e3a8a;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            margin: 80px 0;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #4b5563;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: #1e3a8a;
+        }
+
+        .author-info p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #2563eb;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e293b;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: #e2e8f0;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #94a3b8;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #e2e8f0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #334155;
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #3b82f6;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #334155;
+            padding-top: 30px;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .upcoming-course-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .search-bar {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-50 font-['Inter']">
-    <!-- Navbar with blur effect -->
-    <nav class="bg-white/80 backdrop-blur-md fixed w-full z-50 top-0 left-0 border-b border-gray-200">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <a href="index.html" class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
-                    LearnTech
-                </a>
-
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">LearnTech</div>
                 <!-- Desktop Menu -->
                 <ul class="hidden md:flex space-x-8">
                     <li><a href="index.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Home</a></li>
@@ -75,185 +495,226 @@
             <li><a href="about.html" class="block py-2 text-gray-700 hover:text-blue-600 px-4">About</a></li>
             <li><a href="contact.html" class="block py-2 text-gray-700 hover:text-blue-600 px-4">Contact</a></li>
         </ul>
-    </div>
-
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 pt-24 pb-12">
-        <!-- Course Header -->
-        <div class="max-w-4xl mx-auto mb-12">
-            <h1 class="text-4xl font-bold mb-4">Popular Courses</h1>
-            <p class="text-gray-600">Explore our most popular courses and start your learning journey today.</p>
         </div>
+    </header>
 
-        <!-- Course Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Course Card 1 -->
-            <div class="course-card bg-white rounded-xl overflow-hidden border border-gray-200">
-                <div class="relative">
-                    <img src="https://storage.googleapis.com/a1aa/image/IPHH7dGEHSIpS0XgeA7ueH7a221s51_Tbr29nmQp_5w.jpg" 
-                         alt="Web Development" 
-                         class="w-full h-48 object-cover"/>
-                    <div class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                        Popular
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2">Web Development Fundamentals</h3>
-                    <p class="text-gray-600 mb-4">Master the basics of web development with HTML, CSS, and JavaScript.</p>
-                    <div class="mb-4">
-                        <div class="flex items-center mb-2">
-                            <div class="text-sm text-gray-600">Course Progress</div>
-                            <div class="ml-auto text-sm font-medium text-blue-600">45%</div>
-                        </div>
-                        <div class="h-2 bg-gray-200 rounded-full">
-                            <div class="h-2 bg-blue-600 rounded-full progress-bar" style="width: 45%"></div>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                            <i class="fas fa-clock text-gray-400"></i>
-                            <span class="text-sm text-gray-600">8 weeks</span>
-                        </div>
-                        <button class="px-6 py-2 bg-blue-600 text-white font-medium rounded-full hover:bg-blue-700 transition">
-                            Continue
-                        </button>
-                    </div>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Expand Your Tech Knowledge</h1>
+            <p>Discover our wide range of technology courses designed to help you master the skills that drive today's digital economy.</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for courses...">
+                <button>Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Available Courses -->
+    <section class="available-courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Available Courses</h2>
+                <p>Choose from our selection of carefully crafted courses designed by industry experts to help you succeed in the tech world.</p>
             </div>
 
-            <!-- Course Card 2 -->
-            <div class="course-card bg-white rounded-xl overflow-hidden border border-gray-200">
-                <div class="relative">
-                    <img src="https://storage.googleapis.com/a1aa/image/4O5Ru2OGnR357sPoxTjUFBhW1D8LVRzeJQqyN9DWhCQ.jpg" 
-                         alt="Python Programming" 
-                         class="w-full h-48 object-cover"/>
-                    <div class="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                        New
+            <div class="courses-grid">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/600/400" alt="Web Development Course">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-tag">Bestseller</span>
+                        <h3 class="course-title">Full-Stack Web Development</h3>
+                        <p class="course-description">Master modern web development by building real-world projects with HTML, CSS, JavaScript, React, Node.js, and MongoDB.</p>
+                        <div class="course-meta">
+                            <div class="course-price">₹89.99</div>
+                            <a href="#" class="enroll-btn">Enroll Now</a>
+                        </div>
                     </div>
                 </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2">Python Programming</h3>
-                    <p class="text-gray-600 mb-4">Learn Python programming from scratch with hands-on projects.</p>
-                    <div class="mb-4">
-                        <div class="flex items-center mb-2">
-                            <div class="text-sm text-gray-600">Course Progress</div>
-                            <div class="ml-auto text-sm font-medium text-green-600">0%</div>
-                        </div>
-                        <div class="h-2 bg-gray-200 rounded-full">
-                            <div class="h-2 bg-green-600 rounded-full progress-bar" style="width: 0%"></div>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                            <i class="fas fa-clock text-gray-400"></i>
-                            <span class="text-sm text-gray-600">10 weeks</span>
-                        </div>
-                        <button class="px-6 py-2 bg-green-600 text-white font-medium rounded-full hover:bg-green-700 transition">
-                            Enroll Now
-                        </button>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Course Card 3 -->
-            <div class="course-card bg-white rounded-xl overflow-hidden border border-gray-200">
-                <div class="relative">
-                    <img src="https://storage.googleapis.com/a1aa/image/fL_VpRPYC6Kl8J72v0Da0AE6ay15CocjPHIncyo8oUo.jpg" 
-                         alt="UI/UX Design" 
-                         class="w-full h-48 object-cover"/>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2">UI/UX Design Essentials</h3>
-                    <p class="text-gray-600 mb-4">Learn modern UI/UX design principles and tools.</p>
-                    <div class="mb-4">
-                        <div class="flex items-center mb-2">
-                            <div class="text-sm text-gray-600">Course Progress</div>
-                            <div class="ml-auto text-sm font-medium text-purple-600">80%</div>
-                        </div>
-                        <div class="h-2 bg-gray-200 rounded-full">
-                            <div class="h-2 bg-purple-600 rounded-full progress-bar" style="width: 80%"></div>
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/600/400" alt="Data Science Course">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-tag">Popular</span>
+                        <h3 class="course-title">Data Science & Machine Learning</h3>
+                        <p class="course-description">Learn how to analyze data, create visualizations, and build machine learning models using Python, Pandas, NumPy, and TensorFlow.</p>
+                        <div class="course-meta">
+                            <div class="course-price">$94.99</div>
+                            <a href="#" class="enroll-btn">Enroll Now</a>
                         </div>
                     </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                            <i class="fas fa-clock text-gray-400"></i>
-                            <span class="text-sm text-gray-600">6 weeks</span>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/600/400" alt="Mobile App Development Course">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-tag">New</span>
+                        <h3 class="course-title">Mobile App Development</h3>
+                        <p class="course-description">Create stunning cross-platform mobile applications with Flutter and Dart. Build a portfolio of real-world apps for iOS and Android.</p>
+                        <div class="course-meta">
+                            <div class="course-price">$79.99</div>
+                            <a href="#" class="enroll-btn">Enroll Now</a>
                         </div>
-                        <button class="px-6 py-2 bg-purple-600 text-white font-medium rounded-full hover:bg-purple-700 transition">
-                            Continue
-                        </button>
+                    </div>
+                </div>
+
+                <!-- Course 4 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/600/400" alt="Cybersecurity Course">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-tag">Advanced</span>
+                        <h3 class="course-title">Cybersecurity Fundamentals</h3>
+                        <p class="course-description">Learn to protect systems and networks from digital attacks. Master essential security concepts, tools, and best practices.</p>
+                        <div class="course-meta">
+                            <div class="course-price">$99.99</div>
+                            <a href="#" class="enroll-btn">Enroll Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
+
+    <!-- Upcoming Courses -->
+    <section class="upcoming-courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Upcoming Courses</h2>
+                <p>Stay ahead of the curve with our upcoming courses. Get notified when they become available.</p>
+            </div>
+
+            <div class="upcoming-course-card">
+                <div>
+                    <span class="upcoming-badge">Coming Soon</span>
+                    <h3 class="course-title">Blockchain Development & Smart Contracts</h3>
+                    <p class="course-description">Learn to build decentralized applications and smart contracts on Ethereum and other blockchain platforms. Master Solidity programming and Web3 integration.</p>
+                    <button class="notify-btn">Notify Me</button>
+                </div>
+            </div>
+
+            <div class="upcoming-course-card">
+                <div>
+                    <span class="upcoming-badge">Coming Soon</span>
+                    <h3 class="course-title">AI & Natural Language Processing</h3>
+                    <p class="course-description">Dive into the world of artificial intelligence and natural language processing. Build intelligent applications that can understand, process, and generate human language.</p>
+                    <button class="notify-btn">Notify Me</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Students Say</h2>
+                <p>Don't just take our word for it. Hear from the success stories of our students.</p>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">"The Full-Stack Web Development course completely transformed my career. I went from knowing almost nothing about coding to landing a job as a junior developer in just 6 months. The instructors were incredibly supportive and the projects were challenging but rewarding."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="/api/placeholder/100/100" alt="Sarah Johnson">
+                    </div>
+                    <div class="author-info">
+                        <h4>Sarah Johnson</h4>
+                        <p>Web Developer at TechCorp</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">"I took the Data Science course while working full-time, and it was perfectly structured for busy professionals. The practical approach and real-world datasets made learning complex concepts much easier. Now I'm using these skills daily in my new role as a data analyst."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="/api/placeholder/100/100" alt="Michael Chen">
+                    </div>
+                    <div class="author-info">
+                        <h4>Michael Chen</h4>
+                        <p>Data Analyst at FinanceAI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter to get updates on new courses, tech trends, and special offers.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">LearnTech</h3>
-                    <p class="text-gray-400">Empowering learners worldwide with cutting-edge technology education.</p>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Careers</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Support</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Help Center</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Connect With Us</h4>
-                    <div class="flex space-x-4">
-                        <a href="https://github.com/Dip-sama" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-github text-xl"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/dip-bhattacharjee-aa833430a" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-linkedin-in text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>LearnTech</h3>
+                    <p>Empowering the next generation of tech professionals with quality education and practical skills.</p>
+                    <div class="social-links">
+                        <a href="#">F</a>
+                        <a href="#">T</a>
+                        <a href="#">L</a>
+                        <a href="#">I</a>
                     </div>
                 </div>
+
+<div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>© 2023 LearnTech. All rights reserved.</p>
+
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="#">Community Forum</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>Email: support@learntech.com</li>
+                    <li>Phone: +1 (123) 456-7890</li>
+                    <li>Address: 123 Tech Street</li>
+                </ul>
             </div>
         </div>
-    </footer>
 
-    <script>
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        <div class="footer-bottom">
+            <p>&copy; 2025 LearnTech. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const icon = menuBtn.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 0) {
-                nav.classList.add('shadow-md');
-            } else {
-                nav.classList.remove('shadow-md');
-            }
-        });
-    </script>
 </body>
 </html>
+ 
+
+      
