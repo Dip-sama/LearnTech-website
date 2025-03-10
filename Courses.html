@@ -6,6 +6,11 @@
     <title>LearnTech - Courses</title>
     <style>
         /* Reset */
+        :root {
+           --primary-color: #2563eb;
+           --secondary-color: #3b82f6;
+           --text-color: #333;
+         }
         * {
             margin: 0;
             padding: 0;
@@ -27,6 +32,50 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .logo span {
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #1e40af;
+        }
+
+        .active {
+            color: #1e40af;
+            border-bottom: 2px solid #1e40af;
         }
 
                 .navbar {
@@ -776,7 +825,16 @@
         </div>
     </div>
 </footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const menuBtn = document.querySelector(".menu-btn");
+    const mobileMenu = document.querySelector(".mobile-menu");
 
+    menuBtn.addEventListener("click", function () {
+        mobileMenu.classList.toggle("active");
+    });
+});
+</script>
 </body>
 </html>
  
