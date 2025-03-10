@@ -416,10 +416,10 @@
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
+    <!-- Scroll to Top Button 
     <button id="scroll-top" class="fixed bottom-8 right-8 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors hidden">
         <i class="fas fa-arrow-up"></i>
-    </button>
+    </button>-->
 
     <script>
         // Mobile menu toggle
@@ -516,14 +516,7 @@
             }
         }
     
-const recognition = new webkitSpeechRecognition();
-recognition.lang = "en-US";
-document.getElementById("voice-btn").addEventListener("click", () => {
-    recognition.start();
-});
-recognition.onresult = (event) => {
-    document.getElementById("chat-input").value = event.results[0][0].transcript;
-};
+
 </script>
 </body>
 </html>
