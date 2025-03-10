@@ -91,6 +91,29 @@
         @keyframes l22 {
             100% { background-position: left; }
         }
+       .chat-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+#chat-input {
+    width: 80%;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+button {
+    padding: 10px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
     </style>
  <script>
         tailwind.config = {
@@ -425,7 +448,14 @@
             </div>
         </div>
     </section>
-
+<div class="chat-container">
+    <h2>Ask AI</h2>
+    <form id="chat-form">
+        <input type="text" id="chat-input" placeholder="Ask something..." required>
+        <button type="submit">Send</button>
+    </form>
+    <div id="chat-output"></div>
+</div>
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-4">
@@ -526,6 +556,45 @@
             });
         });
     </script>
+
+<script>
+    async function getAIResponse(userInput) {
+        const apiKey = "https://api.openai.com/v1/chat/completions"; // Replace with your OpenAI API key
+        const apiUrl = "https://api.openai.com/v1/chat/completions";
+
+        const response = await fetch(apiUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: "gpt-4",
+                messages: [{ role: "user", content: userInput }],
+                temperature: 0.7
+            })
+        });
+
+        const data = await response.json();
+        return data.choices[0].message.content;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const chatForm = document.getElementById("chat-form");
+        const chatInput = document.getElementById("chat-input");
+        const chatOutput = document.getElementById("chat-output");
+
+        chatForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const userInput = chatInput.value;
+            chatInput.value = "Thinking...";
+            const aiResponse = await getAIResponse(userInput);
+            chatOutput.innerHTML = `<p><strong>You:</strong> ${userInput}</p><p><strong>AI:</strong> ${aiResponse}</p>`;
+            chatInput.value = "";
+        });
+    });
+</script>
+
 </body>
 </html>
                             
