@@ -5,7 +5,9 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>LearnTech - Modern Online Learning Platform</title>
     <meta name="description" content="LearnTech - Your gateway to the best online courses in web development, programming, and design" />
-    <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com">
+</script>
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -344,14 +346,26 @@
             </div>
         </div>
     </section>
-  <div class="chat-container">
-        <div class="chat-header">AI Chatbot</div>
-        <div class="chat-box" id="chatBox"></div>
-        <div class="chat-input">
-            <input type="text" id="userInput" placeholder="Type a message..." onkeypress="handleKeyPress(event)">
-            <button onclick="askGemini()">Send</button>
-        </div>
+ <!-- Chatbot Button -->
+<button id="chatbot-btn" class="fixed bottom-6 right-6 bg-blue-600 text-white px-4 py-3 rounded-full shadow-lg hover:bg-blue-700">
+    <i class="fas fa-comment-alt"></i>
+</button>
+
+<!-- Chatbot Window -->
+<div id="chatbot-window" class="fixed bottom-20 right-6 w-80 bg-white shadow-2xl rounded-lg hidden">
+    <div class="p-4 bg-blue-600 text-white rounded-t-lg">
+        <span class="font-bold">LearnTech AI</span>
+        <button id="close-chat" class="float-right text-white"><i class="fas fa-times"></i></button>
     </div>
+    <div id="chat-body" class="p-4 h-64 overflow-y-auto"></div>
+    <div class="p-2 border-t flex">
+        <input id="chat-input" type="text" class="flex-1 p-2 border rounded-l-lg" placeholder="Ask me anything..." />
+        <button id="send-btn" class="bg-blue-600 text-white px-3 rounded-r-lg"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<button class="quick-reply">What courses do you offer?</button>
+<button class="quick-reply">How can I enroll?</button>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
@@ -501,7 +515,16 @@
                 askGemini();
             }
         }
-    </script>
+    
+const recognition = new webkitSpeechRecognition();
+recognition.lang = "en-US";
+document.getElementById("voice-btn").addEventListener("click", () => {
+    recognition.start();
+});
+recognition.onresult = (event) => {
+    document.getElementById("chat-input").value = event.results[0][0].transcript;
+};
+</script>
 </body>
 </html>
                             
