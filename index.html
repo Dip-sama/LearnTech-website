@@ -91,29 +91,61 @@
         @keyframes l22 {
             100% { background-position: left; }
         }
-       .chat-container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-#chat-input {
-    width: 80%;
-    padding: 10px;
-    margin-right: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-button {
-    padding: 10px;
-    border: none;
-    background: #2563eb;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
+           .chat-container {
+            width: 350px;
+            max-width: 100%;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .chat-header {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+        .chat-box {
+            height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-message {
+            margin: 5px;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+        .user {
+            background: #007bff;
+            color: white;
+            align-self: flex-end;
+        }
+        .bot {
+            background: #e5e5e5;
+            color: black;
+            align-self: flex-start;
+        }
+        .chat-input {
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+        input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
     </style>
  <script>
         tailwind.config = {
@@ -448,14 +480,15 @@ button {
             </div>
         </div>
     </section>
-<div class="chat-container">
-    <h2>Ask AI</h2>
-    <form id="chat-form">
-        <input type="text" id="chat-input" placeholder="Ask something..." required>
-        <button type="submit">Send</button>
-    </form>
-    <div id="chat-output"></div>
-</div>
+  <div class="chat-container">
+        <div class="chat-header">Gemini AI Chat</div>
+        <div class="chat-box" id="chatBox"></div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type a message..." onkeypress="handleKeyPress(event)">
+            <button onclick="askGemini()">Send</button>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-4">
@@ -557,44 +590,54 @@ button {
         });
     </script>
 
-<script>
-    async function getAIResponse(userInput) {
-        const apiKey = "https://api.openai.com/v1/chat/completions"; // Replace with your OpenAI API key
-        const apiUrl = "https://api.openai.com/v1/chat/completions";
+  <script>
+        const API_KEY = "AIzaSyANGpQvsuVvIhzFkrx6WEyJjqddkeuRRZ4"; // Replace with your Gemini API key
 
-        const response = await fetch(apiUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${apiKey}`
-            },
-            body: JSON.stringify({
-                model: "gpt-4",
-                messages: [{ role: "user", content: userInput }],
-                temperature: 0.7
-            })
-        });
+        async function askGemini() {
+            const userInput = document.getElementById("userInput").value;
+            if (!userInput.trim()) return;
 
-        const data = await response.json();
-        return data.choices[0].message.content;
-    }
+            const chatBox = document.getElementById("chatBox");
+            appendMessage("user", userInput);
+            document.getElementById("userInput").value = "";
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const chatForm = document.getElementById("chat-form");
-        const chatInput = document.getElementById("chat-input");
-        const chatOutput = document.getElementById("chat-output");
+            const url = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`;
 
-        chatForm.addEventListener("submit", async function (e) {
-            e.preventDefault();
-            const userInput = chatInput.value;
-            chatInput.value = "Thinking...";
-            const aiResponse = await getAIResponse(userInput);
-            chatOutput.innerHTML = `<p><strong>You:</strong> ${userInput}</p><p><strong>AI:</strong> ${aiResponse}</p>`;
-            chatInput.value = "";
-        });
-    });
-</script>
+            const requestData = {
+                contents: [{ parts: [{ text: userInput }] }]
+            };
 
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(requestData)
+                });
+
+                const data = await response.json();
+                const botResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "I couldn't understand that.";
+
+                appendMessage("bot", botResponse);
+            } catch (error) {
+                appendMessage("bot", "Error: " + error.message);
+            }
+        }
+
+        function appendMessage(sender, message) {
+            const chatBox = document.getElementById("chatBox");
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("chat-message", sender);
+            messageDiv.textContent = message;
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                askGemini();
+            }
+        }
+    </script>
 </body>
 </html>
                             
