@@ -38,6 +38,91 @@
             }
         }
     </script>
+<style> 
+
+.chat-window {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+}
+
+/* Chat Header */
+.chat-header {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Chat Body */
+.chat-body {
+    padding: 10px;
+    height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-message {
+    max-width: 80%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.user-message {
+    background: #dcf8c6;
+    align-self: flex-end;
+}
+
+.bot-message {
+    background: #e5e5e5;
+    align-self: flex-start;
+}
+
+/* Chat Footer */
+.chat-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.chat-footer input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.chat-footer button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+</style>
 </head>
 <body class="font-sans bg-gray-50">
     <!-- Navbar with smooth scroll -->
@@ -517,6 +602,66 @@
         }
     
 
+</script>
+<script>
+// Get elements
+const chatbotBtn = document.getElementById("chatbot-btn");
+const chatbotWindow = document.getElementById("chatbot-window");
+const closeChatBtn = document.getElementById("close-chat");
+const chatBody = document.getElementById("chat-body");
+const chatInput = document.getElementById("chat-input");
+const sendBtn = document.getElementById("send-btn");
+
+// Toggle chat window
+chatbotBtn.addEventListener("click", () => {
+    chatbotWindow.style.display = chatbotWindow.style.display === "none" || chatbotWindow.style.display === "" ? "flex" : "none";
+});
+
+// Close chat window
+closeChatBtn.addEventListener("click", () => {
+    chatbotWindow.style.display = "none";
+});
+
+// Send message
+sendBtn.addEventListener("click", sendMessage);
+chatInput.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") sendMessage();
+});
+
+function sendMessage() {
+    const userMessage = chatInput.value.trim();
+    if (userMessage === "") return;
+
+    // Display user message
+    displayMessage(userMessage, "user-message");
+
+    // Simulate AI response (Mocked, replace with API call)
+    setTimeout(() => {
+        const botResponse = getBotResponse(userMessage);
+        displayMessage(botResponse, "bot-message");
+    }, 1000);
+
+    chatInput.value = "";
+}
+
+// Function to display messages
+function displayMessage(message, className) {
+    const messageElement = document.createElement("div");
+    messageElement.textContent = message;
+    messageElement.classList.add("chat-message", className);
+    chatBody.appendChild(messageElement);
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+// Simulated AI response function
+function getBotResponse(input) {
+    const responses = {
+        "hello": "Hi there! How can I help you?",
+        "what courses do you offer?": "We offer HTML, CSS, JavaScript, and AI courses.",
+        "how can I enroll?": "You can sign up on our LearnTech website for free!"
+    };
+    return responses[input.toLowerCase()] || "I'm still learning! Ask me about courses.";
+}
 </script>
 </body>
 </html>
