@@ -429,23 +429,41 @@
             </div>
         </div>
     </section>
- <!-- Chatbot Button -->
-<button id="chatbot-btn" class="fixed bottom-6 right-6 bg-blue-600 text-white px-4 py-3 rounded-full shadow-lg hover:bg-blue-700">
+ <!-- Include FontAwesome for Icons -->
+<script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT.js" crossorigin="anonymous"></script>
+
+<!-- Chatbot Button -->
+<button id="chatbot-btn" class="fixed bottom-6 right-6 bg-blue-600 text-white px-4 py-3 rounded-full shadow-lg hover:bg-blue-700 cursor-pointer">
     <i class="fas fa-comment-alt"></i>
 </button>
 
 <!-- Chatbot Window -->
-<div id="chatbot-window" class="fixed bottom-20 right-6 w-85 bg-white shadow-2xl rounded-lg hidden">
-    <div class="p-4 bg-blue-600 text-white rounded-t-lg">
+<div id="chatbot-window" class="fixed bottom-20 right-6 w-80 bg-white shadow-2xl rounded-lg hidden">
+    <div class="p-4 bg-blue-600 text-white rounded-t-lg relative">
         <span class="font-bold">LearnTech AI</span>
-        <button id="close-chat" class="float-right text-white"><i class="fas fa-times"></i></button>
+        <button id="close-chat" class="absolute right-4 top-4 text-white cursor-pointer">
+            <i class="fas fa-times"></i>
+        </button>
     </div>
     <div id="chat-body" class="p-4 h-64 overflow-y-auto"></div>
     <div class="p-2 border-t flex">
         <input id="chat-input" type="text" class="flex-1 p-2 border rounded-l-lg" placeholder="Ask me anything..." />
-        <button id="send-btn" class="bg-blue-600 text-white px-3 rounded-r-lg"><i class="fas fa-paper-plane"></i></button>
+        <button id="send-btn" class="bg-blue-600 text-white px-3 rounded-r-lg cursor-pointer">
+            <i class="fas fa-paper-plane"></i>
+        </button>
     </div>
 </div>
+
+<!-- Chatbot JavaScript -->
+<script>
+document.getElementById("chatbot-btn").addEventListener("click", function () {
+    document.getElementById("chatbot-window").classList.toggle("hidden");
+});
+
+document.getElementById("close-chat").addEventListener("click", function () {
+    document.getElementById("chatbot-window").classList.add("hidden");
+});
+</script>
 
 <button class="quick-reply">What courses do you offer?</button>
 <button class="quick-reply">How can I enroll?</button>
