@@ -20,7 +20,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-item-align: center;
   background: #f5f7fa;
   overflow: hidden;
   position: relative;
@@ -39,6 +38,7 @@ body::before {
 }
 
 .container {
+  margin:0 16px;
   width: 100%;
   max-width: 400px;
   padding: 40px;
@@ -299,6 +299,23 @@ h1 {
     transform: translateY(0) rotate(0deg);
   }
 }
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+  @media (max-width: 480px) {
+  .container {
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+  
 </style>
 <body>
   <!-- Floating shapes background -->
