@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recorded Lectures | LearnTech</title>
+    <style>
+        :root {
+            --primary-color: #6557f5;
+            --secondary-color: #f0f2f5;
+            --text-color: #5a5a5a;
+            --hover-color: #f5f5f5;
+            --active-color: #ededff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+        }
+
+        /* Sidebar styles (same as before) */
+        .sidebar {
+            position: fixed;
+            width: 250px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: 2px 0 10px var(--shadow-color);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        .toggle-btn {
+            margin-left: auto;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 18px;
+        }
+
+        .sidebar-content {
+            padding: 15px 0;
+        }
+
+        .section-title {
+            padding: 10px 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            font-weight: 600;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .menu-item:hover {
+            background-color: var(--hover-color);
+        }
+
+        .menu-item.active {
+            border-left-color: var(--primary-color);
+            background-color: var(--active-color);
+            color: var(--primary-color);
+        }
+
+        .menu-icon {
+            font-size: 18px;
+            min-width: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-text {
+            margin-left: 12px;
+        }
+
+        /* Main content styles */
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+            width: calc(100% - 250px);
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            padding: 10px 15px;
+            box-shadow: var(--card-shadow);
+            width: 300px;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .search-icon {
+            color: #999;
+            margin-right: 10px;
+        }
+
+        .filter-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .filter-btn {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .lectures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .lecture-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .lecture-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .lecture-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .lecture-info {
+            padding: 15px;
+        }
+
+        .lecture-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .lecture-course {
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .lecture-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 5px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            width: 0;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 70px;
+            }
+            
+            .sidebar .logo-text,
+            .sidebar .section-title,
+            .sidebar .menu-text {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 70px;
+                width: calc(100% - 70px);
+            }
+            
+            .lectures-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .search-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar (same as before) -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i>🎓</i>
+                </div>
+                <span class="logo-text">LearnTech</span>
+            </div>
+            <button class="toggle-btn">×</button>
+        </div>
+        <div class="sidebar-content">
+            <div class="section-title">MAIN</div>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">🏠</span>
+                <span class="menu-text">Dashboard</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">📚</span>
+                <span class="menu-text">My Courses</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">📝</span>
+                <span class="menu-text">Assignments</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">📅</span>
+                <span class="menu-text">Calendar</span>
+            </a>
+            
+            <div class="section-title">RESOURCES</div>
+            <a href="#" class="menu-item active">
+                <span class="menu-icon">🎥</span>
+                <span class="menu-text">Recorded Lectures</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">📄</span>
+                <span class="menu-text">Study Materials</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">👥</span>
+                <span class="menu-text">Study Groups</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">❓</span>
+                <span class="menu-text">Help Center</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content for Recorded Lectures -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">Recorded Lectures</h1>
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search lectures...">
+            </div>
+        </div>
+
+        <div class="filter-container">
+            <button class="filter-btn active">All Lectures</button>
+            <button class="filter-btn">Recent</button>
+            <button class="filter-btn">Bookmarked</button>
+            <button class="filter-btn">Watched</button>
+            <button class="filter-btn">Unwatched</button>
+        </div>
+
+        <div class="lectures-grid">
+            <!-- Lecture Card 1 -->
+            <div class="lecture-card">
+                <div class="video-thumbnail">
+                    <img src="/api/placeholder/400/320" alt="Introduction to Data Structures">
+                    <div class="play-icon">▶️</div>
+                    <div class="lecture-duration">45:20</div>
+                </div>
+                <div class="lecture-info">
+                    <h3 class="lecture-title">Introduction to Data Structures</h3>
+                    <div class="lecture-course">Computer Science 101</div>
+                    <div class="lecture-meta">
+                        <span>Dr. Smith • May 8, 2025</span>
+                        <span>Viewed 2 days ago</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lecture Card 2 -->
+            <div class="lecture-card">
+                <div class="video-thumbnail">
+                    <img src="/api/placeholder/400/320" alt="Advanced JavaScript Concepts">
+                    <div class="play-icon">▶️</div>
+                    <div class="lecture-duration">1:12:45</div>
+                </div>
+                <div class="lecture-info">
+                    <h3 class="lecture-title">Advanced JavaScript Concepts</h3>
+                    <div class="lecture-course">Web Development</div>
+                    <div class="lecture-meta">
+                        <span>Prof. Johnson • May 5, 2025</span>
+                        <span>Not viewed yet</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lecture Card 3 -->
+            <div class="lecture-card">
+                <div class="video-thumbnail">
+                    <img src="/api/placeholder/400/320" alt="Statistical Analysis Methods">
+                    <div class="play-icon">▶️</div>
+                    <div class="lecture-duration">55:30</div>
+                </div>
+                <div class="lecture-info">
+                    <h3 class="lecture-title">Statistical Analysis Methods</h3>
+                    <div class="lecture-course">Statistics 201</div>
+                    <div class="lecture-meta">
+                        <span>Dr. Garcia • May 7, 2025</span>
+                        <span>Viewed 1 week ago</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 25%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lecture Card 4 -->
+            <div class="lecture-card">
+                <div class="video-thumbnail">
+                    <img src="/api/placeholder/400/320" alt="UI/UX Design Principles">
+                    <div class="play-icon">▶️</div>
+                    <div class="lecture-duration">38:15</div>
+                </div>
+                <div class="lecture-info">
+                    <h3 class="lecture-title">UI/UX Design Principles</h3>
+                    <div class="lecture-course">Design Fundamentals</div>
+                    <div class="lecture-meta">
+                        <span>Prof. Lee • May 2, 2025</span>
+                        <span>Completed</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lecture Card 5 -->
+            <div class="lecture-card">
+                <div class="video-thumbnail">
+                    <img src="/api/placeholder/400/320" alt="Database Management Systems">
+                    <div class="play-icon">▶️</div>
+                    <div class="lecture-duration">1:02:15</div>
+                </div>
+                <div class="lecture-info">
+                    <h3 class="lecture-title">Database Management Systems</h3>
+                    <div class="lecture-course">Information Systems</div>
+                    <div class="lecture-meta">
+                        <span>Dr. Thompson • May 4, 2025</span>
+                        <span>Not viewed yet</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lecture Card 6 -->
+            <div class="lecture-card">
+                <div class="video-thumbnail">
+                    <img src="/api/placeholder/400/320" alt="Machine Learning Algorithms">
+                    <div class="play-icon">▶️</div>
+                    <div class="lecture-duration">1:25:10</div>
+                </div>
+                <div class="lecture-info">
+                    <h3 class="lecture-title">Machine Learning Algorithms</h3>
+                    <div class="lecture-course">AI Fundamentals</div>
+                    <div class="lecture-meta">
+                        <span>Prof. Williams • May 9, 2025</span>
+                        <span>Viewed yesterday</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 50%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle sidebar
+        document.querySelector('.toggle-btn').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('collapsed');
+            document.querySelector('.main-content').classList.toggle('expanded');
+        });
+
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // Initialize progress bars with random values for demo
+        document.querySelectorAll('.lecture-card').forEach(card => {
+            const hasProgress = card.querySelector('.progress-bar').style.width !== '0%';
+            if (hasProgress) {
+                // Add animation for existing progress bars
+                card.querySelector('.progress-bar').style.transition = 'width 1s ease';
+            }
+        });
+
+        // Simulate lecture card click
+        document.querySelectorAll('.lecture-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // In a real application, this would navigate to the lecture video
+                console.log('Opening lecture:', this.querySelector('.lecture-title').textContent);
+                // You could add: window.location.href = 'lecture-video.html?id=123';
+            });
+        });
+    </script>
+</body>
+</html>
