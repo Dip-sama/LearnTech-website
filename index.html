@@ -442,9 +442,6 @@ width:0ch;
             </div>
         </div>
     </section>
- <!-- Include FontAwesome for Icons -->
-<script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT.js" crossorigin="anonymous"></script>
-
 <!-- Chatbot Button -->
 <button id="chatbot-btn" class="fixed bottom-6 right-6 bg-blue-600 text-white px-4 py-3 rounded-full shadow-lg hover:bg-blue-700 cursor-pointer">
     <i class="fas fa-comment-alt"></i>
@@ -458,26 +455,69 @@ width:0ch;
             <i class="fas fa-times"></i>
         </button>
     </div>
-    <div id="chat-body" class="p-4 h-64 overflow-y-auto"></div>
+    <div id="chatBox" class="p-4 h-64 overflow-y-auto">
+        <!-- Chat messages will populate here -->
+    </div>
     <div class="p-2 border-t flex">
-        <input id="chat-input" type="text" class="flex-0 p-1 border rounded-l-lg" placeholder="Ask me anything..." />
-        <button id="send-btn" class="bg-blue-600 text-white px-3 rounded-r-lg cursor-pointer">
-            <i class="fas fa-paper-plane"></i>
-        </button>
+        <input id="userInput" type="text" class="flex-1 p-2 border rounded-lg" placeholder="Ask me anything..." />
+        <button onclick="askGemini()" class="bg-blue-600 text-white px-4 py-2 rounded-lg ml-2">Send</button>
     </div>
 </div>
 
-<!-- Chatbot JavaScript -->
 <script>
-document.getElementById("chatbot-btn").addEventListener("click", function () {
-    document.getElementById("chatbot-window").classList.toggle("hidden");
+const API_KEY = "YOUR_VALID_API_KEY"; // Replace with your real API key
+
+async function askGemini() {
+    const userInput = document.getElementById("userInput").value;
+    if (!userInput.trim()) return;
+
+    const chatBox = document.getElementById("chatBox");
+    appendMessage("user", userInput);
+    document.getElementById("userInput").value = "";
+
+    const url = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateText?key=${"AIzaSyANGpQvsuVvIhzFkrx6WEyJjqddkeuRRZ4"}`;
+
+    const requestData = {
+        prompt: { text: userInput },
+        maxOutputTokens: 256,
+        temperature: 0.7
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestData)
+        });
+
+        const data = await response.json();
+        const botResponse = data.candidates?.[0]?.output || "I'm sorry, I couldn't understand that.";
+
+        appendMessage("bot", botResponse);
+    } catch (error) {
+        appendMessage("bot", "Error: " + error.message);
+    }
+}
+
+function appendMessage(sender, message) {
+    const chatBox = document.getElementById("chatBox");
+    const messageDiv = document.createElement("div");
+    messageDiv.classList.add("chat-message", sender === "user" ? "user-message" : "bot-message");
+    messageDiv.textContent = message;
+    chatBox.appendChild(messageDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+// Toggle chat window visibility
+document.getElementById("chatbot-btn").addEventListener("click", () => {
+    const chatbotWindow = document.getElementById("chatbot-window");
+    chatbotWindow.classList.toggle("hidden");
 });
 
-document.getElementById("close-chat").addEventListener("click", function () {
+document.getElementById("close-chat").addEventListener("click", () => {
     document.getElementById("chatbot-window").classList.add("hidden");
 });
 </script>
-
 <button class="quick-reply">What courses do you offer?</button>
 <button class="quick-reply">How can I enroll?</button>
 
