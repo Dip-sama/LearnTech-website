@@ -770,6 +770,429 @@
         gap: 15px;
       }
     }
+
+    /* Enhanced Responsive Styles */
+
+/* Base responsive settings */
+
+
+/* Responsive breakpoints */
+/* Large desktops and laptops */
+@media (max-width: 1400px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Medium devices (desktops, laptops) */
+@media (max-width: 1200px) {
+  :root {
+    --sidebar-width: 240px;
+  }
+  
+  .logo span {
+    font-size: 1.3rem;
+  }
+  
+  .sidebar-content {
+    padding: 15px;
+  }
+  
+  .nav-item a {
+    padding: 10px 12px;
+  }
+  
+  .courses-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .welcome-banner {
+    padding: 25px;
+  }
+  
+  .welcome-banner h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* Tablets and small desktops */
+@media (max-width: 1024px) {
+  .calendar-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .welcome-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .banner-content p {
+    margin-bottom: 15px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  :root {
+    --sidebar-width: 220px;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .stat-card {
+    padding: 15px;
+    gap: 15px;
+  }
+  
+  .stat-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+  
+  .stat-content h3 {
+    font-size: 1.5rem;
+  }
+  
+  .page-content {
+    padding: 20px;
+  }
+}
+
+/* Small tablets and large phones */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 60px;
+  }
+  
+  .sidebar {
+    transform: translateX(-100%);
+    width: 280px;
+    z-index: 1000;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .sidebar.active {
+    transform: translateX(0);
+  }
+  
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  .sidebar-overlay.active {
+    display: block;
+  }
+  
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .mobile-toggle {
+    display: block;
+  }
+  
+  .header {
+    padding: 0 15px;
+  }
+  
+  .search-bar {
+    width: 180px;
+  }
+  
+  .welcome-banner {
+    padding: 20px;
+  }
+  
+  .welcome-banner h1 {
+    font-size: 1.4rem;
+  }
+  
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .course-image {
+    height: 120px;
+  }
+  
+  .course-title {
+    font-size: 1rem;
+  }
+  
+  .assignment-item {
+    padding: 12px;
+  }
+  
+  .assignment-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Phones */
+@media (max-width: 640px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .search-bar {
+    display: none;
+  }
+  
+  .header-actions {
+    gap: 12px;
+  }
+  
+  .action-button {
+    font-size: 1.1rem;
+  }
+  
+  .welcome-banner {
+    padding: 15px;
+  }
+  
+  .welcome-banner h1 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+  
+  .welcome-banner p {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+  
+  .banner-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .section-header h2 {
+    font-size: 1.3rem;
+  }
+  
+  .calendar-section {
+    gap: 15px;
+  }
+  
+  .assignments-card, .calendar-card {
+    padding: 15px;
+  }
+  
+  .assignment-list {
+    gap: 10px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  :root {
+    --header-height: 50px;
+  }
+  
+  .header {
+    padding: 0 10px;
+  }
+  
+  .logo-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+  
+  .logo span {
+    font-size: 1.2rem;
+  }
+  
+  .sidebar-header {
+    padding: 15px;
+    height: var(--header-height);
+  }
+  
+  .user-avatar {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .user-name {
+    font-size: 0.9rem;
+  }
+  
+  .page-content {
+    padding: 15px 10px;
+  }
+  
+  .welcome-banner {
+    margin-bottom: 20px;
+  }
+  
+  .welcome-banner h1 {
+    font-size: 1.2rem;
+  }
+  
+  .stat-card {
+    padding: 12px;
+  }
+  
+  .stat-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+  
+  .stat-content h3 {
+    font-size: 1.3rem;
+  }
+  
+  .stat-content p {
+    font-size: 0.8rem;
+  }
+  
+  .course-image {
+    height: 100px;
+  }
+  
+  .course-content {
+    padding: 15px;
+  }
+  
+  .course-meta {
+    font-size: 0.8rem;
+  }
+  
+  .assignment-info {
+    font-size: 0.9rem;
+  }
+  
+  .assignment-due {
+    font-size: 0.8rem;
+  }
+  
+  .calendar-grid {
+    gap: 3px;
+  }
+  
+  .calendar-day {
+    font-size: 0.8rem;
+  }
+}
+
+/* Height-based adjustments */
+@media (max-height: 700px) {
+  .sidebar-content {
+    height: calc(100vh - var(--header-height) - 70px);
+  }
+  
+  .nav-section {
+    margin-bottom: 20px;
+  }
+  
+  .nav-item a {
+    padding: 8px 12px;
+  }
+  
+  .nav-section-title {
+    margin-bottom: 10px;
+  }
+}
+
+/* Additional touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Better touch targets */
+  .nav-item a,
+  .action-button,
+  .month-btn,
+  .calendar-day,
+  .assignment-item,
+  .course-card {
+    padding: 12px;
+  }
+  
+  .action-button {
+    padding: 12px 6px;
+  }
+  
+  /* Prevent hover effects that might confuse mobile users */
+  .stat-card:hover,
+  .course-card:hover,
+  .assignment-item:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  /* Make scrolling smoother on touch devices */
+  .sidebar-content {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Print styles */
+@media print {
+  .sidebar,
+  .header,
+  .mobile-toggle,
+  .action-button,
+  .banner-button,
+  .view-all,
+  .sidebar-overlay {
+    display: none !important;
+  }
+  
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .page-content {
+    padding: 0;
+  }
+  
+  body {
+    background-color: white;
+    color: black;
+  }
+  
+  .welcome-banner,
+  .stat-card,
+  .course-card,
+  .assignments-card,
+  .calendar-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .welcome-banner {
+    background: white;
+    color: black;
+  }
+  
+  .stat-icon {
+    color: black;
+    background-color: #eee;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -1046,4 +1469,414 @@
                 </div>
                 <div class="assignment-info">
                   <div class="assignment-title">Database Design Project</div>
-                  <div class="assignment-course">Introduction to
+                  <div class="assignment-course">Introduction to</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+                    <script>
+                      document.addEventListener('DOMContentLoaded', function() {
+  // Get main elements
+  const sidebar = document.getElementById('sidebar');
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const sidebarToggle = document.getElementById('sidebar-toggle');
+  
+  // Create overlay div for mobile sidebar
+  const overlay = document.createElement('div');
+  overlay.className = 'sidebar-overlay';
+  document.body.appendChild(overlay);
+  
+  // Toggle sidebar function
+  function toggleSidebar() {
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+    
+    // Toggle icon for mobile button
+    if (mobileToggle.querySelector('i').classList.contains('fa-bars')) {
+      mobileToggle.querySelector('i').classList.remove('fa-bars');
+      mobileToggle.querySelector('i').classList.add('fa-times');
+    } else {
+      mobileToggle.querySelector('i').classList.add('fa-bars');
+      mobileToggle.querySelector('i').classList.remove('fa-times');
+    }
+  }
+  
+  // Event listeners for sidebar toggles
+  if (mobileToggle) mobileToggle.addEventListener('click', toggleSidebar);
+  if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar);
+  overlay.addEventListener('click', toggleSidebar);
+  
+  // Close sidebar when clicking on a menu item (mobile view)
+  const navItems = document.querySelectorAll('.nav-item a');
+  navItems.forEach(item => {
+    item.addEventListener('click', function() {
+      if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+        toggleSidebar();
+      }
+    });
+  });
+  
+  // Handle window resize
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      // If window width is greater than 768px and sidebar is not visible, make it visible
+      if (window.innerWidth > 768) {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        if (mobileToggle.querySelector('i').classList.contains('fa-times')) {
+          mobileToggle.querySelector('i').classList.remove('fa-times');
+          mobileToggle.querySelector('i').classList.add('fa-bars');
+        }
+      }
+    }, 250);
+  });
+  
+  // Dropdown functionality for submenu items (if needed)
+  const hasSubmenu = document.querySelectorAll('.has-submenu');
+  hasSubmenu.forEach(item => {
+    item.addEventListener('click', function(e) {
+      if (e.target.closest('.submenu-toggle')) {
+        e.preventDefault();
+        this.classList.toggle('submenu-active');
+        
+        let submenu = this.querySelector('.submenu');
+        if (submenu) {
+          if (submenu.style.maxHeight) {
+            submenu.style.maxHeight = null;
+          } else {
+            submenu.style.maxHeight = submenu.scrollHeight + "px";
+          }
+        }
+      }
+    });
+  });
+  
+  // Initialize active menu item based on current page
+  function setActiveMenuItem() {
+    // Get current page URL
+    const currentLocation = window.location.pathname;
+    
+    // Remove active class from all menu items
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.classList.remove('active');
+    });
+    
+    // Find and set active class to current page menu item
+    document.querySelectorAll('.nav-item a').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentLocation || currentLocation.includes(href)) {
+        link.closest('.nav-item').classList.add('active');
+      }
+    });
+  }
+  
+  // Call the function on page load
+  setActiveMenuItem();
+  
+  // Add smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      
+      // Skip if href is just "#" or JavaScript void
+      if (href === '#' || href.includes('javascript:void')) return;
+      
+      e.preventDefault();
+      
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 80, // Adjust offset for header
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+  
+  // Handle notifications dropdown (if present)
+  const notificationButton = document.querySelector('.action-button .fa-bell')?.closest('.action-button');
+  const messageButton = document.querySelector('.action-button .fa-envelope')?.closest('.action-button');
+  
+  function createDropdown(button, title, items) {
+    if (!button) return;
+    
+    // Create dropdown element
+    const dropdown = document.createElement('div');
+    dropdown.className = 'notification-dropdown';
+    dropdown.innerHTML = `
+      <div class="dropdown-header">
+        <h3>${title}</h3>
+        <button class="mark-read">Mark all as read</button>
+      </div>
+      <div class="dropdown-content">
+        ${items.map(item => `
+          <div class="notification-item ${item.read ? 'read' : ''}">
+            <div class="notification-icon">
+              <i class="fas ${item.icon}"></i>
+            </div>
+            <div class="notification-info">
+              <div class="notification-title">${item.title}</div>
+              <div class="notification-time">${item.time}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="dropdown-footer">
+        <a href="#">View All ${title}</a>
+      </div>
+    `;
+    
+    // Style the dropdown
+    const styles = document.createElement('style');
+    styles.textContent = `
+      .notification-dropdown {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: -10px;
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-lg);
+        width: 300px;
+        max-height: 400px;
+        overflow-y: auto;
+        z-index: 1000;
+        display: none;
+      }
+      .dropdown-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .dropdown-header h3 {
+        font-size: 1rem;
+        margin: 0;
+      }
+      .mark-read {
+        background: none;
+        border: none;
+        color: var(--primary-color);
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+      .dropdown-content {
+        max-height: 300px;
+        overflow-y: auto;
+      }
+      .notification-item {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border-bottom: 1px solid var(--border-color);
+        transition: var(--transition);
+        cursor: pointer;
+      }
+      .notification-item:hover {
+        background-color: rgba(0,0,0,0.03);
+      }
+      .notification-item.read {
+        background-color: rgba(0,0,0,0.02);
+      }
+      .notification-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--primary-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        margin-right: 15px;
+      }
+      .notification-info {
+        flex: 1;
+      }
+      .notification-title {
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+      }
+      .notification-time {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+      .dropdown-footer {
+        padding: 15px;
+        text-align: center;
+        border-top: 1px solid var(--border-color);
+      }
+      .dropdown-footer a {
+        color: var(--primary-color);
+        font-size: 0.9rem;
+      }
+      @media (max-width: 480px) {
+        .notification-dropdown {
+          width: 280px;
+          right: -70px;
+        }
+        .notification-dropdown:after {
+          right: 78px;
+        }
+      }
+    `;
+    document.head.appendChild(styles);
+    
+    // Add dropdown to button
+    button.style.position = 'relative';
+    button.appendChild(dropdown);
+    
+    // Toggle dropdown on click
+    let isOpen = false;
+    button.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (isOpen) {
+        dropdown.style.display = 'none';
+      } else {
+        dropdown.style.display = 'block';
+      }
+      isOpen = !isOpen;
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function() {
+      dropdown.style.display = 'none';
+      isOpen = false;
+    });
+    
+    // Prevent closing when clicking inside dropdown
+    dropdown.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+    
+    // Mark all as read functionality
+    const markReadBtn = dropdown.querySelector('.mark-read');
+    if (markReadBtn) {
+      markReadBtn.addEventListener('click', function() {
+        dropdown.querySelectorAll('.notification-item').forEach(item => {
+          item.classList.add('read');
+        });
+        
+        // Remove notification badge
+        const badge = button.querySelector('.notification-badge');
+        if (badge) {
+          badge.style.display = 'none';
+        }
+      });
+    }
+  }
+  
+  // Sample notification data (replace with your actual data)
+  const notifications = [
+    { icon: 'fa-bell', title: 'New assignment added in Web Development course', time: '2 hours ago', read: false },
+    { icon: 'fa-exclamation-circle', title: 'Reminder: Database Design Project due tomorrow', time: '5 hours ago', read: false },
+    { icon: 'fa-check-circle', title: 'Your assignment has been graded', time: 'Yesterday', read: true }
+  ];
+  
+  const messages = [
+    { icon: 'fa-user', title: 'Prof. Alan Smith sent you a message', time: '1 hour ago', read: false },
+    { icon: 'fa-user', title: 'Sarah from your study group messaged you', time: '3 hours ago', read: false },
+    { icon: 'fa-users', title: 'New message in Web Dev group chat', time: 'Yesterday', read: true },
+    { icon: 'fa-user', title: 'Teaching assistant replied to your question', time: '2 days ago', read: true }
+  ];
+  
+  // Initialize dropdowns
+  createDropdown(notificationButton, 'Notifications', notifications);
+  createDropdown(messageButton, 'Messages', messages);
+  
+  // Calendar functionality (if needed)
+  const calendar = document.querySelector('.calendar-grid');
+  if (calendar) {
+    const monthNavBtns = document.querySelectorAll('.month-btn');
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+    
+    function renderCalendar(month, year) {
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      
+      // Update month display
+      document.querySelector('.current-month').textContent = `${monthNames[month]} ${year}`;
+      
+      // Clear existing calendar days
+      const calendarDays = calendar.querySelectorAll('.calendar-day');
+      calendarDays.forEach(day => {
+        if (!day.classList.contains('weekday')) {
+          day.remove();
+        }
+      });
+      
+      // Add days from previous month
+      for (let i = 0; i < firstDay; i++) {
+        const previousMonthDay = document.createElement('div');
+        previousMonthDay.className = 'calendar-day other-month';
+        previousMonthDay.textContent = new Date(year, month, 0).getDate() - firstDay + i + 1;
+        calendar.appendChild(previousMonthDay);
+      }
+      
+      // Add days of current month
+      const today = new Date();
+      for (let i = 1; i <= daysInMonth; i++) {
+        const day = document.createElement('div');
+        day.className = 'calendar-day';
+        day.textContent = i;
+        
+        // Mark today
+        if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+          day.classList.add('today');
+        }
+        
+        // Sample events (replace with your actual event data)
+        if ((i === 10 || i === 15 || i === 22) && month === today.getMonth()) {
+          day.classList.add('event');
+        }
+        
+        calendar.appendChild(day);
+      }
+      
+      // Add days from next month to fill the grid
+      const totalDays = firstDay + daysInMonth;
+      const remainingCells = 42 - totalDays; // 6 rows of 7 days
+      
+      for (let i = 1; i <= remainingCells; i++) {
+        const nextMonthDay = document.createElement('div');
+        nextMonthDay.className = 'calendar-day other-month';
+        nextMonthDay.textContent = i;
+        calendar.appendChild(nextMonthDay);
+      }
+    }
+    
+    // Initial calendar render
+    renderCalendar(currentMonth, currentYear);
+    
+    // Month navigation
+    monthNavBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (this.classList.contains('prev-month')) {
+          currentMonth--;
+          if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+          }
+        } else {
+          currentMonth++;
+          if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+          }
+        }
+        renderCalendar(currentMonth, currentYear);
+      });
+    });
+  }
+});
+</script>
+</body>
+    </html>
+              
