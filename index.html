@@ -41,97 +41,100 @@
 
 <style> 
 
-h1{
-overflow: hidden;
-text-wrap: nowrap;
-anityping: typing 2s steps(20) infinity alternate-rivers;
+/* Fix for h1 animation */
+h1 {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2s steps(20, end) infinite alternate;
 }
 
-@keyframe typing {
-from{
-width:0ch;
-}
-}
-
-
-.chat-window {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 300px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    display: none;
-    flex-direction: column;
+@keyframes typing {
+    from {
+        width: 0ch;
+    }
+    to {
+        width: 30ch;
+    }
 }
 
-.chat-header {
-    background: #007bff;
-    color: white;
-    padding: 10px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+/* Chatbot Button */
+#chatbot-btn {
+    z-index: 1000;
+    transition: transform 0.2s ease-in-out;
 }
 
-.close-btn {
-    background: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 18px;
+#chatbot-btn:hover {
+    transform: scale(1.1);
 }
 
-.chat-body {
-    padding: 10px;
-    height: 300px;
+/* Chatbot Window */
+#chatbot-window {
+    z-index: 1000;
+    max-height: 80%;
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
 }
 
+/* Chat Messages */
 .chat-message {
     max-width: 80%;
     margin-bottom: 10px;
-    padding: 8px;
-    border-radius: 8px;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 .user-message {
     background: #dcf8c6;
     align-self: flex-end;
+    text-align: right;
 }
 
 .bot-message {
     background: #e5e5e5;
     align-self: flex-start;
+    text-align: left;
 }
 
+/* Chat Footer */
 .chat-footer {
     display: flex;
-    padding: 10px;
+    padding: 12px;
     border-top: 1px solid #ddd;
+    background-color: #f9f9f9;
 }
 
 .chat-footer input {
     flex: 1;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
 }
 
 .chat-footer button {
     background: #007bff;
     color: white;
     border: none;
-    padding: 8px 12px;
-    margin-left: 5px;
-    border-radius: 5px;
+    padding: 10px 16px;
+    margin-left: 8px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.chat-footer button:hover {
+    background: #0056b3;
+}
+
+/* Responsive Chat Window */
+@media (max-width: 768px) {
+    .chat-window {
+        width: 90%;
+        bottom: 20px;
+        right: 5%;
+    }
 }
 </style>
 </head>
