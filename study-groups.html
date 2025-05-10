@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Groups | LearnTech</title>
+    <style>
+        :root {
+            --primary-color: #6557f5;
+            --secondary-color: #f0f2f5;
+            --text-color: #5a5a5a;
+            --hover-color: #f5f5f5;
+            --active-color: #ededff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+        }
+
+        /* Sidebar styles (same as before) */
+        .sidebar {
+            position: fixed;
+            width: 250px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: 2px 0 10px var(--shadow-color);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        .toggle-btn {
+            margin-left: auto;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 18px;
+        }
+
+        .sidebar-content {
+            padding: 15px 0;
+        }
+
+        .section-title {
+            padding: 10px 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            font-weight: 600;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .menu-item:hover {
+            background-color: var(--hover-color);
+        }
+
+        .menu-item.active {
+            border-left-color: var(--primary-color);
+            background-color: var(--active-color);
+            color: var(--primary-color);
+        }
+
+        .menu-icon {
+            font-size: 18px;
+            min-width: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-text {
+            margin-left: 12px;
+        }
+
+        /* Main content styles */
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+            width: calc(100% - 250px);
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            padding: 10px 15px;
+            box-shadow: var(--card-shadow);
+            width: 300px;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .search-icon {
+            color: #999;
+            margin-right: 10px;
+        }
+
+        .create-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .create-btn:hover {
+            background-color: #5346e4;
+        }
+
+        .filter-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .filter-btn {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .groups-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .group-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .group-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .group-header {
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .group-title {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .group-course {
+            font-size: 14px;
+            color: var(--primary-color);
+        }
+
+        .group-info {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-grow: 1;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        .info-icon {
+            font-size: 16px;
+            color: #888;
+        }
+
+        .members-preview {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .member-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: -8px;
+            border: 2px solid white;
+        }
+
+        .member-avatar:first-child {
+            margin-left: 0;
+        }
+
+        .member-count {
+            margin-left: 8px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .group-footer {
+            padding: 15px;
+            border-top: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .join-btn {
+            background-color: var(--active-color);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .join-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .more-btn {
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .more-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .upcoming-sessions {
+            margin-top: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .section-heading {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .view-all {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .view-all:hover {
+            text-decoration: underline;
+        }
+
+        .sessions-list {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+
+        .session-item {
+            display: flex;
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s ease;
+        }
+
+        .session-item:last-child {
+            border-bottom: none;
+        }
+
+        .session-item:hover {
+            background-color: var(--hover-color);
+        }
+
+        .session-date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            margin-right: 15px;
+        }
+
+        .date-day {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .date-month {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .session-details {
+            flex-grow: 1;
+        }
+
+        .session-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .session-group {
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .session-time {
+            font-size: 14px;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .session-action {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 70px;
+            }
+            
+            .sidebar .logo-text,
+            .sidebar .section-title,
+            .sidebar .menu-text {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 70px;
+                width: calc(100% - 70px);
+            }
+            
+            .groups-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .search-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar (same as before) -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i>🎓</i>
+                </div>
+                <span class="logo-text">LearnTech</span>
+            </div>
+            <button class="toggle-btn">×</button>
+        </div>
+        <div class="sidebar-content">
+            <div class="section-title">MAIN</div>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">🏠</span>
+                <span class="menu-text">Dashboard</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">📚</span>
+                <span class="menu-text">My Courses</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">📝</span>
+                <span class="menu-text">Assignments</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">📅</span>
+                <span class="menu-text">Calendar</span>
+            </a>
+            
+            <div class="section-title">RESOURCES</div>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">🎥</span>
+                <span class="menu-text">Recorded Lectures</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">📄</span>
+                <span class="menu-text">Study Materials</span>
+            </a>
+            <a href="#" class="menu-item active">
+                <span class="menu-icon">👥</span>
+                <span class="menu-text">Study Groups</span>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="menu-icon">❓</span>
+                <span class="menu-text">Help Center</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content for Study Groups -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">Study Groups</h1>
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search groups...">
+            </div>
+            <button class="create-btn">
+                <span>➕</span>
+                Create New Group
+            </button>
+        </div>
+
+        <div class="filter-container">
+            <button class="filter-btn active">All Groups</button>
+            <button class="filter-btn">My Groups</button>
+            <button class="filter-btn">Recommended</button>
+            <button class="filter-btn">Active Now</button>
+        </div>
+
+        <div class="groups-container">
+            <!-- Group Card 1 -->
+            <div class="group-card">
+                <div class="group-header">
+                    <h3 class="group-title">Data Structures Study Group</h3>
+                    <div class="group-course">Computer Science 101</div>
+                </div>
+                <div class="group-info">
+                    <div class="info-item">
+                        <span class="info-icon">📅</span>
+                        <span>Meets every Tuesday & Thursday</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🕒</span>
+                        <span>6:00 PM - 8:00 PM</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🌎</span>
+                        <span>Online (Zoom)</span>
+                    </div>
+                    <div class="members-preview">
+                        <div class="member-avatar">JS</div>
+                        <div class="member-avatar">AK</div>
+                        <div class="member-avatar">TW</div>
+                        <div class="member-avatar">+</div>
+                        <span class="member-count">12 members</span>
+                    </div>
+                </div>
+                <div class="group-footer">
+                    <button class="join-btn">Join Group</button>
+                    <button class="more-btn">⋯</button>
+                </div>
+            </div>
+
+            <!-- Group Card 2 -->
+            <div class="group-card">
+                <div class="group-header">
+                    <h3 class="group-title">JavaScript Masterclass</h3>
+                    <div class="group-course">Web Development</div>
+                </div>
+                <div class="group-info">
+                    <div class="info-item">
+                        <span class="info-icon">📅</span>
+                        <span>Meets every Monday & Wednesday</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🕒</span>
+                        <span>7:00 PM - 9:00 PM</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🌎</span>
+                        <span>Library Study Room 3B</span>
+                    </div>
+                    <div class="members-preview">
+                        <div class="member-avatar">LM</div>
+                        <div class="member-avatar">KC</div>
+                        <div class="member-avatar">RD</div>
+                        <div class="member-avatar">+</div>
+                        <span class="member-count">8 members</span>
+                    </div>
+                </div>
+                <div class="group-footer">
+                    <button class="join-btn">Join Group</button>
+                    <button class="more-btn">⋯</button>
+                </div>
+            </div>
+
+            <!-- Group Card 3 -->
+            <div class="group-card">
+                <div class="group-header">
+                    <h3 class="group-title">Statistical Analysis</h3>
+                    <div class="group-course">Statistics 201</div>
+                </div>
+                <div class="group-info">
+                    <div class="info-item">
+                        <span class="info-icon">📅</span>
+                        <span>Meets every Friday</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🕒</span>
+                        <span>4:00 PM - 6:00 PM</span>
+                    </div>
+                    <div class="info-item
