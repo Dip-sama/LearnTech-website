@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnTech - Study Materials</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #555;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--light-gray);
+        }
+        
+        .hero {
+            background-color: var(--light-gray);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--dark-gray);
+        }
+        
+        .search-box {
+            max-width: 600px;
+            margin: 2rem auto;
+            display: flex;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 2px solid var(--medium-gray);
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+        
+        .search-box button {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .search-box button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .categories {
+            padding: 4rem 2rem;
+        }
+        
+        .categories h2 {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--secondary-color);
+            font-size: 2rem;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .category-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .category-img {
+            height: 150px;
+            background-color: var(--medium-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-content {
+            padding: 1.5rem;
+        }
+        
+        .category-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .category-content p {
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .featured-resources {
+            background-color: var(--light-gray);
+            padding: 4rem 2rem;
+        }
+        
+        .featured-resources h2 {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--secondary-color);
+            font-size: 2rem;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-content {
+            padding: 1.5rem;
+        }
+        
+        .resource-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .resource-meta {
+            font-size: 0.85rem;
+            color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .resource-meta span {
+            margin-right: 1rem;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .learning-paths {
+            padding: 4rem 2rem;
+        }
+        
+        .learning-paths h2 {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--secondary-color);
+            font-size: 2rem;
+        }
+        
+        .path-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .path-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .path-icon {
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+        
+        .path-title h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.3rem;
+        }
+        
+        .path-title p {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .path-modules {
+            margin-bottom: 1.5rem;
+        }
+        
+        .module {
+            padding: 1rem;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .module:last-child {
+            border-bottom: none;
+        }
+        
+        .module-title {
+            font-weight: 600;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .module-description {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            margin-top: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 3rem 2rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-col a {
+            color: var(--medium-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-col a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .category-grid, .resources-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">LearnTech</div>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Study Materials</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Help Center</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Your Tech Learning Resource Library</h1>
+            <p>Access comprehensive study materials designed to help you master technology skills at your own pace. From beginner tutorials to advanced documentation, find everything you need here.</p>
+            
+            <div class="search-box">
+                <input type="text" placeholder="Search for study materials...">
+                <button>Search</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="categories">
+        <div class="container">
+            <h2>Browse by Topic</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="/api/placeholder/250/150" alt="Web Development">
+                    </div>
+                    <div class="category-content">
+                        <h3>Web Development</h3>
+                        <p>HTML, CSS, JavaScript, and popular frameworks for building modern web applications.</p>
+                        <a href="#" class="btn">Explore Resources</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="/api/placeholder/250/150" alt="Mobile Development">
+                    </div>
+                    <div class="category-content">
+                        <h3>Mobile Development</h3>
+                        <p>iOS, Android, React Native, and cross-platform app development resources.</p>
+                        <a href="#" class="btn">Explore Resources</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="/api/placeholder/250/150" alt="Data Science">
+                    </div>
+                    <div class="category-content">
+                        <h3>Data Science</h3>
+                        <p>Python, R, SQL, statistics, machine learning, and data visualization.</p>
+                        <a href="#" class="btn">Explore Resources</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="/api/placeholder/250/150" alt="Cloud Computing">
+                    </div>
+                    <div class="category-content">
+                        <h3>Cloud Computing</h3>
+                        <p>AWS, Azure, Google Cloud, Docker, Kubernetes, and cloud architecture.</p>
+                        <a href="#" class="btn">Explore Resources</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="/api/placeholder/250/150" alt="Cybersecurity">
+                    </div>
+                    <div class="category-content">
+                        <h3>Cybersecurity</h3>
+                        <p>Network security, ethical hacking, cryptography, and security best practices.</p>
+                        <a href="#" class="btn">Explore Resources</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="/api/placeholder/250/150" alt="AI & Machine Learning">
+                    </div>
+                    <div class="category-content">
+                        <h3>AI & Machine Learning</h3>
+                        <p>Deep learning, neural networks, TensorFlow, PyTorch, and computer vision.</p>
+                        <a href="#" class="btn">Explore Resources</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="featured-resources">
+        <div class="container">
+            <h2>Featured Learning Resources</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-content">
+                        <h3>JavaScript Fundamentals Mastery Guide</h3>
+                        <div class="resource-meta">
+                            <span>PDF • 150 pages</span>
+                            <span>Updated May 2025</span>
+                        </div>
+                        <p>A comprehensive guide covering all essential JavaScript concepts with practical examples and exercises.</p>
+                        <div class="tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Web Dev</span>
+                            <span class="tag">Beginner</span>
+                        </div>
+                        <a href="#" class="btn" style="margin-top: 1rem;">Download PDF</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-content">
+                        <h3>Full-Stack Development Cheat Sheets</h3>
+                        <div class="resource-meta">
+                            <span>Multiple PDFs • 10 documents</span>
+                            <span>Updated April 2025</span>
+                        </div>
+                        <p>Collection of reference sheets for popular frameworks and tools in modern web development.</p>
+                        <div class="tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">Intermediate</span>
+                        </div>
+                        <a href="#" class="btn" style="margin-top: 1rem;">View Collection</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-content">
+                        <h3>Data Science Workflow Handbook</h3>
+                        <div class="resource-meta">
+                            <span>Interactive Guide • 5 modules</span>
+                            <span>Updated March 2025</span>
+                        </div>
+                        <p>Learn systematic approaches to data cleaning, analysis, and visualization with real-world datasets.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Data Analysis</span>
+                            <span class="tag">Pandas</span>
+                            <span class="tag">Advanced</span>
+                        </div>
+                        <a href="#" class="btn" style="margin-top: 1rem;">Access Guide</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="learning-paths">
+        <div class="container">
+            <h2>Structured Learning Paths</h2>
+            
+            <div class="path-card">
+                <div class="path-header">
+                    <div class="path-icon">WD</div>
+                    <div class="path-title">
+                        <h3>Full-Stack Web Developer</h3>
+                        <p>Master front-end and back-end development • 4 months • Beginner to Intermediate</p>
+                    </div>
+                </div>
+                <div class="path-modules">
+                    <div class="module">
+                        <div class="module-title">
+                            <span>Module 1: HTML & CSS Fundamentals</span>
+                            <a href="#" class="btn">Start</a>
+                        </div>
+                        <div class="module-description">Learn the building blocks of web development with hands-on projects.</div>
+                    </div>
+                    <div class="module">
+                        <div class="module-title">
+                            <span>Module 2: JavaScript & DOM Manipulation</span>
+                            <a href="#" class="btn">Start</a>
+                        </div>
+                        <div class="module-description">Add interactivity to your websites and learn modern JavaScript concepts.</div>
+                    </div>
+                    <div class="module">
+                        <div class="module-title">
+                            <span>Module 3: Back-End Development with Node.js</span>
+                            <a href="#" class="btn">Start</a>
+                        </div>
+                        <div class="module-description">Create server-side applications and RESTful APIs.</div>
+                    </div>
+                    <div class="module">
+                        <div class="module-title">
+                            <span>Module 4: Database Integration</span>
+                            <a href="#" class="btn">Start</a>
+                        </div>
+                        <div class="module-description">Work with SQL and NoSQL databases to store and retrieve data efficiently.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="path-card">
+                <div class="path-header">
+                    <div class="path-icon">DS</div>
+                    <div class="path-title">
+                        <h3>Data Science Specialist</h3>
+                        <p>From data analysis to machine learning models • 6 months • Intermediate</p>
+                    </div>
+                </div>
+                <div class="path-modules">
+                    <div class="module">
+                        <div class="module-title">
+                            <span>Module 1: Python for Data Science</span>
+                            <a href="#" class="btn">Start</a>
+                        </div>
+                        <div class="module-description">Master Python libraries for data manipulation and analysis.</div>
+                    </div>
+                    <div class="module">
+                        <div class="module-title">
+                            <span>Module 2: Data Visualization Techniques</span>
+                            <a href="#" class="btn">Start</a>
+                        </div>
+                        <div class="module-description">Create compelling visualizations to communicate insights effectively.</div>
+                    </div>
+                    <div class="module">
+                        <div class="module-title">
+                            <span>Module 3: Statistical Analysis & Hypothesis Testing</span>
+                            <a href="#" class="btn">Start</a>
+                        </div>
+                        <div class="module-description">Apply statistical methods to draw conclusions from data.</div>
+                    </div>
+                    <div class="module">
+                        <div class="module-title">
+                            <span>Module 4: Machine Learning Fundamentals</span>
+                            <a href="#" class="btn">Start</a>
+                        </div>
+                        <div class="module-description">Build predictive models using supervised and unsupervised learning techniques.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>About LearnTech</h3>
+                <ul>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Partners</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Study Materials</a></li>
+                    <li><a href="#">Learning Paths</a></li>
+                    <li><a href="#">Practice Projects</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="#">Forums</a></li>
+                    <li><a href="#">Discord Server</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">System Status</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 LearnTech. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
