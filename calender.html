@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar | LearnTech</title>
+    <style>
+        :root {
+            --primary-color: #6557f5;
+            --secondary-color: #f0f2f5;
+            --text-color: #5a5a5a;
+            --hover-color: #f5f5f5;
+            --active-color: #ededff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --danger-color: #ff6b6b;
+            --success-color: #4caf50;
+            --warning-color: #ff9800;
+            --info-color: #2196f3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            width: 250px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: 2px 0 10px var(--shadow-color);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        .toggle-btn {
+            margin-left: auto;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 18px;
+        }
+
+        .sidebar-content {
+            padding: 15px 0;
+        }
+
+        .section-title {
+            padding: 10px 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            font-weight: 600;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .menu-item:hover {
+            background-color: var(--hover-color);
+        }
+
+        .menu-item.active {
+            border-left-color: var(--primary-color);
+            background-color: var(--active-color);
+            color: var(--primary-color);
+        }
+
+        .menu-icon {
+            font-size: 18px;
+            min-width: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-text {
+            margin-left: 12px;
+        }
+
+        /* Main content styles */
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+            width: calc(100% - 250px);
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .view-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #574bde;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid #e0e0e0;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .view-selector {
+            display: flex;
+            align-items: center;
+            background-color: #f0f0f0;
+            border-radius: 6px;
+            padding: 3px;
+        }
+
+        .view-option {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .view-option.active {
+            background-color: white;
+            color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Calendar Navigation */
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .month-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .month-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .nav-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Calendar styles */
+        .calendar {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .weekday {
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-auto-rows: minmax(120px, auto);
+        }
+
+        .day {
+            border-right: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 10px;
+            min-height: 120px;
+        }
+
+        .day:nth-child(7n) {
+            border-right: none;
+        }
+
+        .day-number {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .day.today {
+            background-color: #f8f7ff;
+        }
+
+        .day.today .day-number {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .day.other-month {
+            background-color: #fcfcfc;
+        }
+
+        .day.other-month .day-number {
+            color: #aaa;
+        }
+
+        /* Event styles */
+        .event {
+            margin-bottom: 5px;
+            padding: 5px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+        .event.assignment {
+            background-color: var(--danger-color);
+        }
+
+        .event.lecture {
+            background-color: var(--primary-color);
+        }
+
+        .event.deadline {
+            background-color: var(--warning-color);
+        }
+
+        .event.exam {
+            background-color: var(--danger-color);
+        }
+
+        .event.meeting {
+            background-color: var(--info-color);
+        }
+
+        .event.study {
+            background-color: var(--success-color);
+        }
+
+        .more-events {
+            font-size: 11px;
+            color: #777;
+            margin-top: 3px;
+            cursor: pointer;
+        }
+
+        /* Upcoming Events Section */
+        .calendar-sections {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 25px;
+        }
+
+        .upcoming-events {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            height: fit-content;
+        }
+
+        .section-header {
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: 600;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .event-list {
+            padding: 10px 0;
+        }
+
+        .event-item {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f5f5f5;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .event-item:hover {
+            background-color: var(--hover-color);
+        }
+
+        .event-item:last-child {
+            border-bottom: none;
+        }
+
+        .event-date {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .event-title {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .event-details {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .event-badge {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        .badge-assignment {
+            background-color: var(--danger-color);
+        }
+
+        .badge-lecture {
+            background-color: var(--primary-color);
+        }
+
+        .badge-deadline {
+            background-color: var(--warning-color);
+        }
+
+        .badge-exam {
+            background-color: var(--danger-color);
+        }
+
+        .badge-meeting {
+            background-color: var(--info-color);
+        }
+
+        .badge-study {
+            background-color: var(--success-color);
+        }
+
+        .view-all-link {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+            border-top: 1px solid #f5f5f5;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 992px) {
+            .calendar-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 70px;
+            }
+            
+            .sidebar .logo-text,
+            .sidebar .section-title,
+            .sidebar .menu-text {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 70px;
+                width: calc(100% - 70px);
+            }
+            
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .view-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .weekday {
+                padding: 10px 5px;
+                font-size: 12px;
+            }
+            
+            .day {
+                min-height: 100px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .days-grid {
+                grid-auto-rows: minmax(80px, auto);
+            }
+            
+            .day {
+                min-height: 80px;
+                padding: 5px;
+            }
+            
+            .event {
+                padding: 3px 5px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i>🎓</i>
+                </div>
+                <span class="logo-text">LearnTech</span>
+            </div>
+            <button class="toggle-btn">×</button>
+        </div>
+        <div class="sidebar-content">
+            <div class="section-title">MAIN</div>
+            <a href="learntech-student-dashboard.html" class="menu-item">
+                <span class="menu-icon">🏠</span>
+                <span class="menu-text">Dashboard</span>
+            </a>
+            <a href="mycoureses.html" class="menu-item">
+                <span class="menu-icon">📚</span>
+                <span class="menu-text">My Courses</span>
+            </a>
+            <a href="assignments.html" class="menu-item">
+                <span class="menu-icon">📝</span>
+                <span class="menu-text">Assignments</span>
+            </a>
+            <a href="calender.html" class="menu-item active">
+                <span class="menu-icon">📅</span>
+                <span class="menu-text">Calendar</span>
+            </a>
+            
+            <div class="section-title">RESOURCES</div>
+            <a href="recorded-lectures.html" class="menu-item">
+                <span class="menu-icon">🎥</span>
+                <span class="menu-text">Recorded Lectures</span>
+            </a>
+            <a href="study-groups.html" class="menu-item">
+                <span class="menu-icon">👥</span>
+                <span class="menu-text">Study Groups</span>
+            </a> 
+            <a href="help-center.html" class="menu-item">
+                <span class="menu-icon">❓</span>
+                <span class="menu-text">Help Center</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content for Calendar -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">Calendar</h1>
+            <div class="view-controls">
+                <div class="view-selector">
+                    <div class="view-option active">Month</div>
+                    <div class="view-option">Week</div>
+                    <div class="view-option">Day</div>
+                </div>
+                <button class="btn btn-outline">
+                    <span>Today</span>
+                </button>
+                <button class="btn btn-primary">
+                    <span>+ Add Event</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="calendar-sections">
+            <div class="calendar-container">
+                <!-- Calendar Navigation -->
+                <div class="calendar-nav">
+                    <div class="month-selector">
+                        <button class="nav-btn">←</button>
+                        <h2 class="month-title">May 2025</h2>
+                        <button class="nav-btn">→</button>
+                    </div>
+                </div>
+
+                <!-- Calendar Grid -->
+                <div class="calendar">
+                    <div class="weekdays">
+                        <div class="weekday">Sun</div>
+                        <div class="weekday">Mon</div>
+                        <div class="weekday">Tue</div>
+                        <div class="weekday">Wed</div>
+                        <div class="weekday">Thu</div>
+                        <div class="weekday">Fri</div>
+                        <div class="weekday">Sat</div>
+                    </div>
+                    <div class="days-grid">
+                        <!-- Row 1 -->
+                        <div class="day other-month">
+                            <div class="day-number">27</div>
+                        </div>
+                        <div class="day other-month">
+                            <div class="day-number">28</div>
+                        </div>
+                        <div class="day other-month">
+                            <div class="day-number">29</div>
+                        </div>
+                        <div class="day other-month">
+                            <div class="day-number">30</div>
+                            <div class="event lecture">Web Dev Lecture</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">1</div>
+                            <div class="event deadline">Project Proposal</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">2</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">3</div>
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="day">
+                            <div class="day-number">4</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">5</div>
+                            <div class="event lecture">JS Frameworks</div>
+                            <div class="event meeting">Study Group</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">6</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">7</div>
+                            <div class="event assignment">UI Wireframes</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">8</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">9</div>
+                            <div class="event lecture">Database Design</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">10</div>
+                        </div>
+
+                        <!-- Row 3 -->
+                        <div class="day today">
+                            <div class="day-number">11</div>
+                            <div class="event study">Group Study</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">12</div>
+                            <div class="event lecture">React Hooks</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">13</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">14</div>
+                            <div class="event deadline">Quiz Deadline</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">15</div>
+                            <div class="event assignment">JS DOM Project</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">16</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">17</div>
+                        </div>
+
+                        <!-- Row 4 -->
+                        <div class="day">
+                            <div class="day-number">18</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">19</div>
+                            <div class="event lecture">Algorithm Analysis</div>
+                            <div class="event meeting">Office Hours</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">20</div>
+                            <div class="event assignment">React Components</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">21</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">22</div>
+                            <div class="event exam">Mid-term Exam</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">23</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">24</div>
+                        </div>
+
+                        <!-- Row 5 -->
+                        <div class="day">
+                            <div class="day-number">25</div>
+                            <div class="event assignment">CSS Animation</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">26</div>
+                            <div class="event lecture">API Integration</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">27</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">28</div>
+                            <div class="event study">Exam Prep</div>
+                            <div class="event meeting">TA Session</div>
+                            <div class="more-events">+1 more</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">29</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">30</div>
+                            <div class="event deadline">Final Project</div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">31</div>
+                        </div>
+
+                        <!-- Row 6 (partial) -->
+                        <div class="day other-month">
+                            <div class="day-number">1</div>
+                        </div>
+                        <div class="day other-month">
+                            <div class="day-number">2</div>
+                        </div>
+                        <div class="day other-month">
+                            <div class="day-number">3</div>
+                        </div>
+                        <div class="day other-month">
+                            <div class="day-number">4</div>
+                        </div>
+                        <div class="day other-month">
+                            <div class="day-number">5</div>
+                        </div>
+                        <div class="day other-month">
+                            <div class="day-number">6</div>
+                        </div>
+                        <div class="day other-month">
+                            <div class="day-number">7</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Events Section -->
+            <div class="upcoming-events">
+                <div class="section-header">Upcoming Events</div>
+                <div class="event-list">
+                    <div class="event-item">
+                        <div class="event-date">Today • 3:00 PM</div>
+                        <div class="event-title"><span class="event-badge badge-study"></span>Group Study Session</div>
+                        <div class="event-details">Data Structures & Algorithms</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">Tomorrow • 10:30 AM</div>
+                        <div class="event-title"><span class="event-badge badge-lecture"></span>React Hooks Lecture</div>
+                        <div class="event-details">Advanced JavaScript</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">May 14 • 11:59 PM</div>
+                        <div class="event-title"><span class="event-badge badge-deadline"></span>Quiz Deadline</div>
+                        <div class="event-details">Web Development Fundamentals</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">May 15 • 11:59 PM</div>
+                        <div class="event-title"><span class="event-badge badge-assignment"></span>JavaScript DOM Project</div>
+                        <div class="event-details">Web Development Fundamentals</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">May 19 • 2:00 PM</div>
+                        <div class="event-title"><span class="event-badge badge-meeting"></span>Office Hours</div>
+                        <div class="event-details">With Prof. Michael Chen</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">May 20 • 11:59 PM</div>
+                        <div class="event-title"><span class="event-badge badge-assignment"></span>React Components Assignment</div>
+                        <div class="event-details">Advanced JavaScript</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">May 22 • 1:00 PM</div>
+                        <div class="event-title"><span class="event-badge badge-exam"></span>Mid-term Examination</div>
+                        <div class="event-details">Data Structures & Algorithms</div>
+                    </div>
+                </div>
+                <a href="#" class="view-all-link">View All Events</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
