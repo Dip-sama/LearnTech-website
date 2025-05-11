@@ -566,10 +566,10 @@
                 <span class="menu-icon">🎥</span>
                 <span class="menu-text">Recorded Lectures</span>
             </a>
-<!--             <a href="study-materials.html" class="menu-item active">
+            <a href="study-materials.html" class="menu-item active">
                 <span class="menu-icon">📄</span>
                 <span class="menu-text">Study Materials</span>
-            </a> -->
+            </a>
             <a href="study-groups.html" class="menu-item">
                 <span class="menu-icon">👥</span>
                 <span class="menu-text">Study Groups</span>
@@ -920,4 +920,153 @@
             function showError(message) {
                 const errorAlert = document.getElementById('errorAlert');
                 document.getElementById('errorMessage').textContent = message;
-                errorAlert.
+                errorAlert.style.display = 'flex';
+                
+                // Hide error message after 5 seconds
+                setTimeout(() => {
+                    errorAlert.style.display = 'none';
+                }, 5000);
+            }
+            
+            function closeAlert(alertId) {
+                document.getElementById(alertId).style.display = 'none';
+            }
+            
+            // Add new material to the list
+            function addNewMaterial(title, course, filename) {
+                const materialsList = document.getElementById('materialsList');
+                const today = new Date();
+                const dateString = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                
+                // Get course name from value
+                let courseName = '';
+                switch(course) {
+                    case 'web-development':
+                        courseName = 'Web Development';
+                        break;
+                    case 'data-science':
+                        courseName = 'Data Science';
+                        break;
+                    case 'machine-learning':
+                        courseName = 'Machine Learning';
+                        break;
+                    case 'cybersecurity':
+                        courseName = 'Cybersecurity';
+                        break;
+                    default:
+                        courseName = 'Other';
+                }
+                
+                // Create new material item
+                const newItem = document.createElement('div');
+                newItem.className = 'material-item';
+                newItem.setAttribute('data-course', course);
+                
+                newItem.innerHTML = `
+                    <div class="material-icon">📄</div>
+                    <div class="material-info">
+                        <h3 class="material-name">${title}</h3>
+                        <div class="material-details">
+                            <span class="material-course">${courseName}</span>
+                            <span class="material-date">Added: ${dateString}</span>
+                        </div>
+                    </div>
+                    <div class="material-actions">
+                        <button class="action-btn download-btn" title="Download">⬇️</button>
+                        <button class="action-btn delete-btn" title="Delete">🗑️</button>
+                    </div>
+                `;
+                
+                // Add event listeners to the new buttons
+                const deleteBtn = newItem.querySelector('.delete-btn');
+                deleteBtn.addEventListener('click', function() {
+                    newItem.remove();
+                });
+                
+                // Add new item to the top of the list
+                materialsList.insertBefore(newItem, materialsList.firstChild);
+            }
+            
+            // Add new activity to the recent activities list
+            function addNewActivity(title) {
+                const activitiesList = document.querySelector('.activities-list');
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+                
+                const newActivity = document.createElement('div');
+                newActivity.className = 'activity-item';
+                
+                newActivity.innerHTML = `
+                    <div class="activity-icon">📤</div>
+                    <div class="activity-info">
+                        <p class="activity-text">You uploaded "${title}"</p>
+                        <p class="activity-time">Today, ${timeString}</p>
+                    </div>
+                `;
+                
+                // Add new activity to the top of the list
+                activitiesList.insertBefore(newActivity, activitiesList.firstChild);
+                
+                // Remove the last activity if there are more than 3
+                const activities = activitiesList.querySelectorAll('.activity-item');
+                if (activities.length > 3) {
+                    activitiesList.removeChild(activities[activities.length - 1]);
+                }
+            }
+            
+            // Filter materials by course
+            const courseFilter = document.getElementById('courseFilter');
+            courseFilter.addEventListener('change', filterMaterials);
+            
+            function filterMaterials() {
+                const selectedCourse = courseFilter.value;
+                const materials = document.querySelectorAll('.material-item');
+                
+                materials.forEach(item => {
+                    if (selectedCourse === 'all' || item.getAttribute('data-course') === selectedCourse) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', searchMaterials);
+            
+            function searchMaterials() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const materials = document.querySelectorAll('.material-item');
+                
+                materials.forEach(item => {
+                    const title = item.querySelector('.material-name').textContent.toLowerCase();
+                    const course = item.querySelector('.material-course').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || course.includes(searchTerm)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Add event listeners to all existing delete buttons
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const materialItem = this.closest('.material-item');
+                    materialItem.remove();
+                });
+            });
+            
+            // Add event listeners to all existing download buttons (simulating downloads)
+            document.querySelectorAll('.download-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const materialItem = this.closest('.material-item');
+                    const materialName = materialItem.querySelector('.material-name').textContent;
+                    alert(`Downloading "${materialName}"...`);
+                });
+            });
+            </script>
+</body>
+</html>
