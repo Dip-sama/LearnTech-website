@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Groups | LearnTech</title>
+    <title>Study Materials | LearnTech</title>
     <style>
         :root {
             --primary-color: #6557f5;
@@ -13,6 +13,10 @@
             --active-color: #ededff;
             --shadow-color: rgba(0, 0, 0, 0.1);
             --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --border-color: #e1e4e8;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
         }
 
         * {
@@ -27,7 +31,7 @@
             display: flex;
         }
 
-        /* Sidebar styles (same as before) */
+        /* Sidebar styles */
         .sidebar {
             position: fixed;
             width: 250px;
@@ -167,8 +171,337 @@
             margin-right: 10px;
         }
 
+        /* Study Materials specific styles */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .materials-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+
+        .materials-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .materials-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .filter-dropdown {
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            outline: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .materials-list {
+            padding: 0;
+        }
+
+        .material-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s ease;
+        }
+
+        .material-item:hover {
+            background-color: var(--hover-color);
+        }
+
+        .material-icon {
+            font-size: 20px;
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+
+        .material-info {
+            flex-grow: 1;
+        }
+
+        .material-name {
+            font-weight: 500;
+            margin-bottom: 3px;
+            color: #333;
+        }
+
+        .material-details {
+            display: flex;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .material-course {
+            margin-right: 15px;
+        }
+
+        .material-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 16px;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .action-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .download-btn {
+            color: var(--primary-color);
+        }
+
+        .delete-btn {
+            color: var(--danger-color);
+        }
+
+        /* Upload panel styles */
+        .upload-panel {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+
+        .upload-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .upload-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .upload-content {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #444;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+        }
+
+        .file-upload-container {
+            border: 2px dashed var(--border-color);
+            border-radius: 5px;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .file-upload-container:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(101, 87, 245, 0.03);
+        }
+
+        .file-upload-icon {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .file-upload-text {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .file-upload-input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-name {
+            font-size: 14px;
+            color: #333;
+            margin-top: 10px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #5547e5;
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        /* Alert styles */
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            display: none;
+        }
+
+        .alert-success {
+            background-color: rgba(40, 167, 69, 0.1);
+            border: 1px solid rgba(40, 167, 69, 0.25);
+            color: var(--success-color);
+        }
+
+        .alert-danger {
+            background-color: rgba(220, 53, 69, 0.1);
+            border: 1px solid rgba(220, 53, 69, 0.25);
+            color: var(--danger-color);
+        }
+
+        .alert-icon {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .alert-message {
+            flex-grow: 1;
+        }
+
+        .alert-close {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: inherit;
+        }
+
+        /* Recent activities panel */
+        .activities-panel {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            margin-top: 30px;
+        }
+
+        .activities-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .activities-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .activities-list {
+            padding: 15px 20px;
+        }
+
+        .activity-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .activity-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(101, 87, 245, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 16px;
+            margin-right: 15px;
+        }
+
+        .activity-info {
+            flex-grow: 1;
+        }
+
+        .activity-text {
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .activity-time {
+            font-size: 12px;
+            color: #888;
+        }
         
         /* Responsive styles */
+        @media screen and (max-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media screen and (max-width: 768px) {
             .sidebar {
                 width: 70px;
@@ -185,10 +518,6 @@
                 width: calc(100% - 70px);
             }
             
-            .groups-container {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
             .page-header {
                 flex-direction: column;
                 align-items: flex-start;
@@ -202,7 +531,7 @@
     </style>
 </head>
 <body>
-    <!-- Sidebar (same as before) -->
+    <!-- Sidebar -->
     <div class="sidebar">
         <div class="sidebar-header">
             <div class="logo">
@@ -237,11 +566,11 @@
                 <span class="menu-icon">🎥</span>
                 <span class="menu-text">Recorded Lectures</span>
             </a>
-<!--             <a href="study-materials.html" class="menu-item">
+<!--             <a href="study-materials.html" class="menu-item active">
                 <span class="menu-icon">📄</span>
                 <span class="menu-text">Study Materials</span>
             </a> -->
-            <a href="study-groups.html" class="menu-item active">
+            <a href="study-groups.html" class="menu-item">
                 <span class="menu-icon">👥</span>
                 <span class="menu-text">Study Groups</span>
             </a> 
@@ -252,15 +581,343 @@
         </div>
     </div>
 
-    <!-- Main Content for Study Groups -->
+    <!-- Main Content -->
     <div class="main-content">
         <div class="page-header">
             <h1 class="page-title">Study Materials</h1>
             <div class="search-container">
                 <span class="search-icon">🔍</span>
-                <input type="text" placeholder="Search groups...">
+                <input type="text" id="searchInput" placeholder="Search materials...">
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <!-- Left Column: Materials List -->
+            <div class="materials-container">
+                <div class="materials-header">
+                    <h2 class="materials-title">PDF Notes</h2>
+                    <select class="filter-dropdown" id="courseFilter">
+                        <option value="all">All Courses</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="data-science">Data Science</option>
+                        <option value="machine-learning">Machine Learning</option>
+                        <option value="cybersecurity">Cybersecurity</option>
+                    </select>
+                </div>
+
+                <div class="alert alert-success" id="successAlert">
+                    <span class="alert-icon">✓</span>
+                    <span class="alert-message">File uploaded successfully!</span>
+                    <button class="alert-close" onclick="closeAlert('successAlert')">×</button>
+                </div>
+
+                <div class="alert alert-danger" id="errorAlert">
+                    <span class="alert-icon">⚠</span>
+                    <span class="alert-message" id="errorMessage">An error occurred during upload.</span>
+                    <button class="alert-close" onclick="closeAlert('errorAlert')">×</button>
+                </div>
+
+                <div class="materials-list" id="materialsList">
+                    <!-- Sample Material Items -->
+                    <div class="material-item" data-course="web-development">
+                        <div class="material-icon">📄</div>
+                        <div class="material-info">
+                            <h3 class="material-name">HTML and CSS Fundamentals</h3>
+                            <div class="material-details">
+                                <span class="material-course">Web Development</span>
+                                <span class="material-date">Added: May 10, 2025</span>
+                            </div>
+                        </div>
+                        <div class="material-actions">
+                            <button class="action-btn download-btn" title="Download">⬇️</button>
+                            <button class="action-btn delete-btn" title="Delete">🗑️</button>
+                        </div>
+                    </div>
+
+                    <div class="material-item" data-course="data-science">
+                        <div class="material-icon">📄</div>
+                        <div class="material-info">
+                            <h3 class="material-name">Data Visualization with Python</h3>
+                            <div class="material-details">
+                                <span class="material-course">Data Science</span>
+                                <span class="material-date">Added: May 8, 2025</span>
+                            </div>
+                        </div>
+                        <div class="material-actions">
+                            <button class="action-btn download-btn" title="Download">⬇️</button>
+                            <button class="action-btn delete-btn" title="Delete">🗑️</button>
+                        </div>
+                    </div>
+
+                    <div class="material-item" data-course="machine-learning">
+                        <div class="material-icon">📄</div>
+                        <div class="material-info">
+                            <h3 class="material-name">Machine Learning Algorithms</h3>
+                            <div class="material-details">
+                                <span class="material-course">Machine Learning</span>
+                                <span class="material-date">Added: May 5, 2025</span>
+                            </div>
+                        </div>
+                        <div class="material-actions">
+                            <button class="action-btn download-btn" title="Download">⬇️</button>
+                            <button class="action-btn delete-btn" title="Delete">🗑️</button>
+                        </div>
+                    </div>
+
+                    <div class="material-item" data-course="cybersecurity">
+                        <div class="material-icon">📄</div>
+                        <div class="material-info">
+                            <h3 class="material-name">Network Security Basics</h3>
+                            <div class="material-details">
+                                <span class="material-course">Cybersecurity</span>
+                                <span class="material-date">Added: May 3, 2025</span>
+                            </div>
+                        </div>
+                        <div class="material-actions">
+                            <button class="action-btn download-btn" title="Download">⬇️</button>
+                            <button class="action-btn delete-btn" title="Delete">🗑️</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Upload and Activities -->
+            <div>
+                <!-- Upload Panel -->
+                <div class="upload-panel">
+                    <div class="upload-header">
+                        <h2 class="upload-title">Upload PDF Notes</h2>
+                    </div>
+                    <div class="upload-content">
+                        <form id="uploadForm">
+                            <div class="form-group">
+                                <label class="form-label">Title</label>
+                                <input type="text" class="form-control" id="fileTitle" placeholder="Enter document title">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Course</label>
+                                <select class="form-control" id="fileCourse">
+                                    <option value="">Select course</option>
+                                    <option value="web-development">Web Development</option>
+                                    <option value="data-science">Data Science</option>
+                                    <option value="machine-learning">Machine Learning</option>
+                                    <option value="cybersecurity">Cybersecurity</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">File</label>
+                                <div class="file-upload-container" id="dropZone">
+                                    <div class="file-upload-icon">📁</div>
+                                    <p class="file-upload-text">Drag & drop PDF file here or click to browse</p>
+                                    <p>Maximum file size: 10MB</p>
+                                    <input type="file" class="file-upload-input" id="fileInput" accept=".pdf">
+                                    <div class="file-name" id="fileName"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Description (optional)</label>
+                                <textarea class="form-control" id="fileDescription" rows="3" placeholder="Brief description of the document"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Upload PDF</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Recent Activities Panel -->
+                <div class="activities-panel">
+                    <div class="activities-header">
+                        <h2 class="activities-title">Recent Activities</h2>
+                    </div>
+                    <div class="activities-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">📤</div>
+                            <div class="activity-info">
+                                <p class="activity-text">You uploaded "Machine Learning Algorithms"</p>
+                                <p class="activity-time">Today, 10:23 AM</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">⬇️</div>
+                            <div class="activity-info">
+                                <p class="activity-text">You downloaded "Data Visualization with Python"</p>
+                                <p class="activity-time">Yesterday, 3:45 PM</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📤</div>
+                            <div class="activity-info">
+                                <p class="activity-text">You uploaded "Network Security Basics"</p>
+                                <p class="activity-time">May 8, 2025, 1:12 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</body>
-</html>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle sidebar
+            const toggleBtn = document.querySelector('.toggle-btn');
+            const sidebar = document.querySelector('.sidebar');
+            const mainContent = document.querySelector('.main-content');
+            
+            toggleBtn.addEventListener('click', function() {
+                const sidebarWidth = sidebar.offsetWidth;
+                if (sidebarWidth > 100) {
+                    sidebar.style.width = '70px';
+                    mainContent.style.marginLeft = '70px';
+                    mainContent.style.width = 'calc(100% - 70px)';
+                    
+                    const hideElements = document.querySelectorAll('.logo-text, .section-title, .menu-text');
+                    hideElements.forEach(el => el.style.display = 'none');
+                } else {
+                    sidebar.style.width = '250px';
+                    mainContent.style.marginLeft = '250px';
+                    mainContent.style.width = 'calc(100% - 250px)';
+                    
+                    setTimeout(() => {
+                        const showElements = document.querySelectorAll('.logo-text, .section-title, .menu-text');
+                        showElements.forEach(el => el.style.display = 'block');
+                    }, 150);
+                }
+            });
+
+            // File upload handling
+            const fileInput = document.getElementById('fileInput');
+            const fileName = document.getElementById('fileName');
+            const dropZone = document.getElementById('dropZone');
+            const uploadForm = document.getElementById('uploadForm');
+            
+            // Handle file selection
+            fileInput.addEventListener('change', function(e) {
+                if (this.files.length > 0) {
+                    const file = this.files[0];
+                    if (file.type === 'application/pdf') {
+                        if (file.size <= 10 * 1024 * 1024) { // 10MB max
+                            fileName.textContent = file.name;
+                            fileName.style.display = 'block';
+                            dropZone.style.borderColor = 'var(--success-color)';
+                        } else {
+                            showError('File size exceeds the 10MB limit');
+                            resetFileInput();
+                        }
+                    } else {
+                        showError('Only PDF files are accepted');
+                        resetFileInput();
+                    }
+                }
+            });
+            
+            // Handle drag and drop
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropZone.addEventListener(eventName, highlight, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, unhighlight, false);
+            });
+            
+            function highlight() {
+                dropZone.style.borderColor = 'var(--primary-color)';
+                dropZone.style.backgroundColor = 'rgba(101, 87, 245, 0.05)';
+            }
+            
+            function unhighlight() {
+                dropZone.style.borderColor = 'var(--border-color)';
+                dropZone.style.backgroundColor = 'transparent';
+            }
+            
+            dropZone.addEventListener('drop', handleDrop, false);
+            
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const file = dt.files[0];
+                
+                if (file) {
+                    if (file.type === 'application/pdf') {
+                        if (file.size <= 10 * 1024 * 1024) { // 10MB max
+                            fileInput.files = dt.files;
+                            fileName.textContent = file.name;
+                            fileName.style.display = 'block';
+                            dropZone.style.borderColor = 'var(--success-color)';
+                        } else {
+                            showError('File size exceeds the 10MB limit');
+                        }
+                    } else {
+                        showError('Only PDF files are accepted');
+                    }
+                }
+            }
+            
+            // Form submission
+            uploadForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const title = document.getElementById('fileTitle').value;
+                const course = document.getElementById('fileCourse').value;
+                const file = fileInput.files[0];
+                
+                if (!title) {
+                    showError('Please enter a title');
+                    return;
+                }
+                
+                if (!course) {
+                    showError('Please select a course');
+                    return;
+                }
+                
+                if (!file) {
+                    showError('Please select a PDF file');
+                    return;
+                }
+                
+                // Here we would normally send the file to the server
+                // Since this is a demo, we'll simulate success and add the new item to the list
+                
+                // Show success message
+                document.getElementById('successAlert').style.display = 'flex';
+                
+                // Add new item to the list
+                addNewMaterial(title, course, file.name);
+                
+                // Add to recent activities
+                addNewActivity(title);
+                
+                // Reset form
+                uploadForm.reset();
+                resetFileInput();
+                
+                // Scroll to show the success message
+                document.getElementById('successAlert').scrollIntoView({behavior: 'smooth'});
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('successAlert').style.display = 'none';
+                }, 5000);
+            });
+            
+            function resetFileInput() {
+                fileInput.value = '';
+                fileName.textContent = '';
+                fileName.style.display = 'none';
+                dropZone.style.borderColor = 'var(--border-color)';
+                dropZone.style.backgroundColor = 'transparent';
+            }
+            
+            function showError(message) {
+                const errorAlert = document.getElementById('errorAlert');
+                document.getElementById('errorMessage').textContent = message;
+                errorAlert.
