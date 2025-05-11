@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center | LearnTech</title>
+    <style>
+        :root {
+            --primary-color: #6557f5;
+            --secondary-color: #f0f2f5;
+            --text-color: #5a5a5a;
+            --hover-color: #f5f5f5;
+            --active-color: #ededff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --border-color: #e1e4e8;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            width: 250px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: 2px 0 10px var(--shadow-color);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        .toggle-btn {
+            margin-left: auto;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 18px;
+        }
+
+        .sidebar-content {
+            padding: 15px 0;
+        }
+
+        .section-title {
+            padding: 10px 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            font-weight: 600;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .menu-item:hover {
+            background-color: var(--hover-color);
+        }
+
+        .menu-item.active {
+            border-left-color: var(--primary-color);
+            background-color: var(--active-color);
+            color: var(--primary-color);
+        }
+
+        .menu-icon {
+            font-size: 18px;
+            min-width: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-text {
+            margin-left: 12px;
+        }
+
+        /* Main content styles */
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+            width: calc(100% - 250px);
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            padding: 10px 15px;
+            box-shadow: var(--card-shadow);
+            width: 300px;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .search-icon {
+            color: #999;
+            margin-right: 10px;
+        }
+
+        /* Help Center specific styles */
+        .help-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+        .categories-panel {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+
+        .categories-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .categories-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .categories-list {
+            padding: 10px 0;
+        }
+
+        .category-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .category-item:hover {
+            background-color: var(--hover-color);
+        }
+
+        .category-item.active {
+            background-color: var(--active-color);
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .category-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .category-badge {
+            margin-left: auto;
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-size: 12px;
+            color: var(--text-color);
+        }
+
+        .contact-panel {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .contact-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-option {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background-color: var(--secondary-color);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .contact-option:hover {
+            background-color: var(--active-color);
+        }
+
+        .contact-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        .contact-text {
+            font-weight: 500;
+        }
+
+        /* FAQ Content */
+        .faq-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .category-content {
+            display: none;
+        }
+
+        .category-content.active {
+            display: block;
+        }
+
+        .category-header {
+            margin-bottom: 20px;
+        }
+
+        .category-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .category-description {
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .faq-question {
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .question-text {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .toggle-icon {
+            font-size: 20px;
+            color: var(--text-color);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer-content {
+            padding: 0 20px 20px;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .faq-item.active .faq-question {
+            border-bottom-color: var(--border-color);
+        }
+
+        .faq-item.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px; /* Adjust as needed */
+        }
+
+        .support-ticket {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .ticket-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #444;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #5547e5;
+        }
+
+        /* Live Chat Button */
+        .live-chat-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 999;
+        }
+
+        .live-chat-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 992px) {
+            .help-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 70px;
+            }
+            
+            .sidebar .logo-text,
+            .sidebar .section-title,
+            .sidebar .menu-text {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 70px;
+                width: calc(100% - 70px);
+            }
+            
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .search-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i>🎓</i>
+                </div>
+                <span class="logo-text">LearnTech</span>
+            </div>
+            <button class="toggle-btn">×</button>
+        </div>
+        <div class="sidebar-content">
+            <div class="section-title">MAIN</div>
+            <a href="learntech-student-dashboard.html" class="menu-item">
+                <span class="menu-icon">🏠</span>
+                <span class="menu-text">Dashboard</span>
+            </a>
+            <a href="mycoureses.html" class="menu-item">
+                <span class="menu-icon">📚</span>
+                <span class="menu-text">My Courses</span>
+            </a>
+            <a href="assignments.html" class="menu-item">
+                <span class="menu-icon">📝</span>
+                <span class="menu-text">Assignments</span>
+            </a>
+            <a href="calender.html" class="menu-item">
+                <span class="menu-icon">📅</span>
+                <span class="menu-text">Calendar</span>
+            </a>
+            
+            <div class="section-title">RESOURCES</div>
+            <a href="recorded-lectures.html" class="menu-item">
+                <span class="menu-icon">🎥</span>
+                <span class="menu-text">Recorded Lectures</span>
+            </a>
+            <a href="study-materials.html" class="menu-item">
+                <span class="menu-icon">📄</span>
+                <span class="menu-text">Study Materials</span>
+            </a>
+            <a href="study-groups.html" class="menu-item">
+                <span class="menu-icon">👥</span>
+                <span class="menu-text">Study Groups</span>
+            </a> 
+            <a href="help-center.html" class="menu-item active">
+                <span class="menu-icon">❓</span>
+                <span class="menu-text">Help Center</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">Help Center</h1>
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="faqSearch" placeholder="Search for help...">
+            </div>
+        </div>
+
+        <div class="help-grid">
+            <!-- Left Column: Categories and Contact -->
+            <div>
+                <div class="categories-panel">
+                    <div class="categories-header">
+                        <h2 class="categories-title">Help Categories</h2>
+                    </div>
+                    <div class="categories-list">
+                        <div class="category-item active" data-category="getting-started">
+                            <span class="category-icon">🚀</span>
+                            <span>Getting Started</span>
+                            <span class="category-badge">5</span>
+                        </div>
+                        <div class="category-item" data-category="courses">
+                            <span class="category-icon">📚</span>
+                            <span>Courses</span>
+                            <span class="category-badge">4</span>
+                        </div>
+                        <div class="category-item" data-category="assignments">
+                            <span class="category-icon">📝</span>
+                            <span>Assignments</span>
+                            <span class="category-badge">3</span>
+                        </div>
+                        <div class="category-item" data-category="study-materials">
+                            <span class="category-icon">📄</span>
+                            <span>Study Materials</span>
+                            <span class="category-badge">3</span>
+                        </div>
+                        <div class="category-item" data-category="account">
+                            <span class="category-icon">👤</span>
+                            <span>Account & Billing</span>
+                            <span class="category-badge">4</span>
+                        </div>
+                        <div class="category-item" data-category="technical">
+                            <span class="category-icon">🔧</span>
+                            <span>Technical Issues</span>
+                            <span class="category-badge">3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-panel">
+                    <h2 class="contact-title">Contact Support</h2>
+                    <div class="contact-options">
+                        <a href="#support-ticket" class="contact-option">
+                            <div class="contact-icon">📨</div>
+                            <span class="contact-text">Submit a Ticket</span>
+                        </a>
+                        <div class="contact-option" id="open-chat">
+                            <div class="contact-icon">💬</div>
+                            <span class="contact-text">Live Chat</span>
+                        </div>
+                        <a href="tel:+18005551234" class="contact-option">
+                            <div class="contact-icon">📞</div>
+                            <span class="contact-text">Call Support</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: FAQ Content -->
+            <div class="faq-content">
+                <!-- Getting Started FAQs -->
+                <div class="category-content active" id="getting-started">
+                    <div class="category-header">
+                        <h2 class="category-title">Getting Started</h2>
+                        <p class="category-description">Everything you need to know to get started with the LearnTech platform.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="question-text">How do I create an account on LearnTech?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Creating an account on LearnTech is easy! Simply follow these steps:</p>
+                                <ol>
+                                    <li>Go to the LearnTech homepage and click on "Sign Up" in the top right corner</li>
+                                    <li>Enter your email address, create a password, and fill in your personal information</li>
+                                    <li>Verify your email address by clicking the link sent to your inbox</li>
+                                    <li>Complete your profile information and preferences</li>
+                                    <li>Start exploring courses and learning resources!</li>
+                                </ol>
+                                <p>If you're signing up through your school or organization, you may need to use a specific registration link or code provided by your administrator.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="question-text">How do I navigate the LearnTech dashboard?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>The LearnTech dashboard is your central hub for all platform activities. Here's a quick overview:</p>
+                                <ul>
+                                    <li><strong>Left Sidebar:</strong> Navigate between different sections of the platform</li>
+                                    <li><strong>Main Dashboard:</strong> Shows your active courses, upcoming assignments, and recent activities</li>
+                                    <li><strong>Course Cards:</strong> Click on any course card to access course materials</li>
+                                    <li><strong>Calendar Widget:</strong> View upcoming deadlines and scheduled events</li>
+                                    <li><strong>Notifications:</strong> Check for important announcements and updates</li>
+                                </ul>
+                                <p>You can customize your dashboard view in the account settings to show the information most relevant to you.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="question-text">How do I enroll in a course?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>To enroll in a course, follow these steps:</p>
+                                <ol>
+                                    <li>From your dashboard, click on "Browse Courses" or go to the Courses tab</li>
+                                    <li>Browse available courses or use the search function to find specific topics</li>
+                                    <li>Click on a course to view details, curriculum, and instructor information</li>
+                                    <li>Click the "Enroll" button to join the course</li>
+                                </ol>
+                                <p>Depending on your subscription plan:</p>
+                                <ul>
+                                    <li>Some courses may require additional payment</li>
+                                    <li>Some courses may require an enrollment key (provided by your instructor)</li>
+                                    <li>If you're a student, your courses might be pre-assigned based on your program</li>
+                                </ul>
+                                <p>Once enrolled, the course will appear on your dashboard and in your "My Courses" section.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="question-text">How do I reset my password?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>If you've forgotten your password, you can reset it by following these steps:</p>
+                                <ol>
+                                    <li>On the login page, click "Forgot Password"</li>
+                                    <li>Enter the email address associated with your account</li>
+                                    <li>Check your email for a password reset link (check spam/junk folders if you don't see it)</li>
+                                    <li>Click the link and follow the instructions to create a new password</li>
+                                    <li>Use your new password to log in</li>
+                                </ol>
+                                <p>For security reasons, password reset links expire after 24 hours. If your link has expired, simply restart the process.</p>
+                                <p>If you continue to have issues, please contact our support team for assistance.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="question-text">What are the system requirements for using LearnTech?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>LearnTech is a web-based platform that works on most modern devices. Here are the minimum requirements:</p>
+                                <p><strong>For computers (Windows, Mac, Linux):</strong></p>
+                                <ul>
+                                    <li>Modern web browser (Chrome, Firefox, Safari, Edge - latest version or one version prior)</li>
+                                    <li>Minimum 4GB RAM (8GB recommended)</li>
+                                    <li>Stable internet connection (minimum 5 Mbps download speed)</li>
+                                    <li>Speakers or headphones for audio content</li>
+                                    <li>Webcam and microphone for interactive sessions (optional)</li>
+                                </ul>
+                                <p><strong>For mobile devices:</strong></p>
+                                <ul>
+                                    <li>iOS 13+ or Android 9+</li>
+                                    <li>LearnTech mobile app (recommended) or mobile web browser</li>
+                                    <li>Stable internet connection</li>
+                                </ul>
+                                <p>For the best experience, we recommend using a desktop or laptop computer, especially for assignments requiring extensive typing or specialized software.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Courses FAQs -->
+                <div class="category-content" id="courses">
+                    <div class="category-header">
+                        <h2 class="category-title">Courses</h2>
+                        <p class="category-description">Information about accessing and managing your courses.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="question-text">How do I access my course materials?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>To access your course materials:</p>
+                                <ol>
+                                    <li>Log in to your LearnTech account</li>
+                                    <li>Navigate to "My Courses" from the sidebar</li>
+                                    <li>Select the course you want to access</li>
+                                    <li>Browse through different sections of the course using the course navigation menu</li>
+                                </ol>
+                                <p>Course materials typically include:</p>
+                                <ul>
+                                    <li>Video lectures and presentations</li>
+                                    <li>Reading materials and PDF documents</li>
+                                    <li>Interactive exercises and quizzes</li>
+                                    <li>Discussion forums</li>
+                                    <li>Assignments and projects</li>
+                                </ul>
+                                <p>Most materials can be accessed online, and many can also be downloaded for offline use.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="question-text">Can I access courses on mobile devices?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Yes, LearnTech courses are accessible on mobile devices in two ways:</p>
+                                <p><strong>1. LearnTech Mobile App (Recommended)</strong></p>
+                                <ul>
+                                    <li>Download from Apple App Store or Google Play Store</li>
+                                    <li>Log in with your LearnTech credentials</li>
+                                    <li>Access all your courses and materials</li>
+                                    <li>Receive notifications for assignments and announcements</li>
+                                    <li>Download content for offline viewing</li>
+                                </ul>
+                                <p><strong>2. Mobile Web Browser</strong></p>
+                                <ul>
+                                    <li>Visit the LearnTech website on your mobile browser</li>
+                                    <li>Log in to your account</li>
+                                    <li>Access your courses through the responsive web interface</li>
+                                </ul>
+                                <p>While most course content is mobile-friendly, some interactive elements or specialized software might work best on desktop/laptop computers.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="question-text">How do I track my progress in a course?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>LearnTech provides several ways to track your course progress:</p>
+                                <p><strong>Within each course:</strong></p>
+                                <ul>
+                                    <li><strong>Progress Bar:</strong> Shows overall completion percentage for the course</li>
+                                    <li><strong>Module Checkmarks:</strong> Indicate completed lectures, readings, and activities</li>
+                                    <li><strong>Grade Center:</strong> Displays scores for quizzes, assignments, and assessments</li>
+                                </ul>
+                                <p><strong>On your dashboard:</strong></p>
+                                <ul>
+                                    <li><strong>Course Cards:</strong> Display completion percentage for each enrolled course</li>
+                                    <li><strong>Activity Timeline:</strong> Shows recent course activities and achievements</li>
+                                    <li><strong>Learning Analytics:</strong> Provides insights on your study habits and performance</li>
+                                </ul>
+                                <p>You can also download a progress report from your profile settings if you need documentation of your learning activities.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="question-text">How do I communicate with my instructor?</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>LearnTech offers several ways to communicate with your instructors:</p>
+                                <ul>
+                                    <li><strong>Course Messagin</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
