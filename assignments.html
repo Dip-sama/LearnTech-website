@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments | LearnTech</title>
+    <style>
+        :root {
+            --primary-color: #6557f5;
+            --secondary-color: #f0f2f5;
+            --text-color: #5a5a5a;
+            --hover-color: #f5f5f5;
+            --active-color: #ededff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --danger-color: #ff6b6b;
+            --success-color: #4caf50;
+            --warning-color: #ff9800;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            width: 250px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: 2px 0 10px var(--shadow-color);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        .toggle-btn {
+            margin-left: auto;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 18px;
+        }
+
+        .sidebar-content {
+            padding: 15px 0;
+        }
+
+        .section-title {
+            padding: 10px 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            font-weight: 600;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .menu-item:hover {
+            background-color: var(--hover-color);
+        }
+
+        .menu-item.active {
+            border-left-color: var(--primary-color);
+            background-color: var(--active-color);
+            color: var(--primary-color);
+        }
+
+        .menu-icon {
+            font-size: 18px;
+            min-width: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-text {
+            margin-left: 12px;
+        }
+
+        /* Main content styles */
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+            width: calc(100% - 250px);
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .filter-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            padding: 10px 15px;
+            box-shadow: var(--card-shadow);
+            width: 300px;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .search-icon {
+            color: #999;
+            margin-right: 10px;
+        }
+
+        .filter-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .filter-btn {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        .filter-icon {
+            color: #999;
+        }
+
+        /* Assignment Status Tabs */
+        .status-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .status-tab {
+            padding: 12px 5px;
+            font-size: 15px;
+            color: var(--text-color);
+            cursor: pointer;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .status-tab:hover {
+            color: var(--primary-color);
+        }
+
+        .status-tab.active {
+            color: var(--primary-color);
+        }
+
+        .status-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .tab-count {
+            background-color: #eee;
+            border-radius: 20px;
+            padding: 2px 8px;
+            margin-left: 5px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Assignments Table */
+        .assignments-table {
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            border-collapse: collapse;
+            overflow: hidden;
+        }
+
+        .assignments-table th,
+        .assignments-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .assignments-table th {
+            background-color: #f9f9f9;
+            font-weight: 600;
+            color: #444;
+            font-size: 14px;
+        }
+
+        .assignments-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .assignment-title {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .assignment-course {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .due-date {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .date {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .time-left {
+            font-size: 13px;
+        }
+
+        .time-left.urgent {
+            color: var(--danger-color);
+        }
+
+        .time-left.warning {
+            color: var(--warning-color);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .status-pending {
+            background-color: #ffecb3;
+            color: #9e6c00;
+        }
+
+        .status-submitted {
+            background-color: #c8e6c9;
+            color: #2e7d32;
+        }
+
+        .status-overdue {
+            background-color: #ffcdd2;
+            color: #c62828;
+        }
+
+        .status-in-review {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+        }
+
+        .status-graded {
+            background-color: #d1c4e9;
+            color: #4527a0;
+        }
+
+        .action-btn {
+            padding: 8px 15px;
+            border-radius: 6px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .action-btn:hover {
+            background-color: #574bde;
+        }
+
+        .action-btn.review {
+            background-color: #fff;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .grade {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .grade.excellent {
+            color: var(--success-color);
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 1024px) {
+            .assignments-table {
+                min-width: 800px;
+            }
+            
+            .table-container {
+                overflow-x: auto;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 70px;
+            }
+            
+            .sidebar .logo-text,
+            .sidebar .section-title,
+            .sidebar .menu-text {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 70px;
+                width: calc(100% - 70px);
+            }
+            
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .filter-container {
+                width: 100%;
+                flex-wrap: wrap;
+            }
+            
+            .search-container {
+                width: 100%;
+            }
+            
+            .status-tabs {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i>🎓</i>
+                </div>
+                <span class="logo-text">LearnTech</span>
+            </div>
+            <button class="toggle-btn">×</button>
+        </div>
+        <div class="sidebar-content">
+            <div class="section-title">MAIN</div>
+            <a href="learntech-student-dashboard.html" class="menu-item">
+                <span class="menu-icon">🏠</span>
+                <span class="menu-text">Dashboard</span>
+            </a>
+            <a href="mycoureses.html" class="menu-item">
+                <span class="menu-icon">📚</span>
+                <span class="menu-text">My Courses</span>
+            </a>
+            <a href="assignments.html" class="menu-item active">
+                <span class="menu-icon">📝</span>
+                <span class="menu-text">Assignments</span>
+            </a>
+            <a href="calender.html" class="menu-item">
+                <span class="menu-icon">📅</span>
+                <span class="menu-text">Calendar</span>
+            </a>
+            
+            <div class="section-title">RESOURCES</div>
+            <a href="recorded-lectures.html" class="menu-item">
+                <span class="menu-icon">🎥</span>
+                <span class="menu-text">Recorded Lectures</span>
+            </a>
+            <a href="study-groups.html" class="menu-item">
+                <span class="menu-icon">👥</span>
+                <span class="menu-text">Study Groups</span>
+            </a> 
+            <a href="help-center.html" class="menu-item">
+                <span class="menu-icon">❓</span>
+                <span class="menu-text">Help Center</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content for Assignments -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">Assignments</h1>
+            <div class="filter-container">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Search assignments...">
+                </div>
+                <div class="filter-dropdown">
+                    <button class="filter-btn">
+                        <span class="filter-icon">📊</span>
+                        <span>Sort By</span>
+                    </button>
+                </div>
+                <div class="filter-dropdown">
+                    <button class="filter-btn">
+                        <span class="filter-icon">🔍</span>
+                        <span>Filter</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Tabs -->
+        <div class="status-tabs">
+            <div class="status-tab active">All <span class="tab-count">12</span></div>
+            <div class="status-tab">Pending <span class="tab-count">5</span></div>
+            <div class="status-tab">Submitted <span class="tab-count">3</span></div>
+            <div class="status-tab">In Review <span class="tab-count">1</span></div>
+            <div class="status-tab">Graded <span class="tab-count">2</span></div>
+            <div class="status-tab">Overdue <span class="tab-count">1</span></div>
+        </div>
+
+        <!-- Assignments Table -->
+        <div class="table-container">
+            <table class="assignments-table">
+                <thead>
+                    <tr>
+                        <th>Assignment</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Grade</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Assignment 1 -->
+                    <tr>
+                        <td>
+                            <div class="assignment-title">JavaScript DOM Manipulation</div>
+                            <div class="assignment-course">Web Development Fundamentals</div>
+                        </td>
+                        <td>
+                            <div class="due-date">
+                                <div class="date">May 15, 2025</div>
+                                <div class="time-left urgent">4 days left</div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="status-badge status-pending">Pending</span>
+                        </td>
+                        <td>
+                            <span>-</span>
+                        </td>
+                        <td>
+                            <button class="action-btn">Start Now</button>
+                        </td>
+                    </tr>
+
+                    <!-- Assignment 2 -->
+                    <tr>
+                        <td>
+                            <div class="assignment-title">React Component Architecture</div>
+                            <div class="assignment-course">Advanced JavaScript</div>
+                        </td>
+                        <td>
+                            <div class="due-date">
+                                <div class="date">May 20, 2025</div>
+                                <div class="time-left">9 days left</div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="status-badge status-submitted">Submitted</span>
+                        </td>
+                        <td>
+                            <span>-</span>
+                        </td>
+                        <td>
+                            <button class="action-btn review">View Submission</button>
+                        </td>
+                    </tr>
+
+                    <!-- Assignment 3 -->
+                    <tr>
+                        <td>
+                            <div class="assignment-title">User Interface Wireframing</div>
+                            <div class="assignment-course">UX/UI Design Fundamentals</div>
+                        </td>
+                        <td>
+                            <div class="due-date">
+                                <div class="date">May 5, 2025</div>
+                                <div class="time-left">Overdue by 6 days</div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="status-badge status-overdue">Overdue</span>
+                        </td>
+                        <td>
+                            <span>-</span>
+                        </td>
+                        <td>
+                            <button class="action-btn">Submit Late</button>
+                        </td>
+                    </tr>
+
+                    <!-- Assignment 4 -->
+                    <tr>
+                        <td>
+                            <div class="assignment-title">Binary Search Trees Implementation</div>
+                            <div class="assignment-course">Data Structures & Algorithms</div>
+                        </td>
+                        <td>
+                            <div class="due-date">
+                                <div class="date">May 1, 2025</div>
+                                <div class="time-left">Submitted</div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="status-badge status-in-review">In Review</span>
+                        </td>
+                        <td>
+                            <span>-</span>
+                        </td>
+                        <td>
+                            <button class="action-btn review">View Submission</button>
+                        </td>
+                    </tr>
+
+                    <!-- Assignment 5 -->
+                    <tr>
+                        <td>
+                            <div class="assignment-title">Database Schema Design</div>
+                            <div class="assignment-course">Database Management Systems</div>
+                        </td>
+                        <td>
+                            <div class="due-date">
+                                <div class="date">Apr 28, 2025</div>
+                                <div class="time-left">Submitted on time</div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="status-badge status-graded">Graded</span>
+                        </td>
+                        <td>
+                            <span class="grade excellent">95%</span>
+                        </td>
+                        <td>
+                            <button class="action-btn review">View Feedback</button>
+                        </td>
+                    </tr>
+
+                    <!-- Assignment 6 -->
+                    <tr>
+                        <td>
+                            <div class="assignment-title">Array Sorting Algorithms</div>
+                            <div class="assignment-course">Data Structures & Algorithms</div>
+                        </td>
+                        <td>
+                            <div class="due-date">
+                                <div class="date">Apr 18, 2025</div>
+                                <div class="time-left">Submitted on time</div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="status-badge status-graded">Graded</span>
+                        </td>
+                        <td>
+                            <span class="grade">88%</span>
+                        </td>
+                        <td>
+                            <button class="action-btn review">View Feedback</button>
+                        </td>
+                    </tr>
+
+                    <!-- Assignment 7 -->
+                    <tr>
+                        <td>
+                            <div class="assignment-title">CSS Animation Project</div>
+                            <div class="assignment-course">Web Development Fundamentals</div>
+                        </td>
+                        <td>
+                            <div class="due-date">
+                                <div class="date">May 25, 2025</div>
+                                <div class="time-left">14 days left</div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="status-badge status-pending">Pending</span>
+                        </td>
+                        <td>
+                            <span>-</span>
+                        </td>
+                        <td>
+                            <button class="action-btn">Start Now</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
