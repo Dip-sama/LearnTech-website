@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Courses | LearnTech</title>
+    <style>
+        :root {
+            --primary-color: #6557f5;
+            --secondary-color: #f0f2f5;
+            --text-color: #5a5a5a;
+            --hover-color: #f5f5f5;
+            --active-color: #ededff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            width: 250px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: 2px 0 10px var(--shadow-color);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        .toggle-btn {
+            margin-left: auto;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 18px;
+        }
+
+        .sidebar-content {
+            padding: 15px 0;
+        }
+
+        .section-title {
+            padding: 10px 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            font-weight: 600;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .menu-item:hover {
+            background-color: var(--hover-color);
+        }
+
+        .menu-item.active {
+            border-left-color: var(--primary-color);
+            background-color: var(--active-color);
+            color: var(--primary-color);
+        }
+
+        .menu-icon {
+            font-size: 18px;
+            min-width: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-text {
+            margin-left: 12px;
+        }
+
+        /* Main content styles */
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+            width: calc(100% - 250px);
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            padding: 10px 15px;
+            box-shadow: var(--card-shadow);
+            width: 300px;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .search-icon {
+            color: #999;
+            margin-right: 10px;
+        }
+
+        /* Course cards styles */
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .course-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-image {
+            height: 160px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .course-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+        }
+
+        .course-content {
+            padding: 20px;
+        }
+
+        .course-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .course-instructor {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .course-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .stat-icon {
+            font-size: 16px;
+        }
+
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .continue-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .continue-btn:hover {
+            background-color: #574bde;
+        }
+
+        .completion {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Course categories */
+        .course-categories {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .category-pill {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 14px;
+            color: var(--text-color);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .category-pill:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .category-pill.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 70px;
+            }
+            
+            .sidebar .logo-text,
+            .sidebar .section-title,
+            .sidebar .menu-text {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 70px;
+                width: calc(100% - 70px);
+            }
+            
+            .courses-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .search-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i>🎓</i>
+                </div>
+                <span class="logo-text">LearnTech</span>
+            </div>
+            <button class="toggle-btn">×</button>
+        </div>
+        <div class="sidebar-content">
+            <div class="section-title">MAIN</div>
+            <a href="learntech-student-dashboard.html" class="menu-item">
+                <span class="menu-icon">🏠</span>
+                <span class="menu-text">Dashboard</span>
+            </a>
+            <a href="mycoureses.html" class="menu-item active">
+                <span class="menu-icon">📚</span>
+                <span class="menu-text">My Courses</span>
+            </a>
+            <a href="assignments.html" class="menu-item">
+                <span class="menu-icon">📝</span>
+                <span class="menu-text">Assignments</span>
+            </a>
+            <a href="calender.html" class="menu-item">
+                <span class="menu-icon">📅</span>
+                <span class="menu-text">Calendar</span>
+            </a>
+            
+            <div class="section-title">RESOURCES</div>
+            <a href="recorded-lectures.html" class="menu-item">
+                <span class="menu-icon">🎥</span>
+                <span class="menu-text">Recorded Lectures</span>
+            </a>
+            <a href="study-groups.html" class="menu-item">
+                <span class="menu-icon">👥</span>
+                <span class="menu-text">Study Groups</span>
+            </a> 
+            <a href="help-center.html" class="menu-item">
+                <span class="menu-icon">❓</span>
+                <span class="menu-text">Help Center</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content for My Courses -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">My Courses</h1>
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search courses...">
+            </div>
+        </div>
+
+        <!-- Course Categories -->
+        <div class="course-categories">
+            <div class="category-pill active">All Courses</div>
+            <div class="category-pill">In Progress</div>
+            <div class="category-pill">Completed</div>
+            <div class="category-pill">Not Started</div>
+            <div class="category-pill">Favorites</div>
+        </div>
+
+        <!-- Course Cards -->
+        <div class="courses-container">
+            <!-- Course 1 -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="/api/placeholder/400/320" alt="Introduction to Web Development">
+                    <div class="course-progress">
+                        <div class="progress-bar" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Introduction to Web Development</h3>
+                    <p class="course-instructor">Instructor: Sarah Johnson</p>
+                    <div class="course-stats">
+                        <div class="stat">
+                            <span class="stat-icon">📚</span>
+                            <span>12 Modules</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">🕒</span>
+                            <span>24 Hours</span>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <button class="continue-btn">Continue</button>
+                        <span class="completion">75% Complete</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course 2 -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="/api/placeholder/400/320" alt="Advanced JavaScript">
+                    <div class="course-progress">
+                        <div class="progress-bar" style="width: 45%;"></div>
+                    </div>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Advanced JavaScript</h3>
+                    <p class="course-instructor">Instructor: Michael Chen</p>
+                    <div class="course-stats">
+                        <div class="stat">
+                            <span class="stat-icon">📚</span>
+                            <span>10 Modules</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">🕒</span>
+                            <span>18 Hours</span>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <button class="continue-btn">Continue</button>
+                        <span class="completion">45% Complete</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course 3 -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="/api/placeholder/400/320" alt="UX/UI Design Fundamentals">
+                    <div class="course-progress">
+                        <div class="progress-bar" style="width: 20%;"></div>
+                    </div>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">UX/UI Design Fundamentals</h3>
+                    <p class="course-instructor">Instructor: Emma Rodriguez</p>
+                    <div class="course-stats">
+                        <div class="stat">
+                            <span class="stat-icon">📚</span>
+                            <span>8 Modules</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">🕒</span>
+                            <span>16 Hours</span>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <button class="continue-btn">Continue</button>
+                        <span class="completion">20% Complete</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course 4 -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="/api/placeholder/400/320" alt="Data Structures & Algorithms">
+                    <div class="course-progress">
+                        <div class="progress-bar" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Data Structures & Algorithms</h3>
+                    <p class="course-instructor">Instructor: David Kim</p>
+                    <div class="course-stats">
+                        <div class="stat">
+                            <span class="stat-icon">📚</span>
+                            <span>15 Modules</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">🕒</span>
+                            <span>30 Hours</span>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <button class="continue-btn">Continue</button>
+                        <span class="completion">90% Complete</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course 5 -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="/api/placeholder/400/320" alt="Mobile App Development">
+                    <div class="course-progress">
+                        <div class="progress-bar" style="width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Mobile App Development</h3>
+                    <p class="course-instructor">Instructor: James Wilson</p>
+                    <div class="course-stats">
+                        <div class="stat">
+                            <span class="stat-icon">📚</span>
+                            <span>14 Modules</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">🕒</span>
+                            <span>28 Hours</span>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <button class="continue-btn">Start Course</button>
+                        <span class="completion">Not Started</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course 6 -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="/api/placeholder/400/320" alt="Database Management Systems">
+                    <div class="course-progress">
+                        <div class="progress-bar" style="width: 60%;"></div>
+                    </div>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Database Management Systems</h3>
+                    <p class="course-instructor">Instructor: Lisa Thompson</p>
+                    <div class="course-stats">
+                        <div class="stat">
+                            <span class="stat-icon">📚</span>
+                            <span>10 Modules</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">🕒</span>
+                            <span>20 Hours</span>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <button class="continue-btn">Continue</button>
+                        <span class="completion">60% Complete</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
