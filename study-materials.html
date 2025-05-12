@@ -758,237 +758,304 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Toggle sidebar
-            const toggleBtn = document.querySelector('.toggle-btn');
-            const sidebar = document.querySelector('.sidebar');
-            const mainContent = document.querySelector('.main-content');
-            
-            toggleBtn.addEventListener('click', function() {
-                const sidebarWidth = sidebar.offsetWidth;
-                if (sidebarWidth > 100) {
-                    sidebar.style.width = '70px';
-                    mainContent.style.marginLeft = '70px';
-                    mainContent.style.width = 'calc(100% - 70px)';
-                    
-                    const hideElements = document.querySelectorAll('.logo-text, .section-title, .menu-text');
-                    hideElements.forEach(el => el.style.display = 'none');
-                } else {
-                    sidebar.style.width = '250px';
-                    mainContent.style.marginLeft = '250px';
-                    mainContent.style.width = 'calc(100% - 250px)';
-                    
-                    setTimeout(() => {
-                        const showElements = document.querySelectorAll('.logo-text, .section-title, .menu-text');
-                        showElements.forEach(el => el.style.display = 'block');
-                    }, 150);
-                }
-            });
+      // ENHANCED JAVASCRIPT FOR LEARNTECH STUDY MATERIALS PAGE
+// =====================================================
 
-            // File upload handling
-            const fileInput = document.getElementById('fileInput');
-            const fileName = document.getElementById('fileName');
-            const dropZone = document.getElementById('dropZone');
-            const uploadForm = document.getElementById('uploadForm');
-            
-            // Handle file selection
-            fileInput.addEventListener('change', function(e) {
-                if (this.files.length > 0) {
-                    const file = this.files[0];
-                    if (file.type === 'application/pdf') {
-                        if (file.size <= 10 * 1024 * 1024) { // 10MB max
-                            fileName.textContent = file.name;
-                            fileName.style.display = 'block';
-                            dropZone.style.borderColor = 'var(--success-color)';
-                        } else {
-                            showError('File size exceeds the 10MB limit');
-                            resetFileInput();
-                        }
-                    } else {
-                        showError('Only PDF files are accepted');
-                        resetFileInput();
-                    }
-                }
-            });
-            
-            // Handle drag and drop
-            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                dropZone.addEventListener(eventName, preventDefaults, false);
-            });
-            
-            function preventDefaults(e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
-            
-            ['dragenter', 'dragover'].forEach(eventName => {
-                dropZone.addEventListener(eventName, highlight, false);
-            });
+// Wait for DOM content to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all components and functionality
+    initSidebar();
+    initFileUpload();
+    initFormHandling();
+    initMaterialsListActions();
+    initFiltering();
+    initResponsiveLayout();
+    initDarkModeToggle();
+    initNotifications();
+    initOfflineSupport();
+});
 
-            ['dragleave', 'drop'].forEach(eventName => {
-                dropZone.addEventListener(eventName, unhighlight, false);
+// Sidebar Functionality
+// ---------------------
+function initSidebar() {
+    const toggleBtn = document.querySelector('.toggle-btn');
+    const sidebar = document.querySelector('.sidebar');
+    const mainContent = document.querySelector('.main-content');
+    const sidebarItems = document.querySelectorAll('.menu-item');
+    
+    // Toggle sidebar expanded/collapsed state
+    toggleBtn.addEventListener('click', function() {
+        sidebar.classList.toggle('collapsed');
+        
+        if (sidebar.classList.contains('collapsed')) {
+            sidebar.style.width = '70px';
+            mainContent.style.marginLeft = '70px';
+            mainContent.style.width = 'calc(100% - 70px)';
+            document.querySelectorAll('.logo-text, .section-title, .menu-text').forEach(el => {
+                el.style.display = 'none';
             });
-            
-            function highlight() {
-                dropZone.style.borderColor = 'var(--primary-color)';
-                dropZone.style.backgroundColor = 'rgba(101, 87, 245, 0.05)';
-            }
-            
-            function unhighlight() {
-                dropZone.style.borderColor = 'var(--border-color)';
-                dropZone.style.backgroundColor = 'transparent';
-            }
-            
-            dropZone.addEventListener('drop', handleDrop, false);
-            
-            function handleDrop(e) {
-                const dt = e.dataTransfer;
-                const file = dt.files[0];
-                
-                if (file) {
-                    if (file.type === 'application/pdf') {
-                        if (file.size <= 10 * 1024 * 1024) { // 10MB max
-                            fileInput.files = dt.files;
-                            fileName.textContent = file.name;
-                            fileName.style.display = 'block';
-                            dropZone.style.borderColor = 'var(--success-color)';
-                        } else {
-                            showError('File size exceeds the 10MB limit');
-                        }
-                    } else {
-                        showError('Only PDF files are accepted');
-                    }
-                }
-            }
-            
-            // Form submission
-            uploadForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const title = document.getElementById('fileTitle').value;
-                const course = document.getElementById('fileCourse').value;
-                const file = fileInput.files[0];
-                
-                if (!title) {
-                    showError('Please enter a title');
-                    return;
-                }
-                
-                if (!course) {
-                    showError('Please select a course');
-                    return;
-                }
-                
-                if (!file) {
-                    showError('Please select a PDF file');
-                    return;
-                }
-                
-                // Here we would normally send the file to the server
-                // Since this is a demo, we'll simulate success and add the new item to the list
-                
-                // Show success message
-                document.getElementById('successAlert').style.display = 'flex';
-                
-                // Add new item to the list
-                addNewMaterial(title, course, file.name);
-                
-                // Add to recent activities
-                addNewActivity(title);
-                
-                // Reset form
-                uploadForm.reset();
-                resetFileInput();
-                
-                // Scroll to show the success message
-                document.getElementById('successAlert').scrollIntoView({behavior: 'smooth'});
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    document.getElementById('successAlert').style.display = 'none';
-                }, 5000);
-            });
-            
-            function resetFileInput() {
-                fileInput.value = '';
-                fileName.textContent = '';
-                fileName.style.display = 'none';
-                dropZone.style.borderColor = 'var(--border-color)';
-                dropZone.style.backgroundColor = 'transparent';
-            }
-            
-            function showError(message) {
-                const errorAlert = document.getElementById('errorAlert');
-                document.getElementById('errorMessage').textContent = message;
-                errorAlert.style.display = 'flex';
-                
-                // Hide error message after 5 seconds
-                setTimeout(() => {
-                    errorAlert.style.display = 'none';
-                }, 5000);
-            }
-            
-            function closeAlert(alertId) {
-                document.getElementById(alertId).style.display = 'none';
-            }
-            
-            // Add new material to the list
-            function addNewMaterial(title, course, filename) {
-                const materialsList = document.getElementById('materialsList');
-                const today = new Date();
-                const dateString = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                
-                // Get course name from value
-                let courseName = '';
-                switch(course) {
-                    case 'web-development':
-                        courseName = 'Web Development';
-                        break;
-                    case 'data-science':
-                        courseName = 'Data Science';
-                        break;
-                    case 'machine-learning':
-                        courseName = 'Machine Learning';
-                        break;
-                    case 'cybersecurity':
-                        courseName = 'Cybersecurity';
-                        break;
-                    default:
-                        courseName = 'Other';
-                }
-                
-                // Create new material item
-                const newItem = document.createElement('div');
-                newItem.className = 'material-item';
-                newItem.setAttribute('data-course', course);
-                
-                newItem.innerHTML = `
-                    <div class="material-icon">📄</div>
-                    <div class="material-info">
-                        <h3 class="material-name">${title}</h3>
-                        <div class="material-details">
-                            <span class="material-course">${courseName}</span>
-                            <span class="material-date">Added: ${dateString}</span>
-                        </div>
-                    </div>
-                    <div class="material-actions">
-                        <button class="action-btn download-btn" title="Download">⬇️</button>
-                        <button class="action-btn delete-btn" title="Delete">🗑️</button>
-                    </div>
-                `;
-                
-                // Add event listeners to the new buttons
-                const deleteBtn = newItem.querySelector('.delete-btn');
-                deleteBtn.addEventListener('click', function() {
-                    newItem.remove();
+            toggleBtn.textContent = '☰';
+        } else {
+            sidebar.style.width = '250px';
+            mainContent.style.marginLeft = '250px';
+            mainContent.style.width = 'calc(100% - 250px)';
+            setTimeout(() => {
+                document.querySelectorAll('.logo-text, .section-title, .menu-text').forEach(el => {
+                    el.style.display = 'block';
                 });
+            }, 150);
+            toggleBtn.textContent = '×';
+        }
+    });
+
+    // Active menu item tracking
+    sidebarItems.forEach(item => {
+        item.addEventListener('click', function() {
+            sidebarItems.forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+    
+    // Auto-collapse sidebar on mobile
+    function checkWindowSize() {
+        if (window.innerWidth <= 768 && !sidebar.classList.contains('collapsed')) {
+            toggleBtn.click();
+        }
+    }
+    
+    window.addEventListener('resize', checkWindowSize);
+    checkWindowSize(); // Check on initial load
+}
+
+// File Upload Functionality
+// ------------------------
+function initFileUpload() {
+    const fileInput = document.getElementById('fileInput');
+    const fileName = document.getElementById('fileName');
+    const dropZone = document.getElementById('dropZone');
+    const fileProgressBar = document.createElement('div');
+    fileProgressBar.className = 'file-progress';
+    dropZone.appendChild(fileProgressBar);
+    
+    // Handle file selection via input
+    fileInput.addEventListener('change', function(e) {
+        handleFileSelection(this.files[0]);
+    });
+    
+    // Prevent default behavior for drag events
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, preventDefaults, false);
+    });
+    
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    
+    // Visual feedback for drag events
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, unhighlight, false);
+    });
+    
+    function highlight() {
+        dropZone.style.borderColor = 'var(--primary-color)';
+        dropZone.style.backgroundColor = 'rgba(101, 87, 245, 0.05)';
+        dropZone.style.transform = 'scale(1.02)';
+    }
+    
+    function unhighlight() {
+        dropZone.style.borderColor = 'var(--border-color)';
+        dropZone.style.backgroundColor = 'transparent';
+        dropZone.style.transform = 'scale(1)';
+    }
+    
+    // Handle file drop
+    dropZone.addEventListener('drop', function(e) {
+        const file = e.dataTransfer.files[0];
+        handleFileSelection(file);
+    });
+    
+    // Unified file handling logic
+    function handleFileSelection(file) {
+        if (!file) return;
+        
+        if (file.type === 'application/pdf') {
+            if (file.size <= 10 * 1024 * 1024) { // 10MB max
+                fileInput.files = new DataTransfer().files;
+                fileInput.files = new DataTransfer().items.add(file).files;
                 
-                // Add new item to the top of the list
-                materialsList.insertBefore(newItem, materialsList.firstChild);
+                fileName.textContent = file.name;
+                fileName.style.display = 'block';
+                dropZone.style.borderColor = 'var(--success-color)';
+                
+                // Show simulated upload progress
+                simulateFileUploadProgress();
+            } else {
+                showError('File size exceeds the 10MB limit');
+                resetFileInput();
             }
+        } else {
+            showError('Only PDF files are accepted');
+            resetFileInput();
+        }
+    }
+    
+    // Simulated file upload progress for visual feedback
+    function simulateFileUploadProgress() {
+        fileProgressBar.style.display = 'block';
+        fileProgressBar.style.width = '0%';
+        
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += 5;
+            fileProgressBar.style.width = `${progress}%`;
             
-            // Add new activity to the recent activities list
-            function addNewActivity(title) {
+            if (progress >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    fileProgressBar.style.width = '0%';
+                    fileProgressBar.style.display = 'none';
+                }, 500);
+            }
+        }, 100);
+    }
+    
+    // Reset file input and related UI
+    function resetFileInput() {
+        fileInput.value = '';
+        fileName.textContent = '';
+        fileName.style.display = 'none';
+        dropZone.style.borderColor = 'var(--border-color)';
+        dropZone.style.backgroundColor = 'transparent';
+        fileProgressBar.style.width = '0%';
+        fileProgressBar.style.display = 'none';
+    }
+    
+    // Expose resetFileInput to global scope for form submission
+    window.resetFileInput = resetFileInput;
+}
+
+// Form Handling
+// ------------
+function initFormHandling() {
+    const uploadForm = document.getElementById('uploadForm');
+    const titleInput = document.getElementById('fileTitle');
+    const courseSelect = document.getElementById('fileCourse');
+    const fileInput = document.getElementById('fileInput');
+    
+    // Form validation and submission
+    uploadForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Basic validation
+        if (!titleInput.value) {
+            showError('Please enter a title');
+            titleInput.focus();
+            return;
+        }
+        
+        if (!courseSelect.value) {
+            showError('Please select a course');
+            courseSelect.focus();
+            return;
+        }
+        
+        if (!fileInput.files[0]) {
+            showError('Please select a PDF file');
+            return;
+        }
+        
+        // Gather form data (would normally be sent to server)
+        const formData = new FormData();
+        formData.append('title', titleInput.value);
+        formData.append('course', courseSelect.value);
+        formData.append('file', fileInput.files[0]);
+        formData.append('description', document.getElementById('fileDescription').value);
+        
+        // In a real app, you would send the formData to server
+        // For now, simulate success
+        
+        // Show success message
+        showSuccess('File uploaded successfully!');
+        
+        // Add new material to the list
+        addNewMaterial(
+            titleInput.value, 
+            courseSelect.value, 
+            fileInput.files[0].name
+        );
+        
+        // Add to recent activities
+        addNewActivity(titleInput.value);
+        
+        // Reset form
+        uploadForm.reset();
+        window.resetFileInput();
+        
+        // Store in local storage for persistence
+        saveToLocalStorage();
+    });
+    
+    // Auto-save form input as user types
+    [titleInput, courseSelect, document.getElementById('fileDescription')].forEach(input => {
+        input.addEventListener('input', function() {
+            localStorage.setItem('form_' + this.id, this.value);
+        });
+        
+        // Restore form data from local storage
+        const savedValue = localStorage.getItem('form_' + input.id);
+        if (savedValue) input.value = savedValue;
+    });
+}
+
+// Materials List Actions
+// --------------------
+function initMaterialsListActions() {
+    // Delete functionality
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const materialItem = this.closest('.material-item');
+            
+            // Add deletion confirmation with animation
+            materialItem.style.backgroundColor = 'rgba(220, 53, 69, 0.1)';
+            materialItem.style.transform = 'scale(0.98)';
+            
+            if (confirm('Are you sure you want to delete this material?')) {
+                materialItem.style.height = '0';
+                materialItem.style.opacity = '0';
+                materialItem.style.padding = '0';
+                materialItem.style.margin = '0';
+                materialItem.style.overflow = 'hidden';
+                
+                setTimeout(() => {
+                    materialItem.remove();
+                    saveToLocalStorage();
+                }, 300);
+            } else {
+                materialItem.style.backgroundColor = '';
+                materialItem.style.transform = '';
+            }
+        });
+    });
+    
+    // Download functionality (simulated)
+    document.querySelectorAll('.download-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const materialItem = this.closest('.material-item');
+            const materialName = materialItem.querySelector('.material-name').textContent;
+            
+            // Visual feedback for download
+            this.classList.add('downloading');
+            
+            // Simulate download process
+            setTimeout(() => {
+                this.classList.remove('downloading');
+                
+                // Add to activities
                 const activitiesList = document.querySelector('.activities-list');
                 const now = new Date();
                 const timeString = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
@@ -997,76 +1064,487 @@
                 newActivity.className = 'activity-item';
                 
                 newActivity.innerHTML = `
-                    <div class="activity-icon">📤</div>
+                    <div class="activity-icon">⬇️</div>
                     <div class="activity-info">
-                        <p class="activity-text">You uploaded "${title}"</p>
+                        <p class="activity-text">You downloaded "${materialName}"</p>
                         <p class="activity-time">Today, ${timeString}</p>
                     </div>
                 `;
                 
-                // Add new activity to the top of the list
                 activitiesList.insertBefore(newActivity, activitiesList.firstChild);
                 
-                // Remove the last activity if there are more than 3
-                const activities = activitiesList.querySelectorAll('.activity-item');
-                if (activities.length > 3) {
-                    activitiesList.removeChild(activities[activities.length - 1]);
-                }
-            }
-            
-            // Filter materials by course
-            const courseFilter = document.getElementById('courseFilter');
-            courseFilter.addEventListener('change', filterMaterials);
-            
-            function filterMaterials() {
-                const selectedCourse = courseFilter.value;
-                const materials = document.querySelectorAll('.material-item');
+                // Update activity count and clean up old activities
+                updateActivityCount();
                 
-                materials.forEach(item => {
-                    if (selectedCourse === 'all' || item.getAttribute('data-course') === selectedCourse) {
-                        item.style.display = 'flex';
-                    } else {
+                showNotification('Download complete', `${materialName} has been downloaded.`);
+            }, 1500);
+        });
+    });
+}
+
+// Filtering and Search
+// -------------------
+function initFiltering() {
+    const searchInput = document.getElementById('searchInput');
+    const courseFilter = document.getElementById('courseFilter');
+    
+    // Combine search and filter functionality
+    function filterMaterials() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const selectedCourse = courseFilter.value;
+        const materials = document.querySelectorAll('.material-item');
+        let matchCount = 0;
+        
+        materials.forEach(item => {
+            const title = item.querySelector('.material-name').textContent.toLowerCase();
+            const course = item.getAttribute('data-course');
+            const courseText = item.querySelector('.material-course').textContent.toLowerCase();
+            
+            // Check if material matches both search term and course filter
+            const matchesSearch = title.includes(searchTerm) || courseText.includes(searchTerm);
+            const matchesCourse = selectedCourse === 'all' || course === selectedCourse;
+            
+            if (matchesSearch && matchesCourse) {
+                item.style.display = 'flex';
+                item.style.opacity = '1';
+                matchCount++;
+            } else {
+                item.style.opacity = '0.5';
+                setTimeout(() => {
+                    if (item.style.opacity === '0.5') {
                         item.style.display = 'none';
                     }
-                });
+                }, 300);
             }
+        });
+        
+        // Show message if no results
+        const noResultsElem = document.getElementById('noResults') || createNoResultsElement();
+        if (matchCount === 0 && (searchTerm || selectedCourse !== 'all')) {
+            noResultsElem.style.display = 'block';
+        } else {
+            noResultsElem.style.display = 'none';
+        }
+    }
+    
+    // Create "no results" message element
+    function createNoResultsElement() {
+        const materialsList = document.getElementById('materialsList');
+        const noResults = document.createElement('div');
+        noResults.id = 'noResults';
+        noResults.className = 'no-results';
+        noResults.innerHTML = `
+            <div class="no-results-icon">🔍</div>
+            <p>No matching materials found</p>
+            <button class="btn btn-sm btn-outline" onclick="resetFilters()">Reset filters</button>
+        `;
+        materialsList.after(noResults);
+        return noResults;
+    }
+    
+    // Reset filters functionality
+    window.resetFilters = function() {
+        searchInput.value = '';
+        courseFilter.value = 'all';
+        filterMaterials();
+    };
+    
+    // Add event listeners for search and filter
+    searchInput.addEventListener('input', debounce(filterMaterials, 300));
+    courseFilter.addEventListener('change', filterMaterials);
+    
+    // Debounce function to prevent excessive filtering during typing
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    }
+}
+
+// Add New Material
+// --------------
+function addNewMaterial(title, course, filename) {
+    const materialsList = document.getElementById('materialsList');
+    const today = new Date();
+    const dateString = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    
+    // Get course name from value
+    const courseNames = {
+        'web-development': 'Web Development',
+        'data-science': 'Data Science',
+        'machine-learning': 'Machine Learning',
+        'cybersecurity': 'Cybersecurity',
+        'other': 'Other'
+    };
+    
+    const courseName = courseNames[course] || 'Other';
+    
+    // Create new material item
+    const newItem = document.createElement('div');
+    newItem.className = 'material-item new-item';
+    newItem.setAttribute('data-course', course);
+    newItem.setAttribute('data-date', today.toISOString());
+    
+    newItem.innerHTML = `
+        <div class="material-icon">📄</div>
+        <div class="material-info">
+            <h3 class="material-name">${title}</h3>
+            <div class="material-details">
+                <span class="material-course">${courseName}</span>
+                <span class="material-date">Added: ${dateString}</span>
+            </div>
+        </div>
+        <div class="material-actions">
+            <button class="action-btn download-btn" title="Download">⬇️</button>
+            <button class="action-btn delete-btn" title="Delete">🗑️</button>
+        </div>
+    `;
+    
+    // Add event listeners to the new buttons
+    const deleteBtn = newItem.querySelector('.delete-btn');
+    deleteBtn.addEventListener('click', function() {
+        if (confirm('Are you sure you want to delete this material?')) {
+            newItem.style.height = '0';
+            newItem.style.opacity = '0';
+            newItem.style.padding = '0';
+            newItem.style.margin = '0';
+            newItem.style.overflow = 'hidden';
             
-            // Search functionality
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', searchMaterials);
+            setTimeout(() => {
+                newItem.remove();
+                saveToLocalStorage();
+            }, 300);
+        }
+    });
+    
+    const downloadBtn = newItem.querySelector('.download-btn');
+    downloadBtn.addEventListener('click', function() {
+        const materialName = newItem.querySelector('.material-name').textContent;
+        
+        // Visual feedback
+        this.classList.add('downloading');
+        
+        // Simulate download
+        setTimeout(() => {
+            this.classList.remove('downloading');
+            showNotification('Download complete', `${materialName} has been downloaded.`);
             
-            function searchMaterials() {
-                const searchTerm = searchInput.value.toLowerCase();
-                const materials = document.querySelectorAll('.material-item');
-                
-                materials.forEach(item => {
-                    const title = item.querySelector('.material-name').textContent.toLowerCase();
-                    const course = item.querySelector('.material-course').textContent.toLowerCase();
-                    
-                    if (title.includes(searchTerm) || course.includes(searchTerm)) {
-                        item.style.display = 'flex';
-                    } else {
-                        item.style.display = 'none';
-                    }
+            // Add to activities
+            addNewActivity(materialName, 'download');
+        }, 1500);
+    });
+    
+    // Add with animation
+    newItem.style.opacity = '0';
+    newItem.style.transform = 'translateY(20px)';
+    materialsList.insertBefore(newItem, materialsList.firstChild);
+    
+    // Trigger animation
+    setTimeout(() => {
+        newItem.style.opacity = '1';
+        newItem.style.transform = 'translateY(0)';
+    }, 10);
+    
+    // Remove new-item class after animation
+    setTimeout(() => {
+        newItem.classList.remove('new-item');
+    }, 3000);
+}
+
+// Add New Activity
+// --------------
+function addNewActivity(title, type = 'upload') {
+    const activitiesList = document.querySelector('.activities-list');
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+    
+    const newActivity = document.createElement('div');
+    newActivity.className = 'activity-item new-activity';
+    
+    const icons = {
+        'upload': '📤',
+        'download': '⬇️',
+        'delete': '🗑️'
+    };
+    
+    const actions = {
+        'upload': 'uploaded',
+        'download': 'downloaded',
+        'delete': 'deleted'
+    };
+    
+    newActivity.innerHTML = `
+        <div class="activity-icon">${icons[type]}</div>
+        <div class="activity-info">
+            <p class="activity-text">You ${actions[type]} "${title}"</p>
+            <p class="activity-time">Today, ${timeString}</p>
+        </div>
+    `;
+    
+    // Add with animation
+    newActivity.style.opacity = '0';
+    newActivity.style.transform = 'translateY(10px)';
+    activitiesList.insertBefore(newActivity, activitiesList.firstChild);
+    
+    // Trigger animation
+    setTimeout(() => {
+        newActivity.style.opacity = '1';
+        newActivity.style.transform = 'translateY(0)';
+    }, 10);
+    
+    // Remove new-activity class after animation
+    setTimeout(() => {
+        newActivity.classList.remove('new-activity');
+    }, 2000);
+    
+    // Update activity count
+    updateActivityCount();
+}
+
+// Update Activity Count
+// -------------------
+function updateActivityCount() {
+    const activitiesList = document.querySelector('.activities-list');
+    const activities = activitiesList.querySelectorAll('.activity-item');
+    
+    // Keep only the 5 most recent activities
+    if (activities.length > 5) {
+        for (let i = 5; i < activities.length; i++) {
+            activitiesList.removeChild(activities[i]);
+        }
+    }
+    
+    // Update local storage
+    saveToLocalStorage();
+}
+
+// Show Error Message
+// ----------------
+function showError(message) {
+    const errorAlert = document.getElementById('errorAlert');
+    document.getElementById('errorMessage').textContent = message;
+    
+    errorAlert.style.opacity = '0';
+    errorAlert.style.display = 'flex';
+    
+    setTimeout(() => {
+        errorAlert.style.opacity = '1';
+    }, 10);
+    
+    // Hide error message after 5 seconds
+    setTimeout(() => {
+        errorAlert.style.opacity = '0';
+        setTimeout(() => {
+            errorAlert.style.display = 'none';
+        }, 300);
+    }, 5000);
+}
+
+// Show Success Message
+// -----------------
+function showSuccess(message) {
+    const successAlert = document.getElementById('successAlert');
+    document.querySelector('#successAlert .alert-message').textContent = message;
+    
+    successAlert.style.opacity = '0';
+    successAlert.style.display = 'flex';
+    
+    setTimeout(() => {
+        successAlert.style.opacity = '1';
+    }, 10);
+    
+    // Hide success message after 5 seconds
+    setTimeout(() => {
+        successAlert.style.opacity = '0';
+        setTimeout(() => {
+            successAlert.style.display = 'none';
+        }, 300);
+    }, 5000);
+}
+
+// Close Alert
+// ---------
+window.closeAlert = function(alertId) {
+    const alert = document.getElementById(alertId);
+    alert.style.opacity = '0';
+    
+    setTimeout(() => {
+        alert.style.display = 'none';
+    }, 300);
+};
+
+// Local Storage Functions
+// ---------------------
+function saveToLocalStorage() {
+    // Save materials
+    const materials = [];
+    document.querySelectorAll('.material-item').forEach(item => {
+        materials.push({
+            title: item.querySelector('.material-name').textContent,
+            course: item.getAttribute('data-course'),
+            date: item.getAttribute('data-date') || new Date().toISOString()
+        });
+    });
+    
+    localStorage.setItem('learntech_materials', JSON.stringify(materials));
+    
+    // Save activities
+    const activities = [];
+    document.querySelectorAll('.activity-item').forEach(item => {
+        activities.push({
+            text: item.querySelector('.activity-text').textContent,
+            time: item.querySelector('.activity-time').textContent,
+            icon: item.querySelector('.activity-icon').textContent
+        });
+    });
+    
+    localStorage.setItem('learntech_activities', JSON.stringify(activities));
+}
+
+function loadFromLocalStorage() {
+    // This would be implemented to restore from localStorage on page load
+    // Not fully implemented here as it would require additional setup
+}
+
+// Responsive Layout Functions
+// ------------------------
+function initResponsiveLayout() {
+    window.addEventListener('resize', adjustLayout);
+    adjustLayout();
+    
+    function adjustLayout() {
+        const width = window.innerWidth;
+        const contentGrid = document.querySelector('.content-grid');
+        const sidebar = document.querySelector('.sidebar');
+        const mainContent = document.querySelector('.main-content');
+        
+        // Adjust layout based on screen size
+        if (width <= 768) {
+            if (contentGrid) contentGrid.style.gridTemplateColumns = '1fr';
+            if (!sidebar.classList.contains('collapsed')) {
+                sidebar.style.width = '70px';
+                mainContent.style.marginLeft = '70px';
+                mainContent.style.width = 'calc(100% - 70px)';
+                document.querySelectorAll('.logo-text, .section-title, .menu-text').forEach(el => {
+                    el.style.display = 'none';
                 });
+                sidebar.classList.add('collapsed');
             }
-            
-            // Add event listeners to all existing delete buttons
-            document.querySelectorAll('.delete-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const materialItem = this.closest('.material-item');
-                    materialItem.remove();
-                });
-            });
-            
-            // Add event listeners to all existing download buttons (simulating downloads)
-            document.querySelectorAll('.download-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const materialItem = this.closest('.material-item');
-                    const materialName = materialItem.querySelector('.material-name').textContent;
-                    alert(`Downloading "${materialName}"...`);
-                });
-            });
+        } else if (width <= 992) {
+            if (contentGrid) contentGrid.style.gridTemplateColumns = '1fr';
+        } else {
+            if (contentGrid) contentGrid.style.gridTemplateColumns = '2fr 1fr';
+        }
+    }
+}
+
+// Dark Mode Toggle
+// -------------
+function initDarkModeToggle() {
+    // Create dark mode toggle button
+    const pageHeader = document.querySelector('.page-header');
+    const darkModeToggle = document.createElement('button');
+    darkModeToggle.className = 'dark-mode-toggle';
+    darkModeToggle.innerHTML = '🌙';
+    darkModeToggle.title = 'Toggle dark mode';
+    pageHeader.appendChild(darkModeToggle);
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('learntech_theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        darkModeToggle.innerHTML = '☀️';
+    }
+    
+    // Toggle dark mode
+    darkModeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark-theme');
+        
+        if (document.body.classList.contains('dark-theme')) {
+            localStorage.setItem('learntech_theme', 'dark');
+            darkModeToggle.innerHTML = '☀️';
+        } else {
+            localStorage.setItem('learntech_theme', 'light');
+            darkModeToggle.innerHTML = '🌙';
+        }
+    });
+}
+
+// Notifications System
+// -----------------
+function initNotifications() {
+    // Create notifications container
+    const notificationsContainer = document.createElement('div');
+    notificationsContainer.className = 'notifications-container';
+    document.body.appendChild(notificationsContainer);
+    
+    // Enable global notification function
+    window.showNotification = function(title, message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        
+        const icons = {
+            'info': 'ℹ️',
+            'success': '✅',
+            'warning': '⚠️',
+            'error': '❌'
+        };
+        
+        notification.innerHTML = `
+            <div class="notification-icon">${icons[type]}</div>
+            <div class="notification-content">
+                <h4>${title}</h4>
+                <p>${message}</p>
+            </div>
+            <button class="notification-close">×</button>
+        `;
+        
+        notificationsContainer.appendChild(notification);
+        
+        // Animation
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 10);
+        
+        // Auto dismiss
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }, 5000);
+        
+        // Close button
+        notification.querySelector('.notification-close').addEventListener('click', function() {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        });
+    };
+}
+
+// Offline Support
+// -------------
+function initOfflineSupport() {
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    
+    function updateOnlineStatus() {
+        if (navigator.onLine) {
+            document.body.classList.remove('offline-mode');
+            showNotification('Connection restored', 'You are back online', 'success');
+        } else {
+            document.body.classList.add('offline-mode');
+            showNotification('No connection', 'You are offline. Some features may be limited.', 'warning');
+        }
+    }
+    
+    // Check initial status
+    updateOnlineStatus();
+}
             </script>
 </body>
 </html>
