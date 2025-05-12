@@ -25,9 +25,11 @@
         body {
             background-color: #f8f9fa;
             display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Sidebar styles (same as before) */
+        /* Sidebar styles */
         .sidebar {
             position: fixed;
             width: 250px;
@@ -37,6 +39,10 @@
             transition: all 0.3s ease;
             z-index: 1000;
             overflow-y: auto;
+        }
+
+        .sidebar.collapsed {
+            width: 70px;
         }
 
         .sidebar-header {
@@ -68,6 +74,13 @@
             font-weight: 600;
             color: var(--primary-color);
             font-size: 18px;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar.collapsed .logo-text {
+            opacity: 0;
+            width: 0;
+            overflow: hidden;
         }
 
         .toggle-btn {
@@ -77,6 +90,11 @@
             cursor: pointer;
             color: var(--text-color);
             font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
         }
 
         .sidebar-content {
@@ -90,6 +108,11 @@
             letter-spacing: 1px;
             color: #888;
             font-weight: 600;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar.collapsed .section-title {
+            opacity: 0;
         }
 
         .menu-item {
@@ -100,6 +123,8 @@
             text-decoration: none;
             transition: all 0.2s ease;
             border-left: 3px solid transparent;
+            white-space: nowrap;
+            overflow: hidden;
         }
 
         .menu-item:hover {
@@ -122,13 +147,25 @@
 
         .menu-text {
             margin-left: 12px;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar.collapsed .menu-text {
+            opacity: 0;
+            width: 0;
         }
 
         /* Main content styles */
         .main-content {
             margin-left: 250px;
-            padding: 30px;
+            padding: 30px 20px;
             width: calc(100% - 250px);
+            transition: all 0.3s ease;
+        }
+
+        .main-content.expanded {
+            margin-left: 70px;
+            width: calc(100% - 70px);
         }
 
         .page-header {
@@ -136,6 +173,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .page-title {
@@ -152,6 +191,7 @@
             padding: 10px 15px;
             box-shadow: var(--card-shadow);
             width: 300px;
+            max-width: 100%;
         }
 
         .search-container input {
@@ -189,6 +229,7 @@
             display: flex;
             gap: 15px;
             margin-bottom: 25px;
+            flex-wrap: wrap;
         }
 
         .filter-btn {
@@ -320,6 +361,16 @@
             color: white;
         }
 
+        .joined-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
         .more-btn {
             background: none;
             border: none;
@@ -431,7 +482,231 @@
             align-items: center;
         }
 
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: white;
+            border-radius: 10px;
+            width: 500px;
+            max-width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .close-modal-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-cancel {
+            background-color: #f0f0f0;
+            color: #333;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .btn-create {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            z-index: 1002;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast-icon {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .toast-message {
+            font-size: 14px;
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            display: none;
+        }
+
+        .empty-icon {
+            font-size: 50px;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        .empty-text {
+            font-size: 18px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .empty-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Dropdown menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            width: 150px;
+            z-index: 100;
+            display: none;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 10px 15px;
+            font-size: 14px;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--hover-color);
+        }
+
         /* Responsive styles */
+        @media screen and (max-width: 1024px) {
+            .groups-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
         @media screen and (max-width: 768px) {
             .sidebar {
                 width: 70px;
@@ -440,7 +715,8 @@
             .sidebar .logo-text,
             .sidebar .section-title,
             .sidebar .menu-text {
-                display: none;
+                opacity: 0;
+                width: 0;
             }
             
             .main-content {
@@ -448,25 +724,76 @@
                 width: calc(100% - 70px);
             }
             
-            .groups-container {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
             .page-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 15px;
             }
             
             .search-container {
                 width: 100%;
             }
+
+            .create-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .groups-container {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-container {
+                overflow-x: auto;
+                padding-bottom: 5px;
+                white-space: nowrap;
+                display: block;
+            }
+
+            .filter-btn {
+                display: inline-block;
+                margin-right: 10px;
+            }
+
+            .main-content {
+                padding: 20px 15px;
+            }
+
+            .session-item {
+                flex-direction: column;
+            }
+
+            .session-date {
+                flex-direction: row;
+                width: 100%;
+                margin-bottom: 10px;
+                justify-content: flex-start;
+                gap: 10px;
+            }
+        }
+
+        /* Loader animation */
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 3px solid var(--primary-color);
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <!-- Sidebar (same as before) -->
-    <div class="sidebar">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="logo">
                 <div class="logo-icon">
@@ -474,7 +801,7 @@
                 </div>
                 <span class="logo-text">LearnTech</span>
             </div>
-            <button class="toggle-btn">×</button>
+            <button class="toggle-btn" id="toggleSidebar">≡</button>
         </div>
         <div class="sidebar-content">
             <div class="section-title">MAIN</div>
@@ -504,10 +831,10 @@
                 <span class="menu-icon">📄</span>
                 <span class="menu-text">Study Materials</span>
             </a>
-<!--             <a href="study-groups.html" class="menu-item active">
+            <a href="#" class="menu-item active">
                 <span class="menu-icon">👥</span>
                 <span class="menu-text">Study Groups</span>
-            </a> -->
+            </a>
             <a href="help-center.html" class="menu-item">
                 <span class="menu-icon">❓</span>
                 <span class="menu-text">Help Center</span>
@@ -516,107 +843,598 @@
     </div>
 
     <!-- Main Content for Study Groups -->
-    <div class="main-content">
+    <div class="main-content" id="mainContent">
         <div class="page-header">
             <h1 class="page-title">Study Groups</h1>
             <div class="search-container">
                 <span class="search-icon">🔍</span>
-                <input type="text" placeholder="Search groups...">
+                <input type="text" placeholder="Search groups..." id="searchInput">
             </div>
-            <button class="create-btn">
+            <button class="create-btn" id="createGroupBtn">
                 <span>➕</span>
                 Create New Group
             </button>
         </div>
 
         <div class="filter-container">
-            <button class="filter-btn active">All Groups</button>
-            <button class="filter-btn">My Groups</button>
-            <button class="filter-btn">Recommended</button>
-            <button class="filter-btn">Active Now</button>
+            <button class="filter-btn active" data-filter="all">All Groups</button>
+            <button class="filter-btn" data-filter="my">My Groups</button>
+            <button class="filter-btn" data-filter="recommended">Recommended</button>
+            <button class="filter-btn" data-filter="active">Active Now</button>
         </div>
 
-        <div class="groups-container">
-            <!-- Group Card 1 -->
-            <div class="group-card">
-                <div class="group-header">
-                    <h3 class="group-title">Data Structures Study Group</h3>
-                    <div class="group-course">Computer Science 101</div>
-                </div>
-                <div class="group-info">
-                    <div class="info-item">
-                        <span class="info-icon">📅</span>
-                        <span>Meets every Tuesday & Thursday</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-icon">🕒</span>
-                        <span>6:00 PM - 8:00 PM</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-icon">🌎</span>
-                        <span>Online (Zoom)</span>
-                    </div>
-                    <div class="members-preview">
-                        <div class="member-avatar">JS</div>
-                        <div class="member-avatar">AK</div>
-                        <div class="member-avatar">TW</div>
-                        <div class="member-avatar">+</div>
-                        <span class="member-count">12 members</span>
-                    </div>
-                </div>
-                <div class="group-footer">
-                    <button class="join-btn">Join Group</button>
-                    <button class="more-btn">⋯</button>
-                </div>
-            </div>
+        <div class="groups-container" id="groupsContainer">
+            <!-- Group cards will be dynamically added here -->
+        </div>
 
-            <!-- Group Card 2 -->
-            <div class="group-card">
-                <div class="group-header">
-                    <h3 class="group-title">JavaScript Masterclass</h3>
-                    <div class="group-course">Web Development</div>
-                </div>
-                <div class="group-info">
-                    <div class="info-item">
-                        <span class="info-icon">📅</span>
-                        <span>Meets every Monday & Wednesday</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-icon">🕒</span>
-                        <span>7:00 PM - 9:00 PM</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-icon">🌎</span>
-                        <span>Library Study Room 3B</span>
-                    </div>
-                    <div class="members-preview">
-                        <div class="member-avatar">LM</div>
-                        <div class="member-avatar">KC</div>
-                        <div class="member-avatar">RD</div>
-                        <div class="member-avatar">+</div>
-                        <span class="member-count">8 members</span>
-                    </div>
-                </div>
-                <div class="group-footer">
-                    <button class="join-btn">Join Group</button>
-                    <button class="more-btn">⋯</button>
-                </div>
+        <div class="empty-state" id="emptyState">
+            <div class="empty-icon">👥</div>
+            <h3 class="empty-text">No study groups found</h3>
+            <button class="empty-btn" id="emptyStateBtn">
+                <span>➕</span>
+                Create New Group
+            </button>
+        </div>
+
+        <div class="upcoming-sessions">
+            <div class="section-header">
+                <h2 class="section-heading">Upcoming Study Sessions</h2>
+                <a href="#" class="view-all">View All</a>
             </div>
+            <div class="sessions-list" id="sessionsList">
+                <!-- Sessions will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for creating a new group -->
+    <div class="modal-overlay" id="createGroupModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Create New Study Group</h2>
+                <button class="close-modal-btn" id="closeModalBtn">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="createGroupForm">
+                    <div class="form-group">
+                        <label class="form-label" for="groupName">Group Name</label>
+                        <input type="text" id="groupName" class="form-input" placeholder="e.g. Data Structures Study Group" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="courseName">Course</label>
+                        <select id="courseName" class="form-select" required>
+                            <option value="">Select a course</option>
+                            <option value="Computer Science 101">Computer Science 101</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Statistics 201">Statistics 201</option>
+                            <option value="Machine Learning Basics">Machine Learning Basics</option>
+                            <option value="Database Systems">Database Systems</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="meetingSchedule">Meeting Schedule</label>
+                        <input type="text" id="meetingSchedule" class="form-input" placeholder="e.g. Every Tuesday & Thursday" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="meetingTime">Meeting Time</label>
+                        <input type="text" id="meetingTime" class="form-input" placeholder="e.g. 6:00 PM - 8:00 PM" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="meetingLocation">Meeting Location</label>
+                        <input type="text" id="meetingLocation" class="form-input" placeholder="e.g. Online (Zoom) or Library Room 302" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="groupDescription">Description</label>
+                        <textarea id="groupDescription" class="form-textarea" placeholder="Describe the purpose and goals of your study group" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn-create">Create Group</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">
+        <span class="toast-icon">✅</span>
+        <span class="toast-message" id="toastMessage">Group created successfully!</span>
+    </div>
+
+    <script>
+        // Sample data for study groups
+        let studyGroups = [
+            {
+                id: 1,
+                title: "Data Structures Study Group",
+                course: "Computer Science 101",
+                schedule: "Meets every Tuesday & Thursday",
+                time: "6:00 PM - 8:00 PM",
+                location: "Online (Zoom)",
+                members: [
+                    { initials: "JS" },
+                    { initials: "AK" },
+                    { initials: "TW" }
+                ],
+                memberCount: 12,
+                joined: false,
+                type: "recommended"
+            },
+            {
+                id: 2,
+                title: "JavaScript Masterclass",
+                course: "Web Development",
+                schedule: "Meets every Monday & Wednesday",
+                time: "7:00 PM - 9:00 PM",
+                location: "Library Study Room 3B",
+                members: [
+                    { initials: "LM" },
+                    { initials: "KC" },
+                    { initials: "RD" }
+                ],
+                memberCount: 8,
+                joined: false,
+                type: "active"
+            },
+            {
+                id: 3,
+                title: "Statistical Analysis",
+                course: "Statistics 201",
+                schedule: "Meets every Friday",
+                time: "4:00 PM - 6:00 PM",
+                location: "Science Building, Room 305",
+                members: [
+                    { initials: "EJ" },
+                    { initials: "MT" },
+                    { initials: "PL" }
+                ],
+                memberCount: 15,
+                joined: false,
+                type: "all"
+            },
+            {
+                id: 4,
+                title: "Machine Learning Workshop",
+                course: "Machine Learning Basics",
+                schedule: "Meets every Saturday",
+                time: "2:00 PM - 5:00 PM",
+                location: "Online (Google Meet)",
+                members: [
+                    { initials: "AR" },
+                    { initials: "BW" },
+                    { initials: "CM" }
+                ],
+                memberCount: 10,
+                joined: true,
+                type: "my"
+            }
+        ];
+
+        // Sample data for upcoming sessions
+        const upcomingSessions = [
+            {
+                day: "14",
+                month: "May",
+                title: "Sorting Algorithms Deep Dive",
+                group: "Data Structures Study Group",
+                time: "6:00 PM - 8:00 PM"
+            },
+            {
+                day: "15",
+                month: "May",
+                title: "Advanced JavaScript Patterns",
+                group: "JavaScript Masterclass",
+                time: "7:00 PM - 9:00 PM"
+            },
+            {
+                day: "16",
+                month: "May",
+                title: "Regression Analysis Workshop",
+                group: "Statistical Analysis",
+                time: "4:00 PM - 6:00 PM"
+            },
+            {
+                day: "18",
+                month: "May",
+                title: "Neural Networks Introduction",
+                group: "Machine Learning Workshop",
+                time: "2:00 PM - 5:00 PM"
+            }
+        ];
+
+        // DOM Elements
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+        const toggleSidebarBtn = document.getElementById('toggleSidebar');
+        const groupsContainer = document.getElementById('groupsContainer');
+        const sessionsList = document.getElementById('sessionsList');
+        const emptyState = document.getElementById('emptyState');
+        const createGroupBtn = document.getElementById('createGroupBtn');
+        const emptyStateBtn = document.getElementById('emptyStateBtn');
+        const createGroupModal = document.getElementById('createGroupModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const createGroupForm = document.getElementById('createGroupForm');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+        const searchInput = document.getElementById('searchInput');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderStudyGroups();
+            renderUpcomingSessions();
+            setupEventListeners();
+        });
+
+        // Toggle sidebar
+        function toggleSidebar() {
+            sidebar.classList.toggle('collapsed');
+            mainContent.classList.toggle('expanded');
             
+            // Change toggle button text
+            if (sidebar.classList.contains('collapsed')) {
+                toggleSidebarBtn.textContent = '≡';
+            } else {
+                toggleSidebarBtn.textContent = '×';
+            }
+        }
 
-            <!-- Group Card 3 -->
-            <div class="group-card">
-                <div class="group-header">
-                    <h3 class="group-title">Statistical Analysis</h3>
-                    <div class="group-course">Statistics 201</div>
+        // Handle window resize
+        function handleResize() {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.add('collapsed');
+                mainContent.classList.add('expanded');
+                toggleSidebarBtn.textContent = '≡';
+            } else {
+                sidebar.classList.remove('collapsed');
+                mainContent.classList.remove('expanded');
+                toggleSidebarBtn.textContent = '×';
+            }
+        }
+
+        // Render study groups
+        function renderStudyGroups(filter = 'all', searchTerm = '') {
+            groupsContainer.innerHTML = '';
+            
+            let filteredGroups = studyGroups;
+            
+            // Apply filter
+            if (filter !== 'all') {
+                if (filter === 'my') {
+                    filteredGroups = studyGroups.filter(group => group.joined);
+                } else if (filter === 'recommended') {
+                    filteredGroups = studyGroups.filter(group => group.type === 'recommended');
+                } else if (filter === 'active') {
+                    filteredGroups = studyGroups.filter(group => group.type === 'active');
+                }
+            }
+            
+            // Apply search term
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase();
+                filteredGroups = filteredGroups.filter(group => 
+                    group.title.toLowerCase().includes(term) || 
+                    group.course.toLowerCase().includes(term)
+                );
+            }
+            
+            // Show empty state if no groups match
+            if (filteredGroups.length === 0) {
+                emptyState.style.display = 'block';
+                return;
+            } else {
+                emptyState.style.display = 'none';
+            }
+            
+            // Create group cards
+            filteredGroups.forEach(group => {
+                const groupCard = document.createElement('div');
+                groupCard.className = 'group-card';
+                groupCard.dataset.id = group.id;
+                
+                // Create members preview HTML
+                let membersPreviewHTML = '';
+                group.members.forEach(member => {
+                    membersPreviewHTML += `<div class="member-avatar">${member.initials}</div>`;
+                });
+                membersPreviewHTML += `<div class="member-avatar">+</div>
+                                     <span class="member-count">${group.memberCount} members</span>`;
+                
+                // Build card HTML
+                groupCard.innerHTML = `
+                    <div class="group-header">
+                        <h3 class="group-title">${group.title}</h3>
+                        <div class="group-course">${group.course}</div>
+                    </div>
+                    <div class="group-info">
+                        <div class="info-item">
+                            <span class="info-icon">📅</span>
+                            <span>${group.schedule}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🕒</span>
+                            <span>${group.time}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🌎</span>
+                            <span>${group.location}</span>
+                        </div>
+                        <div class="members-preview">
+                            ${membersPreviewHTML}
+                        </div>
+                    </div>
+                    <div class="group-footer">
+                        <button class="${group.joined ? 'joined-btn' : 'join-btn'}" data-id="${group.id}">
+                            ${group.joined ? 'Joined' : 'Join Group'}
+                        </button>
+                        <button class="more-btn" data-id="${group.id}">⋯</button>
+                    </div>
+                `;
+                
+                groupsContainer.appendChild(groupCard);
+            });
+            
+            // Add event listeners to join buttons
+            document.querySelectorAll('.join-btn').forEach(btn => {
+                btn.addEventListener('click', handleJoinGroup);
+            });
+            
+            // Add event listeners to more buttons
+            document.querySelectorAll('.more-btn').forEach(btn => {
+                btn.addEventListener('click', showGroupOptions);
+            });
+        }
+
+        // Render upcoming sessions
+        function renderUpcomingSessions() {
+            sessionsList.innerHTML = '';
+            
+            upcomingSessions.forEach(session => {
+                const sessionItem = document.createElement('div');
+                sessionItem.className = 'session-item';
+                
+                sessionItem.innerHTML = `
+                    <div class="session-date">
+                        <div class="date-day">${session.day}</div>
+                        <div class="date-month">${session.month}</div>
+                    </div>
+                    <div class="session-details">
+                        <h3 class="session-title">${session.title}</h3>
+                        <div class="session-group">${session.group}</div>
+                        <div class="session-time">
+                            <span class="info-icon">🕒</span>
+                            <span>${session.time}</span>
+                        </div>
+                    </div>
+                    <div class="session-action">
+                        <button class="join-btn">Join</button>
+                    </div>
+                `;
+                
+                sessionsList.appendChild(sessionItem);
+            });
+        }
+
+        // Handle joining a group
+        function handleJoinGroup(e) {
+            const btn = e.target;
+            const groupId = parseInt(btn.dataset.id);
+            
+            // Find the group
+            const group = studyGroups.find(g => g.id === groupId);
+            if (group) {
+                group.joined = true;
+                group.type = 'my';  // Add to "My Groups"
+                
+                // Update button appearance
+                btn.textContent = 'Joined';
+                btn.className = 'joined-btn';
+                
+                // Show success message
+                showToast('You have successfully joined the group!');
+                
+                // Remove click event to prevent multiple joins
+                btn.removeEventListener('click', handleJoinGroup);
+            }
+        }
+
+        // Show group options dropdown
+        function showGroupOptions(e) {
+            e.stopPropagation();
+            const btn = e.target;
+            
+            // Remove any existing dropdowns
+            const existingDropdowns = document.querySelectorAll('.dropdown-menu');
+            existingDropdowns.forEach(dropdown => dropdown.remove());
+            
+            // Create dropdown
+            const dropdown = document.createElement('div');
+            dropdown.className = 'dropdown-menu show';
+            dropdown.innerHTML = `
+                <div class="dropdown-item view-details">
+                    <span>👁️</span>
+                    <span>View Details</span>
                 </div>
-                <div class="group-info">
-                    <div class="info-item">
-                        <span class="info-icon">📅</span>
-                        <span>Meets every Friday</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-icon">🕒</span>
-                        <span>4:00 PM - 6:00 PM</span>
-                    </div>
-                    <div class="info-item
+                <div class="dropdown-item share-group">
+                    <span>🔗</span>
+                    <span>Share Group</span>
+                </div>
+                <div class="dropdown-item report-group">
+                    <span>⚠️</span>
+                    <span>Report Group</span>
+                </div>
+            `;
+            
+            // Position dropdown
+            const rect = btn.getBoundingClientRect();
+            dropdown.style.top = rect.bottom + 5 + 'px';
+            dropdown.style.right = window.innerWidth - rect.right + 'px';
+            
+            // Add dropdown to DOM
+            btn.parentElement.style.position = 'relative';
+            btn.parentElement.appendChild(dropdown);
+            
+            // Add event listeners for dropdown items
+            dropdown.querySelector('.view-details').addEventListener('click', () => {
+                showToast('Viewing group details');
+                dropdown.remove();
+            });
+            
+            dropdown.querySelector('.share-group').addEventListener('click', () => {
+                showToast('Group link copied to clipboard');
+                dropdown.remove();
+            });
+            
+            dropdown.querySelector('.report-group').addEventListener('click', () => {
+                showToast('Report submitted');
+                dropdown.remove();
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function closeDropdown(e) {
+                if (!dropdown.contains(e.target) && e.target !== btn) {
+                    dropdown.remove();
+                    document.removeEventListener('click', closeDropdown);
+                }
+            });
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Create new group
+        function createNewGroup(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const title = document.getElementById('groupName').value;
+            const course = document.getElementById('courseName').value;
+            const schedule = document.getElementById('meetingSchedule').value;
+            const time = document.getElementById('meetingTime').value;
+            const location = document.getElementById('meetingLocation').value;
+            
+            // Create new group object
+            const newGroup = {
+                id: studyGroups.length + 1,
+                title,
+                course,
+                schedule: `Meets ${schedule}`,
+                time,
+                location,
+                members: [
+                    { initials: "ME" }  // Current user
+                ],
+                memberCount: 1,
+                joined: true,
+                type: "my"
+            };
+            
+            // Add to groups array
+            studyGroups.push(newGroup);
+            
+            // Close modal
+            createGroupModal.classList.remove('active');
+            
+            // Show success message
+            showToast('Study group created successfully!');
+            
+            // Reset form
+            createGroupForm.reset();
+            
+            // Update UI
+            renderStudyGroups();
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Toggle sidebar
+            toggleSidebarBtn.addEventListener('click', toggleSidebar);
+            
+            // Window resize
+            window.addEventListener('resize', handleResize);
+            handleResize(); // Call initially
+            
+            // Open create group modal
+            createGroupBtn.addEventListener('click', () => {
+                createGroupModal.classList.add('active');
+            });
+            
+            // Empty state button
+            emptyStateBtn.addEventListener('click', () => {
+                createGroupModal.classList.add('active');
+            });
+            
+            // Close modal
+            closeModalBtn.addEventListener('click', () => {
+                createGroupModal.classList.remove('active');
+            });
+            
+            // Cancel button
+            cancelBtn.addEventListener('click', () => {
+                createGroupModal.classList.remove('active');
+                createGroupForm.reset();
+            });
+            
+            // Close modal when clicking outside
+            createGroupModal.addEventListener('click', (e) => {
+                if (e.target === createGroupModal) {
+                    createGroupModal.classList.remove('active');
+                }
+            });
+            
+            // Submit form
+            createGroupForm.addEventListener('submit', createNewGroup);
+            
+            // Handle search
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.trim();
+                const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+                renderStudyGroups(activeFilter, searchTerm);
+            });
+            
+            // Handle filters
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    // Get filter value and search term
+                    const filter = btn.dataset.filter;
+                    const searchTerm = searchInput.value.trim();
+                    
+                    // Apply filter
+                    renderStudyGroups(filter, searchTerm);
+                });
+            });
+        }
+
+        // Simulate loading state (for demo purposes)
+        function simulateLoading() {
+            const loader = document.createElement('div');
+            loader.className = 'loader';
+            loader.style.display = 'inline-block';
+            
+            return loader;
+        }
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && createGroupModal.classList.contains('active')) {
+                createGroupModal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
