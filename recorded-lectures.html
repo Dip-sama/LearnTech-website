@@ -516,39 +516,644 @@
     </div>
 
     <script>
-        // Toggle sidebar
-        document.querySelector('.toggle-btn').addEventListener('click', function() {
-            document.querySelector('.sidebar').classList.toggle('collapsed');
-            document.querySelector('.main-content').classList.toggle('expanded');
-        });
+       // Data model for lectures
+const lecturesData = [
+    {
+        id: 1,
+        title: "Introduction to Data Structures",
+        course: "Computer Science 101",
+        instructor: "Dr. Smith",
+        date: "May 8, 2025",
+        lastViewed: "2 days ago",
+        duration: "45:20",
+        progress: 75,
+        category: "Computer Science",
+        isBookmarked: true,
+        thumbnail: "/api/placeholder/400/320",
+        status: "in-progress" // watched, unwatched, in-progress, completed
+    },
+    {
+        id: 2,
+        title: "Advanced JavaScript Concepts",
+        course: "Web Development",
+        instructor: "Prof. Johnson",
+        date: "May 5, 2025",
+        lastViewed: "Not viewed yet",
+        duration: "1:12:45",
+        progress: 0,
+        category: "Web Development",
+        isBookmarked: false,
+        thumbnail: "/api/placeholder/400/320",
+        status: "unwatched"
+    },
+    {
+        id: 3,
+        title: "Statistical Analysis Methods",
+        course: "Statistics 201",
+        instructor: "Dr. Garcia",
+        date: "May 7, 2025",
+        lastViewed: "1 week ago",
+        duration: "55:30",
+        progress: 25,
+        category: "Statistics",
+        isBookmarked: false,
+        thumbnail: "/api/placeholder/400/320",
+        status: "in-progress"
+    },
+    {
+        id: 4,
+        title: "UI/UX Design Principles",
+        course: "Design Fundamentals",
+        instructor: "Prof. Lee",
+        date: "May 2, 2025",
+        lastViewed: "Completed",
+        duration: "38:15",
+        progress: 100,
+        category: "Design",
+        isBookmarked: true,
+        thumbnail: "/api/placeholder/400/320",
+        status: "completed"
+    },
+    {
+        id: 5,
+        title: "Database Management Systems",
+        course: "Information Systems",
+        instructor: "Dr. Thompson",
+        date: "May 4, 2025",
+        lastViewed: "Not viewed yet",
+        duration: "1:02:15",
+        progress: 0,
+        category: "Database",
+        isBookmarked: false,
+        thumbnail: "/api/placeholder/400/320",
+        status: "unwatched"
+    },
+    {
+        id: 6,
+        title: "Machine Learning Algorithms",
+        course: "AI Fundamentals",
+        instructor: "Prof. Williams",
+        date: "May 9, 2025",
+        lastViewed: "Viewed yesterday",
+        duration: "1:25:10",
+        progress: 50,
+        category: "AI",
+        isBookmarked: true,
+        thumbnail: "/api/placeholder/400/320",
+        status: "in-progress"
+    },
+    {
+        id: 7,
+        title: "Network Security Fundamentals",
+        course: "Cybersecurity 101",
+        instructor: "Dr. Chen",
+        date: "May 6, 2025",
+        lastViewed: "3 days ago",
+        duration: "50:45",
+        progress: 60,
+        category: "Cybersecurity",
+        isBookmarked: false,
+        thumbnail: "/api/placeholder/400/320",
+        status: "in-progress"
+    },
+    {
+        id: 8,
+        title: "Mobile App Development with React Native",
+        course: "Mobile Development",
+        instructor: "Prof. Rodriguez",
+        date: "May 3, 2025",
+        lastViewed: "Not viewed yet",
+        duration: "1:10:30",
+        progress: 0,
+        category: "Mobile Development",
+        isBookmarked: false,
+        thumbnail: "/api/placeholder/400/320",
+        status: "unwatched"
+    }
+];
 
-        // Filter buttons
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                this.classList.add('active');
+// DOM elements
+const lecturesGrid = document.querySelector('.lectures-grid');
+const filterButtons = document.querySelectorAll('.filter-btn');
+const searchInput = document.querySelector('.search-container input');
+const toggleSidebarBtn = document.querySelector('.toggle-btn');
+const sidebar = document.querySelector('.sidebar');
+const mainContent = document.querySelector('.main-content');
+
+// Initialize the application
+function initApp() {
+    renderLectures(lecturesData);
+    setupEventListeners();
+    setupSidebarToggle();
+    setupFilterButtons();
+    setupSearchFunctionality();
+    initializeProgressBars();
+}
+
+// Render lecture cards
+function renderLectures(lectures) {
+    lecturesGrid.innerHTML = '';
+    
+    if (lectures.length === 0) {
+        lecturesGrid.innerHTML = `
+            <div class="no-results" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                <h3>No lectures match your criteria</h3>
+                <p>Try adjusting your search or filters</p>
+            </div>
+        `;
+        return;
+    }
+    
+    lectures.forEach(lecture => {
+        const card = createLectureCard(lecture);
+        lecturesGrid.appendChild(card);
+    });
+}
+
+// Create a lecture card element
+function createLectureCard(lecture) {
+    const card = document.createElement('div');
+    card.className = 'lecture-card';
+    card.dataset.id = lecture.id;
+    card.dataset.status = lecture.status;
+    
+    card.innerHTML = `
+        <div class="video-thumbnail">
+            <img src="${lecture.thumbnail}" alt="${lecture.title}">
+            <div class="play-icon">▶️</div>
+            <div class="lecture-duration">${lecture.duration}</div>
+            ${lecture.isBookmarked ? '<div class="bookmark-icon" style="position: absolute; top: 10px; right: 10px; background-color: var(--primary-color); color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">★</div>' : ''}
+        </div>
+        <div class="lecture-info">
+            <h3 class="lecture-title">${lecture.title}</h3>
+            <div class="lecture-course">${lecture.course}</div>
+            <div class="lecture-meta">
+                <span>${lecture.instructor} • ${lecture.date}</span>
+                <span>${lecture.lastViewed}</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: ${lecture.progress}%;"></div>
+            </div>
+        </div>
+    `;
+    
+    return card;
+}
+
+// Setup event listeners
+function setupEventListeners() {
+    // Lecture card click event
+    lecturesGrid.addEventListener('click', function(e) {
+        const card = e.target.closest('.lecture-card');
+        if (card) {
+            const lectureId = card.dataset.id;
+            openLecture(lectureId);
+        }
+        
+        // Bookmark icon click event (prevent propagation)
+        if (e.target.closest('.bookmark-icon')) {
+            e.stopPropagation();
+            toggleBookmark(card.dataset.id);
+        }
+    });
+}
+
+// Open lecture video
+function openLecture(lectureId) {
+    const lecture = lecturesData.find(lec => lec.id == lectureId);
+    
+    // In a real app, this would navigate to a video player page
+    console.log(`Opening lecture: ${lecture.title}`);
+    alert(`Playing lecture: ${lecture.title}`);
+    
+    // Update lecture progress (simulated)
+    if (lecture.progress < 100) {
+        lecture.progress += 25;
+        if (lecture.progress > 100) lecture.progress = 100;
+        
+        // Update status based on progress
+        if (lecture.progress === 100) {
+            lecture.status = 'completed';
+            lecture.lastViewed = 'Completed';
+        } else {
+            lecture.status = 'in-progress';
+            lecture.lastViewed = 'Just now';
+        }
+        
+        // Update UI
+        const card = document.querySelector(`.lecture-card[data-id="${lectureId}"]`);
+        if (card) {
+            card.querySelector('.progress-bar').style.width = `${lecture.progress}%`;
+            card.querySelector('.lecture-meta span:last-child').textContent = lecture.lastViewed;
+            card.dataset.status = lecture.status;
+        }
+    }
+}
+
+// Toggle bookmark status
+function toggleBookmark(lectureId) {
+    const lecture = lecturesData.find(lec => lec.id == lectureId);
+    lecture.isBookmarked = !lecture.isBookmarked;
+    
+    // Re-render lectures to update bookmark icon
+    const currentFilter = document.querySelector('.filter-btn.active').textContent.toLowerCase();
+    filterLectures(currentFilter);
+}
+
+// Setup sidebar toggle
+function setupSidebarToggle() {
+    toggleSidebarBtn.addEventListener('click', function() {
+        sidebar.classList.toggle('collapsed');
+        sidebar.style.width = sidebar.classList.contains('collapsed') ? '70px' : '250px';
+        
+        // Hide/show text elements
+        const textElements = sidebar.querySelectorAll('.logo-text, .section-title, .menu-text');
+        textElements.forEach(el => {
+            el.style.display = sidebar.classList.contains('collapsed') ? 'none' : 'block';
+        });
+        
+        // Adjust main content margin
+        mainContent.style.marginLeft = sidebar.classList.contains('collapsed') ? '70px' : '250px';
+        mainContent.style.width = sidebar.classList.contains('collapsed') ? 'calc(100% - 70px)' : 'calc(100% - 250px)';
+    });
+}
+
+// Setup filter buttons
+function setupFilterButtons() {
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filter = this.textContent.toLowerCase();
+            filterLectures(filter);
+        });
+    });
+}
+
+// Filter lectures based on selected filter
+function filterLectures(filter) {
+    let filteredLectures = [...lecturesData];
+    const searchText = searchInput.value.toLowerCase();
+    
+    // Apply search filter
+    if (searchText) {
+        filteredLectures = filteredLectures.filter(lecture => 
+            lecture.title.toLowerCase().includes(searchText) ||
+            lecture.course.toLowerCase().includes(searchText) ||
+            lecture.instructor.toLowerCase().includes(searchText)
+        );
+    }
+    
+    // Apply button filter
+    switch (filter) {
+        case 'recent':
+            // Sort by date (most recent first)
+            filteredLectures.sort((a, b) => new Date(b.date) - new Date(a.date));
+            break;
+        case 'bookmarked':
+            filteredLectures = filteredLectures.filter(lecture => lecture.isBookmarked);
+            break;
+        case 'watched':
+            filteredLectures = filteredLectures.filter(lecture => 
+                lecture.status === 'in-progress' || lecture.status === 'completed');
+            break;
+        case 'unwatched':
+            filteredLectures = filteredLectures.filter(lecture => lecture.status === 'unwatched');
+            break;
+        case 'all lectures':
+            // No additional filtering needed
+            break;
+    }
+    
+    renderLectures(filteredLectures);
+    initializeProgressBars();
+}
+
+// Setup search functionality
+function setupSearchFunctionality() {
+    searchInput.addEventListener('input', function() {
+        const currentFilter = document.querySelector('.filter-btn.active').textContent.toLowerCase();
+        filterLectures(currentFilter);
+    });
+}
+
+// Initialize progress bars with animation
+function initializeProgressBars() {
+    document.querySelectorAll('.progress-bar').forEach(bar => {
+        bar.style.transition = 'width 1s ease';
+        
+        // Force browser to recalculate styles for smooth animation
+        const width = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => {
+            bar.style.width = width;
+        }, 10);
+    });
+}
+
+// Add more features
+function addAdditionalFeatures() {
+    // Add sorting functionality
+    const sortingContainer = document.createElement('div');
+    sortingContainer.className = 'sorting-container';
+    sortingContainer.innerHTML = `
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="a-z">Title A-Z</option>
+            <option value="z-a">Title Z-A</option>
+            <option value="progress">Progress</option>
+        </select>
+    `;
+    
+    const filterContainer = document.querySelector('.filter-container');
+    filterContainer.parentNode.insertBefore(sortingContainer, filterContainer.nextSibling);
+    
+    document.getElementById('sort-select').addEventListener('change', function() {
+        const currentFilter = document.querySelector('.filter-btn.active').textContent.toLowerCase();
+        filterLectures(currentFilter);
+    });
+    
+    // Add dark mode toggle
+    const headerContainer = document.querySelector('.page-header');
+    const darkModeToggle = document.createElement('button');
+    darkModeToggle.className = 'dark-mode-toggle';
+    darkModeToggle.innerHTML = '🌙';
+    darkModeToggle.style.cssText = `
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        margin-left: 10px;
+    `;
+    
+    headerContainer.appendChild(darkModeToggle);
+    
+    darkModeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        this.innerHTML = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        
+        // Add dark mode styles
+        if (document.body.classList.contains('dark-mode')) {
+            document.documentElement.style.setProperty('--primary-color', '#8A7FFE');
+            document.documentElement.style.setProperty('--secondary-color', '#2A2D3E');
+            document.documentElement.style.setProperty('--text-color', '#E0E0E0');
+            document.documentElement.style.setProperty('--hover-color', '#3A3D4E');
+            document.documentElement.style.setProperty('--active-color', '#4A4D5E');
+            document.body.style.backgroundColor = '#1A1D2E';
+            
+            document.querySelectorAll('.lecture-card, .search-container').forEach(el => {
+                el.style.backgroundColor = '#2A2D3E';
+                el.style.color = '#E0E0E0';
             });
-        });
+            
+            document.querySelectorAll('.lecture-title').forEach(el => {
+                el.style.color = '#FFFFFF';
+            });
+        } else {
+            document.documentElement.style.setProperty('--primary-color', '#6557f5');
+            document.documentElement.style.setProperty('--secondary-color', '#f0f2f5');
+            document.documentElement.style.setProperty('--text-color', '#5a5a5a');
+            document.documentElement.style.setProperty('--hover-color', '#f5f5f5');
+            document.documentElement.style.setProperty('--active-color', '#ededff');
+            document.body.style.backgroundColor = '#f8f9fa';
+            
+            document.querySelectorAll('.lecture-card, .search-container').forEach(el => {
+                el.style.backgroundColor = '#FFFFFF';
+                el.style.color = '#5a5a5a';
+            });
+            
+            document.querySelectorAll('.lecture-title').forEach(el => {
+                el.style.color = '#333333';
+            });
+        }
+    });
+}
 
-        // Initialize progress bars with random values for demo
-        document.querySelectorAll('.lecture-card').forEach(card => {
-            const hasProgress = card.querySelector('.progress-bar').style.width !== '0%';
-            if (hasProgress) {
-                // Add animation for existing progress bars
-                card.querySelector('.progress-bar').style.transition = 'width 1s ease';
+// Add notification system
+function setupNotifications() {
+    // Create notification container
+    const notificationContainer = document.createElement('div');
+    notificationContainer.className = 'notification-container';
+    notificationContainer.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+    `;
+    document.body.appendChild(notificationContainer);
+    
+    // Add notification button
+    const headerContainer = document.querySelector('.page-header');
+    const notificationBtn = document.createElement('button');
+    notificationBtn.className = 'notification-btn';
+    notificationBtn.innerHTML = '🔔';
+    notificationBtn.style.cssText = `
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        margin-left: 10px;
+        position: relative;
+    `;
+    
+    // Add notification counter
+    const notificationCounter = document.createElement('span');
+    notificationCounter.className = 'notification-counter';
+    notificationCounter.textContent = '3';
+    notificationCounter.style.cssText = `
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    `;
+    
+    notificationBtn.appendChild(notificationCounter);
+    headerContainer.appendChild(notificationBtn);
+    
+    // Notification click event
+    notificationBtn.addEventListener('click', function() {
+        showNotification('You have 3 new lectures to watch!', 'info');
+        showNotification('Assignment deadline in 2 days!', 'warning');
+        showNotification('Your discussion post received 5 replies', 'success');
+        
+        // Clear notification counter
+        notificationCounter.style.display = 'none';
+    });
+}
+
+// Show notification
+function showNotification(message, type = 'info') {
+    const notificationContainer = document.querySelector('.notification-container');
+    
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+        background-color: ${type === 'info' ? '#6557f5' : type === 'warning' ? '#ff9800' : '#4CAF50'};
+        color: white;
+        padding: 12px 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        margin-bottom: 10px;
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.3s ease;
+    `;
+    
+    notificationContainer.appendChild(notification);
+    
+    // Animate notification appearance
+    setTimeout(() => {
+        notification.style.opacity = '1';
+        notification.style.transform = 'translateX(0)';
+    }, 10);
+    
+    // Auto-remove notification after 5 seconds
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(50px)';
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 5000);
+}
+
+// Add keyboard navigation
+function setupKeyboardNavigation() {
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            e.preventDefault();
+            
+            // Get all lecture cards
+            const cards = Array.from(document.querySelectorAll('.lecture-card'));
+            if (!cards.length) return;
+            
+            // Find focused card or default to first card
+            let focusedCard = document.activeElement.closest('.lecture-card');
+            let focusedIndex = focusedCard ? cards.indexOf(focusedCard) : -1;
+            
+            // Calculate new index based on key pressed
+            let newIndex;
+            const cardsPerRow = Math.floor(lecturesGrid.offsetWidth / cards[0].offsetWidth);
+            
+            switch (e.key) {
+                case 'ArrowUp':
+                    newIndex = focusedIndex - cardsPerRow;
+                    break;
+                case 'ArrowDown':
+                    newIndex = focusedIndex + cardsPerRow;
+                    break;
+                case 'ArrowLeft':
+                    newIndex = focusedIndex - 1;
+                    break;
+                case 'ArrowRight':
+                    newIndex = focusedIndex + 1;
+                    break;
             }
-        });
+            
+            // Ensure index is in bounds
+            if (newIndex < 0) newIndex = 0;
+            if (newIndex >= cards.length) newIndex = cards.length - 1;
+            
+            // Focus the new card
+            cards[newIndex].focus();
+            cards[newIndex].setAttribute('tabindex', '0');
+        }
+        
+        // Enter key opens the focused lecture
+        if (e.key === 'Enter') {
+            const focusedCard = document.activeElement.closest('.lecture-card');
+            if (focusedCard) {
+                openLecture(focusedCard.dataset.id);
+            }
+        }
+    });
+    
+    // Make cards focusable
+    document.querySelectorAll('.lecture-card').forEach(card => {
+        card.setAttribute('tabindex', '0');
+    });
+}
 
-        // Simulate lecture card click
-        document.querySelectorAll('.lecture-card').forEach(card => {
-            card.addEventListener('click', function() {
-                // In a real application, this would navigate to the lecture video
-                console.log('Opening lecture:', this.querySelector('.lecture-title').textContent);
-                // You could add: window.location.href = 'lecture-video.html?id=123';
-            });
-        });
+// Add welcome message with new features highlight
+function showWelcomeMessage() {
+    const welcomeMessage = document.createElement('div');
+    welcomeMessage.className = 'welcome-modal';
+    welcomeMessage.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+    `;
+    
+    welcomeMessage.innerHTML = `
+        <div class="welcome-content" style="
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            text-align: center;
+        ">
+            <h2 style="color: var(--primary-color); margin-bottom: 20px;">Welcome to LearnTech</h2>
+            <p style="margin-bottom: 15px;">We've added new features to enhance your learning experience:</p>
+            <ul style="text-align: left; margin-bottom: 20px;">
+                <li>🔍 Enhanced search and filtering</li>
+                <li>🌙 Dark mode for comfortable viewing</li>
+                <li>🔔 Notifications for important updates</li>
+                <li>⌨️ Keyboard navigation (use arrow keys)</li>
+                <li>⭐ Bookmark your favorite lectures</li>
+            </ul>
+            <button class="close-welcome" style="
+                background-color: var(--primary-color);
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+            ">Got it!</button>
+        </div>
+    `;
+    
+    document.body.appendChild(welcomeMessage);
+    
+    // Close welcome message
+    document.querySelector('.close-welcome').addEventListener('click', function() {
+        welcomeMessage.style.opacity = '0';
+        setTimeout(() => {
+            welcomeMessage.remove();
+        }, 300);
+    });
+}
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initApp();
+    addAdditionalFeatures();
+    setupNotifications();
+    setupKeyboardNavigation();
+    
+    // Show welcome message after a short delay
+    setTimeout(showWelcomeMessage, 1000);
+});
     </script>
 </body>
 </html>
